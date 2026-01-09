@@ -36,6 +36,6 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
           TWINE_REPOSITORY_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
         run: |
-          python -m twine upload --repository-url https://github.com/orgs/${{ github.repository_owner }}/packages/pypi dist/*
+          python -m twine upload --verbose --repository-url https://github.com/orgs/${{ github.repository_owner }}/packages/pypi dist/*
           
 
