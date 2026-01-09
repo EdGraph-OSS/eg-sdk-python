@@ -6,32 +6,27 @@ on:
 
 permissions:
   contents: read
-  packages: write 
   id-token: write 
 
 jobs:
-  publish:
+  publish-package:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: ⚙️ Checkout Repository
+        uses: actions/checkout@v4
 
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      - name: 📦 Install Poetry
-        run: pip install poetry
-
-      - name: 🏗️ Build Package
-        run: poetry build
-
-      - name: 🚀 Publish to GitHub Packages
+      - name: 📦 Install build tools
         run: |
-          poetry config repositories.github https://pypi.pkg.github.com/EdGraph-OSS
-          poetry publish --repository github \
-            --username ${{ github.actor }} \
-            --password ${{ secrets.GITHUB_TOKEN }}
+          python -m pip install --upgrade pip
+          pip install build
+      - name: 🏗️ Build distribution
+        run: python -m build
 
       - name: 🚀 Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
