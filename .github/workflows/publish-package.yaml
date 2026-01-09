@@ -8,34 +8,32 @@ permissions:
   contents: read
   packages: write
 
-jobs: 
-  publish-package: 
+jobs:
+  publish-package:
     runs-on: ubuntu-latest
 
-    steps: 
+    steps:
       - name: ⚙️ Checkout Repository
         uses: actions/checkout@v4
-        with: 
-          fetch-depth: 0
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.8"
 
-      - name: Install build tools
+      - name: 📦 Install build tools
         run: |
-          python -m pip install --upgrade pip build twine
+          python -m pip install --upgrade pip
+          pip install build twine
 
-      - name: Build distribution
+      - name: 🏗️ Build distribution
         run: python -m build
-        
-      - name: 🌐 Publish Package 
+
+      - name: 🚀 Publish Package to GitHub Packages
         env:
           TWINE_USERNAME: ${{ github.actor }}
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-          TWINE_REPOSITORY_URL: https://pypi.pkg.github.com/EdGraph-OSS/index.json
         run: |
-          python -m twine upload --verbose --repository-url https://github.com/EdGraph-OSS/python-sdk dist/*
-          
-
+          python -m twine upload \
+            --repository-url https://pypi.pkg.github.com/EdGraph-OSS \
+            dist/*
