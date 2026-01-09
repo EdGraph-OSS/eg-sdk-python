@@ -28,7 +28,7 @@ jobs:
 
       - name: 🚀 Publish to GitHub Packages
         run: |
-          poetry config repositories.github https://pypi.pkg.github.com/EdGraph-OSS/python-sdk
+          poetry config repositories.github https://pypi.pkg.github.com/EdGraph-OSS
           poetry publish --repository github \
             --username ${{ github.actor }} \
             --password ${{ secrets.GITHUB_TOKEN }}
