@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from edgraph_platform_client.models.tenant_api_webhook_v1_webhook_schema import TenantApiWebhookV1WebhookSchema
 from edgraph_platform_client.models.tenant_api_webhook_v1_webhook_subscriber_response import TenantApiWebhookV1WebhookSubscriberResponse
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,7 +35,9 @@ class TenantApiWebhookV1CreateWebhookRequest(BaseModel):
     secret_value: Optional[StrictStr] = Field(default=None, alias="secretValue")
     content_type: Optional[StrictStr] = Field(default=None, alias="contentType")
     event_subscriptions: Optional[List[TenantApiWebhookV1WebhookSubscriberResponse]] = Field(default=None, alias="eventSubscriptions")
-    __properties: ClassVar[List[str]] = ["tenantId", "name", "url", "secretHeader", "secretValue", "contentType", "eventSubscriptions"]
+    subscriptions: Optional[List[StrictStr]] = None
+    webhook_schema: Optional[TenantApiWebhookV1WebhookSchema] = Field(default=None, alias="webhookSchema")
+    __properties: ClassVar[List[str]] = ["tenantId", "name", "url", "secretHeader", "secretValue", "contentType", "eventSubscriptions", "subscriptions", "webhookSchema"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -67,9 +70,11 @@ class TenantApiWebhookV1CreateWebhookRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "event_subscriptions",
+            "subscriptions",
         ])
 
         _dict = self.model_dump(
@@ -119,6 +124,11 @@ class TenantApiWebhookV1CreateWebhookRequest(BaseModel):
         if self.event_subscriptions is None and "event_subscriptions" in self.model_fields_set:
             _dict['eventSubscriptions'] = None
 
+        # set to None if subscriptions (nullable) is None
+        # and model_fields_set contains the field
+        if self.subscriptions is None and "subscriptions" in self.model_fields_set:
+            _dict['subscriptions'] = None
+
         return _dict
 
     @classmethod
@@ -137,7 +147,9 @@ class TenantApiWebhookV1CreateWebhookRequest(BaseModel):
             "secretHeader": obj.get("secretHeader"),
             "secretValue": obj.get("secretValue"),
             "contentType": obj.get("contentType"),
-            "eventSubscriptions": [TenantApiWebhookV1WebhookSubscriberResponse.from_dict(_item) for _item in obj["eventSubscriptions"]] if obj.get("eventSubscriptions") is not None else None
+            "eventSubscriptions": [TenantApiWebhookV1WebhookSubscriberResponse.from_dict(_item) for _item in obj["eventSubscriptions"]] if obj.get("eventSubscriptions") is not None else None,
+            "subscriptions": obj.get("subscriptions"),
+            "webhookSchema": obj.get("webhookSchema")
         })
         return _obj
 

@@ -35,6 +35,7 @@ from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_instance_endpoi
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_instance_list_model_paginated_items_view_model import EdfiAdminApiEdfiAdminV1InstanceListModelPaginatedItemsViewModel
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_reset_instance_response import EdfiAdminApiEdfiAdminV1ResetInstanceResponse
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_set_instance_is_default_request import EdfiAdminApiEdfiAdminV1SetInstanceIsDefaultRequest
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_test_instance_connection_request import EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_test_instance_connection_response import EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_update_instance_request import EdfiAdminApiEdfiAdminV1UpdateInstanceRequest
 from edgraph_platform_client.models.ims_admin_api_v1_connections_connection_tested_response import IMSAdminApiV1ConnectionsConnectionTestedResponse
@@ -8894,6 +8895,7 @@ class InstancesApi:
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request: Optional[EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8914,6 +8916,8 @@ class InstancesApi:
         :type tenant_id: str
         :param instance_id:  (required)
         :type instance_id: str
+        :param edfi_admin_api_edfi_admin_v1_test_instance_connection_request: 
+        :type edfi_admin_api_edfi_admin_v1_test_instance_connection_request: EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8939,6 +8943,7 @@ class InstancesApi:
         _param = self._test_instance_connection_serialize(
             tenant_id=tenant_id,
             instance_id=instance_id,
+            edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8969,6 +8974,7 @@ class InstancesApi:
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request: Optional[EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8989,6 +8995,8 @@ class InstancesApi:
         :type tenant_id: str
         :param instance_id:  (required)
         :type instance_id: str
+        :param edfi_admin_api_edfi_admin_v1_test_instance_connection_request: 
+        :type edfi_admin_api_edfi_admin_v1_test_instance_connection_request: EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9014,6 +9022,7 @@ class InstancesApi:
         _param = self._test_instance_connection_serialize(
             tenant_id=tenant_id,
             instance_id=instance_id,
+            edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9044,6 +9053,7 @@ class InstancesApi:
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request: Optional[EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9064,6 +9074,8 @@ class InstancesApi:
         :type tenant_id: str
         :param instance_id:  (required)
         :type instance_id: str
+        :param edfi_admin_api_edfi_admin_v1_test_instance_connection_request: 
+        :type edfi_admin_api_edfi_admin_v1_test_instance_connection_request: EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9089,6 +9101,7 @@ class InstancesApi:
         _param = self._test_instance_connection_serialize(
             tenant_id=tenant_id,
             instance_id=instance_id,
+            edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9114,6 +9127,7 @@ class InstancesApi:
         self,
         tenant_id,
         instance_id,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
         _request_auth,
         _content_type,
         _headers,
@@ -9141,6 +9155,8 @@ class InstancesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if edfi_admin_api_edfi_admin_v1_test_instance_connection_request is not None:
+            _body_params = edfi_admin_api_edfi_admin_v1_test_instance_connection_request
 
 
         # set the HTTP header `Accept`
@@ -9151,6 +9167,22 @@ class InstancesApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -9181,6 +9213,7 @@ class InstancesApi:
         tenant_id: StrictStr,
         instance_id: StrictStr,
         year: StrictInt,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request: Optional[EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9203,6 +9236,8 @@ class InstancesApi:
         :type instance_id: str
         :param year:  (required)
         :type year: int
+        :param edfi_admin_api_edfi_admin_v1_test_instance_connection_request: 
+        :type edfi_admin_api_edfi_admin_v1_test_instance_connection_request: EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9229,6 +9264,7 @@ class InstancesApi:
             tenant_id=tenant_id,
             instance_id=instance_id,
             year=year,
+            edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9260,6 +9296,7 @@ class InstancesApi:
         tenant_id: StrictStr,
         instance_id: StrictStr,
         year: StrictInt,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request: Optional[EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9282,6 +9319,8 @@ class InstancesApi:
         :type instance_id: str
         :param year:  (required)
         :type year: int
+        :param edfi_admin_api_edfi_admin_v1_test_instance_connection_request: 
+        :type edfi_admin_api_edfi_admin_v1_test_instance_connection_request: EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9308,6 +9347,7 @@ class InstancesApi:
             tenant_id=tenant_id,
             instance_id=instance_id,
             year=year,
+            edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9339,6 +9379,7 @@ class InstancesApi:
         tenant_id: StrictStr,
         instance_id: StrictStr,
         year: StrictInt,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request: Optional[EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9361,6 +9402,8 @@ class InstancesApi:
         :type instance_id: str
         :param year:  (required)
         :type year: int
+        :param edfi_admin_api_edfi_admin_v1_test_instance_connection_request: 
+        :type edfi_admin_api_edfi_admin_v1_test_instance_connection_request: EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9387,6 +9430,7 @@ class InstancesApi:
             tenant_id=tenant_id,
             instance_id=instance_id,
             year=year,
+            edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9413,6 +9457,7 @@ class InstancesApi:
         tenant_id,
         instance_id,
         year,
+        edfi_admin_api_edfi_admin_v1_test_instance_connection_request,
         _request_auth,
         _content_type,
         _headers,
@@ -9442,6 +9487,8 @@ class InstancesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if edfi_admin_api_edfi_admin_v1_test_instance_connection_request is not None:
+            _body_params = edfi_admin_api_edfi_admin_v1_test_instance_connection_request
 
 
         # set the HTTP header `Accept`
@@ -9452,6 +9499,22 @@ class InstancesApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_ed_fi_connection_by_id**](ConnectionsApi.md#get_ed_fi_connection_by_id) | **GET** /tenants/{tenantId}/edfiadmin/connections/{connectionId} | Retrieves an Ed-Fi Connection by ID.
 [**get_ed_fi_connections_async**](ConnectionsApi.md#get_ed_fi_connections_async) | **GET** /tenants/{tenantId}/edfiadmin/connections | Retrieves a list of Ed-Fi Connections.
 [**get_ed_fi_ods_backup_codes_descriptors_async**](ConnectionsApi.md#get_ed_fi_ods_backup_codes_descriptors_async) | **GET** /tenants/{tenantId}/edfiadmin/connections/odsbackupcodes | Retrieves a list of Ed-Fi ODS backup codes.
+[**get_ed_fi_resources_by_instance_year**](ConnectionsApi.md#get_ed_fi_resources_by_instance_year) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/resources | Retrieves an Ed-Fi Resources by Instance Id and Year.
 [**get_paged_connections**](ConnectionsApi.md#get_paged_connections) | **GET** /tenants/{tenantId}/oneroster/connections | Retrieves a list of Connections.
 [**get_tenant_data_sync_connection_profile_by_id**](ConnectionsApi.md#get_tenant_data_sync_connection_profile_by_id) | **GET** /tenants/{tenantId}/datasync/connections/{connectionId} | Retrieves a specific DataSync connection using its primary key
 [**test_connection_details_async**](ConnectionsApi.md#test_connection_details_async) | **POST** /tenants/{tenantId}/oneroster/connections/test | Tests the connection by sending the connection details in the request payload
@@ -833,6 +834,96 @@ Name | Type | Description  | Notes
 **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 **200** | The requested resource was successfully retrieved. |  -  |
 **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_ed_fi_resources_by_instance_year**
+> EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse get_ed_fi_resources_by_instance_year(tenant_id, instance_id, year, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+
+Retrieves an Ed-Fi Resources by Instance Id and Year.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_resources_by_instance_year_paginated_items_response import EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.ConnectionsApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    instance_id = 'instance_id_example' # str | 
+    year = 56 # int | 
+    page_index = 0 # int |  (optional) (default to 0)
+    page_size = 10 # int |  (optional) (default to 10)
+    order_by = '' # str |  (optional) (default to '')
+    filter = '' # str |  (optional) (default to '')
+
+    try:
+        # Retrieves an Ed-Fi Resources by Instance Id and Year.
+        api_response = api_instance.get_ed_fi_resources_by_instance_year(tenant_id, instance_id, year, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        print("The response of ConnectionsApi->get_ed_fi_resources_by_instance_year:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ConnectionsApi->get_ed_fi_resources_by_instance_year: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **instance_id** | **str**|  | 
+ **year** | **int**|  | 
+ **page_index** | **int**|  | [optional] [default to 0]
+ **page_size** | **int**|  | [optional] [default to 10]
+ **order_by** | **str**|  | [optional] [default to &#39;&#39;]
+ **filter** | **str**|  | [optional] [default to &#39;&#39;]
+
+### Return type
+
+[**EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse**](EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+**404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

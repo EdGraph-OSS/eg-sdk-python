@@ -20,8 +20,8 @@ from pydantic import StrictInt, StrictStr
 from typing import Optional
 from edgraph_platform_client.models.tenant_api_webhook_v1_create_webhook_request import TenantApiWebhookV1CreateWebhookRequest
 from edgraph_platform_client.models.tenant_api_webhook_v1_paginated_items_response import TenantApiWebhookV1PaginatedItemsResponse
+from edgraph_platform_client.models.tenant_api_webhook_v1_paginated_webhook_event_items_response import TenantApiWebhookV1PaginatedWebhookEventItemsResponse
 from edgraph_platform_client.models.tenant_api_webhook_v1_update_webhook_request import TenantApiWebhookV1UpdateWebhookRequest
-from edgraph_platform_client.models.tenant_api_webhook_v1_webhook_events_response import TenantApiWebhookV1WebhookEventsResponse
 from edgraph_platform_client.models.tenant_api_webhook_v1_webhook_id_response import TenantApiWebhookV1WebhookIdResponse
 from edgraph_platform_client.models.tenant_api_webhook_v1_webhook_response import TenantApiWebhookV1WebhookResponse
 
@@ -629,6 +629,10 @@ class WebhooksApi:
     def get_all_webhook_subscriptions_async(
         self,
         tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -641,12 +645,20 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TenantApiWebhookV1WebhookEventsResponse:
+    ) -> TenantApiWebhookV1PaginatedWebhookEventItemsResponse:
         """get_all_webhook_subscriptions_async
 
 
         :param tenant_id: (required)
         :type tenant_id: str
+        :param page_size:
+        :type page_size: int
+        :param page_index:
+        :type page_index: int
+        :param order_by:
+        :type order_by: str
+        :param filter:
+        :type filter: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -671,6 +683,10 @@ class WebhooksApi:
 
         _param = self._get_all_webhook_subscriptions_async_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -681,7 +697,7 @@ class WebhooksApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiWebhookV1WebhookEventsResponse",
+            '200': "TenantApiWebhookV1PaginatedWebhookEventItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -699,6 +715,10 @@ class WebhooksApi:
     def get_all_webhook_subscriptions_async_with_http_info(
         self,
         tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -711,12 +731,20 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TenantApiWebhookV1WebhookEventsResponse]:
+    ) -> ApiResponse[TenantApiWebhookV1PaginatedWebhookEventItemsResponse]:
         """get_all_webhook_subscriptions_async
 
 
         :param tenant_id: (required)
         :type tenant_id: str
+        :param page_size:
+        :type page_size: int
+        :param page_index:
+        :type page_index: int
+        :param order_by:
+        :type order_by: str
+        :param filter:
+        :type filter: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -741,6 +769,10 @@ class WebhooksApi:
 
         _param = self._get_all_webhook_subscriptions_async_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -751,7 +783,7 @@ class WebhooksApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiWebhookV1WebhookEventsResponse",
+            '200': "TenantApiWebhookV1PaginatedWebhookEventItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -769,6 +801,10 @@ class WebhooksApi:
     def get_all_webhook_subscriptions_async_without_preload_content(
         self,
         tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -787,6 +823,14 @@ class WebhooksApi:
 
         :param tenant_id: (required)
         :type tenant_id: str
+        :param page_size:
+        :type page_size: int
+        :param page_index:
+        :type page_index: int
+        :param order_by:
+        :type order_by: str
+        :param filter:
+        :type filter: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -811,6 +855,10 @@ class WebhooksApi:
 
         _param = self._get_all_webhook_subscriptions_async_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -821,7 +869,7 @@ class WebhooksApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiWebhookV1WebhookEventsResponse",
+            '200': "TenantApiWebhookV1PaginatedWebhookEventItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -834,6 +882,10 @@ class WebhooksApi:
     def _get_all_webhook_subscriptions_async_serialize(
         self,
         tenant_id,
+        page_size,
+        page_index,
+        order_by,
+        filter,
         _request_auth,
         _content_type,
         _headers,
@@ -856,6 +908,22 @@ class WebhooksApi:
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if order_by is not None:
+            
+            _query_params.append(('orderBy', order_by))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

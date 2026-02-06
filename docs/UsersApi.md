@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_tenant_local_user_async**](UsersApi.md#create_tenant_local_user_async) | **POST** /tenants/{tenantId}/users | Creates a user in the local identity provider
 [**deactivate_tenant_user_async**](UsersApi.md#deactivate_tenant_user_async) | **PUT** /tenants/{tenantId}/users/{userId}/deactivate | Deactivates a user
 [**delete_tenant_user_async**](UsersApi.md#delete_tenant_user_async) | **DELETE** /tenants/{tenantId}/users/{userId} | Deletes a user
+[**get_all_form_users**](UsersApi.md#get_all_form_users) | **GET** /tenants/{tenantId}/forms/users | Get All Users
 [**get_all_tenant_users_async**](UsersApi.md#get_all_tenant_users_async) | **GET** /tenants/{tenantId}/users | Retrieves a list of users associated to this tenant
 [**get_all_users**](UsersApi.md#get_all_users) | **GET** /tenants/{tenantId}/statereporting/users | Get All Users
 [**get_tenant_user**](UsersApi.md#get_tenant_user) | **GET** /v2/tenants/{tenantId}/users/{userId} | Get User
@@ -340,6 +341,91 @@ void (empty response body)
 **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
 **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 **204** | The resource was successfully deleted. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_all_form_users**
+> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel get_all_form_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+
+Get All Users
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_user_basic_list_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.UsersApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    page_size = 10 # int |  (optional) (default to 10)
+    page_index = 0 # int |  (optional) (default to 0)
+    order_by = '' # str |  (optional) (default to '')
+    filter = '' # str |  (optional) (default to '')
+
+    try:
+        # Get All Users
+        api_response = api_instance.get_all_form_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        print("The response of UsersApi->get_all_form_users:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->get_all_form_users: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **page_size** | **int**|  | [optional] [default to 10]
+ **page_index** | **int**|  | [optional] [default to 0]
+ **order_by** | **str**|  | [optional] [default to &#39;&#39;]
+ **filter** | **str**|  | [optional] [default to &#39;&#39;]
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** |  |  -  |
 **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

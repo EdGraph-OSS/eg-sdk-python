@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **secret_value** | **str** |  | [optional] 
 **content_type** | **str** |  | [optional] 
 **event_subscriptions** | [**List[TenantApiWebhookV1WebhookSubscriberResponse]**](TenantApiWebhookV1WebhookSubscriberResponse.md) |  | [optional] [readonly] 
+**subscriptions** | **List[str]** |  | [optional] [readonly] 
+**webhook_schema** | [**TenantApiWebhookV1WebhookSchema**](TenantApiWebhookV1WebhookSchema.md) |  | [optional] 
 
 ## Example
 

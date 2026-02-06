@@ -21,6 +21,9 @@ Name | Type | Description | Notes
 **source** | **str** |  | [optional] 
 **last_login_date_time** | **str** |  | [optional] 
 **mfa_completed** | **bool** |  | [optional] 
+**is_deleted** | **bool** |  | [optional] 
+**deleted_date_time** | **str** |  | [optional] 
+**deleted_by** | **str** |  | [optional] 
 
 ## Example
 

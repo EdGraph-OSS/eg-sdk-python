@@ -2380,7 +2380,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_instance_connection**
-> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse test_instance_connection(tenant_id, instance_id)
+> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse test_instance_connection(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request)
 
 Tests the connection of the Instance.
 
@@ -2390,6 +2390,7 @@ Tests the connection of the Instance.
 
 ```python
 import edgraph_platform_client
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_test_instance_connection_request import EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_test_instance_connection_response import EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
@@ -2413,10 +2414,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     api_instance = edgraph_platform_client.InstancesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
     instance_id = 'instance_id_example' # str | 
+    edfi_admin_api_edfi_admin_v1_test_instance_connection_request = edgraph_platform_client.EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest() # EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest |  (optional)
 
     try:
         # Tests the connection of the Instance.
-        api_response = api_instance.test_instance_connection(tenant_id, instance_id)
+        api_response = api_instance.test_instance_connection(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request)
         print("The response of InstancesApi->test_instance_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -2432,6 +2434,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
  **instance_id** | **str**|  | 
+ **edfi_admin_api_edfi_admin_v1_test_instance_connection_request** | [**EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest**](EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -2443,7 +2446,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2460,7 +2463,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_instance_year_connection**
-> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse test_instance_year_connection(tenant_id, instance_id, year)
+> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse test_instance_year_connection(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request)
 
 Tests the connection of the Instance.
 
@@ -2470,6 +2473,7 @@ Tests the connection of the Instance.
 
 ```python
 import edgraph_platform_client
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_test_instance_connection_request import EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_test_instance_connection_response import EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
@@ -2494,10 +2498,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     tenant_id = 'tenant_id_example' # str | 
     instance_id = 'instance_id_example' # str | 
     year = 56 # int | 
+    edfi_admin_api_edfi_admin_v1_test_instance_connection_request = edgraph_platform_client.EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest() # EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest |  (optional)
 
     try:
         # Tests the connection of the Instance.
-        api_response = api_instance.test_instance_year_connection(tenant_id, instance_id, year)
+        api_response = api_instance.test_instance_year_connection(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_test_instance_connection_request=edfi_admin_api_edfi_admin_v1_test_instance_connection_request)
         print("The response of InstancesApi->test_instance_year_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -2514,6 +2519,7 @@ Name | Type | Description  | Notes
  **tenant_id** | **str**|  | 
  **instance_id** | **str**|  | 
  **year** | **int**|  | 
+ **edfi_admin_api_edfi_admin_v1_test_instance_connection_request** | [**EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest**](EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -2525,7 +2531,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: application/json
 
 ### HTTP response details

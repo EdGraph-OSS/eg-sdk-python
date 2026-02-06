@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_all_webhook_subscriptions_async**
-> TenantApiWebhookV1WebhookEventsResponse get_all_webhook_subscriptions_async(tenant_id)
+> TenantApiWebhookV1PaginatedWebhookEventItemsResponse get_all_webhook_subscriptions_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
 
 
 
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ```python
 import edgraph_platform_client
-from edgraph_platform_client.models.tenant_api_webhook_v1_webhook_events_response import TenantApiWebhookV1WebhookEventsResponse
+from edgraph_platform_client.models.tenant_api_webhook_v1_paginated_webhook_event_items_response import TenantApiWebhookV1PaginatedWebhookEventItemsResponse
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
 
@@ -204,9 +204,13 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.WebhooksApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
+    page_size = 10 # int |  (optional) (default to 10)
+    page_index = 0 # int |  (optional) (default to 0)
+    order_by = '' # str |  (optional) (default to '')
+    filter = '' # str |  (optional) (default to '')
 
     try:
-        api_response = api_instance.get_all_webhook_subscriptions_async(tenant_id)
+        api_response = api_instance.get_all_webhook_subscriptions_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of WebhooksApi->get_all_webhook_subscriptions_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -221,10 +225,14 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
+ **page_size** | **int**|  | [optional] [default to 10]
+ **page_index** | **int**|  | [optional] [default to 0]
+ **order_by** | **str**|  | [optional] [default to &#39;&#39;]
+ **filter** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 
-[**TenantApiWebhookV1WebhookEventsResponse**](TenantApiWebhookV1WebhookEventsResponse.md)
+[**TenantApiWebhookV1PaginatedWebhookEventItemsResponse**](TenantApiWebhookV1PaginatedWebhookEventItemsResponse.md)
 
 ### Authorization
 

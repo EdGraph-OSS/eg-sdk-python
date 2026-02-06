@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
+from pydantic import StrictBool, StrictInt, StrictStr
 from typing import Optional
 from edgraph_platform_client.models.ed_fi_admin_api_application_access_v1_application_access_response import EdFiAdminApiApplicationAccessV1ApplicationAccessResponse
 from edgraph_platform_client.models.ed_fi_admin_api_application_access_v1_application_access_response_paginated_items_view_model import EdFiAdminApiApplicationAccessV1ApplicationAccessResponsePaginatedItemsViewModel
@@ -2682,6 +2682,7 @@ class InstancesApplicationsApi:
         instance_id: StrictStr,
         application_id: StrictInt,
         year: Optional[StrictInt] = None,
+        load_education_organizations: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2706,6 +2707,8 @@ class InstancesApplicationsApi:
         :type application_id: int
         :param year: 
         :type year: int
+        :param load_education_organizations: 
+        :type load_education_organizations: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2733,6 +2736,7 @@ class InstancesApplicationsApi:
             instance_id=instance_id,
             application_id=application_id,
             year=year,
+            load_education_organizations=load_education_organizations,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2765,6 +2769,7 @@ class InstancesApplicationsApi:
         instance_id: StrictStr,
         application_id: StrictInt,
         year: Optional[StrictInt] = None,
+        load_education_organizations: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2789,6 +2794,8 @@ class InstancesApplicationsApi:
         :type application_id: int
         :param year: 
         :type year: int
+        :param load_education_organizations: 
+        :type load_education_organizations: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2816,6 +2823,7 @@ class InstancesApplicationsApi:
             instance_id=instance_id,
             application_id=application_id,
             year=year,
+            load_education_organizations=load_education_organizations,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2848,6 +2856,7 @@ class InstancesApplicationsApi:
         instance_id: StrictStr,
         application_id: StrictInt,
         year: Optional[StrictInt] = None,
+        load_education_organizations: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2872,6 +2881,8 @@ class InstancesApplicationsApi:
         :type application_id: int
         :param year: 
         :type year: int
+        :param load_education_organizations: 
+        :type load_education_organizations: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2899,6 +2910,7 @@ class InstancesApplicationsApi:
             instance_id=instance_id,
             application_id=application_id,
             year=year,
+            load_education_organizations=load_education_organizations,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2926,6 +2938,7 @@ class InstancesApplicationsApi:
         instance_id,
         application_id,
         year,
+        load_education_organizations,
         _request_auth,
         _content_type,
         _headers,
@@ -2955,6 +2968,10 @@ class InstancesApplicationsApi:
         if year is not None:
             
             _query_params.append(('year', year))
+            
+        if load_education_organizations is not None:
+            
+            _query_params.append(('loadEducationOrganizations', load_education_organizations))
             
         # process the header parameters
         # process the form parameters
