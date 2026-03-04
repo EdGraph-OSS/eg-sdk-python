@@ -37,7 +37,8 @@ class FormApiFormsV1CreateFullFormRequest(BaseModel):
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
     status: Optional[FormApiFormsV1FormStatus] = None
     sections: Optional[List[FormApiFormsV1CreateFullSectionRequest]] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "source", "version", "anonymous", "tenantId", "status", "sections"]
+    image: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "source", "version", "anonymous", "tenantId", "status", "sections", "image"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -117,6 +118,11 @@ class FormApiFormsV1CreateFullFormRequest(BaseModel):
         if self.sections is None and "sections" in self.model_fields_set:
             _dict['sections'] = None
 
+        # set to None if image (nullable) is None
+        # and model_fields_set contains the field
+        if self.image is None and "image" in self.model_fields_set:
+            _dict['image'] = None
+
         return _dict
 
     @classmethod
@@ -136,7 +142,8 @@ class FormApiFormsV1CreateFullFormRequest(BaseModel):
             "anonymous": obj.get("anonymous"),
             "tenantId": obj.get("tenantId"),
             "status": obj.get("status"),
-            "sections": [FormApiFormsV1CreateFullSectionRequest.from_dict(_item) for _item in obj["sections"]] if obj.get("sections") is not None else None
+            "sections": [FormApiFormsV1CreateFullSectionRequest.from_dict(_item) for _item in obj["sections"]] if obj.get("sections") is not None else None,
+            "image": obj.get("image")
         })
         return _obj
 

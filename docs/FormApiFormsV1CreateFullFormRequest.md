@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **tenant_id** | **str** |  | [optional] 
 **status** | [**FormApiFormsV1FormStatus**](FormApiFormsV1FormStatus.md) |  | [optional] 
 **sections** | [**List[FormApiFormsV1CreateFullSectionRequest]**](FormApiFormsV1CreateFullSectionRequest.md) |  | [optional] [readonly] 
+**image** | **str** |  | [optional] 
 
 ## Example
 

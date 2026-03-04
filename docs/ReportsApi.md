@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **create_report_async**
-> AnalyticsApiReportsV1ReportIdResponse create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version)
+> AnalyticsApiReportsV1ReportIdResponse create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, identity_required=identity_required, roles_required=roles_required)
 
 Creates a new report (Does not upload pbix file).
 
@@ -54,10 +54,12 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     tags = 'tags_example' # str |  (optional)
     is_visible = True # bool |  (optional)
     version = 'version_example' # str |  (optional)
+    identity_required = True # bool |  (optional)
+    roles_required = True # bool |  (optional)
 
     try:
         # Creates a new report (Does not upload pbix file).
-        api_response = api_instance.create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version)
+        api_response = api_instance.create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, identity_required=identity_required, roles_required=roles_required)
         print("The response of ReportsApi->create_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -79,6 +81,8 @@ Name | Type | Description  | Notes
  **tags** | **str**|  | [optional] 
  **is_visible** | **bool**|  | [optional] 
  **version** | **str**|  | [optional] 
+ **identity_required** | **bool**|  | [optional] 
+ **roles_required** | **bool**|  | [optional] 
 
 ### Return type
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **title** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **order** | **int** |  | [optional] 
+**sub_heading** | **str** |  | [optional] 
 
 ## Example
 

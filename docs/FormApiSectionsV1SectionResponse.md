@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **deleted_date_time** | **str** |  | [optional] 
 **is_deleted** | **bool** |  | [optional] 
 **order** | **int** |  | [optional] 
+**sub_heading** | **str** |  | [optional] 
 
 ## Example
 

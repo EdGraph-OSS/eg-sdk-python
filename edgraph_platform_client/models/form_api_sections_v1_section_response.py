@@ -39,7 +39,8 @@ class FormApiSectionsV1SectionResponse(BaseModel):
     deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     order: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "title", "description", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order"]
+    sub_heading: Optional[StrictStr] = Field(default=None, alias="subHeading")
+    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "title", "description", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "subHeading"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -145,6 +146,11 @@ class FormApiSectionsV1SectionResponse(BaseModel):
         if self.order is None and "order" in self.model_fields_set:
             _dict['order'] = None
 
+        # set to None if sub_heading (nullable) is None
+        # and model_fields_set contains the field
+        if self.sub_heading is None and "sub_heading" in self.model_fields_set:
+            _dict['subHeading'] = None
+
         return _dict
 
     @classmethod
@@ -169,7 +175,8 @@ class FormApiSectionsV1SectionResponse(BaseModel):
             "deletedBy": obj.get("deletedBy"),
             "deletedDateTime": obj.get("deletedDateTime"),
             "isDeleted": obj.get("isDeleted"),
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "subHeading": obj.get("subHeading")
         })
         return _obj
 

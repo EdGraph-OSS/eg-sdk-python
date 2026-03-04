@@ -32,7 +32,8 @@ class FormApiSectionsV1UpdateSectionRequest(BaseModel):
     title: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     order: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "title", "description", "order"]
+    sub_heading: Optional[StrictStr] = Field(default=None, alias="subHeading")
+    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "title", "description", "order", "subHeading"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,6 +104,11 @@ class FormApiSectionsV1UpdateSectionRequest(BaseModel):
         if self.order is None and "order" in self.model_fields_set:
             _dict['order'] = None
 
+        # set to None if sub_heading (nullable) is None
+        # and model_fields_set contains the field
+        if self.sub_heading is None and "sub_heading" in self.model_fields_set:
+            _dict['subHeading'] = None
+
         return _dict
 
     @classmethod
@@ -120,7 +126,8 @@ class FormApiSectionsV1UpdateSectionRequest(BaseModel):
             "tenantId": obj.get("tenantId"),
             "title": obj.get("title"),
             "description": obj.get("description"),
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "subHeading": obj.get("subHeading")
         })
         return _obj
 

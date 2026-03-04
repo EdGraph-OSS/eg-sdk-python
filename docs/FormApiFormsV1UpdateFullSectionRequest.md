@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **questions** | [**List[FormApiFormsV1UpdateFullQuestionRequest]**](FormApiFormsV1UpdateFullQuestionRequest.md) |  | [optional] [readonly] 
 **order** | **int** |  | [optional] 
+**sub_heading** | **str** |  | [optional] 
 
 ## Example
 

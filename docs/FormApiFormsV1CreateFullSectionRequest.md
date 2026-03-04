@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **questions** | [**List[FormApiFormsV1CreateFullQuestionRequest]**](FormApiFormsV1CreateFullQuestionRequest.md) |  | [optional] [readonly] 
 **order** | **int** |  | [optional] 
+**sub_heading** | **str** |  | [optional] 
 
 ## Example
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **anonymous** | **bool** |  | [optional] 
 **tenant_id** | **str** |  | [optional] 
 **status** | [**FormApiFormsV1FormStatus**](FormApiFormsV1FormStatus.md) |  | [optional] 
+**image** | **str** |  | [optional] 
 
 ## Example
 

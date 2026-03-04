@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **tenant_id** | **str** |  | [optional] 
 **status** | [**FormApiFormsV1FormStatus**](FormApiFormsV1FormStatus.md) |  | [optional] 
 **sections** | [**List[FormApiFormsV1UpdateFullSectionRequest]**](FormApiFormsV1UpdateFullSectionRequest.md) |  | [optional] [readonly] 
+**image** | **str** |  | [optional] 
 
 ## Example
 

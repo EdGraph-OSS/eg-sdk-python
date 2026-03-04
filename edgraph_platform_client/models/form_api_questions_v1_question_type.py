@@ -32,6 +32,9 @@ class FormApiQuestionsV1QuestionType(str, Enum):
     DATE = 'Date'
     RADIO = 'Radio'
     CUSTOMCOMPONENT = 'CustomComponent'
+    SCORING = 'Scoring'
+    HTML = 'Html'
+    IMAGE = 'Image'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

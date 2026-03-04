@@ -36,7 +36,8 @@ class FormApiFormsV1UpdateFormRequest(BaseModel):
     anonymous: Optional[StrictBool] = None
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
     status: Optional[FormApiFormsV1FormStatus] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "source", "version", "anonymous", "tenantId", "status"]
+    image: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "source", "version", "anonymous", "tenantId", "status", "image"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,6 +108,11 @@ class FormApiFormsV1UpdateFormRequest(BaseModel):
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
+        # set to None if image (nullable) is None
+        # and model_fields_set contains the field
+        if self.image is None and "image" in self.model_fields_set:
+            _dict['image'] = None
+
         return _dict
 
     @classmethod
@@ -126,7 +132,8 @@ class FormApiFormsV1UpdateFormRequest(BaseModel):
             "version": obj.get("version"),
             "anonymous": obj.get("anonymous"),
             "tenantId": obj.get("tenantId"),
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "image": obj.get("image")
         })
         return _obj
 

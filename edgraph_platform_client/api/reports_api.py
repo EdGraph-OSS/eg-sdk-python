@@ -55,6 +55,8 @@ class ReportsApi:
         tags: Optional[StrictStr] = None,
         is_visible: Optional[StrictBool] = None,
         version: Optional[StrictStr] = None,
+        identity_required: Optional[StrictBool] = None,
+        roles_required: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -87,6 +89,10 @@ class ReportsApi:
         :type is_visible: bool
         :param version:
         :type version: str
+        :param identity_required:
+        :type identity_required: bool
+        :param roles_required:
+        :type roles_required: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -118,6 +124,8 @@ class ReportsApi:
             tags=tags,
             is_visible=is_visible,
             version=version,
+            identity_required=identity_required,
+            roles_required=roles_required,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -154,6 +162,8 @@ class ReportsApi:
         tags: Optional[StrictStr] = None,
         is_visible: Optional[StrictBool] = None,
         version: Optional[StrictStr] = None,
+        identity_required: Optional[StrictBool] = None,
+        roles_required: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -186,6 +196,10 @@ class ReportsApi:
         :type is_visible: bool
         :param version:
         :type version: str
+        :param identity_required:
+        :type identity_required: bool
+        :param roles_required:
+        :type roles_required: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -217,6 +231,8 @@ class ReportsApi:
             tags=tags,
             is_visible=is_visible,
             version=version,
+            identity_required=identity_required,
+            roles_required=roles_required,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -253,6 +269,8 @@ class ReportsApi:
         tags: Optional[StrictStr] = None,
         is_visible: Optional[StrictBool] = None,
         version: Optional[StrictStr] = None,
+        identity_required: Optional[StrictBool] = None,
+        roles_required: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -285,6 +303,10 @@ class ReportsApi:
         :type is_visible: bool
         :param version:
         :type version: str
+        :param identity_required:
+        :type identity_required: bool
+        :param roles_required:
+        :type roles_required: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -316,6 +338,8 @@ class ReportsApi:
             tags=tags,
             is_visible=is_visible,
             version=version,
+            identity_required=identity_required,
+            roles_required=roles_required,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -347,6 +371,8 @@ class ReportsApi:
         tags,
         is_visible,
         version,
+        identity_required,
+        roles_required,
         _request_auth,
         _content_type,
         _headers,
@@ -385,6 +411,10 @@ class ReportsApi:
             _form_params.append(('IsVisible', is_visible))
         if version is not None:
             _form_params.append(('Version', version))
+        if identity_required is not None:
+            _form_params.append(('IdentityRequired', identity_required))
+        if roles_required is not None:
+            _form_params.append(('RolesRequired', roles_required))
         # process the body parameter
 
 

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **deleted_by** | **str** |  | [optional] 
 **deleted_date_time** | **str** |  | [optional] 
 **is_deleted** | **bool** |  | [optional] 
+**image** | **str** |  | [optional] 
 
 ## Example
 

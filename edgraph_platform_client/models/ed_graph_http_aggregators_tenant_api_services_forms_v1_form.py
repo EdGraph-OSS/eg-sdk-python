@@ -42,7 +42,8 @@ class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(BaseModel):
     deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
     deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "name", "description", "source", "version", "anonymous", "status", "submissionCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted"]
+    image: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "name", "description", "source", "version", "anonymous", "status", "submissionCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "image"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -138,6 +139,11 @@ class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(BaseModel):
         if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
             _dict['deletedDateTime'] = None
 
+        # set to None if image (nullable) is None
+        # and model_fields_set contains the field
+        if self.image is None and "image" in self.model_fields_set:
+            _dict['image'] = None
+
         return _dict
 
     @classmethod
@@ -165,7 +171,8 @@ class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(BaseModel):
             "lastModifiedDateTime": obj.get("lastModifiedDateTime"),
             "deletedBy": obj.get("deletedBy"),
             "deletedDateTime": obj.get("deletedDateTime"),
-            "isDeleted": obj.get("isDeleted")
+            "isDeleted": obj.get("isDeleted"),
+            "image": obj.get("image")
         })
         return _obj
 
