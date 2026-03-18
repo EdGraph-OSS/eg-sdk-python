@@ -18,18 +18,15 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_evaluations_appraisers_searched_response import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_evaluations_staff_searched_response import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_campus_response_paginated_items_view_model import EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_create_evaluation_request import EvaluationApiEvaluationsV1CreateEvaluationRequest
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_evaluation_count_response import EvaluationApiEvaluationsV1EvaluationCountResponse
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_evaluation_created_response import EvaluationApiEvaluationsV1EvaluationCreatedResponse
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_evaluation_deleted_response import EvaluationApiEvaluationsV1EvaluationDeletedResponse
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_evaluation_response import EvaluationApiEvaluationsV1EvaluationResponse
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_evaluation_response_paginated_items_view_model import EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_evaluation_updated_response import EvaluationApiEvaluationsV1EvaluationUpdatedResponse
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_form_response_paginated_items_view_model import EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel
-from edgraph_platform_client.models.evaluation_api_evaluations_v1_update_evaluation_request import EvaluationApiEvaluationsV1UpdateEvaluationRequest
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_campus_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request import EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_create_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_delete_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_submitted_observations_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
 from edgraph_platform_client.api_response import ApiResponse
@@ -53,7 +50,7 @@ class ObservationsApi:
     def create_observation(
         self,
         tenant_id: StrictStr,
-        evaluation_api_evaluations_v1_create_evaluation_request: Optional[EvaluationApiEvaluationsV1CreateEvaluationRequest] = None,
+        ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,14 +63,14 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1EvaluationCreatedResponse:
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse:
         """Creates a new Observation for a given tenant
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param evaluation_api_evaluations_v1_create_evaluation_request: 
-        :type evaluation_api_evaluations_v1_create_evaluation_request: EvaluationApiEvaluationsV1CreateEvaluationRequest
+        :param ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,7 +95,7 @@ class ObservationsApi:
 
         _param = self._create_observation_serialize(
             tenant_id=tenant_id,
-            evaluation_api_evaluations_v1_create_evaluation_request=evaluation_api_evaluations_v1_create_evaluation_request,
+            ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +106,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationCreatedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -127,7 +124,7 @@ class ObservationsApi:
     def create_observation_with_http_info(
         self,
         tenant_id: StrictStr,
-        evaluation_api_evaluations_v1_create_evaluation_request: Optional[EvaluationApiEvaluationsV1CreateEvaluationRequest] = None,
+        ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,14 +137,14 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1EvaluationCreatedResponse]:
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse]:
         """Creates a new Observation for a given tenant
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param evaluation_api_evaluations_v1_create_evaluation_request: 
-        :type evaluation_api_evaluations_v1_create_evaluation_request: EvaluationApiEvaluationsV1CreateEvaluationRequest
+        :param ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -172,7 +169,7 @@ class ObservationsApi:
 
         _param = self._create_observation_serialize(
             tenant_id=tenant_id,
-            evaluation_api_evaluations_v1_create_evaluation_request=evaluation_api_evaluations_v1_create_evaluation_request,
+            ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -183,7 +180,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationCreatedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -201,7 +198,7 @@ class ObservationsApi:
     def create_observation_without_preload_content(
         self,
         tenant_id: StrictStr,
-        evaluation_api_evaluations_v1_create_evaluation_request: Optional[EvaluationApiEvaluationsV1CreateEvaluationRequest] = None,
+        ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -220,8 +217,8 @@ class ObservationsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param evaluation_api_evaluations_v1_create_evaluation_request: 
-        :type evaluation_api_evaluations_v1_create_evaluation_request: EvaluationApiEvaluationsV1CreateEvaluationRequest
+        :param ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request: EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -246,7 +243,7 @@ class ObservationsApi:
 
         _param = self._create_observation_serialize(
             tenant_id=tenant_id,
-            evaluation_api_evaluations_v1_create_evaluation_request=evaluation_api_evaluations_v1_create_evaluation_request,
+            ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,7 +254,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationCreatedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -270,7 +267,7 @@ class ObservationsApi:
     def _create_observation_serialize(
         self,
         tenant_id,
-        evaluation_api_evaluations_v1_create_evaluation_request,
+        ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request,
         _request_auth,
         _content_type,
         _headers,
@@ -296,8 +293,8 @@ class ObservationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if evaluation_api_evaluations_v1_create_evaluation_request is not None:
-            _body_params = evaluation_api_evaluations_v1_create_evaluation_request
+        if ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request
 
 
         # set the HTTP header `Accept`
@@ -365,7 +362,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1EvaluationDeletedResponse:
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse:
         """Deletes an Observation for a given tenant
 
 
@@ -408,7 +405,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationDeletedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -439,7 +436,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1EvaluationDeletedResponse]:
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse]:
         """Deletes an Observation for a given tenant
 
 
@@ -482,7 +479,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationDeletedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -556,7 +553,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationDeletedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -632,7 +629,7 @@ class ObservationsApi:
 
 
     @validate_call
-    def get_observation(
+    def get_observation_by_id(
         self,
         tenant_id: StrictStr,
         observation_id: StrictStr,
@@ -648,7 +645,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1EvaluationResponse:
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse:
         """Get an Observation for a given tenant
 
 
@@ -678,7 +675,7 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_observation_serialize(
+        _param = self._get_observation_by_id_serialize(
             tenant_id=tenant_id,
             observation_id=observation_id,
             _request_auth=_request_auth,
@@ -691,7 +688,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -706,7 +703,7 @@ class ObservationsApi:
 
 
     @validate_call
-    def get_observation_with_http_info(
+    def get_observation_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         observation_id: StrictStr,
@@ -722,7 +719,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1EvaluationResponse]:
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse]:
         """Get an Observation for a given tenant
 
 
@@ -752,7 +749,7 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_observation_serialize(
+        _param = self._get_observation_by_id_serialize(
             tenant_id=tenant_id,
             observation_id=observation_id,
             _request_auth=_request_auth,
@@ -765,7 +762,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -780,7 +777,7 @@ class ObservationsApi:
 
 
     @validate_call
-    def get_observation_without_preload_content(
+    def get_observation_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         observation_id: StrictStr,
@@ -826,7 +823,7 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_observation_serialize(
+        _param = self._get_observation_by_id_serialize(
             tenant_id=tenant_id,
             observation_id=observation_id,
             _request_auth=_request_auth,
@@ -839,7 +836,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -849,7 +846,7 @@ class ObservationsApi:
         return response_data.response
 
 
-    def _get_observation_serialize(
+    def _get_observation_by_id_serialize(
         self,
         tenant_id,
         observation_id,
@@ -915,9 +912,12 @@ class ObservationsApi:
 
 
     @validate_call
-    def get_observation_count(
+    def get_paginated_available_campuses(
         self,
         tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,12 +930,18 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1EvaluationCountResponse:
-        """get_observation_count
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse:
+        """Get Available Campuses
 
 
-        :param tenant_id: (required)
+        :param tenant_id:  (required)
         :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -958,8 +964,11 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_observation_count_serialize(
+        _param = self._get_paginated_available_campuses_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -970,7 +979,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationCountResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -985,9 +994,12 @@ class ObservationsApi:
 
 
     @validate_call
-    def get_observation_count_with_http_info(
+    def get_paginated_available_campuses_with_http_info(
         self,
         tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1000,12 +1012,18 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1EvaluationCountResponse]:
-        """get_observation_count
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse]:
+        """Get Available Campuses
 
 
-        :param tenant_id: (required)
+        :param tenant_id:  (required)
         :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1028,8 +1046,11 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_observation_count_serialize(
+        _param = self._get_paginated_available_campuses_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1040,7 +1061,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationCountResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1055,9 +1076,12 @@ class ObservationsApi:
 
 
     @validate_call
-    def get_observation_count_without_preload_content(
+    def get_paginated_available_campuses_without_preload_content(
         self,
         tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1071,11 +1095,17 @@ class ObservationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_observation_count
+        """Get Available Campuses
 
 
-        :param tenant_id: (required)
+        :param tenant_id:  (required)
         :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1098,8 +1128,11 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_observation_count_serialize(
+        _param = self._get_paginated_available_campuses_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1110,7 +1143,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationCountResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1120,329 +1153,12 @@ class ObservationsApi:
         return response_data.response
 
 
-    def _get_observation_count_serialize(
-        self,
-        tenant_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/count',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def search_observation_campuses(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel:
-        """Searches the Campuses associated with an Observation for a given Tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observation_campuses_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def search_observation_campuses_with_http_info(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel]:
-        """Searches the Campuses associated with an Observation for a given Tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observation_campuses_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def search_observation_campuses_without_preload_content(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Searches the Campuses associated with an Observation for a given Tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observation_campuses_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _search_observation_campuses_serialize(
+    def _get_paginated_available_campuses_serialize(
         self,
         tenant_id,
         page_size,
         page_index,
         order_by,
-        filter,
         _request_auth,
         _content_type,
         _headers,
@@ -1476,10 +1192,6 @@ class ObservationsApi:
         if order_by is not None:
             
             _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
             
         # process the header parameters
         # process the form parameters
@@ -1519,11 +1231,11 @@ class ObservationsApi:
 
 
     @validate_call
-    def search_observation_evaluees(
+    def get_paginated_available_forms(
         self,
         tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1538,16 +1250,16 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse:
-        """Searches the Staff associated with an Observation for a given Tenant.
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse:
+        """Get Paginated Available Forms
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
         :param page_index: 
         :type page_index: int
+        :param page_size: 
+        :type page_size: int
         :param order_by: 
         :type order_by: str
         :param filter: 
@@ -1574,10 +1286,10 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_observation_evaluees_serialize(
+        _param = self._get_paginated_available_forms_serialize(
             tenant_id=tenant_id,
-            page_size=page_size,
             page_index=page_index,
+            page_size=page_size,
             order_by=order_by,
             filter=filter,
             _request_auth=_request_auth,
@@ -1590,7 +1302,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1605,11 +1317,11 @@ class ObservationsApi:
 
 
     @validate_call
-    def search_observation_evaluees_with_http_info(
+    def get_paginated_available_forms_with_http_info(
         self,
         tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1624,16 +1336,16 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse]:
-        """Searches the Staff associated with an Observation for a given Tenant.
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse]:
+        """Get Paginated Available Forms
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
         :param page_index: 
         :type page_index: int
+        :param page_size: 
+        :type page_size: int
         :param order_by: 
         :type order_by: str
         :param filter: 
@@ -1660,10 +1372,10 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_observation_evaluees_serialize(
+        _param = self._get_paginated_available_forms_serialize(
             tenant_id=tenant_id,
-            page_size=page_size,
             page_index=page_index,
+            page_size=page_size,
             order_by=order_by,
             filter=filter,
             _request_auth=_request_auth,
@@ -1676,7 +1388,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1691,11 +1403,11 @@ class ObservationsApi:
 
 
     @validate_call
-    def search_observation_evaluees_without_preload_content(
+    def get_paginated_available_forms_without_preload_content(
         self,
         tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1711,15 +1423,15 @@ class ObservationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Searches the Staff associated with an Observation for a given Tenant.
+        """Get Paginated Available Forms
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
         :param page_index: 
         :type page_index: int
+        :param page_size: 
+        :type page_size: int
         :param order_by: 
         :type order_by: str
         :param filter: 
@@ -1746,10 +1458,10 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_observation_evaluees_serialize(
+        _param = self._get_paginated_available_forms_serialize(
             tenant_id=tenant_id,
-            page_size=page_size,
             page_index=page_index,
+            page_size=page_size,
             order_by=order_by,
             filter=filter,
             _request_auth=_request_auth,
@@ -1762,7 +1474,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1772,13 +1484,362 @@ class ObservationsApi:
         return response_data.response
 
 
-    def _search_observation_evaluees_serialize(
+    def _get_paginated_available_forms_serialize(
+        self,
+        tenant_id,
+        page_index,
+        page_size,
+        order_by,
+        filter,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if order_by is not None:
+            
+            _query_params.append(('orderBy', order_by))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/forms/available',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_paginated_evaluees(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse:
+        """Get paginated evaluees
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param campus: 
+        :type campus: str
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_paginated_evaluees_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            campus=campus,
+            evaluee_id=evaluee_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_paginated_evaluees_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse]:
+        """Get paginated evaluees
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param campus: 
+        :type campus: str
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_paginated_evaluees_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            campus=campus,
+            evaluee_id=evaluee_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_paginated_evaluees_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get paginated evaluees
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param campus: 
+        :type campus: str
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_paginated_evaluees_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            campus=campus,
+            evaluee_id=evaluee_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_paginated_evaluees_serialize(
         self,
         tenant_id,
         page_size,
         page_index,
         order_by,
-        filter,
+        campus,
+        evaluee_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1813,9 +1874,13 @@ class ObservationsApi:
             
             _query_params.append(('orderBy', order_by))
             
-        if filter is not None:
+        if campus is not None:
             
-            _query_params.append(('filter', filter))
+            _query_params.append(('campus', campus))
+            
+        if evaluee_id is not None:
+            
+            _query_params.append(('evalueeId', evaluee_id))
             
         # process the header parameters
         # process the form parameters
@@ -1855,13 +1920,19 @@ class ObservationsApi:
 
 
     @validate_call
-    def search_observation_forms(
+    def get_paginated_observations(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
+        evaluee_name: Optional[StrictStr] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        form_id: Optional[StrictStr] = None,
+        status: Optional[StrictStr] = None,
+        var_from: Optional[StrictStr] = None,
+        to: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1874,8 +1945,8 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel:
-        """Searches the Forms associated with an Observation for a given Tenant.
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel:
+        """Get Paginated Observations for a given tenant
 
 
         :param tenant_id:  (required)
@@ -1886,8 +1957,20 @@ class ObservationsApi:
         :type page_index: int
         :param order_by: 
         :type order_by: str
-        :param filter: 
-        :type filter: str
+        :param campus: 
+        :type campus: str
+        :param evaluee_name: 
+        :type evaluee_name: str
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param form_id: 
+        :type form_id: str
+        :param status: 
+        :type status: str
+        :param var_from: 
+        :type var_from: str
+        :param to: 
+        :type to: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1910,12 +1993,18 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_observation_forms_serialize(
+        _param = self._get_paginated_observations_serialize(
             tenant_id=tenant_id,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
-            filter=filter,
+            campus=campus,
+            evaluee_name=evaluee_name,
+            evaluee_id=evaluee_id,
+            form_id=form_id,
+            status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1926,7 +2015,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1941,13 +2030,19 @@ class ObservationsApi:
 
 
     @validate_call
-    def search_observation_forms_with_http_info(
+    def get_paginated_observations_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
+        evaluee_name: Optional[StrictStr] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        form_id: Optional[StrictStr] = None,
+        status: Optional[StrictStr] = None,
+        var_from: Optional[StrictStr] = None,
+        to: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1960,8 +2055,8 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel]:
-        """Searches the Forms associated with an Observation for a given Tenant.
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel]:
+        """Get Paginated Observations for a given tenant
 
 
         :param tenant_id:  (required)
@@ -1972,8 +2067,20 @@ class ObservationsApi:
         :type page_index: int
         :param order_by: 
         :type order_by: str
-        :param filter: 
-        :type filter: str
+        :param campus: 
+        :type campus: str
+        :param evaluee_name: 
+        :type evaluee_name: str
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param form_id: 
+        :type form_id: str
+        :param status: 
+        :type status: str
+        :param var_from: 
+        :type var_from: str
+        :param to: 
+        :type to: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1996,12 +2103,18 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_observation_forms_serialize(
+        _param = self._get_paginated_observations_serialize(
             tenant_id=tenant_id,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
-            filter=filter,
+            campus=campus,
+            evaluee_name=evaluee_name,
+            evaluee_id=evaluee_id,
+            form_id=form_id,
+            status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2012,7 +2125,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -2027,13 +2140,19 @@ class ObservationsApi:
 
 
     @validate_call
-    def search_observation_forms_without_preload_content(
+    def get_paginated_observations_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
+        evaluee_name: Optional[StrictStr] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        form_id: Optional[StrictStr] = None,
+        status: Optional[StrictStr] = None,
+        var_from: Optional[StrictStr] = None,
+        to: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2047,7 +2166,7 @@ class ObservationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Searches the Forms associated with an Observation for a given Tenant.
+        """Get Paginated Observations for a given tenant
 
 
         :param tenant_id:  (required)
@@ -2058,8 +2177,20 @@ class ObservationsApi:
         :type page_index: int
         :param order_by: 
         :type order_by: str
-        :param filter: 
-        :type filter: str
+        :param campus: 
+        :type campus: str
+        :param evaluee_name: 
+        :type evaluee_name: str
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param form_id: 
+        :type form_id: str
+        :param status: 
+        :type status: str
+        :param var_from: 
+        :type var_from: str
+        :param to: 
+        :type to: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2082,12 +2213,18 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_observation_forms_serialize(
+        _param = self._get_paginated_observations_serialize(
             tenant_id=tenant_id,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
-            filter=filter,
+            campus=campus,
+            evaluee_name=evaluee_name,
+            evaluee_id=evaluee_id,
+            form_id=form_id,
+            status=status,
+            var_from=var_from,
+            to=to,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2098,7 +2235,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -2108,13 +2245,19 @@ class ObservationsApi:
         return response_data.response
 
 
-    def _search_observation_forms_serialize(
+    def _get_paginated_observations_serialize(
         self,
         tenant_id,
         page_size,
         page_index,
         order_by,
-        filter,
+        campus,
+        evaluee_name,
+        evaluee_id,
+        form_id,
+        status,
+        var_from,
+        to,
         _request_auth,
         _content_type,
         _headers,
@@ -2149,681 +2292,33 @@ class ObservationsApi:
             
             _query_params.append(('orderBy', order_by))
             
-        if filter is not None:
+        if campus is not None:
             
-            _query_params.append(('filter', filter))
+            _query_params.append(('campus', campus))
             
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/forms',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def search_observation_observers(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse:
-        """Searches the Appraisers associated with an Observation for a given Tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observation_observers_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def search_observation_observers_with_http_info(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse]:
-        """Searches the Appraisers associated with an Observation for a given Tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observation_observers_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def search_observation_observers_without_preload_content(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Searches the Appraisers associated with an Observation for a given Tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observation_observers_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _search_observation_observers_serialize(
-        self,
-        tenant_id,
-        page_size,
-        page_index,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if page_size is not None:
+        if evaluee_name is not None:
             
-            _query_params.append(('pageSize', page_size))
+            _query_params.append(('evalueeName', evaluee_name))
             
-        if page_index is not None:
+        if evaluee_id is not None:
             
-            _query_params.append(('pageIndex', page_index))
+            _query_params.append(('evalueeId', evaluee_id))
             
-        if order_by is not None:
+        if form_id is not None:
             
-            _query_params.append(('orderBy', order_by))
+            _query_params.append(('formId', form_id))
             
-        if filter is not None:
+        if status is not None:
             
-            _query_params.append(('filter', filter))
+            _query_params.append(('status', status))
             
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/observers',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def search_observations(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel:
-        """Searches the Observations for a given tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observations_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def search_observations_with_http_info(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel]:
-        """Searches the Observations for a given tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observations_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def search_observations_without_preload_content(
-        self,
-        tenant_id: StrictStr,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Searches the Observations for a given tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._search_observations_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _search_observations_serialize(
-        self,
-        tenant_id,
-        page_size,
-        page_index,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if page_size is not None:
+        if var_from is not None:
             
-            _query_params.append(('pageSize', page_size))
+            _query_params.append(('from', var_from))
             
-        if page_index is not None:
+        if to is not None:
             
-            _query_params.append(('pageIndex', page_index))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
+            _query_params.append(('to', to))
             
         # process the header parameters
         # process the form parameters
@@ -2863,11 +2358,11 @@ class ObservationsApi:
 
 
     @validate_call
-    def update_observation(
+    def get_submitted_observations_count(
         self,
         tenant_id: StrictStr,
-        observation_id: StrictStr,
-        evaluation_api_evaluations_v1_update_evaluation_request: Optional[EvaluationApiEvaluationsV1UpdateEvaluationRequest] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2880,16 +2375,16 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EvaluationApiEvaluationsV1EvaluationUpdatedResponse:
-        """Updates an Observation for a given tenant
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse:
+        """Get submitted Observations count
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param observation_id:  (required)
-        :type observation_id: str
-        :param evaluation_api_evaluations_v1_update_evaluation_request: 
-        :type evaluation_api_evaluations_v1_update_evaluation_request: EvaluationApiEvaluationsV1UpdateEvaluationRequest
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param campus: 
+        :type campus: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2912,10 +2407,10 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_observation_serialize(
+        _param = self._get_submitted_observations_count_serialize(
             tenant_id=tenant_id,
-            observation_id=observation_id,
-            evaluation_api_evaluations_v1_update_evaluation_request=evaluation_api_evaluations_v1_update_evaluation_request,
+            evaluee_id=evaluee_id,
+            campus=campus,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2926,7 +2421,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationUpdatedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -2941,11 +2436,11 @@ class ObservationsApi:
 
 
     @validate_call
-    def update_observation_with_http_info(
+    def get_submitted_observations_count_with_http_info(
         self,
         tenant_id: StrictStr,
-        observation_id: StrictStr,
-        evaluation_api_evaluations_v1_update_evaluation_request: Optional[EvaluationApiEvaluationsV1UpdateEvaluationRequest] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2958,16 +2453,16 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EvaluationApiEvaluationsV1EvaluationUpdatedResponse]:
-        """Updates an Observation for a given tenant
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse]:
+        """Get submitted Observations count
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param observation_id:  (required)
-        :type observation_id: str
-        :param evaluation_api_evaluations_v1_update_evaluation_request: 
-        :type evaluation_api_evaluations_v1_update_evaluation_request: EvaluationApiEvaluationsV1UpdateEvaluationRequest
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param campus: 
+        :type campus: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2990,10 +2485,10 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_observation_serialize(
+        _param = self._get_submitted_observations_count_serialize(
             tenant_id=tenant_id,
-            observation_id=observation_id,
-            evaluation_api_evaluations_v1_update_evaluation_request=evaluation_api_evaluations_v1_update_evaluation_request,
+            evaluee_id=evaluee_id,
+            campus=campus,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3004,7 +2499,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationUpdatedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -3019,11 +2514,11 @@ class ObservationsApi:
 
 
     @validate_call
-    def update_observation_without_preload_content(
+    def get_submitted_observations_count_without_preload_content(
         self,
         tenant_id: StrictStr,
-        observation_id: StrictStr,
-        evaluation_api_evaluations_v1_update_evaluation_request: Optional[EvaluationApiEvaluationsV1UpdateEvaluationRequest] = None,
+        evaluee_id: Optional[StrictStr] = None,
+        campus: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3037,15 +2532,15 @@ class ObservationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates an Observation for a given tenant
+        """Get submitted Observations count
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param observation_id:  (required)
-        :type observation_id: str
-        :param evaluation_api_evaluations_v1_update_evaluation_request: 
-        :type evaluation_api_evaluations_v1_update_evaluation_request: EvaluationApiEvaluationsV1UpdateEvaluationRequest
+        :param evaluee_id: 
+        :type evaluee_id: str
+        :param campus: 
+        :type campus: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3068,10 +2563,10 @@ class ObservationsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_observation_serialize(
+        _param = self._get_submitted_observations_count_serialize(
             tenant_id=tenant_id,
-            observation_id=observation_id,
-            evaluation_api_evaluations_v1_update_evaluation_request=evaluation_api_evaluations_v1_update_evaluation_request,
+            evaluee_id=evaluee_id,
+            campus=campus,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3082,7 +2577,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EvaluationApiEvaluationsV1EvaluationUpdatedResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -3092,11 +2587,11 @@ class ObservationsApi:
         return response_data.response
 
 
-    def _update_observation_serialize(
+    def _get_submitted_observations_count_serialize(
         self,
         tenant_id,
-        observation_id,
-        evaluation_api_evaluations_v1_update_evaluation_request,
+        evaluee_id,
+        campus,
         _request_auth,
         _content_type,
         _headers,
@@ -3118,14 +2613,18 @@ class ObservationsApi:
         # process the path parameters
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
-        if observation_id is not None:
-            _path_params['observationId'] = observation_id
         # process the query parameters
+        if evaluee_id is not None:
+            
+            _query_params.append(('evalueeId', evaluee_id))
+            
+        if campus is not None:
+            
+            _query_params.append(('campus', campus))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if evaluation_api_evaluations_v1_update_evaluation_request is not None:
-            _body_params = evaluation_api_evaluations_v1_update_evaluation_request
 
 
         # set the HTTP header `Accept`
@@ -3136,22 +2635,6 @@ class ObservationsApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json-patch+json', 
-                        'application/json', 
-                        'text/json', 
-                        'application/*+json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -3159,8 +2642,8 @@ class ObservationsApi:
         ]
 
         return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/tenants/{tenantId}/observations/{observationId}',
+            method='GET',
+            resource_path='/tenants/{tenantId}/submittedobservations',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

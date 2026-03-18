@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_schedule_type import EvaluationApiEvaluationSettingsV1ScheduleType
+from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_set_form_configuration_request import EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class EvaluationApiEvaluationSettingsV1SetApplicationRequest(BaseModel):
     EvaluationApiEvaluationSettingsV1SetApplicationRequest
     """ # noqa: E501
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    forms: Optional[List[StrictStr]] = None
+    forms: Optional[List[EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest]] = None
     recommended_number_of_evaluations: Optional[StrictInt] = Field(default=None, alias="recommendedNumberOfEvaluations")
     reminder_email_schedule: Optional[EvaluationApiEvaluationSettingsV1ScheduleType] = Field(default=None, alias="reminderEmailSchedule")
     __properties: ClassVar[List[str]] = ["tenantId", "forms", "recommendedNumberOfEvaluations", "reminderEmailSchedule"]
@@ -74,6 +75,13 @@ class EvaluationApiEvaluationSettingsV1SetApplicationRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in forms (list)
+        _items = []
+        if self.forms:
+            for _item_forms in self.forms:
+                if _item_forms:
+                    _items.append(_item_forms.to_dict())
+            _dict['forms'] = _items
         # set to None if tenant_id (nullable) is None
         # and model_fields_set contains the field
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
@@ -102,7 +110,7 @@ class EvaluationApiEvaluationSettingsV1SetApplicationRequest(BaseModel):
 
         _obj = cls.model_validate({
             "tenantId": obj.get("tenantId"),
-            "forms": obj.get("forms"),
+            "forms": [EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest.from_dict(_item) for _item in obj["forms"]] if obj.get("forms") is not None else None,
             "recommendedNumberOfEvaluations": obj.get("recommendedNumberOfEvaluations"),
             "reminderEmailSchedule": obj.get("reminderEmailSchedule")
         })

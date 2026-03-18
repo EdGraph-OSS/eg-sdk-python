@@ -19,6 +19,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_form_configuration_response import EvaluationApiEvaluationSettingsV1FormConfigurationResponse
+from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_persona_response import EvaluationApiEvaluationSettingsV1PersonaResponse
+from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_role_configuration_response import EvaluationApiEvaluationSettingsV1RoleConfigurationResponse
 from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_schedule_type import EvaluationApiEvaluationSettingsV1ScheduleType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +32,7 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = None
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    forms: Optional[List[StrictStr]] = None
+    forms: Optional[List[EvaluationApiEvaluationSettingsV1FormConfigurationResponse]] = None
     recommended_number_of_evaluations: Optional[StrictInt] = Field(default=None, alias="recommendedNumberOfEvaluations")
     reminder_email_schedule: Optional[EvaluationApiEvaluationSettingsV1ScheduleType] = Field(default=None, alias="reminderEmailSchedule")
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
@@ -41,7 +44,9 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     appraisers: Optional[List[StrictStr]] = None
     staff_classifications: Optional[List[StrictStr]] = Field(default=None, alias="staffClassifications")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "forms", "recommendedNumberOfEvaluations", "reminderEmailSchedule", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "appraisers", "staffClassifications"]
+    available_personas: Optional[List[EvaluationApiEvaluationSettingsV1PersonaResponse]] = Field(default=None, alias="availablePersonas")
+    role_configurations: Optional[List[EvaluationApiEvaluationSettingsV1RoleConfigurationResponse]] = Field(default=None, alias="roleConfigurations")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "forms", "recommendedNumberOfEvaluations", "reminderEmailSchedule", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "appraisers", "staffClassifications", "availablePersonas", "roleConfigurations"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,11 +81,15 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "forms",
             "appraisers",
             "staff_classifications",
+            "available_personas",
+            "role_configurations",
         ])
 
         _dict = self.model_dump(
@@ -88,6 +97,27 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in forms (list)
+        _items = []
+        if self.forms:
+            for _item_forms in self.forms:
+                if _item_forms:
+                    _items.append(_item_forms.to_dict())
+            _dict['forms'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in available_personas (list)
+        _items = []
+        if self.available_personas:
+            for _item_available_personas in self.available_personas:
+                if _item_available_personas:
+                    _items.append(_item_available_personas.to_dict())
+            _dict['availablePersonas'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in role_configurations (list)
+        _items = []
+        if self.role_configurations:
+            for _item_role_configurations in self.role_configurations:
+                if _item_role_configurations:
+                    _items.append(_item_role_configurations.to_dict())
+            _dict['roleConfigurations'] = _items
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -153,6 +183,16 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
         if self.staff_classifications is None and "staff_classifications" in self.model_fields_set:
             _dict['staffClassifications'] = None
 
+        # set to None if available_personas (nullable) is None
+        # and model_fields_set contains the field
+        if self.available_personas is None and "available_personas" in self.model_fields_set:
+            _dict['availablePersonas'] = None
+
+        # set to None if role_configurations (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_configurations is None and "role_configurations" in self.model_fields_set:
+            _dict['roleConfigurations'] = None
+
         return _dict
 
     @classmethod
@@ -167,7 +207,7 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "tenantId": obj.get("tenantId"),
-            "forms": obj.get("forms"),
+            "forms": [EvaluationApiEvaluationSettingsV1FormConfigurationResponse.from_dict(_item) for _item in obj["forms"]] if obj.get("forms") is not None else None,
             "recommendedNumberOfEvaluations": obj.get("recommendedNumberOfEvaluations"),
             "reminderEmailSchedule": obj.get("reminderEmailSchedule"),
             "createdBy": obj.get("createdBy"),
@@ -178,7 +218,9 @@ class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(BaseModel):
             "deletedDateTime": obj.get("deletedDateTime"),
             "isDeleted": obj.get("isDeleted"),
             "appraisers": obj.get("appraisers"),
-            "staffClassifications": obj.get("staffClassifications")
+            "staffClassifications": obj.get("staffClassifications"),
+            "availablePersonas": [EvaluationApiEvaluationSettingsV1PersonaResponse.from_dict(_item) for _item in obj["availablePersonas"]] if obj.get("availablePersonas") is not None else None,
+            "roleConfigurations": [EvaluationApiEvaluationSettingsV1RoleConfigurationResponse.from_dict(_item) for _item in obj["roleConfigurations"]] if obj.get("roleConfigurations") is not None else None
         })
         return _obj
 

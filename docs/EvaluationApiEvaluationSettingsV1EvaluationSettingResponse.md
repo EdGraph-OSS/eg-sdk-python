@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **tenant_id** | **str** |  | [optional] 
-**forms** | **List[str]** |  | [optional] [readonly] 
+**forms** | [**List[EvaluationApiEvaluationSettingsV1FormConfigurationResponse]**](EvaluationApiEvaluationSettingsV1FormConfigurationResponse.md) |  | [optional] [readonly] 
 **recommended_number_of_evaluations** | **int** |  | [optional] 
 **reminder_email_schedule** | [**EvaluationApiEvaluationSettingsV1ScheduleType**](EvaluationApiEvaluationSettingsV1ScheduleType.md) |  | [optional] 
 **created_by** | **str** |  | [optional] 
@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **is_deleted** | **bool** |  | [optional] 
 **appraisers** | **List[str]** |  | [optional] [readonly] 
 **staff_classifications** | **List[str]** |  | [optional] [readonly] 
+**available_personas** | [**List[EvaluationApiEvaluationSettingsV1PersonaResponse]**](EvaluationApiEvaluationSettingsV1PersonaResponse.md) |  | [optional] [readonly] 
+**role_configurations** | [**List[EvaluationApiEvaluationSettingsV1RoleConfigurationResponse]**](EvaluationApiEvaluationSettingsV1RoleConfigurationResponse.md) |  | [optional] [readonly] 
 
 ## Example
 
