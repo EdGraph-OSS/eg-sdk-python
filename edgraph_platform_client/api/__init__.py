@@ -84,8 +84,8 @@ from edgraph_platform_client.api.submissions_api import SubmissionsApi
 from edgraph_platform_client.api.subscriptions_api import SubscriptionsApi
 from edgraph_platform_client.api.tags_api import TagsApi
 from edgraph_platform_client.api.tenant_branding_api import TenantBrandingApi
-from edgraph_platform_client.api.tenant_dsl_api import TenantDslApi
 from edgraph_platform_client.api.tenant_instances_api import TenantInstancesApi
+from edgraph_platform_client.api.tenant_jobs_dsl_api import TenantJobsDSLApi
 from edgraph_platform_client.api.tenant_security_score_sync_api import TenantSecurityScoreSyncApi
 from edgraph_platform_client.api.tenant_setting_types_api import TenantSettingTypesApi
 from edgraph_platform_client.api.tenants_api import TenantsApi

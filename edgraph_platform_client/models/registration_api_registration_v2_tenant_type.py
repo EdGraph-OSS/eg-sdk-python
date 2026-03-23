@@ -36,6 +36,7 @@ class RegistrationApiRegistrationV2TenantType(str, Enum):
     MANAGEDSERVICEPROVIDER = 'ManagedServiceProvider'
     STATEEDUCATIONAGENCY = 'StateEducationAgency'
     ASSESSMENTPROVIDER = 'AssessmentProvider'
+    SERVICEPROVIDER = 'ServiceProvider'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
