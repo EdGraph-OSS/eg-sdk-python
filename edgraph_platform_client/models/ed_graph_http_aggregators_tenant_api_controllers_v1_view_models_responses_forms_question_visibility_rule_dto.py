@@ -22,13 +22,14 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(BaseModel):
+class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole
+    EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto
     """ # noqa: E501
-    role: Optional[StrictStr] = None
-    assigned_persona_identifiers: Optional[List[StrictStr]] = Field(default=None, alias="assignedPersonaIdentifiers")
-    __properties: ClassVar[List[str]] = ["role", "assignedPersonaIdentifiers"]
+    field_id: Optional[StrictStr] = Field(default=None, alias="fieldId")
+    operator: Optional[StrictStr] = None
+    value: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["fieldId", "operator", "value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +49,7 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationName
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole from a JSON string"""
+        """Create an instance of EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,21 +70,26 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationName
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if role (nullable) is None
+        # set to None if field_id (nullable) is None
         # and model_fields_set contains the field
-        if self.role is None and "role" in self.model_fields_set:
-            _dict['role'] = None
+        if self.field_id is None and "field_id" in self.model_fields_set:
+            _dict['fieldId'] = None
 
-        # set to None if assigned_persona_identifiers (nullable) is None
+        # set to None if operator (nullable) is None
         # and model_fields_set contains the field
-        if self.assigned_persona_identifiers is None and "assigned_persona_identifiers" in self.model_fields_set:
-            _dict['assignedPersonaIdentifiers'] = None
+        if self.operator is None and "operator" in self.model_fields_set:
+            _dict['operator'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole from a dict"""
+        """Create an instance of EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto from a dict"""
         if obj is None:
             return None
 
@@ -91,8 +97,9 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationName
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "role": obj.get("role"),
-            "assignedPersonaIdentifiers": obj.get("assignedPersonaIdentifiers")
+            "fieldId": obj.get("fieldId"),
+            "operator": obj.get("operator"),
+            "value": obj.get("value")
         })
         return _obj
 

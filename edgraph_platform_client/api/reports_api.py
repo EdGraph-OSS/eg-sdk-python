@@ -57,6 +57,7 @@ class ReportsApi:
         version: Optional[StrictStr] = None,
         identity_required: Optional[StrictBool] = None,
         roles_required: Optional[StrictBool] = None,
+        state: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -93,6 +94,8 @@ class ReportsApi:
         :type identity_required: bool
         :param roles_required:
         :type roles_required: bool
+        :param state:
+        :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -126,6 +129,7 @@ class ReportsApi:
             version=version,
             identity_required=identity_required,
             roles_required=roles_required,
+            state=state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -164,6 +168,7 @@ class ReportsApi:
         version: Optional[StrictStr] = None,
         identity_required: Optional[StrictBool] = None,
         roles_required: Optional[StrictBool] = None,
+        state: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,6 +205,8 @@ class ReportsApi:
         :type identity_required: bool
         :param roles_required:
         :type roles_required: bool
+        :param state:
+        :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,6 +240,7 @@ class ReportsApi:
             version=version,
             identity_required=identity_required,
             roles_required=roles_required,
+            state=state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -271,6 +279,7 @@ class ReportsApi:
         version: Optional[StrictStr] = None,
         identity_required: Optional[StrictBool] = None,
         roles_required: Optional[StrictBool] = None,
+        state: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -307,6 +316,8 @@ class ReportsApi:
         :type identity_required: bool
         :param roles_required:
         :type roles_required: bool
+        :param state:
+        :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -340,6 +351,7 @@ class ReportsApi:
             version=version,
             identity_required=identity_required,
             roles_required=roles_required,
+            state=state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -373,6 +385,7 @@ class ReportsApi:
         version,
         identity_required,
         roles_required,
+        state,
         _request_auth,
         _content_type,
         _headers,
@@ -415,6 +428,8 @@ class ReportsApi:
             _form_params.append(('IdentityRequired', identity_required))
         if roles_required is not None:
             _form_params.append(('RolesRequired', roles_required))
+        if state is not None:
+            _form_params.append(('State', state))
         # process the body parameter
 
 
@@ -2288,6 +2303,7 @@ class ReportsApi:
         version: Optional[StrictStr] = None,
         roles_required: Optional[StrictBool] = None,
         identity_required: Optional[StrictBool] = None,
+        state: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2328,6 +2344,8 @@ class ReportsApi:
         :type roles_required: bool
         :param identity_required:
         :type identity_required: bool
+        :param state:
+        :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2363,6 +2381,7 @@ class ReportsApi:
             version=version,
             roles_required=roles_required,
             identity_required=identity_required,
+            state=state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2403,6 +2422,7 @@ class ReportsApi:
         version: Optional[StrictStr] = None,
         roles_required: Optional[StrictBool] = None,
         identity_required: Optional[StrictBool] = None,
+        state: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2443,6 +2463,8 @@ class ReportsApi:
         :type roles_required: bool
         :param identity_required:
         :type identity_required: bool
+        :param state:
+        :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2478,6 +2500,7 @@ class ReportsApi:
             version=version,
             roles_required=roles_required,
             identity_required=identity_required,
+            state=state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2518,6 +2541,7 @@ class ReportsApi:
         version: Optional[StrictStr] = None,
         roles_required: Optional[StrictBool] = None,
         identity_required: Optional[StrictBool] = None,
+        state: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2558,6 +2582,8 @@ class ReportsApi:
         :type roles_required: bool
         :param identity_required:
         :type identity_required: bool
+        :param state:
+        :type state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2593,6 +2619,7 @@ class ReportsApi:
             version=version,
             roles_required=roles_required,
             identity_required=identity_required,
+            state=state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2628,6 +2655,7 @@ class ReportsApi:
         version,
         roles_required,
         identity_required,
+        state,
         _request_auth,
         _content_type,
         _headers,
@@ -2674,6 +2702,8 @@ class ReportsApi:
             _form_params.append(('RolesRequired', roles_required))
         if identity_required is not None:
             _form_params.append(('IdentityRequired', identity_required))
+        if state is not None:
+            _form_params.append(('State', state))
         # process the body parameter
 
 

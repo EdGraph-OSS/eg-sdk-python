@@ -27,9 +27,14 @@ class EvaluationApiEvaluationsV1OrganizationDiscriminator(str, Enum):
     allowed enum values
     """
     UNKNOWN = 'Unknown'
-    STATEEDUCATIONAGENCY = 'StateEducationAgency'
+    EDUCATIONORGANIZATIONNETWORK = 'EducationOrganizationNetwork'
+    EDUCATIONSERVICECENTER = 'EducationServiceCenter'
     LOCALEDUCATIONAGENCY = 'LocalEducationAgency'
+    ORGANIZATIONDEPARTMENT = 'OrganizationDepartment'
+    OTHER = 'Other'
+    POSTSECONDARYINSTITUTION = 'PostSecondaryInstitution'
     SCHOOL = 'School'
+    STATEEDUCATIONAGENCY = 'StateEducationAgency'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

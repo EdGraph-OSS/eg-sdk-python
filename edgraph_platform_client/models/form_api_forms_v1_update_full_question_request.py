@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.form_api_forms_v1_update_full_question_validation_request import FormApiFormsV1UpdateFullQuestionValidationRequest
 from edgraph_platform_client.models.form_api_questions_v1_question_type import FormApiQuestionsV1QuestionType
+from edgraph_platform_client.models.form_api_questions_v1_question_visibility_condition import FormApiQuestionsV1QuestionVisibilityCondition
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,7 +39,8 @@ class FormApiFormsV1UpdateFullQuestionRequest(BaseModel):
     options: Optional[List[StrictStr]] = None
     order: Optional[StrictInt] = None
     component: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component"]
+    visibility_condition: Optional[FormApiQuestionsV1QuestionVisibilityCondition] = Field(default=None, alias="visibilityCondition")
+    __properties: ClassVar[List[str]] = ["id", "title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "visibilityCondition"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,6 +86,9 @@ class FormApiFormsV1UpdateFullQuestionRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of validation
         if self.validation:
             _dict['validation'] = self.validation.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of visibility_condition
+        if self.visibility_condition:
+            _dict['visibilityCondition'] = self.visibility_condition.to_dict()
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -145,7 +150,8 @@ class FormApiFormsV1UpdateFullQuestionRequest(BaseModel):
             "validation": FormApiFormsV1UpdateFullQuestionValidationRequest.from_dict(obj["validation"]) if obj.get("validation") is not None else None,
             "options": obj.get("options"),
             "order": obj.get("order"),
-            "component": obj.get("component")
+            "component": obj.get("component"),
+            "visibilityCondition": FormApiQuestionsV1QuestionVisibilityCondition.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None
         })
         return _obj
 

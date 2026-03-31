@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **options** | **List[str]** |  | [optional] 
 **order** | **int** |  | [optional] 
 **component** | **object** |  | [optional] 
+**visibility_condition** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.md) |  | [optional] 
 
 ## Example
 

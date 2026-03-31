@@ -54,7 +54,8 @@ class AnalyticsApiReportsV1AnalyticsReport(BaseModel):
     version: Optional[StrictStr] = None
     roles_required: Optional[StrictBool] = Field(default=None, alias="rolesRequired")
     identity_required: Optional[StrictBool] = Field(default=None, alias="identityRequired")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "reportId", "groupId", "datasetIds", "name", "reportName", "shortDescription", "description", "embedUrl", "type", "source", "isVisible", "tags", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "lastUploadedBy", "lastUploadedDateTime", "downloadUri", "version", "rolesRequired", "identityRequired"]
+    state: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "reportId", "groupId", "datasetIds", "name", "reportName", "shortDescription", "description", "embedUrl", "type", "source", "isVisible", "tags", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "lastUploadedBy", "lastUploadedDateTime", "downloadUri", "version", "rolesRequired", "identityRequired", "state"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -226,6 +227,11 @@ class AnalyticsApiReportsV1AnalyticsReport(BaseModel):
         if self.identity_required is None and "identity_required" in self.model_fields_set:
             _dict['identityRequired'] = None
 
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
         return _dict
 
     @classmethod
@@ -263,7 +269,8 @@ class AnalyticsApiReportsV1AnalyticsReport(BaseModel):
             "downloadUri": obj.get("downloadUri"),
             "version": obj.get("version"),
             "rolesRequired": obj.get("rolesRequired"),
-            "identityRequired": obj.get("identityRequired")
+            "identityRequired": obj.get("identityRequired"),
+            "state": obj.get("state")
         })
         return _obj
 

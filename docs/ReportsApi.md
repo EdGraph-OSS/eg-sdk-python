@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **create_report_async**
-> AnalyticsApiReportsV1ReportIdResponse create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, identity_required=identity_required, roles_required=roles_required)
+> AnalyticsApiReportsV1ReportIdResponse create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, identity_required=identity_required, roles_required=roles_required, state=state)
 
 Creates a new report (Does not upload pbix file).
 
@@ -56,10 +56,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     version = 'version_example' # str |  (optional)
     identity_required = True # bool |  (optional)
     roles_required = True # bool |  (optional)
+    state = 'state_example' # str |  (optional)
 
     try:
         # Creates a new report (Does not upload pbix file).
-        api_response = api_instance.create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, identity_required=identity_required, roles_required=roles_required)
+        api_response = api_instance.create_report_async(tenant_id, file=file, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, identity_required=identity_required, roles_required=roles_required, state=state)
         print("The response of ReportsApi->create_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -83,6 +84,7 @@ Name | Type | Description  | Notes
  **version** | **str**|  | [optional] 
  **identity_required** | **bool**|  | [optional] 
  **roles_required** | **bool**|  | [optional] 
+ **state** | **str**|  | [optional] 
 
 ### Return type
 
@@ -594,7 +596,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_report_async**
-> AnalyticsApiReportsV1AnalyticsReport update_report_async(tenant_id, report_id, file=file, id=id, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, roles_required=roles_required, identity_required=identity_required)
+> AnalyticsApiReportsV1AnalyticsReport update_report_async(tenant_id, report_id, file=file, id=id, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, roles_required=roles_required, identity_required=identity_required, state=state)
 
 Updates a report.
 
@@ -637,10 +639,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     version = 'version_example' # str |  (optional)
     roles_required = True # bool |  (optional)
     identity_required = True # bool |  (optional)
+    state = 'state_example' # str |  (optional)
 
     try:
         # Updates a report.
-        api_response = api_instance.update_report_async(tenant_id, report_id, file=file, id=id, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, roles_required=roles_required, identity_required=identity_required)
+        api_response = api_instance.update_report_async(tenant_id, report_id, file=file, id=id, name=name, short_description=short_description, description=description, tags=tags, is_visible=is_visible, version=version, roles_required=roles_required, identity_required=identity_required, state=state)
         print("The response of ReportsApi->update_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -666,6 +669,7 @@ Name | Type | Description  | Notes
  **version** | **str**|  | [optional] 
  **roles_required** | **bool**|  | [optional] 
  **identity_required** | **bool**|  | [optional] 
+ **state** | **str**|  | [optional] 
 
 ### Return type
 

@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **version** | **str** |  | [optional] 
 **roles_required** | **bool** |  | [optional] 
 **identity_required** | **bool** |  | [optional] 
+**state** | **str** |  | [optional] 
 
 ## Example
 

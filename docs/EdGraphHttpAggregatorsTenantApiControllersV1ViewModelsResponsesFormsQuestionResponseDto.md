@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **is_deleted** | **bool** |  | [optional] 
 **order** | **int** |  | [optional] 
 **component** | **object** |  | [optional] 
+**visibility_condition** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.md) |  | [optional] 
 
 ## Example
 

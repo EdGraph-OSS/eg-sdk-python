@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **role** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
 **assigned_persona_identifiers** | **List[str]** |  | [optional] 
 
 ## Example
