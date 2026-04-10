@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **tags** | **List[str]** |  | [optional] [readonly] 
 **environment_id** | **str** |  | [optional] 
 **urls** | [**List[ValidationsApiContainersV1Url]**](ValidationsApiContainersV1Url.md) |  | [optional] [readonly] 
+**state** | **str** |  | [optional] 
 
 ## Example
 

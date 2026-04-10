@@ -40,7 +40,8 @@ class ValidationsApiContainersV1ContainerDto(BaseModel):
     tags: Optional[List[ValidationsApiContainersV1ContainerDtoTypesTagDto]] = None
     rules_count: Optional[StrictInt] = Field(default=None, alias="rulesCount")
     certification_status: Optional[StrictStr] = Field(default=None, alias="certificationStatus")
-    __properties: ClassVar[List[str]] = ["tenantId", "id", "name", "description", "containerType", "parentContainerId", "isDefault", "environmentType", "childContainers", "childContainersCount", "tags", "rulesCount", "certificationStatus"]
+    state: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "id", "name", "description", "containerType", "parentContainerId", "isDefault", "environmentType", "childContainers", "childContainersCount", "tags", "rulesCount", "certificationStatus", "state"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -159,6 +160,11 @@ class ValidationsApiContainersV1ContainerDto(BaseModel):
         if self.certification_status is None and "certification_status" in self.model_fields_set:
             _dict['certificationStatus'] = None
 
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
         return _dict
 
     @classmethod
@@ -183,7 +189,8 @@ class ValidationsApiContainersV1ContainerDto(BaseModel):
             "childContainersCount": obj.get("childContainersCount"),
             "tags": [ValidationsApiContainersV1ContainerDtoTypesTagDto.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "rulesCount": obj.get("rulesCount"),
-            "certificationStatus": obj.get("certificationStatus")
+            "certificationStatus": obj.get("certificationStatus"),
+            "state": obj.get("state")
         })
         return _obj
 

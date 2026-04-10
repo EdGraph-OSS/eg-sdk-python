@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **tags** | [**List[ValidationsApiContainersV1ContainerDtoTypesTagDto]**](ValidationsApiContainersV1ContainerDtoTypesTagDto.md) |  | [optional] [readonly] 
 **rules_count** | **int** |  | [optional] 
 **certification_status** | **str** |  | [optional] 
+**state** | **str** |  | [optional] 
 
 ## Example
 

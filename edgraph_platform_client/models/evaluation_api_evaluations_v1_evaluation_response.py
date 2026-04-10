@@ -46,7 +46,8 @@ class EvaluationApiEvaluationsV1EvaluationResponse(BaseModel):
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     appraiser_full_name: Optional[StrictStr] = Field(default=None, alias="appraiserFullName")
     staff_full_name: Optional[StrictStr] = Field(default=None, alias="staffFullName")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "evaluationDate", "submissionDate", "campus", "appraiserUserId", "staffUserId", "formId", "formVersion", "status", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "appraiserFullName", "staffFullName"]
+    campus_class_id: Optional[StrictStr] = Field(default=None, alias="campusClassId")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "evaluationDate", "submissionDate", "campus", "appraiserUserId", "staffUserId", "formId", "formVersion", "status", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "appraiserFullName", "staffFullName", "campusClassId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -177,6 +178,11 @@ class EvaluationApiEvaluationsV1EvaluationResponse(BaseModel):
         if self.staff_full_name is None and "staff_full_name" in self.model_fields_set:
             _dict['staffFullName'] = None
 
+        # set to None if campus_class_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.campus_class_id is None and "campus_class_id" in self.model_fields_set:
+            _dict['campusClassId'] = None
+
         return _dict
 
     @classmethod
@@ -207,7 +213,8 @@ class EvaluationApiEvaluationsV1EvaluationResponse(BaseModel):
             "deletedDateTime": obj.get("deletedDateTime"),
             "isDeleted": obj.get("isDeleted"),
             "appraiserFullName": obj.get("appraiserFullName"),
-            "staffFullName": obj.get("staffFullName")
+            "staffFullName": obj.get("staffFullName"),
+            "campusClassId": obj.get("campusClassId")
         })
         return _obj
 

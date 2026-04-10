@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **is_deleted** | **bool** |  | [optional] 
 **appraiser_full_name** | **str** |  | [optional] 
 **staff_full_name** | **str** |  | [optional] 
+**campus_class_id** | **str** |  | [optional] 
 
 ## Example
 

@@ -30,7 +30,8 @@ class FormApiSubmissionsV1CreateSubmissionRequest(BaseModel):
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
     current_step: Optional[StrictInt] = Field(default=None, alias="currentStep")
     data: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["formId", "tenantId", "currentStep", "data"]
+    evaluation_id: Optional[StrictStr] = Field(default=None, alias="evaluationId")
+    __properties: ClassVar[List[str]] = ["formId", "tenantId", "currentStep", "data", "evaluationId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +92,11 @@ class FormApiSubmissionsV1CreateSubmissionRequest(BaseModel):
         if self.data is None and "data" in self.model_fields_set:
             _dict['data'] = None
 
+        # set to None if evaluation_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.evaluation_id is None and "evaluation_id" in self.model_fields_set:
+            _dict['evaluationId'] = None
+
         return _dict
 
     @classmethod
@@ -106,7 +112,8 @@ class FormApiSubmissionsV1CreateSubmissionRequest(BaseModel):
             "formId": obj.get("formId"),
             "tenantId": obj.get("tenantId"),
             "currentStep": obj.get("currentStep"),
-            "data": obj.get("data")
+            "data": obj.get("data"),
+            "evaluationId": obj.get("evaluationId")
         })
         return _obj
 

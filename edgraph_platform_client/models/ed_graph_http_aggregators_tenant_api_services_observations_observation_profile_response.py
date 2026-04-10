@@ -38,7 +38,6 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileRespo
     status: Optional[StrictStr] = None
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    var_class: Optional[StrictStr] = Field(default=None, alias="class")
     observation_date: Optional[StrictStr] = Field(default=None, alias="observationDate")
     submission_date: Optional[StrictStr] = Field(default=None, alias="submissionDate")
     created_date_time: Optional[StrictStr] = Field(default=None, alias="createdDateTime")
@@ -46,7 +45,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileRespo
     last_modified_date_time: Optional[StrictStr] = Field(default=None, alias="lastModifiedDateTime")
     deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
     deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "campus", "observerId", "observerName", "evalueeId", "evalueeName", "formId", "formVersion", "status", "createdBy", "isDeleted", "class", "observationDate", "submissionDate", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime"]
+    campus_class_id: Optional[StrictStr] = Field(default=None, alias="campusClassId")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "campus", "observerId", "observerName", "evalueeId", "evalueeName", "formId", "formVersion", "status", "createdBy", "isDeleted", "observationDate", "submissionDate", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "campusClassId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -142,11 +142,6 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileRespo
         if self.created_by is None and "created_by" in self.model_fields_set:
             _dict['createdBy'] = None
 
-        # set to None if var_class (nullable) is None
-        # and model_fields_set contains the field
-        if self.var_class is None and "var_class" in self.model_fields_set:
-            _dict['class'] = None
-
         # set to None if observation_date (nullable) is None
         # and model_fields_set contains the field
         if self.observation_date is None and "observation_date" in self.model_fields_set:
@@ -182,6 +177,11 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileRespo
         if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
             _dict['deletedDateTime'] = None
 
+        # set to None if campus_class_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.campus_class_id is None and "campus_class_id" in self.model_fields_set:
+            _dict['campusClassId'] = None
+
         return _dict
 
     @classmethod
@@ -206,14 +206,14 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileRespo
             "status": obj.get("status"),
             "createdBy": obj.get("createdBy"),
             "isDeleted": obj.get("isDeleted"),
-            "class": obj.get("class"),
             "observationDate": obj.get("observationDate"),
             "submissionDate": obj.get("submissionDate"),
             "createdDateTime": obj.get("createdDateTime"),
             "lastModifiedBy": obj.get("lastModifiedBy"),
             "lastModifiedDateTime": obj.get("lastModifiedDateTime"),
             "deletedBy": obj.get("deletedBy"),
-            "deletedDateTime": obj.get("deletedDateTime")
+            "deletedDateTime": obj.get("deletedDateTime"),
+            "campusClassId": obj.get("campusClassId")
         })
         return _obj
 

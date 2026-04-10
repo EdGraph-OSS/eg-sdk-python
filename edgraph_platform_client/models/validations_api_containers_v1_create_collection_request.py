@@ -34,7 +34,8 @@ class ValidationsApiContainersV1CreateCollectionRequest(BaseModel):
     tags: Optional[List[StrictStr]] = None
     environment_id: Optional[StrictStr] = Field(default=None, alias="environmentId")
     urls: Optional[List[ValidationsApiContainersV1Url]] = None
-    __properties: ClassVar[List[str]] = ["tenantId", "name", "description", "environmentType", "tags", "environmentId", "urls"]
+    state: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "name", "description", "environmentType", "tags", "environmentId", "urls", "state"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -121,6 +122,11 @@ class ValidationsApiContainersV1CreateCollectionRequest(BaseModel):
         if self.urls is None and "urls" in self.model_fields_set:
             _dict['urls'] = None
 
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
         return _dict
 
     @classmethod
@@ -139,7 +145,8 @@ class ValidationsApiContainersV1CreateCollectionRequest(BaseModel):
             "environmentType": obj.get("environmentType"),
             "tags": obj.get("tags"),
             "environmentId": obj.get("environmentId"),
-            "urls": [ValidationsApiContainersV1Url.from_dict(_item) for _item in obj["urls"]] if obj.get("urls") is not None else None
+            "urls": [ValidationsApiContainersV1Url.from_dict(_item) for _item in obj["urls"]] if obj.get("urls") is not None else None,
+            "state": obj.get("state")
         })
         return _obj
 

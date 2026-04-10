@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **created_by** | **str** |  | [optional] 
 **is_deleted** | **bool** |  | [optional] 
-**var_class** | **str** |  | [optional] 
 **observation_date** | **str** |  | [optional] 
 **submission_date** | **str** |  | [optional] 
 **created_date_time** | **str** |  | [optional] 
@@ -25,6 +24,7 @@ Name | Type | Description | Notes
 **last_modified_date_time** | **str** |  | [optional] 
 **deleted_by** | **str** |  | [optional] 
 **deleted_date_time** | **str** |  | [optional] 
+**campus_class_id** | **str** |  | [optional] 
 
 ## Example
 

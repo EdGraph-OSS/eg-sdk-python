@@ -40,7 +40,8 @@ class FormApiSubmissionsV1SubmissionResponse(BaseModel):
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     name: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "currentStep", "data", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "name", "email"]
+    evaluation_id: Optional[StrictStr] = Field(default=None, alias="evaluationId")
+    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "currentStep", "data", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "name", "email", "evaluationId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -151,6 +152,11 @@ class FormApiSubmissionsV1SubmissionResponse(BaseModel):
         if self.email is None and "email" in self.model_fields_set:
             _dict['email'] = None
 
+        # set to None if evaluation_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.evaluation_id is None and "evaluation_id" in self.model_fields_set:
+            _dict['evaluationId'] = None
+
         return _dict
 
     @classmethod
@@ -176,7 +182,8 @@ class FormApiSubmissionsV1SubmissionResponse(BaseModel):
             "deletedDateTime": obj.get("deletedDateTime"),
             "isDeleted": obj.get("isDeleted"),
             "name": obj.get("name"),
-            "email": obj.get("email")
+            "email": obj.get("email"),
+            "evaluationId": obj.get("evaluationId")
         })
         return _obj
 

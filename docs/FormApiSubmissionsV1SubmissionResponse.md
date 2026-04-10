@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **is_deleted** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
+**evaluation_id** | **str** |  | [optional] 
 
 ## Example
 

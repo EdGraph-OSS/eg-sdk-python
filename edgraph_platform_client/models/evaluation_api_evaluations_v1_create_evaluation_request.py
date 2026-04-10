@@ -33,7 +33,8 @@ class EvaluationApiEvaluationsV1CreateEvaluationRequest(BaseModel):
     staff_user_id: Optional[StrictStr] = Field(default=None, alias="staffUserId")
     form_id: Optional[StrictStr] = Field(default=None, alias="formId")
     form_version: Optional[StrictStr] = Field(default=None, alias="formVersion")
-    __properties: ClassVar[List[str]] = ["tenantId", "evaluationDate", "campus", "appraiserUserId", "staffUserId", "formId", "formVersion"]
+    campus_class_id: Optional[StrictStr] = Field(default=None, alias="campusClassId")
+    __properties: ClassVar[List[str]] = ["tenantId", "evaluationDate", "campus", "appraiserUserId", "staffUserId", "formId", "formVersion", "campusClassId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,6 +110,11 @@ class EvaluationApiEvaluationsV1CreateEvaluationRequest(BaseModel):
         if self.form_version is None and "form_version" in self.model_fields_set:
             _dict['formVersion'] = None
 
+        # set to None if campus_class_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.campus_class_id is None and "campus_class_id" in self.model_fields_set:
+            _dict['campusClassId'] = None
+
         return _dict
 
     @classmethod
@@ -127,7 +133,8 @@ class EvaluationApiEvaluationsV1CreateEvaluationRequest(BaseModel):
             "appraiserUserId": obj.get("appraiserUserId"),
             "staffUserId": obj.get("staffUserId"),
             "formId": obj.get("formId"),
-            "formVersion": obj.get("formVersion")
+            "formVersion": obj.get("formVersion"),
+            "campusClassId": obj.get("campusClassId")
         })
         return _obj
 

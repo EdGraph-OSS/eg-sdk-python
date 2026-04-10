@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **tenant_id** | **str** |  | [optional] 
 **current_step** | **int** |  | [optional] 
 **data** | **str** |  | [optional] 
+**evaluation_id** | **str** |  | [optional] 
 
 ## Example
 

@@ -32,7 +32,8 @@ class ValidationsApiContainersV1UpdateCollectionRequest(BaseModel):
     description: Optional[StrictStr] = None
     environment_type: Optional[StrictStr] = Field(default=None, alias="environmentType")
     tags: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["tenantId", "id", "name", "description", "environmentType", "tags"]
+    state: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "id", "name", "description", "environmentType", "tags", "state"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -105,6 +106,11 @@ class ValidationsApiContainersV1UpdateCollectionRequest(BaseModel):
         if self.tags is None and "tags" in self.model_fields_set:
             _dict['tags'] = None
 
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
         return _dict
 
     @classmethod
@@ -122,7 +128,8 @@ class ValidationsApiContainersV1UpdateCollectionRequest(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "environmentType": obj.get("environmentType"),
-            "tags": obj.get("tags")
+            "tags": obj.get("tags"),
+            "state": obj.get("state")
         })
         return _obj
 

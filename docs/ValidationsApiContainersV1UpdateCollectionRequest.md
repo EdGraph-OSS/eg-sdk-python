@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **environment_type** | **str** |  | [optional] 
 **tags** | **List[str]** |  | [optional] [readonly] 
+**state** | **str** |  | [optional] 
 
 ## Example
 
