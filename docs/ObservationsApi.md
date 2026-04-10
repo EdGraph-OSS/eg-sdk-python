@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_observation_submission**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse get_observation_submission(tenant_id, observation_id, form_id)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse get_observation_submission(tenant_id, observation_id, form_id)
 
 Gets a submission for a specific observation
 
@@ -433,7 +433,7 @@ Gets a submission for a specific observation
 
 ```python
 import edgraph_platform_client
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_submission_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_submission_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse.md)
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse.md)
 
 ### Authorization
 

@@ -30,7 +30,7 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_service
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_draft_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_submission_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_submission_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_update_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest
@@ -1564,7 +1564,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse:
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse:
         """Gets a submission for a specific observation
 
 
@@ -1610,7 +1610,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1642,7 +1642,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse]:
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse]:
         """Gets a submission for a specific observation
 
 
@@ -1688,7 +1688,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -1766,7 +1766,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
