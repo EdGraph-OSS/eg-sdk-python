@@ -17,24 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(BaseModel):
+class IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionLogMessage(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse
+    IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionLogMessage
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    version: Optional[StrictStr] = None
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    description: Optional[StrictStr] = None
-    source: Optional[StrictStr] = None
-    image: Optional[StrictStr] = None
-    is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "name", "version", "tenantId", "description", "source", "image", "isDeleted"]
+    job_id: Optional[StrictStr] = Field(default=None, alias="jobId")
+    execution_id: Optional[StrictStr] = Field(default=None, alias="executionId")
+    logged_date_time: Optional[StrictStr] = Field(default=None, alias="loggedDateTime")
+    level: Optional[StrictStr] = None
+    message: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "jobId", "executionId", "loggedDateTime", "level", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +52,7 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(BaseModel)
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse from a JSON string"""
+        """Create an instance of IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionLogMessage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,46 +73,41 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(BaseModel)
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if id (nullable) is None
-        # and model_fields_set contains the field
-        if self.id is None and "id" in self.model_fields_set:
-            _dict['id'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if version (nullable) is None
-        # and model_fields_set contains the field
-        if self.version is None and "version" in self.model_fields_set:
-            _dict['version'] = None
-
         # set to None if tenant_id (nullable) is None
         # and model_fields_set contains the field
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
-        # set to None if description (nullable) is None
+        # set to None if job_id (nullable) is None
         # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
+        if self.job_id is None and "job_id" in self.model_fields_set:
+            _dict['jobId'] = None
 
-        # set to None if source (nullable) is None
+        # set to None if execution_id (nullable) is None
         # and model_fields_set contains the field
-        if self.source is None and "source" in self.model_fields_set:
-            _dict['source'] = None
+        if self.execution_id is None and "execution_id" in self.model_fields_set:
+            _dict['executionId'] = None
 
-        # set to None if image (nullable) is None
+        # set to None if logged_date_time (nullable) is None
         # and model_fields_set contains the field
-        if self.image is None and "image" in self.model_fields_set:
-            _dict['image'] = None
+        if self.logged_date_time is None and "logged_date_time" in self.model_fields_set:
+            _dict['loggedDateTime'] = None
+
+        # set to None if level (nullable) is None
+        # and model_fields_set contains the field
+        if self.level is None and "level" in self.model_fields_set:
+            _dict['level'] = None
+
+        # set to None if message (nullable) is None
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
+            _dict['message'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse from a dict"""
+        """Create an instance of IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionLogMessage from a dict"""
         if obj is None:
             return None
 
@@ -122,14 +115,12 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(BaseModel)
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "version": obj.get("version"),
             "tenantId": obj.get("tenantId"),
-            "description": obj.get("description"),
-            "source": obj.get("source"),
-            "image": obj.get("image"),
-            "isDeleted": obj.get("isDeleted")
+            "jobId": obj.get("jobId"),
+            "executionId": obj.get("executionId"),
+            "loggedDateTime": obj.get("loggedDateTime"),
+            "level": obj.get("level"),
+            "message": obj.get("message")
         })
         return _obj
 

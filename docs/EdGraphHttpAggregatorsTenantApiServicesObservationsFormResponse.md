@@ -8,6 +8,11 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 
+**tenant_id** | **str** |  | [optional] 
+**description** | **str** |  | [optional] 
+**source** | **str** |  | [optional] 
+**image** | **str** |  | [optional] 
+**is_deleted** | **bool** |  | [optional] 
 
 ## Example
 

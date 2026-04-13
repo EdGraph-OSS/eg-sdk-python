@@ -25,7 +25,9 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_service
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_response import EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_delete_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_question_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_section_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_submitted_observations_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_draft_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse
@@ -950,6 +952,655 @@ class ObservationsApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/tenants/{tenantId}/observations/{observationId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_form_questions(
+        self,
+        tenant_id: StrictStr,
+        form_id: StrictStr,
+        section_id: StrictStr,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel:
+        """Search Questions
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param form_id:  (required)
+        :type form_id: str
+        :param section_id:  (required)
+        :type section_id: str
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_form_questions_serialize(
+            tenant_id=tenant_id,
+            form_id=form_id,
+            section_id=section_id,
+            page_index=page_index,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_form_questions_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        form_id: StrictStr,
+        section_id: StrictStr,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel]:
+        """Search Questions
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param form_id:  (required)
+        :type form_id: str
+        :param section_id:  (required)
+        :type section_id: str
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_form_questions_serialize(
+            tenant_id=tenant_id,
+            form_id=form_id,
+            section_id=section_id,
+            page_index=page_index,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_form_questions_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        form_id: StrictStr,
+        section_id: StrictStr,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search Questions
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param form_id:  (required)
+        :type form_id: str
+        :param section_id:  (required)
+        :type section_id: str
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_form_questions_serialize(
+            tenant_id=tenant_id,
+            form_id=form_id,
+            section_id=section_id,
+            page_index=page_index,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_form_questions_serialize(
+        self,
+        tenant_id,
+        form_id,
+        section_id,
+        page_index,
+        page_size,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if form_id is not None:
+            _path_params['formId'] = form_id
+        if section_id is not None:
+            _path_params['sectionId'] = section_id
+        # process the query parameters
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_form_sections(
+        self,
+        tenant_id: StrictStr,
+        form_id: StrictStr,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel:
+        """Search Observation Form Sections
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param form_id:  (required)
+        :type form_id: str
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_form_sections_serialize(
+            tenant_id=tenant_id,
+            form_id=form_id,
+            page_index=page_index,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_form_sections_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        form_id: StrictStr,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel]:
+        """Search Observation Form Sections
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param form_id:  (required)
+        :type form_id: str
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_form_sections_serialize(
+            tenant_id=tenant_id,
+            form_id=form_id,
+            page_index=page_index,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_form_sections_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        form_id: StrictStr,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search Observation Form Sections
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param form_id:  (required)
+        :type form_id: str
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_form_sections_serialize(
+            tenant_id=tenant_id,
+            form_id=form_id,
+            page_index=page_index,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_form_sections_serialize(
+        self,
+        tenant_id,
+        form_id,
+        page_index,
+        page_size,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if form_id is not None:
+            _path_params['formId'] = form_id
+        # process the query parameters
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/available-forms/{formId}/sections',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
