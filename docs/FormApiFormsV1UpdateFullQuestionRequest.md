@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **options** | **List[str]** |  | [optional] [readonly] 
 **order** | **int** |  | [optional] 
 **component** | **str** |  | [optional] 
+**custom_id** | **str** |  | [optional] 
 **visibility_condition** | [**FormApiQuestionsV1QuestionVisibilityCondition**](FormApiQuestionsV1QuestionVisibilityCondition.md) |  | [optional] 
 
 ## Example

@@ -32,7 +32,8 @@ class FormApiFormsV1CreateFullSectionRequest(BaseModel):
     questions: Optional[List[FormApiFormsV1CreateFullQuestionRequest]] = None
     order: Optional[StrictInt] = None
     sub_heading: Optional[StrictStr] = Field(default=None, alias="subHeading")
-    __properties: ClassVar[List[str]] = ["title", "description", "questions", "order", "subHeading"]
+    custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
+    __properties: ClassVar[List[str]] = ["title", "description", "questions", "order", "subHeading", "customId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,6 +108,11 @@ class FormApiFormsV1CreateFullSectionRequest(BaseModel):
         if self.sub_heading is None and "sub_heading" in self.model_fields_set:
             _dict['subHeading'] = None
 
+        # set to None if custom_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_id is None and "custom_id" in self.model_fields_set:
+            _dict['customId'] = None
+
         return _dict
 
     @classmethod
@@ -123,7 +129,8 @@ class FormApiFormsV1CreateFullSectionRequest(BaseModel):
             "description": obj.get("description"),
             "questions": [FormApiFormsV1CreateFullQuestionRequest.from_dict(_item) for _item in obj["questions"]] if obj.get("questions") is not None else None,
             "order": obj.get("order"),
-            "subHeading": obj.get("subHeading")
+            "subHeading": obj.get("subHeading"),
+            "customId": obj.get("customId")
         })
         return _obj
 

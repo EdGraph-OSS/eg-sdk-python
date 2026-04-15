@@ -2502,6 +2502,7 @@ class ObservationsApi:
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
+        name_of_institution: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2526,6 +2527,8 @@ class ObservationsApi:
         :type page_index: int
         :param order_by: 
         :type order_by: str
+        :param name_of_institution: 
+        :type name_of_institution: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2553,6 +2556,7 @@ class ObservationsApi:
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
+            name_of_institution=name_of_institution,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2584,6 +2588,7 @@ class ObservationsApi:
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
+        name_of_institution: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2608,6 +2613,8 @@ class ObservationsApi:
         :type page_index: int
         :param order_by: 
         :type order_by: str
+        :param name_of_institution: 
+        :type name_of_institution: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2635,6 +2642,7 @@ class ObservationsApi:
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
+            name_of_institution=name_of_institution,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2666,6 +2674,7 @@ class ObservationsApi:
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
+        name_of_institution: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2690,6 +2699,8 @@ class ObservationsApi:
         :type page_index: int
         :param order_by: 
         :type order_by: str
+        :param name_of_institution: 
+        :type name_of_institution: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2717,6 +2728,7 @@ class ObservationsApi:
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
+            name_of_institution=name_of_institution,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2743,6 +2755,7 @@ class ObservationsApi:
         page_size,
         page_index,
         order_by,
+        name_of_institution,
         _request_auth,
         _content_type,
         _headers,
@@ -2776,6 +2789,10 @@ class ObservationsApi:
         if order_by is not None:
             
             _query_params.append(('orderBy', order_by))
+            
+        if name_of_institution is not None:
+            
+            _query_params.append(('nameOfInstitution', name_of_institution))
             
         # process the header parameters
         # process the form parameters

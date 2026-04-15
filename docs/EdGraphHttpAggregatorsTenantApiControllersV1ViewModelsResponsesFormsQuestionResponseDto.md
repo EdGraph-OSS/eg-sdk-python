@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **order** | **int** |  | [optional] 
 **component** | **object** |  | [optional] 
 **visibility_condition** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.md) |  | [optional] 
+**custom_id** | **str** |  | [optional] 
 
 ## Example
 

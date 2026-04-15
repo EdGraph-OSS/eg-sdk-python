@@ -674,7 +674,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_paginated_available_campuses**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse get_paginated_available_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse get_paginated_available_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, name_of_institution=name_of_institution)
 
 Get Available Campuses
 
@@ -709,10 +709,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
+    name_of_institution = '' # str |  (optional) (default to '')
 
     try:
         # Get Available Campuses
-        api_response = api_instance.get_paginated_available_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by)
+        api_response = api_instance.get_paginated_available_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, name_of_institution=name_of_institution)
         print("The response of ObservationsApi->get_paginated_available_campuses:\n")
         pprint(api_response)
     except Exception as e:
@@ -730,6 +731,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
+ **name_of_institution** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 

@@ -38,8 +38,9 @@ class FormApiFormsV1CreateFullQuestionRequest(BaseModel):
     options: Optional[List[StrictStr]] = None
     order: Optional[StrictInt] = None
     component: Optional[StrictStr] = None
+    custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
     visibility_condition: Optional[FormApiQuestionsV1QuestionVisibilityCondition] = Field(default=None, alias="visibilityCondition")
-    __properties: ClassVar[List[str]] = ["title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "visibilityCondition"]
+    __properties: ClassVar[List[str]] = ["title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "customId", "visibilityCondition"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -123,6 +124,11 @@ class FormApiFormsV1CreateFullQuestionRequest(BaseModel):
         if self.component is None and "component" in self.model_fields_set:
             _dict['component'] = None
 
+        # set to None if custom_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_id is None and "custom_id" in self.model_fields_set:
+            _dict['customId'] = None
+
         return _dict
 
     @classmethod
@@ -144,6 +150,7 @@ class FormApiFormsV1CreateFullQuestionRequest(BaseModel):
             "options": obj.get("options"),
             "order": obj.get("order"),
             "component": obj.get("component"),
+            "customId": obj.get("customId"),
             "visibilityCondition": FormApiQuestionsV1QuestionVisibilityCondition.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None
         })
         return _obj

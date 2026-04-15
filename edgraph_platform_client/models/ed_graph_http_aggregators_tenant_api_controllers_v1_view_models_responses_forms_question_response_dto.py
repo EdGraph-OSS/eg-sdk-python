@@ -51,7 +51,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuesti
     order: Optional[StrictInt] = None
     component: Optional[Any] = None
     visibility_condition: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto] = Field(default=None, alias="visibilityCondition")
-    __properties: ClassVar[List[str]] = ["id", "sectionId", "formId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "component", "visibilityCondition"]
+    custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
+    __properties: ClassVar[List[str]] = ["id", "sectionId", "formId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "component", "visibilityCondition", "customId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -148,6 +149,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuesti
         if self.component is None and "component" in self.model_fields_set:
             _dict['component'] = None
 
+        # set to None if custom_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_id is None and "custom_id" in self.model_fields_set:
+            _dict['customId'] = None
+
         return _dict
 
     @classmethod
@@ -180,7 +186,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuesti
             "isDeleted": obj.get("isDeleted"),
             "order": obj.get("order"),
             "component": obj.get("component"),
-            "visibilityCondition": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None
+            "visibilityCondition": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None,
+            "customId": obj.get("customId")
         })
         return _obj
 
