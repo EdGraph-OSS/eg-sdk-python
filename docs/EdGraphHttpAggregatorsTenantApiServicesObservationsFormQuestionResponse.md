@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | [optional] 
 **required** | **bool** |  | [optional] 
 **default_value** | **str** |  | [optional] 
-**validation** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse.md) |  | [optional] 
+**validation** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto.md) |  | [optional] 
 **options** | **List[str]** |  | [optional] 
 **created_by** | **str** |  | [optional] 
 **created_date_time** | **str** |  | [optional] 
@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **is_deleted** | **bool** |  | [optional] 
 **order** | **int** |  | [optional] 
 **component** | **object** |  | [optional] 
+**visibility_condition** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.md) |  | [optional] 
 
 ## Example
 

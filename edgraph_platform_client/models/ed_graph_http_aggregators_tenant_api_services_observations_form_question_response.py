@@ -19,7 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_question_validation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_validation_response_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_visibility_condition_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,7 +37,7 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Ba
     type: Optional[StrictStr] = None
     required: Optional[StrictBool] = None
     default_value: Optional[StrictStr] = Field(default=None, alias="defaultValue")
-    validation: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse] = None
+    validation: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto] = None
     options: Optional[List[StrictStr]] = None
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
     created_date_time: Optional[StrictStr] = Field(default=None, alias="createdDateTime")
@@ -47,7 +48,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Ba
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     order: Optional[StrictInt] = None
     component: Optional[Any] = None
-    __properties: ClassVar[List[str]] = ["id", "sectionId", "formId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "component"]
+    visibility_condition: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto] = Field(default=None, alias="visibilityCondition")
+    __properties: ClassVar[List[str]] = ["id", "sectionId", "formId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "component", "visibilityCondition"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,6 +93,9 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Ba
         # override the default output from pydantic by calling `to_dict()` of validation
         if self.validation:
             _dict['validation'] = self.validation.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of visibility_condition
+        if self.visibility_condition:
+            _dict['visibilityCondition'] = self.visibility_condition.to_dict()
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -192,7 +197,7 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Ba
             "type": obj.get("type"),
             "required": obj.get("required"),
             "defaultValue": obj.get("defaultValue"),
-            "validation": EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse.from_dict(obj["validation"]) if obj.get("validation") is not None else None,
+            "validation": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto.from_dict(obj["validation"]) if obj.get("validation") is not None else None,
             "options": obj.get("options"),
             "createdBy": obj.get("createdBy"),
             "createdDateTime": obj.get("createdDateTime"),
@@ -202,7 +207,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Ba
             "deletedDateTime": obj.get("deletedDateTime"),
             "isDeleted": obj.get("isDeleted"),
             "order": obj.get("order"),
-            "component": obj.get("component")
+            "component": obj.get("component"),
+            "visibilityCondition": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None
         })
         return _obj
 
