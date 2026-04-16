@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "edgraph_platform_client"
-version = "0.0.28"
+version = "0.0.29"
 description = "All Api"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "NoLicense"
