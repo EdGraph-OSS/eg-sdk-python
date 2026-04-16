@@ -39,7 +39,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(Bas
     deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     order: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "title", "description", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order"]
+    custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
+    __properties: ClassVar[List[str]] = ["id", "formId", "tenantId", "title", "description", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "customId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -135,6 +136,11 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(Bas
         if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
             _dict['deletedDateTime'] = None
 
+        # set to None if custom_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_id is None and "custom_id" in self.model_fields_set:
+            _dict['customId'] = None
+
         return _dict
 
     @classmethod
@@ -159,7 +165,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(Bas
             "deletedBy": obj.get("deletedBy"),
             "deletedDateTime": obj.get("deletedDateTime"),
             "isDeleted": obj.get("isDeleted"),
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "customId": obj.get("customId")
         })
         return _obj
 
