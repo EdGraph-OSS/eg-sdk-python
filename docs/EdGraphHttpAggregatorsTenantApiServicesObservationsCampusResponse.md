@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **identifier_type** | **str** |  | [optional] 
 **discriminator** | **str** |  | [optional] 
+**campus_id** | **str** |  | [optional] 
 
 ## Example
 

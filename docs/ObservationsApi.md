@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_observation_submission**](ObservationsApi.md#get_observation_submission) | **GET** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submission | Gets a submission for a specific observation
 [**get_paginated_available_campuses**](ObservationsApi.md#get_paginated_available_campuses) | **GET** /tenants/{tenantId}/observations/campuses | Get Available Campuses
 [**get_paginated_available_forms**](ObservationsApi.md#get_paginated_available_forms) | **GET** /tenants/{tenantId}/observations/available-forms | Get Paginated Available Forms
+[**get_paginated_campus_sections**](ObservationsApi.md#get_paginated_campus_sections) | **GET** /tenants/{tenantId}/observations/campuses/{campusId}/sections | Retrieves a list of Sections for a given available campus.
 [**get_paginated_evaluees**](ObservationsApi.md#get_paginated_evaluees) | **GET** /tenants/{tenantId}/observations/evaluees | Get paginated evaluees
 [**get_paginated_observations**](ObservationsApi.md#get_paginated_observations) | **GET** /tenants/{tenantId}/observations | Get Paginated Observations for a given tenant
 [**get_submitted_observations_count**](ObservationsApi.md#get_submitted_observations_count) | **GET** /tenants/{tenantId}/submittedobservations | Get submitted Observations count
@@ -821,6 +822,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_paginated_campus_sections**
+> TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, course_title=course_title)
+
+Retrieves a list of Sections for a given available campus.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.tenant_api_sections_v1_section_list_response_get_paginated_items_response import TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.ObservationsApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    campus_id = 'campus_id_example' # str | 
+    page_index = 0 # int |  (optional) (default to 0)
+    page_size = 10 # int |  (optional) (default to 10)
+    order_by = '' # str |  (optional) (default to '')
+    course_title = '' # str |  (optional) (default to '')
+
+    try:
+        # Retrieves a list of Sections for a given available campus.
+        api_response = api_instance.get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, course_title=course_title)
+        print("The response of ObservationsApi->get_paginated_campus_sections:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ObservationsApi->get_paginated_campus_sections: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **campus_id** | **str**|  | 
+ **page_index** | **int**|  | [optional] [default to 0]
+ **page_size** | **int**|  | [optional] [default to 10]
+ **order_by** | **str**|  | [optional] [default to &#39;&#39;]
+ **course_title** | **str**|  | [optional] [default to &#39;&#39;]
+
+### Return type
+
+[**TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse**](TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse.md)
 
 ### Authorization
 
