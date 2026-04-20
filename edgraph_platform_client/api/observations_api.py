@@ -3528,6 +3528,8 @@ class ObservationsApi:
         order_by: Optional[StrictStr] = None,
         campus: Optional[StrictStr] = None,
         evaluee_id: Optional[StrictStr] = None,
+        first_name: Optional[StrictStr] = None,
+        last_name: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3556,6 +3558,10 @@ class ObservationsApi:
         :type campus: str
         :param evaluee_id: 
         :type evaluee_id: str
+        :param first_name: 
+        :type first_name: str
+        :param last_name: 
+        :type last_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3585,6 +3591,8 @@ class ObservationsApi:
             order_by=order_by,
             campus=campus,
             evaluee_id=evaluee_id,
+            first_name=first_name,
+            last_name=last_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3618,6 +3626,8 @@ class ObservationsApi:
         order_by: Optional[StrictStr] = None,
         campus: Optional[StrictStr] = None,
         evaluee_id: Optional[StrictStr] = None,
+        first_name: Optional[StrictStr] = None,
+        last_name: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3646,6 +3656,10 @@ class ObservationsApi:
         :type campus: str
         :param evaluee_id: 
         :type evaluee_id: str
+        :param first_name: 
+        :type first_name: str
+        :param last_name: 
+        :type last_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3675,6 +3689,8 @@ class ObservationsApi:
             order_by=order_by,
             campus=campus,
             evaluee_id=evaluee_id,
+            first_name=first_name,
+            last_name=last_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3708,6 +3724,8 @@ class ObservationsApi:
         order_by: Optional[StrictStr] = None,
         campus: Optional[StrictStr] = None,
         evaluee_id: Optional[StrictStr] = None,
+        first_name: Optional[StrictStr] = None,
+        last_name: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3736,6 +3754,10 @@ class ObservationsApi:
         :type campus: str
         :param evaluee_id: 
         :type evaluee_id: str
+        :param first_name: 
+        :type first_name: str
+        :param last_name: 
+        :type last_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3765,6 +3787,8 @@ class ObservationsApi:
             order_by=order_by,
             campus=campus,
             evaluee_id=evaluee_id,
+            first_name=first_name,
+            last_name=last_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3793,6 +3817,8 @@ class ObservationsApi:
         order_by,
         campus,
         evaluee_id,
+        first_name,
+        last_name,
         _request_auth,
         _content_type,
         _headers,
@@ -3834,6 +3860,14 @@ class ObservationsApi:
         if evaluee_id is not None:
             
             _query_params.append(('evalueeId', evaluee_id))
+            
+        if first_name is not None:
+            
+            _query_params.append(('firstName', first_name))
+            
+        if last_name is not None:
+            
+            _query_params.append(('lastName', last_name))
             
         # process the header parameters
         # process the form parameters

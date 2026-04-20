@@ -29,8 +29,13 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationReques
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
     observation_id: Optional[StrictStr] = Field(default=None, alias="observationId")
     observation_date: Optional[StrictStr] = Field(default=None, alias="observationDate")
+    campus: Optional[StrictStr] = None
+    observer_id: Optional[StrictStr] = Field(default=None, alias="observerId")
+    evaluee_id: Optional[StrictStr] = Field(default=None, alias="evalueeId")
     form_id: Optional[StrictStr] = Field(default=None, alias="formId")
-    __properties: ClassVar[List[str]] = ["tenantId", "observationId", "observationDate", "formId"]
+    form_version: Optional[StrictStr] = Field(default=None, alias="formVersion")
+    campus_class_id: Optional[StrictStr] = Field(default=None, alias="campusClassId")
+    __properties: ClassVar[List[str]] = ["tenantId", "observationId", "observationDate", "campus", "observerId", "evalueeId", "formId", "formVersion", "campusClassId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,10 +91,35 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationReques
         if self.observation_date is None and "observation_date" in self.model_fields_set:
             _dict['observationDate'] = None
 
+        # set to None if campus (nullable) is None
+        # and model_fields_set contains the field
+        if self.campus is None and "campus" in self.model_fields_set:
+            _dict['campus'] = None
+
+        # set to None if observer_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.observer_id is None and "observer_id" in self.model_fields_set:
+            _dict['observerId'] = None
+
+        # set to None if evaluee_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.evaluee_id is None and "evaluee_id" in self.model_fields_set:
+            _dict['evalueeId'] = None
+
         # set to None if form_id (nullable) is None
         # and model_fields_set contains the field
         if self.form_id is None and "form_id" in self.model_fields_set:
             _dict['formId'] = None
+
+        # set to None if form_version (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_version is None and "form_version" in self.model_fields_set:
+            _dict['formVersion'] = None
+
+        # set to None if campus_class_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.campus_class_id is None and "campus_class_id" in self.model_fields_set:
+            _dict['campusClassId'] = None
 
         return _dict
 
@@ -106,7 +136,12 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationReques
             "tenantId": obj.get("tenantId"),
             "observationId": obj.get("observationId"),
             "observationDate": obj.get("observationDate"),
-            "formId": obj.get("formId")
+            "campus": obj.get("campus"),
+            "observerId": obj.get("observerId"),
+            "evalueeId": obj.get("evalueeId"),
+            "formId": obj.get("formId"),
+            "formVersion": obj.get("formVersion"),
+            "campusClassId": obj.get("campusClassId")
         })
         return _obj
 

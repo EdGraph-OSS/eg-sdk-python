@@ -2051,5 +2051,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_tenant_api_sections_v1_section_list_response_get_paginated_items_response.py
 tox.ini

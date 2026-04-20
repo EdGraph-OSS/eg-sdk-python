@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **staff_user_id** | **str** |  | [optional] 
 **form_id** | **str** |  | [optional] 
 **form_version** | **str** |  | [optional] 
+**campus_class_id** | **str** |  | [optional] 
 
 ## Example
 

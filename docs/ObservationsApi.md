@@ -932,7 +932,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_paginated_evaluees**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse get_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_id=evaluee_id)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse get_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_id=evaluee_id, first_name=first_name, last_name=last_name)
 
 Get paginated evaluees
 
@@ -969,10 +969,12 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     order_by = '' # str |  (optional) (default to '')
     campus = '' # str |  (optional) (default to '')
     evaluee_id = '' # str |  (optional) (default to '')
+    first_name = '' # str |  (optional) (default to '')
+    last_name = '' # str |  (optional) (default to '')
 
     try:
         # Get paginated evaluees
-        api_response = api_instance.get_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_id=evaluee_id)
+        api_response = api_instance.get_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_id=evaluee_id, first_name=first_name, last_name=last_name)
         print("The response of ObservationsApi->get_paginated_evaluees:\n")
         pprint(api_response)
     except Exception as e:
@@ -992,6 +994,8 @@ Name | Type | Description  | Notes
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
  **campus** | **str**|  | [optional] [default to &#39;&#39;]
  **evaluee_id** | **str**|  | [optional] [default to &#39;&#39;]
+ **first_name** | **str**|  | [optional] [default to &#39;&#39;]
+ **last_name** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 

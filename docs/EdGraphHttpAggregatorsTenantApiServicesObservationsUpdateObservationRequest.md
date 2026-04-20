@@ -8,7 +8,12 @@ Name | Type | Description | Notes
 **tenant_id** | **str** |  | [optional] 
 **observation_id** | **str** |  | [optional] 
 **observation_date** | **str** |  | [optional] 
+**campus** | **str** |  | [optional] 
+**observer_id** | **str** |  | [optional] 
+**evaluee_id** | **str** |  | [optional] 
 **form_id** | **str** |  | [optional] 
+**form_version** | **str** |  | [optional] 
+**campus_class_id** | **str** |  | [optional] 
 
 ## Example
 
