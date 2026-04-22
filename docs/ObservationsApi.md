@@ -934,7 +934,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_paginated_campus_sections**
-> TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, course_title=course_title)
+> TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
 
 Retrieves a list of Sections for a given available campus.
 
@@ -970,11 +970,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
-    course_title = '' # str |  (optional) (default to '')
+    filter = '' # str |  (optional) (default to '')
 
     try:
         # Retrieves a list of Sections for a given available campus.
-        api_response = api_instance.get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, course_title=course_title)
+        api_response = api_instance.get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of ObservationsApi->get_paginated_campus_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -993,7 +993,7 @@ Name | Type | Description  | Notes
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
- **course_title** | **str**|  | [optional] [default to &#39;&#39;]
+ **filter** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 

@@ -40,7 +40,8 @@ class FormApiFormsV1CreateFullQuestionRequest(BaseModel):
     component: Optional[StrictStr] = None
     custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
     visibility_condition: Optional[FormApiQuestionsV1QuestionVisibilityCondition] = Field(default=None, alias="visibilityCondition")
-    __properties: ClassVar[List[str]] = ["title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "customId", "visibilityCondition"]
+    original_question_id: Optional[StrictStr] = Field(default=None, alias="originalQuestionId")
+    __properties: ClassVar[List[str]] = ["title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "customId", "visibilityCondition", "originalQuestionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -129,6 +130,11 @@ class FormApiFormsV1CreateFullQuestionRequest(BaseModel):
         if self.custom_id is None and "custom_id" in self.model_fields_set:
             _dict['customId'] = None
 
+        # set to None if original_question_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.original_question_id is None and "original_question_id" in self.model_fields_set:
+            _dict['originalQuestionId'] = None
+
         return _dict
 
     @classmethod
@@ -151,7 +157,8 @@ class FormApiFormsV1CreateFullQuestionRequest(BaseModel):
             "order": obj.get("order"),
             "component": obj.get("component"),
             "customId": obj.get("customId"),
-            "visibilityCondition": FormApiQuestionsV1QuestionVisibilityCondition.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None
+            "visibilityCondition": FormApiQuestionsV1QuestionVisibilityCondition.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None,
+            "originalQuestionId": obj.get("originalQuestionId")
         })
         return _obj
 

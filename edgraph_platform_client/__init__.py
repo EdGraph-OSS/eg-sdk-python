@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.33"
+__version__ = "0.0.34"
 
 # import apis into sdk package
 from edgraph_platform_client.api.api_clients_api import APIClientsApi

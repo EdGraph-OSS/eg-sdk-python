@@ -3531,7 +3531,7 @@ class ObservationsApi:
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
-        course_title: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3558,8 +3558,8 @@ class ObservationsApi:
         :type page_size: int
         :param order_by: 
         :type order_by: str
-        :param course_title: 
-        :type course_title: str
+        :param filter: 
+        :type filter: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3588,7 +3588,7 @@ class ObservationsApi:
             page_index=page_index,
             page_size=page_size,
             order_by=order_by,
-            course_title=course_title,
+            filter=filter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3621,7 +3621,7 @@ class ObservationsApi:
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
-        course_title: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3648,8 +3648,8 @@ class ObservationsApi:
         :type page_size: int
         :param order_by: 
         :type order_by: str
-        :param course_title: 
-        :type course_title: str
+        :param filter: 
+        :type filter: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3678,7 +3678,7 @@ class ObservationsApi:
             page_index=page_index,
             page_size=page_size,
             order_by=order_by,
-            course_title=course_title,
+            filter=filter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3711,7 +3711,7 @@ class ObservationsApi:
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
-        course_title: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3738,8 +3738,8 @@ class ObservationsApi:
         :type page_size: int
         :param order_by: 
         :type order_by: str
-        :param course_title: 
-        :type course_title: str
+        :param filter: 
+        :type filter: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3768,7 +3768,7 @@ class ObservationsApi:
             page_index=page_index,
             page_size=page_size,
             order_by=order_by,
-            course_title=course_title,
+            filter=filter,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3796,7 +3796,7 @@ class ObservationsApi:
         page_index,
         page_size,
         order_by,
-        course_title,
+        filter,
         _request_auth,
         _content_type,
         _headers,
@@ -3833,9 +3833,9 @@ class ObservationsApi:
             
             _query_params.append(('orderBy', order_by))
             
-        if course_title is not None:
+        if filter is not None:
             
-            _query_params.append(('courseTitle', course_title))
+            _query_params.append(('filter', filter))
             
         # process the header parameters
         # process the form parameters

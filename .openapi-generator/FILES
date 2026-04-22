@@ -2053,5 +2053,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_identity_api_user_v1_section_response_get_paginated_items_response.py
 tox.ini
