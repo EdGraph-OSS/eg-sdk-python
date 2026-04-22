@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **job_id** | **str** |  | [optional] 
 **job_execution_id** | **str** |  | [optional] 
 **school_year** | **int** |  | [optional] 
+**class_periods** | **List[str]** |  | [optional] [readonly] 
 
 ## Example
 

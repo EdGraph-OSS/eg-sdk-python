@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.32"
+__version__ = "0.0.33"
 
 # import apis into sdk package
 from edgraph_platform_client.api.api_clients_api import APIClientsApi
@@ -819,6 +819,7 @@ from edgraph_platform_client.models.identity_api_user_v1_section_added_response 
 from edgraph_platform_client.models.identity_api_user_v1_section_removed_bulk_response import IdentityApiUserV1SectionRemovedBulkResponse
 from edgraph_platform_client.models.identity_api_user_v1_section_removed_response import IdentityApiUserV1SectionRemovedResponse
 from edgraph_platform_client.models.identity_api_user_v1_section_response import IdentityApiUserV1SectionResponse
+from edgraph_platform_client.models.identity_api_user_v1_section_response_get_paginated_items_response import IdentityApiUserV1SectionResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.identity_api_user_v1_section_updated_bulk_response import IdentityApiUserV1SectionUpdatedBulkResponse
 from edgraph_platform_client.models.identity_api_user_v1_section_updated_response import IdentityApiUserV1SectionUpdatedResponse
 from edgraph_platform_client.models.identity_api_user_v1_set_user_extension_request import IdentityApiUserV1SetUserExtensionRequest

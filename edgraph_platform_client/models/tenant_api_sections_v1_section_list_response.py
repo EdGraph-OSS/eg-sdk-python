@@ -51,7 +51,8 @@ class TenantApiSectionsV1SectionListResponse(BaseModel):
     job_id: Optional[StrictStr] = Field(default=None, alias="jobId")
     job_execution_id: Optional[StrictStr] = Field(default=None, alias="jobExecutionId")
     school_year: Optional[StrictInt] = Field(default=None, alias="schoolYear")
-    __properties: ClassVar[List[str]] = ["sectionId", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "tenantId", "schoolId", "schoolName", "sessionName", "term", "localCourseCode", "localCourseTitle", "courseCode", "courseTitle", "academicSubjects", "offeredGradeLevels", "sectionIdentifier", "sectionName", "sectionType", "source", "edFiInstanceId", "jobId", "jobExecutionId", "schoolYear"]
+    class_periods: Optional[List[StrictStr]] = Field(default=None, alias="classPeriods")
+    __properties: ClassVar[List[str]] = ["sectionId", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "tenantId", "schoolId", "schoolName", "sessionName", "term", "localCourseCode", "localCourseTitle", "courseCode", "courseTitle", "academicSubjects", "offeredGradeLevels", "sectionIdentifier", "sectionName", "sectionType", "source", "edFiInstanceId", "jobId", "jobExecutionId", "schoolYear", "classPeriods"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,10 +86,12 @@ class TenantApiSectionsV1SectionListResponse(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "academic_subjects",
             "offered_grade_levels",
+            "class_periods",
         ])
 
         _dict = self.model_dump(
@@ -201,6 +204,11 @@ class TenantApiSectionsV1SectionListResponse(BaseModel):
         if self.job_execution_id is None and "job_execution_id" in self.model_fields_set:
             _dict['jobExecutionId'] = None
 
+        # set to None if class_periods (nullable) is None
+        # and model_fields_set contains the field
+        if self.class_periods is None and "class_periods" in self.model_fields_set:
+            _dict['classPeriods'] = None
+
         return _dict
 
     @classmethod
@@ -236,7 +244,8 @@ class TenantApiSectionsV1SectionListResponse(BaseModel):
             "edFiInstanceId": obj.get("edFiInstanceId"),
             "jobId": obj.get("jobId"),
             "jobExecutionId": obj.get("jobExecutionId"),
-            "schoolYear": obj.get("schoolYear")
+            "schoolYear": obj.get("schoolYear"),
+            "classPeriods": obj.get("classPeriods")
         })
         return _obj
 
