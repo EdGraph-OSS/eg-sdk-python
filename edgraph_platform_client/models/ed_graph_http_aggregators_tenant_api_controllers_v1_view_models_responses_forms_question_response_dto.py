@@ -52,7 +52,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuesti
     component: Optional[Any] = None
     visibility_condition: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto] = Field(default=None, alias="visibilityCondition")
     custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
-    __properties: ClassVar[List[str]] = ["id", "sectionId", "formId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "component", "visibilityCondition", "customId"]
+    multiline: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["id", "sectionId", "formId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "order", "component", "visibilityCondition", "customId", "multiline"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -154,6 +155,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuesti
         if self.custom_id is None and "custom_id" in self.model_fields_set:
             _dict['customId'] = None
 
+        # set to None if multiline (nullable) is None
+        # and model_fields_set contains the field
+        if self.multiline is None and "multiline" in self.model_fields_set:
+            _dict['multiline'] = None
+
         return _dict
 
     @classmethod
@@ -187,7 +193,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuesti
             "order": obj.get("order"),
             "component": obj.get("component"),
             "visibilityCondition": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None,
-            "customId": obj.get("customId")
+            "customId": obj.get("customId"),
+            "multiline": obj.get("multiline")
         })
         return _obj
 
