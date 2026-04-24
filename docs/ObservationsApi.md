@@ -1454,7 +1454,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **save_dashboard_preferences**
-> AnalyticsApiReportsV1ReportResponse save_dashboard_preferences(tenant_id, dashboard_id, ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request=ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request)
+> AnalyticsApiReportsV1ReportPreferencesSavedResponse save_dashboard_preferences(tenant_id, dashboard_id, ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request=ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request)
 
 Save user preferences for a given Dashboard
 
@@ -1464,7 +1464,7 @@ Save user preferences for a given Dashboard
 
 ```python
 import edgraph_platform_client
-from edgraph_platform_client.models.analytics_api_reports_v1_report_response import AnalyticsApiReportsV1ReportResponse
+from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_saved_response import AnalyticsApiReportsV1ReportPreferencesSavedResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
@@ -1512,7 +1512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnalyticsApiReportsV1ReportResponse**](AnalyticsApiReportsV1ReportResponse.md)
+[**AnalyticsApiReportsV1ReportPreferencesSavedResponse**](AnalyticsApiReportsV1ReportPreferencesSavedResponse.md)
 
 ### Authorization
 
@@ -1702,7 +1702,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_dashboard_access**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse verify_dashboard_access(tenant_id, report_id, ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse verify_dashboard_access(tenant_id, ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request)
 
 Verify user access to dashboards
 
@@ -1735,12 +1735,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
-    report_id = 'report_id_example' # str | 
     ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest |  (optional)
 
     try:
         # Verify user access to dashboards
-        api_response = api_instance.verify_dashboard_access(tenant_id, report_id, ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request)
+        api_response = api_instance.verify_dashboard_access(tenant_id, ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request)
         print("The response of ObservationsApi->verify_dashboard_access:\n")
         pprint(api_response)
     except Exception as e:
@@ -1755,7 +1754,6 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
- **report_id** | **str**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.md)|  | [optional] 
 
 ### Return type

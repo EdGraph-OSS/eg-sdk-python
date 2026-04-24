@@ -19,6 +19,7 @@ from typing_extensions import Annotated
 from pydantic import StrictInt, StrictStr
 from typing import Optional
 from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_response import AnalyticsApiReportsV1ReportPreferencesResponse
+from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_saved_response import AnalyticsApiReportsV1ReportPreferencesSavedResponse
 from edgraph_platform_client.models.analytics_api_reports_v1_report_response import AnalyticsApiReportsV1ReportResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_response_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_campus_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse
@@ -5607,7 +5608,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalyticsApiReportsV1ReportResponse:
+    ) -> AnalyticsApiReportsV1ReportPreferencesSavedResponse:
         """Save user preferences for a given Dashboard
 
 
@@ -5653,7 +5654,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "AnalyticsApiReportsV1ReportResponse",
+            '200': "AnalyticsApiReportsV1ReportPreferencesSavedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -5685,7 +5686,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalyticsApiReportsV1ReportResponse]:
+    ) -> ApiResponse[AnalyticsApiReportsV1ReportPreferencesSavedResponse]:
         """Save user preferences for a given Dashboard
 
 
@@ -5731,7 +5732,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "AnalyticsApiReportsV1ReportResponse",
+            '200': "AnalyticsApiReportsV1ReportPreferencesSavedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -5809,7 +5810,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "AnalyticsApiReportsV1ReportResponse",
+            '200': "AnalyticsApiReportsV1ReportPreferencesSavedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -6550,7 +6551,6 @@ class ObservationsApi:
     def verify_dashboard_access(
         self,
         tenant_id: StrictStr,
-        report_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest] = None,
         _request_timeout: Union[
             None,
@@ -6570,8 +6570,6 @@ class ObservationsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param report_id:  (required)
-        :type report_id: str
         :param ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -6598,7 +6596,6 @@ class ObservationsApi:
 
         _param = self._verify_dashboard_access_serialize(
             tenant_id=tenant_id,
-            report_id=report_id,
             ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6628,7 +6625,6 @@ class ObservationsApi:
     def verify_dashboard_access_with_http_info(
         self,
         tenant_id: StrictStr,
-        report_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest] = None,
         _request_timeout: Union[
             None,
@@ -6648,8 +6644,6 @@ class ObservationsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param report_id:  (required)
-        :type report_id: str
         :param ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -6676,7 +6670,6 @@ class ObservationsApi:
 
         _param = self._verify_dashboard_access_serialize(
             tenant_id=tenant_id,
-            report_id=report_id,
             ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6706,7 +6699,6 @@ class ObservationsApi:
     def verify_dashboard_access_without_preload_content(
         self,
         tenant_id: StrictStr,
-        report_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest] = None,
         _request_timeout: Union[
             None,
@@ -6726,8 +6718,6 @@ class ObservationsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param report_id:  (required)
-        :type report_id: str
         :param ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request: EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -6754,7 +6744,6 @@ class ObservationsApi:
 
         _param = self._verify_dashboard_access_serialize(
             tenant_id=tenant_id,
-            report_id=report_id,
             ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6779,7 +6768,6 @@ class ObservationsApi:
     def _verify_dashboard_access_serialize(
         self,
         tenant_id,
-        report_id,
         ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request,
         _request_auth,
         _content_type,
@@ -6802,8 +6790,6 @@ class ObservationsApi:
         # process the path parameters
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
-        if report_id is not None:
-            _path_params['reportId'] = report_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
