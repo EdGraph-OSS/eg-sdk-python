@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**get_paginated_observations**](ObservationsApi.md#get_paginated_observations) | **GET** /tenants/{tenantId}/observations | Get Paginated Observations for a given tenant
 [**get_submitted_observations_count**](ObservationsApi.md#get_submitted_observations_count) | **GET** /tenants/{tenantId}/submittedobservations | Get submitted Observations count
 [**save_dashboard_preferences**](ObservationsApi.md#save_dashboard_preferences) | **POST** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard
+[**search_paginated_evaluees**](ObservationsApi.md#search_paginated_evaluees) | **GET** /tenants/{tenantId}/observations/search/evaluees | Search paginated evaluees
 [**update_observation**](ObservationsApi.md#update_observation) | **PUT** /tenants/{tenantId}/observations/{observationId} | Update an Observation for a given tenant
 [**upsert_observation_draft**](ObservationsApi.md#upsert_observation_draft) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft | Creates a draft for an observation forms
 [**verify_dashboard_access**](ObservationsApi.md#verify_dashboard_access) | **POST** /tenants/{tenantId}/observations/dashboards/access | Verify user access to dashboards
@@ -1521,6 +1522,93 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_paginated_evaluees**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel search_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, first_name=first_name, last_name=last_name)
+
+Search paginated evaluees
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.ObservationsApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    page_size = 10 # int |  (optional) (default to 10)
+    page_index = 0 # int |  (optional) (default to 0)
+    order_by = '' # str |  (optional) (default to '')
+    first_name = '' # str |  (optional) (default to '')
+    last_name = '' # str |  (optional) (default to '')
+
+    try:
+        # Search paginated evaluees
+        api_response = api_instance.search_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, first_name=first_name, last_name=last_name)
+        print("The response of ObservationsApi->search_paginated_evaluees:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ObservationsApi->search_paginated_evaluees: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **page_size** | **int**|  | [optional] [default to 10]
+ **page_index** | **int**|  | [optional] [default to 0]
+ **order_by** | **str**|  | [optional] [default to &#39;&#39;]
+ **first_name** | **str**|  | [optional] [default to &#39;&#39;]
+ **last_name** | **str**|  | [optional] [default to &#39;&#39;]
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

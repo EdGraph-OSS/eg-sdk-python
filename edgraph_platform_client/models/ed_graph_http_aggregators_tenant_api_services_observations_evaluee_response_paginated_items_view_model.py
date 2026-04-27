@@ -17,21 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(BaseModel):
+class EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse
+    EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel
     """ # noqa: E501
-    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
-    first_name: Optional[StrictStr] = Field(default=None, alias="firstName")
-    last_name: Optional[StrictStr] = Field(default=None, alias="lastName")
-    email: Optional[StrictStr] = None
-    campus: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["userId", "firstName", "lastName", "email", "campus"]
+    page_index: Optional[StrictInt] = Field(default=None, alias="pageIndex")
+    page_size: Optional[StrictInt] = Field(default=None, alias="pageSize")
+    count: Optional[StrictInt] = None
+    data: Optional[List[EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse]] = None
+    __properties: ClassVar[List[str]] = ["pageIndex", "pageSize", "count", "data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +51,7 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(BaseMod
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse from a JSON string"""
+        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,36 +72,23 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(BaseMod
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if user_id (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
+        if self.data:
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
+            _dict['data'] = _items
+        # set to None if data (nullable) is None
         # and model_fields_set contains the field
-        if self.user_id is None and "user_id" in self.model_fields_set:
-            _dict['userId'] = None
-
-        # set to None if first_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.first_name is None and "first_name" in self.model_fields_set:
-            _dict['firstName'] = None
-
-        # set to None if last_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_name is None and "last_name" in self.model_fields_set:
-            _dict['lastName'] = None
-
-        # set to None if email (nullable) is None
-        # and model_fields_set contains the field
-        if self.email is None and "email" in self.model_fields_set:
-            _dict['email'] = None
-
-        # set to None if campus (nullable) is None
-        # and model_fields_set contains the field
-        if self.campus is None and "campus" in self.model_fields_set:
-            _dict['campus'] = None
+        if self.data is None and "data" in self.model_fields_set:
+            _dict['data'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse from a dict"""
+        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel from a dict"""
         if obj is None:
             return None
 
@@ -109,11 +96,10 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(BaseMod
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "userId": obj.get("userId"),
-            "firstName": obj.get("firstName"),
-            "lastName": obj.get("lastName"),
-            "email": obj.get("email"),
-            "campus": obj.get("campus")
+            "pageIndex": obj.get("pageIndex"),
+            "pageSize": obj.get("pageSize"),
+            "count": obj.get("count"),
+            "data": [EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 
