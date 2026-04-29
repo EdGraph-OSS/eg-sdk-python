@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tea_tenant_organizations**
-> TenantApiTenantV1OrganizationGetPaginatedItemsResponse get_tea_tenant_organizations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+> TenantApiTenantV1OrganizationGetPaginatedItemsResponse get_tea_tenant_organizations(tenant_id, tea_tenant_id=tea_tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
 
 Get TEA tenant organizations
 
@@ -530,6 +530,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationSettingsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
+    tea_tenant_id = '' # str |  (optional) (default to '')
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -537,7 +538,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get TEA tenant organizations
-        api_response = api_instance.get_tea_tenant_organizations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = api_instance.get_tea_tenant_organizations(tenant_id, tea_tenant_id=tea_tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of ObservationSettingsApi->get_tea_tenant_organizations:\n")
         pprint(api_response)
     except Exception as e:
@@ -552,6 +553,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
+ **tea_tenant_id** | **str**|  | [optional] [default to &#39;&#39;]
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]

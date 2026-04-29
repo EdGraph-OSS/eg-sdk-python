@@ -1828,6 +1828,7 @@ class ObservationSettingsApi:
     def get_tea_tenant_organizations(
         self,
         tenant_id: StrictStr,
+        tea_tenant_id: Optional[StrictStr] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1850,6 +1851,8 @@ class ObservationSettingsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
+        :param tea_tenant_id: 
+        :type tea_tenant_id: str
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1882,6 +1885,7 @@ class ObservationSettingsApi:
 
         _param = self._get_tea_tenant_organizations_serialize(
             tenant_id=tenant_id,
+            tea_tenant_id=tea_tenant_id,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
@@ -1914,6 +1918,7 @@ class ObservationSettingsApi:
     def get_tea_tenant_organizations_with_http_info(
         self,
         tenant_id: StrictStr,
+        tea_tenant_id: Optional[StrictStr] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1936,6 +1941,8 @@ class ObservationSettingsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
+        :param tea_tenant_id: 
+        :type tea_tenant_id: str
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1968,6 +1975,7 @@ class ObservationSettingsApi:
 
         _param = self._get_tea_tenant_organizations_serialize(
             tenant_id=tenant_id,
+            tea_tenant_id=tea_tenant_id,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
@@ -2000,6 +2008,7 @@ class ObservationSettingsApi:
     def get_tea_tenant_organizations_without_preload_content(
         self,
         tenant_id: StrictStr,
+        tea_tenant_id: Optional[StrictStr] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2022,6 +2031,8 @@ class ObservationSettingsApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
+        :param tea_tenant_id: 
+        :type tea_tenant_id: str
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2054,6 +2065,7 @@ class ObservationSettingsApi:
 
         _param = self._get_tea_tenant_organizations_serialize(
             tenant_id=tenant_id,
+            tea_tenant_id=tea_tenant_id,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
@@ -2081,6 +2093,7 @@ class ObservationSettingsApi:
     def _get_tea_tenant_organizations_serialize(
         self,
         tenant_id,
+        tea_tenant_id,
         page_size,
         page_index,
         order_by,
@@ -2107,6 +2120,10 @@ class ObservationSettingsApi:
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
+        if tea_tenant_id is not None:
+            
+            _query_params.append(('teaTenantId', tea_tenant_id))
+            
         if page_size is not None:
             
             _query_params.append(('pageSize', page_size))
