@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **custom_id** | **str** |  | [optional] 
 **visibility_condition** | [**FormApiQuestionsV1QuestionVisibilityCondition**](FormApiQuestionsV1QuestionVisibilityCondition.md) |  | [optional] 
 **original_question_id** | **str** |  | [optional] 
+**multiline** | **bool** |  | [optional] 
 
 ## Example
 

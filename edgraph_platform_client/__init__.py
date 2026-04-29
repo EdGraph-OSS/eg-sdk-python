@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.37"
+__version__ = "0.0.38"
 
 # import apis into sdk package
 from edgraph_platform_client.api.api_clients_api import APIClientsApi
@@ -912,6 +912,7 @@ from edgraph_platform_client.models.tenant_api_tenant_v1_onboarding_steps_repons
 from edgraph_platform_client.models.tenant_api_tenant_v1_organization import TenantApiTenantV1Organization
 from edgraph_platform_client.models.tenant_api_tenant_v1_organization_created_response import TenantApiTenantV1OrganizationCreatedResponse
 from edgraph_platform_client.models.tenant_api_tenant_v1_organization_deleted_response import TenantApiTenantV1OrganizationDeletedResponse
+from edgraph_platform_client.models.tenant_api_tenant_v1_organization_get_paginated_items_response import TenantApiTenantV1OrganizationGetPaginatedItemsResponse
 from edgraph_platform_client.models.tenant_api_tenant_v1_organization_updated_response import TenantApiTenantV1OrganizationUpdatedResponse
 from edgraph_platform_client.models.tenant_api_tenant_v1_set_app_settings_request import TenantApiTenantV1SetAppSettingsRequest
 from edgraph_platform_client.models.tenant_api_tenant_v1_set_app_settings_response import TenantApiTenantV1SetAppSettingsResponse

@@ -41,7 +41,8 @@ class FormApiFormsV1UpdateFullQuestionRequest(BaseModel):
     component: Optional[StrictStr] = None
     custom_id: Optional[StrictStr] = Field(default=None, alias="customId")
     visibility_condition: Optional[FormApiQuestionsV1QuestionVisibilityCondition] = Field(default=None, alias="visibilityCondition")
-    __properties: ClassVar[List[str]] = ["id", "title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "customId", "visibilityCondition"]
+    multiline: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["id", "title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "customId", "visibilityCondition", "multiline"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -135,6 +136,11 @@ class FormApiFormsV1UpdateFullQuestionRequest(BaseModel):
         if self.custom_id is None and "custom_id" in self.model_fields_set:
             _dict['customId'] = None
 
+        # set to None if multiline (nullable) is None
+        # and model_fields_set contains the field
+        if self.multiline is None and "multiline" in self.model_fields_set:
+            _dict['multiline'] = None
+
         return _dict
 
     @classmethod
@@ -158,7 +164,8 @@ class FormApiFormsV1UpdateFullQuestionRequest(BaseModel):
             "order": obj.get("order"),
             "component": obj.get("component"),
             "customId": obj.get("customId"),
-            "visibilityCondition": FormApiQuestionsV1QuestionVisibilityCondition.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None
+            "visibilityCondition": FormApiQuestionsV1QuestionVisibilityCondition.from_dict(obj["visibilityCondition"]) if obj.get("visibilityCondition") is not None else None,
+            "multiline": obj.get("multiline")
         })
         return _obj
 
