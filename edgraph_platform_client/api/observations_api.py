@@ -22,6 +22,7 @@ from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_
 from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_saved_response import AnalyticsApiReportsV1ReportPreferencesSavedResponse
 from edgraph_platform_client.models.analytics_api_reports_v1_report_response import AnalyticsApiReportsV1ReportResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_response_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_forms_v1_form_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_campus_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request import EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_create_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse
@@ -30,8 +31,6 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_service
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_delete_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_section_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_submitted_observations_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_draft_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse
@@ -44,6 +43,7 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_service
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse
+from edgraph_platform_client.models.form_api_sections_v1_section_response_paginated_items_view_model import FormApiSectionsV1SectionResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.identity_api_user_v1_section_response_get_paginated_items_response import IdentityApiUserV1SectionResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.tenant_api_sections_v1_section_list_response_get_paginated_items_response import TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse
 
@@ -2264,7 +2264,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel:
+    ) -> FormApiSectionsV1SectionResponsePaginatedItemsViewModel:
         """Search Observation Form Sections
 
 
@@ -2313,7 +2313,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel",
+            '200': "FormApiSectionsV1SectionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -2346,7 +2346,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel]:
+    ) -> ApiResponse[FormApiSectionsV1SectionResponsePaginatedItemsViewModel]:
         """Search Observation Form Sections
 
 
@@ -2395,7 +2395,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel",
+            '200': "FormApiSectionsV1SectionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -2477,7 +2477,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel",
+            '200': "FormApiSectionsV1SectionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -3797,7 +3797,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse:
+    ) -> EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse:
         """Get Paginated Available Forms
 
 
@@ -3849,7 +3849,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -3883,7 +3883,7 @@ class ObservationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse]:
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse]:
         """Get Paginated Available Forms
 
 
@@ -3935,7 +3935,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -4021,7 +4021,7 @@ class ObservationsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(

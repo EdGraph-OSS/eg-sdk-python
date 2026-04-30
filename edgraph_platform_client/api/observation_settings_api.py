@@ -18,9 +18,9 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Any, Dict, Optional
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_forms_v1_form_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request import EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_response import EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_application_settings_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_staff_classification_settings_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_persona_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse
@@ -636,7 +636,7 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse:
+    ) -> EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse:
         """Get Paginated Forms
 
 
@@ -688,7 +688,7 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -722,7 +722,7 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse]:
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse]:
         """Get Paginated Forms
 
 
@@ -774,7 +774,7 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(
@@ -860,7 +860,7 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = self.api_client.call_api(

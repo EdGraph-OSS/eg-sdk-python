@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_paginated_forms**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse get_paginated_forms(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+> EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse get_paginated_forms(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
 
 Get Paginated Forms
 
@@ -184,7 +184,7 @@ Get Paginated Forms
 
 ```python
 import edgraph_platform_client
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_form_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_forms_v1_form_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.md)
+[**EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.md)
 
 ### Authorization
 
