@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new client
-        api_response = api_instance.create_client(tenant_id, instance_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_one_roster_create_client_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_one_roster_create_client_request_dto)
+        api_response = await api_instance.create_client(tenant_id, instance_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_one_roster_create_client_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_one_roster_create_client_request_dto)
         print("The response of InstancesClientsApi->create_client:\n")
         pprint(api_response)
     except Exception as e:
@@ -122,7 +122,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -131,7 +131,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a client by Id
-        api_response = api_instance.delete_client(tenant_id, instance_id, client_id)
+        api_response = await api_instance.delete_client(tenant_id, instance_id, client_id)
         print("The response of InstancesClientsApi->delete_client:\n")
         pprint(api_response)
     except Exception as e:
@@ -203,7 +203,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -212,7 +212,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a client by Id
-        api_response = api_instance.get_client_by_id(tenant_id, instance_id, client_id)
+        api_response = await api_instance.get_client_by_id(tenant_id, instance_id, client_id)
         print("The response of InstancesClientsApi->get_client_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -284,7 +284,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -296,7 +296,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of clients for a given instance
-        api_response = api_instance.get_paged_clients(tenant_id, instance_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_paged_clients(tenant_id, instance_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of InstancesClientsApi->get_paged_clients:\n")
         pprint(api_response)
     except Exception as e:
@@ -372,7 +372,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -382,7 +382,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a client by Id
-        api_response = api_instance.update_client(tenant_id, instance_id, client_id, ims_admin_api_v1_clients_update_client_request=ims_admin_api_v1_clients_update_client_request)
+        api_response = await api_instance.update_client(tenant_id, instance_id, client_id, ims_admin_api_v1_clients_update_client_request=ims_admin_api_v1_clients_update_client_request)
         print("The response of InstancesClientsApi->update_client:\n")
         pprint(api_response)
     except Exception as e:

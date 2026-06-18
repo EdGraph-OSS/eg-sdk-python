@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.identity_api_staff_classification_v1_staff_classification_license import IdentityApiStaffClassificationV1StaffClassificationLicense
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class IdentityApiStaffClassificationV1StaffClassificationResponse(BaseModel):
     """
@@ -42,7 +43,8 @@ class IdentityApiStaffClassificationV1StaffClassificationResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "isDeleted", "tenantId", "namespace", "codeValue", "shortDescription", "description", "licenses"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,8 +56,7 @@ class IdentityApiStaffClassificationV1StaffClassificationResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

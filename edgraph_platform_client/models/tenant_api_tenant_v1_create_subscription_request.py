@@ -23,6 +23,7 @@ from edgraph_platform_client.models.tenant_api_tenant_v1_license_type import Ten
 from edgraph_platform_client.models.tenant_api_tenant_v1_subscription_status import TenantApiTenantV1SubscriptionStatus
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class TenantApiTenantV1CreateSubscriptionRequest(BaseModel):
     """
@@ -42,7 +43,8 @@ class TenantApiTenantV1CreateSubscriptionRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["tenantId", "subscriptionId", "applicationId", "startDateTime", "endDateTime", "gracePeriod", "numberOfLicenses", "assignedLicenses", "licenseType", "subscriptionStatus", "autoAssign"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,8 +56,7 @@ class TenantApiTenantV1CreateSubscriptionRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

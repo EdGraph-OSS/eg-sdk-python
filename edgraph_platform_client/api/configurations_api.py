@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -46,7 +45,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def create_analytics_configuration_async(
+    async def create_analytics_configuration_async(
         self,
         tenant_id: StrictStr,
         workspace_name: StrictStr,
@@ -113,11 +112,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -125,7 +124,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def create_analytics_configuration_async_with_http_info(
+    async def create_analytics_configuration_async_with_http_info(
         self,
         tenant_id: StrictStr,
         workspace_name: StrictStr,
@@ -192,11 +191,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -204,7 +203,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def create_analytics_configuration_async_without_preload_content(
+    async def create_analytics_configuration_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         workspace_name: StrictStr,
@@ -271,7 +270,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -298,7 +297,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -363,7 +364,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def delete_analytics_configuration_async(
+    async def delete_analytics_configuration_async(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -426,11 +427,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -438,7 +439,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def delete_analytics_configuration_async_with_http_info(
+    async def delete_analytics_configuration_async_with_http_info(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -501,11 +502,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -513,7 +514,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def delete_analytics_configuration_async_without_preload_content(
+    async def delete_analytics_configuration_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -576,7 +577,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -602,7 +603,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -649,7 +652,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_all_analytics_configurations_async(
+    async def get_all_analytics_configurations_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -724,11 +727,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -736,7 +739,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_all_analytics_configurations_async_with_http_info(
+    async def get_all_analytics_configurations_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -811,11 +814,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -823,7 +826,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_all_analytics_configurations_async_without_preload_content(
+    async def get_all_analytics_configurations_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -898,7 +901,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -927,7 +930,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -988,7 +993,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_analytics_configuration_by_id_async(
+    async def get_analytics_configuration_by_id_async(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -1051,11 +1056,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1063,7 +1068,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_analytics_configuration_by_id_async_with_http_info(
+    async def get_analytics_configuration_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -1126,11 +1131,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1138,7 +1143,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_analytics_configuration_by_id_async_without_preload_content(
+    async def get_analytics_configuration_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -1201,7 +1206,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1227,7 +1232,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1274,7 +1281,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_analytics_configuration_by_tenant_id_async(
+    async def get_analytics_configuration_by_tenant_id_async(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -1333,11 +1340,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1345,7 +1352,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_analytics_configuration_by_tenant_id_async_with_http_info(
+    async def get_analytics_configuration_by_tenant_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -1404,11 +1411,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1416,7 +1423,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def get_analytics_configuration_by_tenant_id_async_without_preload_content(
+    async def get_analytics_configuration_by_tenant_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -1475,7 +1482,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1500,7 +1507,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1545,7 +1554,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def has_valid_analytics_configuration_async(
+    async def has_valid_analytics_configuration_async(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -1604,11 +1613,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1616,7 +1625,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def has_valid_analytics_configuration_async_with_http_info(
+    async def has_valid_analytics_configuration_async_with_http_info(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -1675,11 +1684,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1687,7 +1696,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def has_valid_analytics_configuration_async_without_preload_content(
+    async def has_valid_analytics_configuration_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -1746,7 +1755,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1771,7 +1780,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1816,7 +1827,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def update_analytics_configuration_async(
+    async def update_analytics_configuration_async(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -1883,11 +1894,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1895,7 +1906,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def update_analytics_configuration_async_with_http_info(
+    async def update_analytics_configuration_async_with_http_info(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -1962,11 +1973,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1974,7 +1985,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def update_analytics_configuration_async_without_preload_content(
+    async def update_analytics_configuration_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         configuration_id: StrictStr,
@@ -2041,7 +2052,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2068,7 +2079,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2133,7 +2146,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def validate_aad_token_async(
+    async def validate_aad_token_async(
         self,
         tenant_id: StrictStr,
         analytics_api_configurations_v1_analytics_azure_ad: Optional[AnalyticsApiConfigurationsV1AnalyticsAzureAd] = None,
@@ -2196,11 +2209,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2208,7 +2221,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def validate_aad_token_async_with_http_info(
+    async def validate_aad_token_async_with_http_info(
         self,
         tenant_id: StrictStr,
         analytics_api_configurations_v1_analytics_azure_ad: Optional[AnalyticsApiConfigurationsV1AnalyticsAzureAd] = None,
@@ -2271,11 +2284,11 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2283,7 +2296,7 @@ class ConfigurationsApi:
 
 
     @validate_call
-    def validate_aad_token_async_without_preload_content(
+    async def validate_aad_token_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         analytics_api_configurations_v1_analytics_azure_ad: Optional[AnalyticsApiConfigurationsV1AnalyticsAzureAd] = None,
@@ -2346,7 +2359,7 @@ class ConfigurationsApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2372,7 +2385,9 @@ class ConfigurationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

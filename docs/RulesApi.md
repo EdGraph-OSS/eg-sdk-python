@@ -40,7 +40,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RulesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a Rule.
-        api_instance.create_rule(tenant_id, validations_api_rules_v1_create_request=validations_api_rules_v1_create_request)
+        await api_instance.create_rule(tenant_id, validations_api_rules_v1_create_request=validations_api_rules_v1_create_request)
     except Exception as e:
         print("Exception when calling RulesApi->create_rule: %s\n" % e)
 ```
@@ -116,7 +116,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RulesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -124,7 +124,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a Rule.
-        api_instance.delete_rule(tenant_id, rule_id)
+        await api_instance.delete_rule(tenant_id, rule_id)
     except Exception as e:
         print("Exception when calling RulesApi->delete_rule: %s\n" % e)
 ```
@@ -194,7 +194,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RulesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -202,7 +202,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Rule by ID.
-        api_response = api_instance.get_rule_by_id(tenant_id, rule_id)
+        api_response = await api_instance.get_rule_by_id(tenant_id, rule_id)
         print("The response of RulesApi->get_rule_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -274,7 +274,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RulesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -285,7 +285,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Rules.
-        api_response = api_instance.get_rules(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_rules(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of RulesApi->get_rules:\n")
         pprint(api_response)
     except Exception as e:
@@ -359,7 +359,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RulesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -368,7 +368,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a Rule.
-        api_instance.update_rule(tenant_id, rule_id, validations_api_rules_v1_update_request=validations_api_rules_v1_update_request)
+        await api_instance.update_rule(tenant_id, rule_id, validations_api_rules_v1_update_request=validations_api_rules_v1_update_request)
     except Exception as e:
         print("Exception when calling RulesApi->update_rule: %s\n" % e)
 ```

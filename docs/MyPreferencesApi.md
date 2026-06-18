@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyPreferencesApi(api_client)
     page_index = 0 # int |  (optional) (default to 0)
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves the user's preferences.
-        api_response = api_instance.get_user_preferences(page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_user_preferences(page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of MyPreferencesApi->get_user_preferences:\n")
         pprint(api_response)
     except Exception as e:
@@ -121,14 +121,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyPreferencesApi(api_client)
     code = 'code_example' # str | 
 
     try:
         # Retrieves a user's preference by code.
-        api_response = api_instance.preference(code)
+        api_response = await api_instance.preference(code)
         print("The response of MyPreferencesApi->preference:\n")
         pprint(api_response)
     except Exception as e:
@@ -199,14 +199,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyPreferencesApi(api_client)
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest |  (optional)
 
     try:
         # Creates or update a user's preference.
-        api_response = api_instance.update_user_preference_async(ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request)
+        api_response = await api_instance.update_user_preference_async(ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request)
         print("The response of MyPreferencesApi->update_user_preference_async:\n")
         pprint(api_response)
     except Exception as e:

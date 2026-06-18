@@ -23,6 +23,7 @@ from edgraph_platform_client.models.validations_api_containers_v1_container_dto 
 from edgraph_platform_client.models.validations_api_reporting_periods_v1_validation_summary_sub_category import ValidationsApiReportingPeriodsV1ValidationSummarySubCategory
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ValidationsApiReportingPeriodsV1ValidationSummaryCategory(BaseModel):
     """
@@ -33,7 +34,8 @@ class ValidationsApiReportingPeriodsV1ValidationSummaryCategory(BaseModel):
     __properties: ClassVar[List[str]] = ["category", "subCategories"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,8 +47,7 @@ class ValidationsApiReportingPeriodsV1ValidationSummaryCategory(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

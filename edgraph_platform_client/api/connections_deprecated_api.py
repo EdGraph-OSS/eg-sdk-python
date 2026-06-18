@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_connection_created_response import EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionCreatedResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_connection_deleted_response import EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionDeletedResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_connection_profile_response import EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse
@@ -47,9 +47,9 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def create_state_reporting_connection_v1(
+    async def create_state_reporting_connection_v1(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -68,7 +68,7 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -110,11 +110,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -122,9 +122,9 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def create_state_reporting_connection_v1_with_http_info(
+    async def create_state_reporting_connection_v1_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -143,7 +143,7 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -185,11 +185,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -197,9 +197,9 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def create_state_reporting_connection_v1_without_preload_content(
+    async def create_state_reporting_connection_v1_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -218,7 +218,7 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -260,7 +260,7 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -286,7 +286,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -349,10 +351,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def delete_state_reporting_connection_v1(
+    async def delete_state_reporting_connection_v1(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -370,9 +372,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -412,11 +414,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -424,10 +426,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def delete_state_reporting_connection_v1_with_http_info(
+    async def delete_state_reporting_connection_v1_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -445,9 +447,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -487,11 +489,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -499,10 +501,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def delete_state_reporting_connection_v1_without_preload_content(
+    async def delete_state_reporting_connection_v1_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -520,9 +522,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -562,7 +564,7 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -588,7 +590,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -635,7 +639,7 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def find_state_reporting_connections_v1(
+    async def find_state_reporting_connections_v1(
         self,
         tenant_id: StrictStr,
         instance_type: Optional[StrictStr] = None,
@@ -701,11 +705,11 @@ class ConnectionsDEPRECATEDApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesStateReportingV1PagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -713,7 +717,7 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def find_state_reporting_connections_v1_with_http_info(
+    async def find_state_reporting_connections_v1_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_type: Optional[StrictStr] = None,
@@ -779,11 +783,11 @@ class ConnectionsDEPRECATEDApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesStateReportingV1PagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -791,7 +795,7 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def find_state_reporting_connections_v1_without_preload_content(
+    async def find_state_reporting_connections_v1_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_type: Optional[StrictStr] = None,
@@ -857,7 +861,7 @@ class ConnectionsDEPRECATEDApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesStateReportingV1PagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -884,7 +888,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -937,10 +943,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def get_state_reporting_connection_v1(
+    async def get_state_reporting_connection_v1(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -958,9 +964,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1000,11 +1006,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1012,10 +1018,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def get_state_reporting_connection_v1_with_http_info(
+    async def get_state_reporting_connection_v1_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1033,9 +1039,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1075,11 +1081,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1087,10 +1093,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def get_state_reporting_connection_v1_without_preload_content(
+    async def get_state_reporting_connection_v1_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1108,9 +1114,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1150,7 +1156,7 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1176,7 +1182,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1223,10 +1231,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def test_state_reporting_connection_by_id_v1(
+    async def test_state_reporting_connection_by_id_v1(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1244,9 +1252,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1286,11 +1294,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1298,10 +1306,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def test_state_reporting_connection_by_id_v1_with_http_info(
+    async def test_state_reporting_connection_by_id_v1_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1319,9 +1327,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1361,11 +1369,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1373,10 +1381,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def test_state_reporting_connection_by_id_v1_without_preload_content(
+    async def test_state_reporting_connection_by_id_v1_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1394,9 +1402,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1436,7 +1444,7 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1462,7 +1470,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1509,9 +1519,9 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def test_state_reporting_connection_by_type_v1(
+    async def test_state_reporting_connection_by_type_v1(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest] = None,
         _request_timeout: Union[
             None,
@@ -1530,7 +1540,7 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1572,11 +1582,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1584,9 +1594,9 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def test_state_reporting_connection_by_type_v1_with_http_info(
+    async def test_state_reporting_connection_by_type_v1_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest] = None,
         _request_timeout: Union[
             None,
@@ -1605,7 +1615,7 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1647,11 +1657,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1659,9 +1669,9 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def test_state_reporting_connection_by_type_v1_without_preload_content(
+    async def test_state_reporting_connection_by_type_v1_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest] = None,
         _request_timeout: Union[
             None,
@@ -1680,7 +1690,7 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1722,7 +1732,7 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1748,7 +1758,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1811,10 +1823,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def update_state_reporting_connection_v1(
+    async def update_state_reporting_connection_v1(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1833,9 +1845,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1878,11 +1890,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1890,10 +1902,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def update_state_reporting_connection_v1_with_http_info(
+    async def update_state_reporting_connection_v1_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1912,9 +1924,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1957,11 +1969,11 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1969,10 +1981,10 @@ class ConnectionsDEPRECATEDApi:
 
 
     @validate_call
-    def update_state_reporting_connection_v1_without_preload_content(
+    async def update_state_reporting_connection_v1_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: Optional[EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1991,9 +2003,9 @@ class ConnectionsDEPRECATEDApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: 
         :type ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request: EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2036,7 +2048,7 @@ class ConnectionsDEPRECATEDApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2063,7 +2075,9 @@ class ConnectionsDEPRECATEDApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

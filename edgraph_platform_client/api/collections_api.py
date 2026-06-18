@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -49,7 +48,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def create_collection(
+    async def create_collection(
         self,
         tenant_id: StrictStr,
         validations_api_containers_v1_create_collection_request: Optional[ValidationsApiContainersV1CreateCollectionRequest] = None,
@@ -111,11 +110,11 @@ class CollectionsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -123,7 +122,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def create_collection_with_http_info(
+    async def create_collection_with_http_info(
         self,
         tenant_id: StrictStr,
         validations_api_containers_v1_create_collection_request: Optional[ValidationsApiContainersV1CreateCollectionRequest] = None,
@@ -185,11 +184,11 @@ class CollectionsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -197,7 +196,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def create_collection_without_preload_content(
+    async def create_collection_without_preload_content(
         self,
         tenant_id: StrictStr,
         validations_api_containers_v1_create_collection_request: Optional[ValidationsApiContainersV1CreateCollectionRequest] = None,
@@ -259,7 +258,7 @@ class CollectionsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -285,7 +284,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -348,7 +349,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def create_container(
+    async def create_container(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -414,11 +415,11 @@ class CollectionsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -426,7 +427,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def create_container_with_http_info(
+    async def create_container_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -492,11 +493,11 @@ class CollectionsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -504,7 +505,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def create_container_without_preload_content(
+    async def create_container_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -570,7 +571,7 @@ class CollectionsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -597,7 +598,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -662,7 +665,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def delete_collection(
+    async def delete_collection(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -725,11 +728,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -737,7 +740,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def delete_collection_with_http_info(
+    async def delete_collection_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -800,11 +803,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -812,7 +815,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def delete_collection_without_preload_content(
+    async def delete_collection_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -875,7 +878,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -901,7 +904,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -948,7 +953,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def delete_container(
+    async def delete_container(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1015,11 +1020,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1027,7 +1032,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def delete_container_with_http_info(
+    async def delete_container_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1094,11 +1099,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1106,7 +1111,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def delete_container_without_preload_content(
+    async def delete_container_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1173,7 +1178,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1200,7 +1205,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1249,7 +1256,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collection_by_id(
+    async def get_collection_by_id(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1312,11 +1319,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1324,7 +1331,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collection_by_id_with_http_info(
+    async def get_collection_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1387,11 +1394,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1399,7 +1406,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collection_by_id_without_preload_content(
+    async def get_collection_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1462,7 +1469,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1488,7 +1495,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1535,7 +1544,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collection_json(
+    async def get_collection_json(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1598,11 +1607,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1610,7 +1619,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collection_json_with_http_info(
+    async def get_collection_json_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1673,11 +1682,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1685,7 +1694,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collection_json_without_preload_content(
+    async def get_collection_json_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -1748,7 +1757,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1774,7 +1783,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1821,7 +1832,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collections(
+    async def get_collections(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1895,11 +1906,11 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1907,7 +1918,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collections_with_http_info(
+    async def get_collections_with_http_info(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1981,11 +1992,11 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1993,7 +2004,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collections_without_preload_content(
+    async def get_collections_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -2067,7 +2078,7 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2096,7 +2107,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2157,7 +2170,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collections_tree(
+    async def get_collections_tree(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -2243,11 +2256,11 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedCategoryTreeResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2255,7 +2268,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collections_tree_with_http_info(
+    async def get_collections_tree_with_http_info(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -2341,11 +2354,11 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedCategoryTreeResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2353,7 +2366,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_collections_tree_without_preload_content(
+    async def get_collections_tree_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -2439,7 +2452,7 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedCategoryTreeResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2471,7 +2484,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2544,7 +2559,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_container_by_id(
+    async def get_container_by_id(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -2611,11 +2626,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2623,7 +2638,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_container_by_id_with_http_info(
+    async def get_container_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -2690,11 +2705,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2702,7 +2717,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_container_by_id_without_preload_content(
+    async def get_container_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -2769,7 +2784,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2796,7 +2811,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2845,7 +2862,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_containers(
+    async def get_containers(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -2923,11 +2940,11 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2935,7 +2952,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_containers_with_http_info(
+    async def get_containers_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3013,11 +3030,11 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3025,7 +3042,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def get_containers_without_preload_content(
+    async def get_containers_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3103,7 +3120,7 @@ class CollectionsApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3133,7 +3150,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3196,7 +3215,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def update_collection(
+    async def update_collection(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3263,11 +3282,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3275,7 +3294,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def update_collection_with_http_info(
+    async def update_collection_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3342,11 +3361,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3354,7 +3373,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def update_collection_without_preload_content(
+    async def update_collection_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3421,7 +3440,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3448,7 +3467,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3513,7 +3534,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def update_container(
+    async def update_container(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3584,11 +3605,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3596,7 +3617,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def update_container_with_http_info(
+    async def update_container_with_http_info(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3667,11 +3688,11 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3679,7 +3700,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def update_container_without_preload_content(
+    async def update_container_without_preload_content(
         self,
         tenant_id: StrictStr,
         collection_id: StrictStr,
@@ -3750,7 +3771,7 @@ class CollectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3778,7 +3799,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3845,7 +3868,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def upload_collection_json(
+    async def upload_collection_json(
         self,
         tenant_id: StrictStr,
         validations_api_containers_v1_upload_collection_request: Optional[ValidationsApiContainersV1UploadCollectionRequest] = None,
@@ -3907,11 +3930,11 @@ class CollectionsApi:
             '201': "ValidationsApiContainersV1CollectionUploadedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3919,7 +3942,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def upload_collection_json_with_http_info(
+    async def upload_collection_json_with_http_info(
         self,
         tenant_id: StrictStr,
         validations_api_containers_v1_upload_collection_request: Optional[ValidationsApiContainersV1UploadCollectionRequest] = None,
@@ -3981,11 +4004,11 @@ class CollectionsApi:
             '201': "ValidationsApiContainersV1CollectionUploadedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3993,7 +4016,7 @@ class CollectionsApi:
 
 
     @validate_call
-    def upload_collection_json_without_preload_content(
+    async def upload_collection_json_without_preload_content(
         self,
         tenant_id: StrictStr,
         validations_api_containers_v1_upload_collection_request: Optional[ValidationsApiContainersV1UploadCollectionRequest] = None,
@@ -4055,7 +4078,7 @@ class CollectionsApi:
             '201': "ValidationsApiContainersV1CollectionUploadedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4081,7 +4104,9 @@ class CollectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

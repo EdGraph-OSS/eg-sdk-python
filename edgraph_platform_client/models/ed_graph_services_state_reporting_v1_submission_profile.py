@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_pipeline_run import EdGraphServicesStateReportingV1PipelineRun
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphServicesStateReportingV1SubmissionProfile(BaseModel):
     """
@@ -41,7 +42,8 @@ class EdGraphServicesStateReportingV1SubmissionProfile(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "createdAt", "createdBy", "updatedAt", "updatedBy", "tenantId", "reportingPeriodId", "pipelineRun", "status", "pipelineRunId", "pipelineRunDetails"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +55,7 @@ class EdGraphServicesStateReportingV1SubmissionProfile(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

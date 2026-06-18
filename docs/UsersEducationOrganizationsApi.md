@@ -40,16 +40,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersEducationOrganizationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest |  (optional)
 
     try:
         # Adds an Education Organization to a user.
-        api_response = api_instance.add_user_education_organization(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request)
+        api_response = await api_instance.add_user_education_organization(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request)
         print("The response of UsersEducationOrganizationsApi->add_user_education_organization:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,8 +63,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest.md)|  | [optional] 
 
 ### Return type
@@ -121,15 +121,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersEducationOrganizationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Gets the Education Organizations of a user.
-        api_response = api_instance.get_user_education_organizations(tenant_id, user_id)
+        api_response = await api_instance.get_user_education_organizations(tenant_id, user_id)
         print("The response of UsersEducationOrganizationsApi->get_user_education_organizations:\n")
         pprint(api_response)
     except Exception as e:
@@ -143,8 +143,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
 
 ### Return type
 
@@ -201,16 +201,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersEducationOrganizationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     education_organization_id = 56 # int | 
 
     try:
         # Removes an Education Organization from a user.
-        api_response = api_instance.remove_user_education_organization(tenant_id, user_id, education_organization_id)
+        api_response = await api_instance.remove_user_education_organization(tenant_id, user_id, education_organization_id)
         print("The response of UsersEducationOrganizationsApi->remove_user_education_organization:\n")
         pprint(api_response)
     except Exception as e:
@@ -224,8 +224,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **education_organization_id** | **int**|  | 
 
 ### Return type
@@ -284,17 +284,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersEducationOrganizationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     education_organization_id = 56 # int | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest |  (optional)
 
     try:
         # Updates the Education Organization of a user.
-        api_response = api_instance.update_user_education_organization(tenant_id, user_id, education_organization_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request)
+        api_response = await api_instance.update_user_education_organization(tenant_id, user_id, education_organization_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request)
         print("The response of UsersEducationOrganizationsApi->update_user_education_organization:\n")
         pprint(api_response)
     except Exception as e:
@@ -308,8 +308,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **education_organization_id** | **int**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest.md)|  | [optional] 
 

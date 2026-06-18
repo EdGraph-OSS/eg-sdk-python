@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**sub_categories** | **List[str]** |  | [optional] 
+**id** | **UUID** |  | [optional] 
+**sub_categories** | **List[UUID]** |  | [optional] 
 
 ## Example
 

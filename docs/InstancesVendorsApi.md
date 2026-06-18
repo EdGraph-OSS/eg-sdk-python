@@ -42,7 +42,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesVendorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -51,7 +51,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new Vendor.
-        api_response = api_instance.create_vendor_async(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_create_vendor_request=edfi_admin_api_edfi_admin_v1_create_vendor_request)
+        api_response = await api_instance.create_vendor_async(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_create_vendor_request=edfi_admin_api_edfi_admin_v1_create_vendor_request)
         print("The response of InstancesVendorsApi->create_vendor_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -123,7 +123,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesVendorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -132,7 +132,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a Vendor.
-        api_instance.delete_vendor_async(tenant_id, instance_id, vendor_id)
+        await api_instance.delete_vendor_async(tenant_id, instance_id, vendor_id)
     except Exception as e:
         print("Exception when calling InstancesVendorsApi->delete_vendor_async: %s\n" % e)
 ```
@@ -203,7 +203,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesVendorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -212,7 +212,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Vendor by ID.
-        api_response = api_instance.get_vendor_by_id_async(tenant_id, instance_id, vendor_id)
+        api_response = await api_instance.get_vendor_by_id_async(tenant_id, instance_id, vendor_id)
         print("The response of InstancesVendorsApi->get_vendor_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -285,7 +285,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesVendorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -297,7 +297,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Vendors.
-        api_response = api_instance.get_vendors_async(tenant_id, instance_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_vendors_async(tenant_id, instance_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of InstancesVendorsApi->get_vendors_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -373,7 +373,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesVendorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -383,7 +383,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Copies a Vendor from one instance to another/other instance(s).
-        api_instance.sync_vendor_async(tenant_id, instance_id, vendor_id, edfi_admin_api_edfi_admin_v1_sync_vendor_request=edfi_admin_api_edfi_admin_v1_sync_vendor_request)
+        await api_instance.sync_vendor_async(tenant_id, instance_id, vendor_id, edfi_admin_api_edfi_admin_v1_sync_vendor_request=edfi_admin_api_edfi_admin_v1_sync_vendor_request)
     except Exception as e:
         print("Exception when calling InstancesVendorsApi->sync_vendor_async: %s\n" % e)
 ```
@@ -456,7 +456,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesVendorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -466,7 +466,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a Vendor.
-        api_response = api_instance.update_vendor_async(tenant_id, instance_id, vendor_id, edfi_admin_api_edfi_admin_v1_update_vendor_request=edfi_admin_api_edfi_admin_v1_update_vendor_request)
+        api_response = await api_instance.update_vendor_async(tenant_id, instance_id, vendor_id, edfi_admin_api_edfi_admin_v1_update_vendor_request=edfi_admin_api_edfi_admin_v1_update_vendor_request)
         print("The response of InstancesVendorsApi->update_vendor_async:\n")
         pprint(api_response)
     except Exception as e:

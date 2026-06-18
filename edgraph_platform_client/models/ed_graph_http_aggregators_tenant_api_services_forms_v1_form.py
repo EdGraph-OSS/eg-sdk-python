@@ -19,15 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(BaseModel):
     """
     EdGraphHttpAggregatorsTenantApiServicesFormsV1Form
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    id: Optional[UUID] = None
+    tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     source: Optional[StrictStr] = None
@@ -46,7 +48,8 @@ class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "tenantId", "name", "description", "source", "version", "anonymous", "status", "submissionCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "image"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +61,7 @@ class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

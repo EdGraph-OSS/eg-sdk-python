@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -41,7 +40,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def get_onboarding_applications_async(
+    async def get_onboarding_applications_async(
         self,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
@@ -107,11 +106,11 @@ class RegistrationsApi:
             '200': "ApplicationApiApplicationV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -119,7 +118,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def get_onboarding_applications_async_with_http_info(
+    async def get_onboarding_applications_async_with_http_info(
         self,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
@@ -185,11 +184,11 @@ class RegistrationsApi:
             '200': "ApplicationApiApplicationV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -197,7 +196,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def get_onboarding_applications_async_without_preload_content(
+    async def get_onboarding_applications_async_without_preload_content(
         self,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
@@ -263,7 +262,7 @@ class RegistrationsApi:
             '200': "ApplicationApiApplicationV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -290,7 +289,9 @@ class RegistrationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -345,7 +346,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def get_registration_approval_status_async(
+    async def get_registration_approval_status_async(
         self,
         registration_id: StrictStr,
         _request_timeout: Union[
@@ -403,11 +404,11 @@ class RegistrationsApi:
             '200': "RegistrationApiRegistrationV2ApprovalStatus",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -415,7 +416,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def get_registration_approval_status_async_with_http_info(
+    async def get_registration_approval_status_async_with_http_info(
         self,
         registration_id: StrictStr,
         _request_timeout: Union[
@@ -473,11 +474,11 @@ class RegistrationsApi:
             '200': "RegistrationApiRegistrationV2ApprovalStatus",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -485,7 +486,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def get_registration_approval_status_async_without_preload_content(
+    async def get_registration_approval_status_async_without_preload_content(
         self,
         registration_id: StrictStr,
         _request_timeout: Union[
@@ -543,7 +544,7 @@ class RegistrationsApi:
             '200': "RegistrationApiRegistrationV2ApprovalStatus",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -568,7 +569,9 @@ class RegistrationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -613,7 +616,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def submit_tenant_registration_async(
+    async def submit_tenant_registration_async(
         self,
         registration_api_registration_v2_submit_tenant_registration_request: Optional[RegistrationApiRegistrationV2SubmitTenantRegistrationRequest] = None,
         _request_timeout: Union[
@@ -671,11 +674,11 @@ class RegistrationsApi:
             '200': "str",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -683,7 +686,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def submit_tenant_registration_async_with_http_info(
+    async def submit_tenant_registration_async_with_http_info(
         self,
         registration_api_registration_v2_submit_tenant_registration_request: Optional[RegistrationApiRegistrationV2SubmitTenantRegistrationRequest] = None,
         _request_timeout: Union[
@@ -741,11 +744,11 @@ class RegistrationsApi:
             '200': "str",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -753,7 +756,7 @@ class RegistrationsApi:
 
 
     @validate_call
-    def submit_tenant_registration_async_without_preload_content(
+    async def submit_tenant_registration_async_without_preload_content(
         self,
         registration_api_registration_v2_submit_tenant_registration_request: Optional[RegistrationApiRegistrationV2SubmitTenantRegistrationRequest] = None,
         _request_timeout: Union[
@@ -811,7 +814,7 @@ class RegistrationsApi:
             '200': "str",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -836,7 +839,9 @@ class RegistrationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

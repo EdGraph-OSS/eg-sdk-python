@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstanceOnboardingStepsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -47,7 +47,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Onboarding Step.
-        api_response = api_instance.create_instance_onboarding_step_async(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_create_onboarding_step_request=edfi_admin_api_edfi_admin_v1_create_onboarding_step_request)
+        api_response = await api_instance.create_instance_onboarding_step_async(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_create_onboarding_step_request=edfi_admin_api_edfi_admin_v1_create_onboarding_step_request)
         print("The response of InstanceOnboardingStepsApi->create_instance_onboarding_step_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -120,7 +120,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstanceOnboardingStepsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -130,7 +130,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates the status of an Onboarding Step.
-        api_response = api_instance.update_instance_onboarding_step_async(tenant_id, instance_id, step_number, edfi_admin_api_edfi_admin_v1_update_onboarding_step_request=edfi_admin_api_edfi_admin_v1_update_onboarding_step_request)
+        api_response = await api_instance.update_instance_onboarding_step_async(tenant_id, instance_id, step_number, edfi_admin_api_edfi_admin_v1_update_onboarding_step_request=edfi_admin_api_edfi_admin_v1_update_onboarding_step_request)
         print("The response of InstanceOnboardingStepsApi->update_instance_onboarding_step_async:\n")
         pprint(api_response)
     except Exception as e:

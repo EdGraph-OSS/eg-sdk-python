@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.identity_api_staff_classification_v1_create_staff_classification_request import IdentityApiStaffClassificationV1CreateStaffClassificationRequest
 from edgraph_platform_client.models.identity_api_staff_classification_v1_get_staff_classifications_namespaces_response import IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse
 from edgraph_platform_client.models.identity_api_staff_classification_v1_get_staff_classifications_response import IdentityApiStaffClassificationV1GetStaffClassificationsResponse
@@ -46,9 +46,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def create_staff_classification(
+    async def create_staff_classification(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         identity_api_staff_classification_v1_create_staff_classification_request: Optional[IdentityApiStaffClassificationV1CreateStaffClassificationRequest] = None,
         _request_timeout: Union[
             None,
@@ -67,7 +67,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param identity_api_staff_classification_v1_create_staff_classification_request: 
         :type identity_api_staff_classification_v1_create_staff_classification_request: IdentityApiStaffClassificationV1CreateStaffClassificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -108,11 +108,11 @@ class StaffClassificationsApi:
             '201': "IdentityApiStaffClassificationV1StaffClassificationCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -120,9 +120,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def create_staff_classification_with_http_info(
+    async def create_staff_classification_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         identity_api_staff_classification_v1_create_staff_classification_request: Optional[IdentityApiStaffClassificationV1CreateStaffClassificationRequest] = None,
         _request_timeout: Union[
             None,
@@ -141,7 +141,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param identity_api_staff_classification_v1_create_staff_classification_request: 
         :type identity_api_staff_classification_v1_create_staff_classification_request: IdentityApiStaffClassificationV1CreateStaffClassificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -182,11 +182,11 @@ class StaffClassificationsApi:
             '201': "IdentityApiStaffClassificationV1StaffClassificationCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -194,9 +194,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def create_staff_classification_without_preload_content(
+    async def create_staff_classification_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         identity_api_staff_classification_v1_create_staff_classification_request: Optional[IdentityApiStaffClassificationV1CreateStaffClassificationRequest] = None,
         _request_timeout: Union[
             None,
@@ -215,7 +215,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param identity_api_staff_classification_v1_create_staff_classification_request: 
         :type identity_api_staff_classification_v1_create_staff_classification_request: IdentityApiStaffClassificationV1CreateStaffClassificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -256,7 +256,7 @@ class StaffClassificationsApi:
             '201': "IdentityApiStaffClassificationV1StaffClassificationCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -282,7 +282,9 @@ class StaffClassificationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -345,10 +347,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def delete_staff_classification(
+    async def delete_staff_classification(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -366,9 +368,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -407,11 +409,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1StaffClassificationDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -419,10 +421,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def delete_staff_classification_with_http_info(
+    async def delete_staff_classification_with_http_info(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -440,9 +442,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -481,11 +483,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1StaffClassificationDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -493,10 +495,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def delete_staff_classification_without_preload_content(
+    async def delete_staff_classification_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -514,9 +516,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -555,7 +557,7 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1StaffClassificationDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -581,7 +583,9 @@ class StaffClassificationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -628,10 +632,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classification_by_id(
+    async def get_staff_classification_by_id(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -649,9 +653,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -691,11 +695,11 @@ class StaffClassificationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -703,10 +707,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classification_by_id_with_http_info(
+    async def get_staff_classification_by_id_with_http_info(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -724,9 +728,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -766,11 +770,11 @@ class StaffClassificationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -778,10 +782,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classification_by_id_without_preload_content(
+    async def get_staff_classification_by_id_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -799,9 +803,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -841,7 +845,7 @@ class StaffClassificationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -867,7 +871,9 @@ class StaffClassificationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -914,9 +920,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classifications(
+    async def get_staff_classifications(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -938,7 +944,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -988,11 +994,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1000,9 +1006,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classifications_with_http_info(
+    async def get_staff_classifications_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1024,7 +1030,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1074,11 +1080,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1086,9 +1092,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classifications_without_preload_content(
+    async def get_staff_classifications_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1110,7 +1116,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1160,7 +1166,7 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1189,7 +1195,9 @@ class StaffClassificationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1250,9 +1258,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classifications_namespaces(
+    async def get_staff_classifications_namespaces(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -1273,7 +1281,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1320,11 +1328,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1332,9 +1340,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classifications_namespaces_with_http_info(
+    async def get_staff_classifications_namespaces_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -1355,7 +1363,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1402,11 +1410,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1414,9 +1422,9 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def get_staff_classifications_namespaces_without_preload_content(
+    async def get_staff_classifications_namespaces_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -1437,7 +1445,7 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1484,7 +1492,7 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1512,7 +1520,9 @@ class StaffClassificationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1569,10 +1579,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def update_staff_classification(
+    async def update_staff_classification(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         identity_api_staff_classification_v1_update_staff_classification_request: Optional[IdentityApiStaffClassificationV1UpdateStaffClassificationRequest] = None,
         _request_timeout: Union[
             None,
@@ -1591,9 +1601,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param identity_api_staff_classification_v1_update_staff_classification_request: 
         :type identity_api_staff_classification_v1_update_staff_classification_request: IdentityApiStaffClassificationV1UpdateStaffClassificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1635,11 +1645,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1StaffClassificationUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1647,10 +1657,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def update_staff_classification_with_http_info(
+    async def update_staff_classification_with_http_info(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         identity_api_staff_classification_v1_update_staff_classification_request: Optional[IdentityApiStaffClassificationV1UpdateStaffClassificationRequest] = None,
         _request_timeout: Union[
             None,
@@ -1669,9 +1679,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param identity_api_staff_classification_v1_update_staff_classification_request: 
         :type identity_api_staff_classification_v1_update_staff_classification_request: IdentityApiStaffClassificationV1UpdateStaffClassificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1713,11 +1723,11 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1StaffClassificationUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1725,10 +1735,10 @@ class StaffClassificationsApi:
 
 
     @validate_call
-    def update_staff_classification_without_preload_content(
+    async def update_staff_classification_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        staff_classification_id: StrictStr,
+        tenant_id: UUID,
+        staff_classification_id: UUID,
         identity_api_staff_classification_v1_update_staff_classification_request: Optional[IdentityApiStaffClassificationV1UpdateStaffClassificationRequest] = None,
         _request_timeout: Union[
             None,
@@ -1747,9 +1757,9 @@ class StaffClassificationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param staff_classification_id:  (required)
-        :type staff_classification_id: str
+        :type staff_classification_id: UUID
         :param identity_api_staff_classification_v1_update_staff_classification_request: 
         :type identity_api_staff_classification_v1_update_staff_classification_request: IdentityApiStaffClassificationV1UpdateStaffClassificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1791,7 +1801,7 @@ class StaffClassificationsApi:
             '200': "IdentityApiStaffClassificationV1StaffClassificationUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1818,7 +1828,9 @@ class StaffClassificationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

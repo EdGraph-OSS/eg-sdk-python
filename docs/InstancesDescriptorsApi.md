@@ -42,7 +42,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesDescriptorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -52,7 +52,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a Descriptor.
-        api_response = api_instance.create_descriptor_async(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_descriptor_type=edfi_admin_api_edfi_admin_v1_descriptor_type)
+        api_response = await api_instance.create_descriptor_async(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_descriptor_type=edfi_admin_api_edfi_admin_v1_descriptor_type)
         print("The response of InstancesDescriptorsApi->create_descriptor_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -125,7 +125,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesDescriptorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -135,7 +135,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a Descriptor.
-        api_instance.delete_descriptor_async(tenant_id, instance_id, year, descriptor_id)
+        await api_instance.delete_descriptor_async(tenant_id, instance_id, year, descriptor_id)
     except Exception as e:
         print("Exception when calling InstancesDescriptorsApi->delete_descriptor_async: %s\n" % e)
 ```
@@ -207,7 +207,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesDescriptorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -217,7 +217,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Descriptor by ID.
-        api_response = api_instance.get_descriptor_by_id_async(tenant_id, instance_id, year, descriptor_id)
+        api_response = await api_instance.get_descriptor_by_id_async(tenant_id, instance_id, year, descriptor_id)
         print("The response of InstancesDescriptorsApi->get_descriptor_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -291,7 +291,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesDescriptorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -302,7 +302,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Descriptor Namespaces.
-        api_response = api_instance.get_descriptor_namespaces_async(tenant_id, instance_id, year, page_size=page_size, page_index=page_index)
+        api_response = await api_instance.get_descriptor_namespaces_async(tenant_id, instance_id, year, page_size=page_size, page_index=page_index)
         print("The response of InstancesDescriptorsApi->get_descriptor_namespaces_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -377,7 +377,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesDescriptorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -390,7 +390,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Descriptors.
-        api_response = api_instance.get_descriptors_async(tenant_id, instance_id, year, page_size=page_size, page_index=page_index, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_descriptors_async(tenant_id, instance_id, year, page_size=page_size, page_index=page_index, filter=filter, order_by=order_by)
         print("The response of InstancesDescriptorsApi->get_descriptors_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -468,7 +468,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesDescriptorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -479,7 +479,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a Descriptor.
-        api_response = api_instance.update_descriptor_async(tenant_id, instance_id, year, descriptor_id, edfi_admin_api_edfi_admin_v1_descriptor_type=edfi_admin_api_edfi_admin_v1_descriptor_type)
+        api_response = await api_instance.update_descriptor_async(tenant_id, instance_id, year, descriptor_id, edfi_admin_api_edfi_admin_v1_descriptor_type=edfi_admin_api_edfi_admin_v1_descriptor_type)
         print("The response of InstancesDescriptorsApi->update_descriptor_async:\n")
         pprint(api_response)
     except Exception as e:

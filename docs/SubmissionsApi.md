@@ -42,16 +42,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubmissionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_submissions_v1_create_submission_request = edgraph_platform_client.FormApiSubmissionsV1CreateSubmissionRequest() # FormApiSubmissionsV1CreateSubmissionRequest |  (optional)
 
     try:
         # Creates a new Submission for a given question
-        api_response = api_instance.create_submission(tenant_id, form_id, form_api_submissions_v1_create_submission_request=form_api_submissions_v1_create_submission_request)
+        api_response = await api_instance.create_submission(tenant_id, form_id, form_api_submissions_v1_create_submission_request=form_api_submissions_v1_create_submission_request)
         print("The response of SubmissionsApi->create_submission:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,8 +65,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **form_api_submissions_v1_create_submission_request** | [**FormApiSubmissionsV1CreateSubmissionRequest**](FormApiSubmissionsV1CreateSubmissionRequest.md)|  | [optional] 
 
 ### Return type
@@ -123,16 +123,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubmissionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    submission_id = 'submission_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    submission_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a Submission.
-        api_response = api_instance.delete_submission(tenant_id, form_id, submission_id)
+        api_response = await api_instance.delete_submission(tenant_id, form_id, submission_id)
         print("The response of SubmissionsApi->delete_submission:\n")
         pprint(api_response)
     except Exception as e:
@@ -146,9 +146,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **submission_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **submission_id** | **UUID**|  | 
 
 ### Return type
 
@@ -206,16 +206,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubmissionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     type = edgraph_platform_client.FormApiSubmissionsV1ExportType() # FormApiSubmissionsV1ExportType |  (optional)
 
     try:
         # Exports Submission data for a Form for a given tenant. (With JSON and CSV support)
-        api_response = api_instance.export_submissions(tenant_id, form_id, type=type)
+        api_response = await api_instance.export_submissions(tenant_id, form_id, type=type)
         print("The response of SubmissionsApi->export_submissions:\n")
         pprint(api_response)
     except Exception as e:
@@ -229,8 +229,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **type** | [**FormApiSubmissionsV1ExportType**](.md)|  | [optional] 
 
 ### Return type
@@ -288,16 +288,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubmissionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    submission_id = 'submission_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    submission_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get Submission.
-        api_response = api_instance.get_submission(tenant_id, form_id, submission_id)
+        api_response = await api_instance.get_submission(tenant_id, form_id, submission_id)
         print("The response of SubmissionsApi->get_submission:\n")
         pprint(api_response)
     except Exception as e:
@@ -311,9 +311,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **submission_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **submission_id** | **UUID**|  | 
 
 ### Return type
 
@@ -370,11 +370,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubmissionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -382,7 +382,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search Submissions
-        api_response = api_instance.search_submissions(tenant_id, form_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_submissions(tenant_id, form_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of SubmissionsApi->search_submissions:\n")
         pprint(api_response)
     except Exception as e:
@@ -396,8 +396,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -458,17 +458,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubmissionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    submission_id = 'submission_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    submission_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_submissions_v1_update_submission_request = edgraph_platform_client.FormApiSubmissionsV1UpdateSubmissionRequest() # FormApiSubmissionsV1UpdateSubmissionRequest |  (optional)
 
     try:
         # Updates a Submission.
-        api_response = api_instance.update_submission(tenant_id, form_id, submission_id, form_api_submissions_v1_update_submission_request=form_api_submissions_v1_update_submission_request)
+        api_response = await api_instance.update_submission(tenant_id, form_id, submission_id, form_api_submissions_v1_update_submission_request=form_api_submissions_v1_update_submission_request)
         print("The response of SubmissionsApi->update_submission:\n")
         pprint(api_response)
     except Exception as e:
@@ -482,9 +482,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **submission_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **submission_id** | **UUID**|  | 
  **form_api_submissions_v1_update_submission_request** | [**FormApiSubmissionsV1UpdateSubmissionRequest**](FormApiSubmissionsV1UpdateSubmissionRequest.md)|  | [optional] 
 
 ### Return type

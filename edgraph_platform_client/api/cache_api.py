@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -36,7 +35,7 @@ class CacheApi:
 
 
     @validate_call
-    def refresh_user_profile_cache(
+    async def refresh_user_profile_cache(
         self,
         _request_timeout: Union[
             None,
@@ -90,11 +89,11 @@ class CacheApi:
             '200': None,
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -102,7 +101,7 @@ class CacheApi:
 
 
     @validate_call
-    def refresh_user_profile_cache_with_http_info(
+    async def refresh_user_profile_cache_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -156,11 +155,11 @@ class CacheApi:
             '200': None,
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -168,7 +167,7 @@ class CacheApi:
 
 
     @validate_call
-    def refresh_user_profile_cache_without_preload_content(
+    async def refresh_user_profile_cache_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -222,7 +221,7 @@ class CacheApi:
             '200': None,
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -246,7 +245,9 @@ class CacheApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

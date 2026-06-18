@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ClientsSecretsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new secret for an OpenId client
-        api_response = api_instance.add_client_secret(tenant_id, instance_id, client_id, ims_admin_api_v1_clients_add_client_secret_request=ims_admin_api_v1_clients_add_client_secret_request)
+        api_response = await api_instance.add_client_secret(tenant_id, instance_id, client_id, ims_admin_api_v1_clients_add_client_secret_request=ims_admin_api_v1_clients_add_client_secret_request)
         print("The response of ClientsSecretsApi->add_client_secret:\n")
         pprint(api_response)
     except Exception as e:
@@ -122,7 +122,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ClientsSecretsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -132,7 +132,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Regenerate Client Secret
-        api_response = api_instance.regenerate_one_roster_api_client_secret_async(tenant_id, instance_id, client_id, ims_admin_api_v1_clients_regenerate_client_secret_request=ims_admin_api_v1_clients_regenerate_client_secret_request)
+        api_response = await api_instance.regenerate_one_roster_api_client_secret_async(tenant_id, instance_id, client_id, ims_admin_api_v1_clients_regenerate_client_secret_request=ims_admin_api_v1_clients_regenerate_client_secret_request)
         print("The response of ClientsSecretsApi->regenerate_one_roster_api_client_secret_async:\n")
         pprint(api_response)
     except Exception as e:

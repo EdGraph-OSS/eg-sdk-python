@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | [optional] 
 **display_name** | **str** |  | [optional] 
 **tenant_id** | **str** |  | [optional] 
-**environment_id** | **str** |  | [optional] 
+**environment_id** | **UUID** |  | [optional] 
 **server** | **str** |  | [optional] 
 **username** | **str** |  | [optional] 
 **database** | **str** |  | [optional] 

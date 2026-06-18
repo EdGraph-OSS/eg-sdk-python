@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -39,7 +38,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_districts(
+    async def get_tenant_data_sync_connection_ed_fi_districts(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -101,11 +100,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -113,7 +112,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_districts_with_http_info(
+    async def get_tenant_data_sync_connection_ed_fi_districts_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -175,11 +174,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -187,7 +186,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_districts_without_preload_content(
+    async def get_tenant_data_sync_connection_ed_fi_districts_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -249,7 +248,7 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -275,7 +274,9 @@ class ConnectionsEdFiApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -322,7 +323,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors(
+    async def get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -384,11 +385,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -396,7 +397,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors_with_http_info(
+    async def get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -458,11 +459,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -470,7 +471,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors_without_preload_content(
+    async def get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -532,7 +533,7 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -558,7 +559,9 @@ class ConnectionsEdFiApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -605,7 +608,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_school_years(
+    async def get_tenant_data_sync_connection_ed_fi_school_years(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -667,11 +670,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -679,7 +682,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_school_years_with_http_info(
+    async def get_tenant_data_sync_connection_ed_fi_school_years_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -741,11 +744,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -753,7 +756,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_school_years_without_preload_content(
+    async def get_tenant_data_sync_connection_ed_fi_school_years_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -815,7 +818,7 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -841,7 +844,9 @@ class ConnectionsEdFiApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -888,7 +893,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_staff_id_descriptors(
+    async def get_tenant_data_sync_connection_ed_fi_staff_id_descriptors(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -950,11 +955,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -962,7 +967,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_staff_id_descriptors_with_http_info(
+    async def get_tenant_data_sync_connection_ed_fi_staff_id_descriptors_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1024,11 +1029,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1036,7 +1041,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_staff_id_descriptors_without_preload_content(
+    async def get_tenant_data_sync_connection_ed_fi_staff_id_descriptors_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1098,7 +1103,7 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1124,7 +1129,9 @@ class ConnectionsEdFiApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1171,7 +1178,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_student_id_descriptors(
+    async def get_tenant_data_sync_connection_ed_fi_student_id_descriptors(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1233,11 +1240,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1245,7 +1252,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_student_id_descriptors_with_http_info(
+    async def get_tenant_data_sync_connection_ed_fi_student_id_descriptors_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1307,11 +1314,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1319,7 +1326,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_student_id_descriptors_without_preload_content(
+    async def get_tenant_data_sync_connection_ed_fi_student_id_descriptors_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1381,7 +1388,7 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1407,7 +1414,9 @@ class ConnectionsEdFiApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1454,7 +1463,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_term_descriptors(
+    async def get_tenant_data_sync_connection_ed_fi_term_descriptors(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1516,11 +1525,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1528,7 +1537,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_term_descriptors_with_http_info(
+    async def get_tenant_data_sync_connection_ed_fi_term_descriptors_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1590,11 +1599,11 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1602,7 +1611,7 @@ class ConnectionsEdFiApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_ed_fi_term_descriptors_without_preload_content(
+    async def get_tenant_data_sync_connection_ed_fi_term_descriptors_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1664,7 +1673,7 @@ class ConnectionsEdFiApi:
             '200': "List[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1690,7 +1699,9 @@ class ConnectionsEdFiApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

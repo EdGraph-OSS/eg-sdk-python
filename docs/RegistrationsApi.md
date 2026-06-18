@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RegistrationsApi(api_client)
     page_size = 10 # int |  (optional) (default to 10)
@@ -47,7 +47,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Gets a list of applications available for registration/onboarding
-        api_response = api_instance.get_onboarding_applications_async(page_size=page_size, page_index=page_index, order_by=order_by)
+        api_response = await api_instance.get_onboarding_applications_async(page_size=page_size, page_index=page_index, order_by=order_by)
         print("The response of RegistrationsApi->get_onboarding_applications_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -119,14 +119,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RegistrationsApi(api_client)
     registration_id = 'registration_id_example' # str | 
 
     try:
         # Gets the approval status of a registration
-        api_response = api_instance.get_registration_approval_status_async(registration_id)
+        api_response = await api_instance.get_registration_approval_status_async(registration_id)
         print("The response of RegistrationsApi->get_registration_approval_status_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -196,14 +196,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RegistrationsApi(api_client)
     registration_api_registration_v2_submit_tenant_registration_request = edgraph_platform_client.RegistrationApiRegistrationV2SubmitTenantRegistrationRequest() # RegistrationApiRegistrationV2SubmitTenantRegistrationRequest |  (optional)
 
     try:
         # Submits a tenant's registration request
-        api_response = api_instance.submit_tenant_registration_async(registration_api_registration_v2_submit_tenant_registration_request=registration_api_registration_v2_submit_tenant_registration_request)
+        api_response = await api_instance.submit_tenant_registration_async(registration_api_registration_v2_submit_tenant_registration_request=registration_api_registration_v2_submit_tenant_registration_request)
         print("The response of RegistrationsApi->submit_tenant_registration_async:\n")
         pprint(api_response)
     except Exception as e:

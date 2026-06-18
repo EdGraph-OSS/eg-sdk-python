@@ -36,7 +36,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobExecutionLogsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of DataSync Job Execution Logs
-        api_response = api_instance.get_all_tenant_data_sync_job_execution_logs(tenant_id, job_id, job_execution_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter, search=search)
+        api_response = await api_instance.get_all_tenant_data_sync_job_execution_logs(tenant_id, job_id, job_execution_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter, search=search)
         print("The response of JobExecutionLogsApi->get_all_tenant_data_sync_job_execution_logs:\n")
         pprint(api_response)
     except Exception as e:

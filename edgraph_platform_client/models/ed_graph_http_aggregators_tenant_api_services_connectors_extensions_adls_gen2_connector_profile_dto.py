@@ -23,6 +23,7 @@ from edgraph_platform_client.models.analytics_api_adls_gen2_connectors_v1_authen
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_connectors_extensions_adls_gen2_connector_profile_pipeline_dto import EdGraphHttpAggregatorsTenantApiServicesConnectorsExtensionsADLSGen2ConnectorProfilePipelineDTO
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiServicesConnectorsExtensionsADLSGen2ConnectorProfileDTO(BaseModel):
     """
@@ -46,7 +47,8 @@ class EdGraphHttpAggregatorsTenantApiServicesConnectorsExtensionsADLSGen2Connect
     __properties: ClassVar[List[str]] = ["id", "tenantId", "connectorType", "connectorName", "workspaceName", "authenticationType", "pipeline", "metadata", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "isDeleted", "deletedBy", "deletedDateTime"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +60,7 @@ class EdGraphHttpAggregatorsTenantApiServicesConnectorsExtensionsADLSGen2Connect
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

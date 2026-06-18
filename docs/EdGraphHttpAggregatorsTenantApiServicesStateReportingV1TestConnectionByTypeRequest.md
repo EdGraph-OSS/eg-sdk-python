@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 
 **tenant_id** | **str** |  | [optional] 
-**environment_id** | **str** |  | [optional] 
+**environment_id** | **UUID** |  | [optional] 
 **server** | **str** |  | [optional] 
 **username** | **str** |  | [optional] 
 **database** | **str** |  | [optional] 

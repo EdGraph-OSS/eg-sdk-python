@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.tenant_api_tenant_v1_get_app_settings_response import TenantApiTenantV1GetAppSettingsResponse
 from edgraph_platform_client.models.tenant_api_tenant_v1_set_app_settings_request import TenantApiTenantV1SetAppSettingsRequest
 from edgraph_platform_client.models.tenant_api_tenant_v1_set_app_settings_response import TenantApiTenantV1SetAppSettingsResponse
@@ -42,9 +42,9 @@ class SettingsApi:
 
 
     @validate_call
-    def get_tenant_settings(
+    async def get_tenant_settings(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -66,7 +66,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -116,11 +116,11 @@ class SettingsApi:
             '200': "TenantApiTenantV1GetAppSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -128,9 +128,9 @@ class SettingsApi:
 
 
     @validate_call
-    def get_tenant_settings_with_http_info(
+    async def get_tenant_settings_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -152,7 +152,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -202,11 +202,11 @@ class SettingsApi:
             '200': "TenantApiTenantV1GetAppSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -214,9 +214,9 @@ class SettingsApi:
 
 
     @validate_call
-    def get_tenant_settings_without_preload_content(
+    async def get_tenant_settings_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -238,7 +238,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -288,7 +288,7 @@ class SettingsApi:
             '200': "TenantApiTenantV1GetAppSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -317,7 +317,9 @@ class SettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -378,9 +380,9 @@ class SettingsApi:
 
 
     @validate_call
-    def get_tenant_settings_by_code(
+    async def get_tenant_settings_by_code(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         code: StrictStr,
         _request_timeout: Union[
             None,
@@ -399,7 +401,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param code:  (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
@@ -440,11 +442,11 @@ class SettingsApi:
             '200': "TenantApiTenantV1TenantAppSettings",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -452,9 +454,9 @@ class SettingsApi:
 
 
     @validate_call
-    def get_tenant_settings_by_code_with_http_info(
+    async def get_tenant_settings_by_code_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         code: StrictStr,
         _request_timeout: Union[
             None,
@@ -473,7 +475,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param code:  (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
@@ -514,11 +516,11 @@ class SettingsApi:
             '200': "TenantApiTenantV1TenantAppSettings",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -526,9 +528,9 @@ class SettingsApi:
 
 
     @validate_call
-    def get_tenant_settings_by_code_without_preload_content(
+    async def get_tenant_settings_by_code_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         code: StrictStr,
         _request_timeout: Union[
             None,
@@ -547,7 +549,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param code:  (required)
         :type code: str
         :param _request_timeout: timeout setting for this request. If one
@@ -588,7 +590,7 @@ class SettingsApi:
             '200': "TenantApiTenantV1TenantAppSettings",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -614,7 +616,9 @@ class SettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -661,9 +665,9 @@ class SettingsApi:
 
 
     @validate_call
-    def set_tenant_settings(
+    async def set_tenant_settings(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         code: StrictStr,
         tenant_api_tenant_v1_set_app_settings_request: Optional[TenantApiTenantV1SetAppSettingsRequest] = None,
         _request_timeout: Union[
@@ -683,7 +687,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param code:  (required)
         :type code: str
         :param tenant_api_tenant_v1_set_app_settings_request: 
@@ -728,11 +732,11 @@ class SettingsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -740,9 +744,9 @@ class SettingsApi:
 
 
     @validate_call
-    def set_tenant_settings_with_http_info(
+    async def set_tenant_settings_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         code: StrictStr,
         tenant_api_tenant_v1_set_app_settings_request: Optional[TenantApiTenantV1SetAppSettingsRequest] = None,
         _request_timeout: Union[
@@ -762,7 +766,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param code:  (required)
         :type code: str
         :param tenant_api_tenant_v1_set_app_settings_request: 
@@ -807,11 +811,11 @@ class SettingsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -819,9 +823,9 @@ class SettingsApi:
 
 
     @validate_call
-    def set_tenant_settings_without_preload_content(
+    async def set_tenant_settings_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         code: StrictStr,
         tenant_api_tenant_v1_set_app_settings_request: Optional[TenantApiTenantV1SetAppSettingsRequest] = None,
         _request_timeout: Union[
@@ -841,7 +845,7 @@ class SettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param code:  (required)
         :type code: str
         :param tenant_api_tenant_v1_set_app_settings_request: 
@@ -886,7 +890,7 @@ class SettingsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -913,7 +917,9 @@ class SettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **instance_type** | [**EdfiAdminApiEdfiAdminV1InstanceType**](EdfiAdminApiEdfiAdminV1InstanceType.md) |  | [optional] 
 **discovery_url** | **str** |  | [optional] 
 **metadata_json** | **str** |  | [optional] 
+**discovery_document** | [**EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi**](EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi.md) |  | [optional] 
+**admin_api_url** | **str** |  | [optional] 
 
 ## Example
 

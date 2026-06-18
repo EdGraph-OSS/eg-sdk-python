@@ -48,15 +48,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_forms_v1_create_form_request = edgraph_platform_client.FormApiFormsV1CreateFormRequest() # FormApiFormsV1CreateFormRequest |  (optional)
 
     try:
         # Creates a new Form for a given tenant
-        api_response = api_instance.create_form(tenant_id, form_api_forms_v1_create_form_request=form_api_forms_v1_create_form_request)
+        api_response = await api_instance.create_form(tenant_id, form_api_forms_v1_create_form_request=form_api_forms_v1_create_form_request)
         print("The response of FormsApi->create_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,7 +70,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **form_api_forms_v1_create_form_request** | [**FormApiFormsV1CreateFormRequest**](FormApiFormsV1CreateFormRequest.md)|  | [optional] 
 
 ### Return type
@@ -128,15 +128,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_forms_v1_create_full_form_request = edgraph_platform_client.FormApiFormsV1CreateFullFormRequest() # FormApiFormsV1CreateFullFormRequest |  (optional)
 
     try:
         # Fully creates a new Form for a given tenant (with Sections and Questions).
-        api_response = api_instance.create_full_form(tenant_id, form_api_forms_v1_create_full_form_request=form_api_forms_v1_create_full_form_request)
+        api_response = await api_instance.create_full_form(tenant_id, form_api_forms_v1_create_full_form_request=form_api_forms_v1_create_full_form_request)
         print("The response of FormsApi->create_full_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,7 +150,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **form_api_forms_v1_create_full_form_request** | [**FormApiFormsV1CreateFullFormRequest**](FormApiFormsV1CreateFullFormRequest.md)|  | [optional] 
 
 ### Return type
@@ -207,15 +207,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a Form.
-        api_response = api_instance.delete_form(tenant_id, form_id)
+        api_response = await api_instance.delete_form(tenant_id, form_id)
         print("The response of FormsApi->delete_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -229,8 +229,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -287,15 +287,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Duplicates all Form data for a given tenant (with Sections and Questions).
-        api_response = api_instance.duplicate_form(tenant_id, form_id)
+        api_response = await api_instance.duplicate_form(tenant_id, form_id)
         print("The response of FormsApi->duplicate_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -309,8 +309,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -366,15 +366,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get Form.
-        api_response = api_instance.get_form(tenant_id, form_id)
+        api_response = await api_instance.get_form(tenant_id, form_id)
         print("The response of FormsApi->get_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -388,8 +388,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -446,15 +446,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get the Access Type for a Form.
-        api_response = api_instance.get_form_access(tenant_id, form_id)
+        api_response = await api_instance.get_form_access(tenant_id, form_id)
         print("The response of FormsApi->get_form_access:\n")
         pprint(api_response)
     except Exception as e:
@@ -468,8 +468,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -526,15 +526,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get a Forms Json and UI React JSON compatible Schema.
-        api_response = api_instance.get_full_form_schema(tenant_id, form_id)
+        api_response = await api_instance.get_full_form_schema(tenant_id, form_id)
         print("The response of FormsApi->get_full_form_schema:\n")
         pprint(api_response)
     except Exception as e:
@@ -548,8 +548,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -605,15 +605,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     body = None # object |  (optional)
 
     try:
         # Imports all form data for a given tenant.
-        api_response = api_instance.import_form(tenant_id, body=body)
+        api_response = await api_instance.import_form(tenant_id, body=body)
         print("The response of FormsApi->import_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -627,7 +627,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **body** | **object**|  | [optional] 
 
 ### Return type
@@ -684,10 +684,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -695,7 +695,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search Forms
-        api_response = api_instance.search_forms(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_forms(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of FormsApi->search_forms:\n")
         pprint(api_response)
     except Exception as e:
@@ -709,7 +709,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -770,16 +770,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_forms_v1_set_form_access_request = edgraph_platform_client.FormApiFormsV1SetFormAccessRequest() # FormApiFormsV1SetFormAccessRequest |  (optional)
 
     try:
         # Sets the Access Type for a Form.
-        api_response = api_instance.set_form_access(tenant_id, form_id, form_api_forms_v1_set_form_access_request=form_api_forms_v1_set_form_access_request)
+        api_response = await api_instance.set_form_access(tenant_id, form_id, form_api_forms_v1_set_form_access_request=form_api_forms_v1_set_form_access_request)
         print("The response of FormsApi->set_form_access:\n")
         pprint(api_response)
     except Exception as e:
@@ -793,8 +793,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **form_api_forms_v1_set_form_access_request** | [**FormApiFormsV1SetFormAccessRequest**](FormApiFormsV1SetFormAccessRequest.md)|  | [optional] 
 
 ### Return type
@@ -852,16 +852,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_forms_v1_update_form_request = edgraph_platform_client.FormApiFormsV1UpdateFormRequest() # FormApiFormsV1UpdateFormRequest |  (optional)
 
     try:
         # Updates a Form.
-        api_response = api_instance.update_form(tenant_id, form_id, form_api_forms_v1_update_form_request=form_api_forms_v1_update_form_request)
+        api_response = await api_instance.update_form(tenant_id, form_id, form_api_forms_v1_update_form_request=form_api_forms_v1_update_form_request)
         print("The response of FormsApi->update_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -875,8 +875,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **form_api_forms_v1_update_form_request** | [**FormApiFormsV1UpdateFormRequest**](FormApiFormsV1UpdateFormRequest.md)|  | [optional] 
 
 ### Return type
@@ -934,16 +934,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_forms_v1_update_full_form_request = edgraph_platform_client.FormApiFormsV1UpdateFullFormRequest() # FormApiFormsV1UpdateFullFormRequest |  (optional)
 
     try:
         # Fully updates a Form for a given tenant (with Sections and Questions).
-        api_response = api_instance.update_full_form(tenant_id, form_id, form_api_forms_v1_update_full_form_request=form_api_forms_v1_update_full_form_request)
+        api_response = await api_instance.update_full_form(tenant_id, form_id, form_api_forms_v1_update_full_form_request=form_api_forms_v1_update_full_form_request)
         print("The response of FormsApi->update_full_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -957,8 +957,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **form_api_forms_v1_update_full_form_request** | [**FormApiFormsV1UpdateFullFormRequest**](FormApiFormsV1UpdateFullFormRequest.md)|  | [optional] 
 
 ### Return type

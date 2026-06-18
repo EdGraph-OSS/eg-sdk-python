@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.data_sync_api_security_score_sync_v1_security_score_sync_execution_profile import DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile
 from edgraph_platform_client.models.data_sync_api_security_score_sync_v1_security_score_sync_profile import DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request import EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest
@@ -43,7 +43,7 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def create_security_score_sync_job(
+    async def create_security_score_sync_job(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request: Optional[EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest] = None,
@@ -105,11 +105,11 @@ class TenantSecurityScoreSyncApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncJobCreatedResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -117,7 +117,7 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def create_security_score_sync_job_with_http_info(
+    async def create_security_score_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request: Optional[EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest] = None,
@@ -179,11 +179,11 @@ class TenantSecurityScoreSyncApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncJobCreatedResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -191,7 +191,7 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def create_security_score_sync_job_without_preload_content(
+    async def create_security_score_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request: Optional[EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest] = None,
@@ -253,7 +253,7 @@ class TenantSecurityScoreSyncApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncJobCreatedResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -279,7 +279,9 @@ class TenantSecurityScoreSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -342,9 +344,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def execute_security_score_sync_job(
+    async def execute_security_score_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -362,7 +364,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -401,11 +403,11 @@ class TenantSecurityScoreSyncApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -413,9 +415,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def execute_security_score_sync_job_with_http_info(
+    async def execute_security_score_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -433,7 +435,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -472,11 +474,11 @@ class TenantSecurityScoreSyncApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -484,9 +486,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def execute_security_score_sync_job_without_preload_content(
+    async def execute_security_score_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -504,7 +506,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -543,7 +545,7 @@ class TenantSecurityScoreSyncApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -568,7 +570,9 @@ class TenantSecurityScoreSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -613,9 +617,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def get_security_score_sync_job(
+    async def get_security_score_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -633,7 +637,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -671,11 +675,11 @@ class TenantSecurityScoreSyncApi:
             '200': "DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -683,9 +687,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def get_security_score_sync_job_with_http_info(
+    async def get_security_score_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -703,7 +707,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -741,11 +745,11 @@ class TenantSecurityScoreSyncApi:
             '200': "DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -753,9 +757,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def get_security_score_sync_job_without_preload_content(
+    async def get_security_score_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -773,7 +777,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -811,7 +815,7 @@ class TenantSecurityScoreSyncApi:
             '200': "DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -836,7 +840,9 @@ class TenantSecurityScoreSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -881,11 +887,11 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def get_security_score_sync_job_execution(
+    async def get_security_score_sync_job_execution(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        job_execution_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        job_execution_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -903,11 +909,11 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param job_execution_id:  (required)
-        :type job_execution_id: str
+        :type job_execution_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -947,11 +953,11 @@ class TenantSecurityScoreSyncApi:
             '200': "DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -959,11 +965,11 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def get_security_score_sync_job_execution_with_http_info(
+    async def get_security_score_sync_job_execution_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        job_execution_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        job_execution_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -981,11 +987,11 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param job_execution_id:  (required)
-        :type job_execution_id: str
+        :type job_execution_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1025,11 +1031,11 @@ class TenantSecurityScoreSyncApi:
             '200': "DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1037,11 +1043,11 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def get_security_score_sync_job_execution_without_preload_content(
+    async def get_security_score_sync_job_execution_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        job_execution_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        job_execution_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1059,11 +1065,11 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param job_execution_id:  (required)
-        :type job_execution_id: str
+        :type job_execution_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1103,7 +1109,7 @@ class TenantSecurityScoreSyncApi:
             '200': "DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1130,7 +1136,9 @@ class TenantSecurityScoreSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1179,9 +1187,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def update_security_score_sync_job(
+    async def update_security_score_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: Optional[EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1200,7 +1208,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: 
         :type ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1242,11 +1250,11 @@ class TenantSecurityScoreSyncApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1254,9 +1262,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def update_security_score_sync_job_with_http_info(
+    async def update_security_score_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: Optional[EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1275,7 +1283,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: 
         :type ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1317,11 +1325,11 @@ class TenantSecurityScoreSyncApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1329,9 +1337,9 @@ class TenantSecurityScoreSyncApi:
 
 
     @validate_call
-    def update_security_score_sync_job_without_preload_content(
+    async def update_security_score_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: Optional[EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1350,7 +1358,7 @@ class TenantSecurityScoreSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: 
         :type ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request: EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1392,7 +1400,7 @@ class TenantSecurityScoreSyncApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1418,7 +1426,9 @@ class TenantSecurityScoreSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

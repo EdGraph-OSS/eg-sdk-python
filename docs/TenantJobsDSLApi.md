@@ -40,15 +40,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsDSLApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     data_sync_api_dsl_v1_create_job_request = edgraph_platform_client.DataSyncApiDslV1CreateJobRequest() # DataSyncApiDslV1CreateJobRequest |  (optional)
 
     try:
         # Creates a DSL Sync Job for a given tenant
-        api_response = api_instance.create_dsl_job(tenant_id, data_sync_api_dsl_v1_create_job_request=data_sync_api_dsl_v1_create_job_request)
+        api_response = await api_instance.create_dsl_job(tenant_id, data_sync_api_dsl_v1_create_job_request=data_sync_api_dsl_v1_create_job_request)
         print("The response of TenantJobsDSLApi->create_dsl_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,7 +62,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **data_sync_api_dsl_v1_create_job_request** | [**DataSyncApiDslV1CreateJobRequest**](DataSyncApiDslV1CreateJobRequest.md)|  | [optional] 
 
 ### Return type
@@ -119,15 +119,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsDSLApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Executes a DSL Sync Job for a given tenant
-        api_response = api_instance.execute_dsl_job(tenant_id, job_id)
+        api_response = await api_instance.execute_dsl_job(tenant_id, job_id)
         print("The response of TenantJobsDSLApi->execute_dsl_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -141,8 +141,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
 
 ### Return type
 
@@ -198,15 +198,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsDSLApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a DSL jobs profile for a given tenant
-        api_response = api_instance.get_dsl_job(tenant_id, job_id)
+        api_response = await api_instance.get_dsl_job(tenant_id, job_id)
         print("The response of TenantJobsDSLApi->get_dsl_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -220,8 +220,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
 
 ### Return type
 
@@ -277,16 +277,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsDSLApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     data_sync_api_dsl_v1_update_job_request = edgraph_platform_client.DataSyncApiDslV1UpdateJobRequest() # DataSyncApiDslV1UpdateJobRequest |  (optional)
 
     try:
         # Updates a DSL Sync Job for a given tenant
-        api_response = api_instance.update_dsl_job(tenant_id, job_id, data_sync_api_dsl_v1_update_job_request=data_sync_api_dsl_v1_update_job_request)
+        api_response = await api_instance.update_dsl_job(tenant_id, job_id, data_sync_api_dsl_v1_update_job_request=data_sync_api_dsl_v1_update_job_request)
         print("The response of TenantJobsDSLApi->update_dsl_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -300,8 +300,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
  **data_sync_api_dsl_v1_update_job_request** | [**DataSyncApiDslV1UpdateJobRequest**](DataSyncApiDslV1UpdateJobRequest.md)|  | [optional] 
 
 ### Return type

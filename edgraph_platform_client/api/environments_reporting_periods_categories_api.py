@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_paginated_categories import EdGraphServicesStateReportingV1PaginatedCategories
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_paginated_sub_categories import EdGraphServicesStateReportingV1PaginatedSubCategories
 
@@ -40,11 +40,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
     @validate_call
-    def search_state_reporting_period_categories(
+    async def search_state_reporting_period_categories(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -65,11 +65,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -119,11 +119,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -131,11 +131,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
     @validate_call
-    def search_state_reporting_period_categories_with_http_info(
+    async def search_state_reporting_period_categories_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -156,11 +156,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -210,11 +210,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -222,11 +222,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
     @validate_call
-    def search_state_reporting_period_categories_without_preload_content(
+    async def search_state_reporting_period_categories_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -247,11 +247,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -301,7 +301,7 @@ class EnvironmentsReportingPeriodsCategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -331,7 +331,9 @@ class EnvironmentsReportingPeriodsCategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -392,12 +394,12 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
     @validate_call
-    def search_state_reporting_period_sub_categories(
+    async def search_state_reporting_period_sub_categories(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -418,13 +420,13 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -475,11 +477,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -487,12 +489,12 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
     @validate_call
-    def search_state_reporting_period_sub_categories_with_http_info(
+    async def search_state_reporting_period_sub_categories_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -513,13 +515,13 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -570,11 +572,11 @@ class EnvironmentsReportingPeriodsCategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -582,12 +584,12 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
     @validate_call
-    def search_state_reporting_period_sub_categories_without_preload_content(
+    async def search_state_reporting_period_sub_categories_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -608,13 +610,13 @@ class EnvironmentsReportingPeriodsCategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -665,7 +667,7 @@ class EnvironmentsReportingPeriodsCategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -696,7 +698,9 @@ class EnvironmentsReportingPeriodsCategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -19,16 +19,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_responses_user_cache_tenant_education_organization_response import EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse
 from edgraph_platform_client.models.ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_responses_user_tenant_license import EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse(BaseModel):
     """
     EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
     tenant_type: Optional[StrictStr] = Field(default=None, alias="tenantType")
     tenant_types: Optional[List[StrictStr]] = Field(default=None, alias="tenantTypes")
     organization_identifier: Optional[StrictStr] = Field(default=None, alias="organizationIdentifier")
@@ -41,7 +43,8 @@ class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUse
     __properties: ClassVar[List[str]] = ["tenantId", "tenantType", "tenantTypes", "organizationIdentifier", "organizationName", "state", "tenantStatus", "isDemo", "educationOrganizations", "licenses"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +56,7 @@ class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUse
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

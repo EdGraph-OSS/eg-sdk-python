@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.form_api_sections_v1_create_section_request import FormApiSectionsV1CreateSectionRequest
 from edgraph_platform_client.models.form_api_sections_v1_section_created_response import FormApiSectionsV1SectionCreatedResponse
 from edgraph_platform_client.models.form_api_sections_v1_section_deleted_response import FormApiSectionsV1SectionDeletedResponse
@@ -53,10 +53,10 @@ class SectionsApi:
 
 
     @validate_call
-    def create_section(
+    async def create_section(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         form_api_sections_v1_create_section_request: Optional[FormApiSectionsV1CreateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -75,9 +75,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param form_api_sections_v1_create_section_request: 
         :type form_api_sections_v1_create_section_request: FormApiSectionsV1CreateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -119,11 +119,11 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -131,10 +131,10 @@ class SectionsApi:
 
 
     @validate_call
-    def create_section_with_http_info(
+    async def create_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         form_api_sections_v1_create_section_request: Optional[FormApiSectionsV1CreateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -153,9 +153,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param form_api_sections_v1_create_section_request: 
         :type form_api_sections_v1_create_section_request: FormApiSectionsV1CreateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -197,11 +197,11 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -209,10 +209,10 @@ class SectionsApi:
 
 
     @validate_call
-    def create_section_without_preload_content(
+    async def create_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         form_api_sections_v1_create_section_request: Optional[FormApiSectionsV1CreateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -231,9 +231,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param form_api_sections_v1_create_section_request: 
         :type form_api_sections_v1_create_section_request: FormApiSectionsV1CreateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -275,7 +275,7 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -302,7 +302,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -367,11 +369,11 @@ class SectionsApi:
 
 
     @validate_call
-    def delete_section(
+    async def delete_section(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -389,11 +391,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -434,11 +436,11 @@ class SectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -446,11 +448,11 @@ class SectionsApi:
 
 
     @validate_call
-    def delete_section_with_http_info(
+    async def delete_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -468,11 +470,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -513,11 +515,11 @@ class SectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -525,11 +527,11 @@ class SectionsApi:
 
 
     @validate_call
-    def delete_section_without_preload_content(
+    async def delete_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -547,11 +549,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -592,7 +594,7 @@ class SectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -619,7 +621,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -668,11 +672,11 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section(
+    async def get_section(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -690,11 +694,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -735,11 +739,11 @@ class SectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -747,11 +751,11 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_with_http_info(
+    async def get_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -769,11 +773,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -814,11 +818,11 @@ class SectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -826,11 +830,11 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_without_preload_content(
+    async def get_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -848,11 +852,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -893,7 +897,7 @@ class SectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -920,7 +924,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -969,9 +975,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_academic_subjects(
+    async def get_section_academic_subjects(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -993,7 +999,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1043,11 +1049,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedAcademicSubjectsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1055,9 +1061,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_academic_subjects_with_http_info(
+    async def get_section_academic_subjects_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1079,7 +1085,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1129,11 +1135,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedAcademicSubjectsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1141,9 +1147,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_academic_subjects_without_preload_content(
+    async def get_section_academic_subjects_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1165,7 +1171,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1215,7 +1221,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedAcademicSubjectsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1244,7 +1250,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1305,10 +1313,10 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_by_id(
+    async def get_section_by_id(
         self,
-        tenant_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1326,9 +1334,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,11 +1375,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1SectionProfileResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1379,10 +1387,10 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_by_id_with_http_info(
+    async def get_section_by_id_with_http_info(
         self,
-        tenant_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1400,9 +1408,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1441,11 +1449,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1SectionProfileResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1453,10 +1461,10 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_by_id_without_preload_content(
+    async def get_section_by_id_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1474,9 +1482,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1515,7 +1523,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1SectionProfileResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1541,7 +1549,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1588,9 +1598,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_courses(
+    async def get_section_courses(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1612,7 +1622,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1662,11 +1672,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedCoursesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1674,9 +1684,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_courses_with_http_info(
+    async def get_section_courses_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1698,7 +1708,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1748,11 +1758,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedCoursesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1760,9 +1770,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_courses_without_preload_content(
+    async def get_section_courses_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1784,7 +1794,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1834,7 +1844,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedCoursesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1863,7 +1873,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1924,9 +1936,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_grade_levels(
+    async def get_section_grade_levels(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1948,7 +1960,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1998,11 +2010,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedGradeLevelsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2010,9 +2022,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_grade_levels_with_http_info(
+    async def get_section_grade_levels_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2034,7 +2046,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2084,11 +2096,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedGradeLevelsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2096,9 +2108,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_grade_levels_without_preload_content(
+    async def get_section_grade_levels_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2120,7 +2132,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2170,7 +2182,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedGradeLevelsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2199,7 +2211,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2260,9 +2274,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_schools(
+    async def get_section_schools(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2284,7 +2298,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2334,11 +2348,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedSchoolsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2346,9 +2360,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_schools_with_http_info(
+    async def get_section_schools_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2370,7 +2384,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2420,11 +2434,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedSchoolsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2432,9 +2446,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_schools_without_preload_content(
+    async def get_section_schools_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2456,7 +2470,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2506,7 +2520,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedSchoolsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2535,7 +2549,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2596,9 +2612,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_sessions(
+    async def get_section_sessions(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2620,7 +2636,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2670,11 +2686,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedSessionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2682,9 +2698,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_sessions_with_http_info(
+    async def get_section_sessions_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2706,7 +2722,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2756,11 +2772,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedSessionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2768,9 +2784,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_sessions_without_preload_content(
+    async def get_section_sessions_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2792,7 +2808,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2842,7 +2858,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedSessionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2871,7 +2887,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2932,9 +2950,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_terms(
+    async def get_section_terms(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2956,7 +2974,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -3006,11 +3024,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedTermsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3018,9 +3036,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_terms_with_http_info(
+    async def get_section_terms_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3042,7 +3060,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -3092,11 +3110,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedTermsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3104,9 +3122,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_section_terms_without_preload_content(
+    async def get_section_terms_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3128,7 +3146,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -3178,7 +3196,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedTermsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3207,7 +3225,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3268,9 +3288,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_sections(
+    async def get_sections(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3292,7 +3312,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -3342,11 +3362,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3354,9 +3374,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_sections_with_http_info(
+    async def get_sections_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3378,7 +3398,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -3428,11 +3448,11 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3440,9 +3460,9 @@ class SectionsApi:
 
 
     @validate_call
-    def get_sections_without_preload_content(
+    async def get_sections_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3464,7 +3484,7 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -3514,7 +3534,7 @@ class SectionsApi:
             '200': "TenantApiSectionsV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3543,7 +3563,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3604,10 +3626,10 @@ class SectionsApi:
 
 
     @validate_call
-    def search_sections(
+    async def search_sections(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3629,9 +3651,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -3682,11 +3704,11 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3694,10 +3716,10 @@ class SectionsApi:
 
 
     @validate_call
-    def search_sections_with_http_info(
+    async def search_sections_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3719,9 +3741,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -3772,11 +3794,11 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3784,10 +3806,10 @@ class SectionsApi:
 
 
     @validate_call
-    def search_sections_without_preload_content(
+    async def search_sections_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -3809,9 +3831,9 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -3862,7 +3884,7 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3892,7 +3914,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3955,11 +3979,11 @@ class SectionsApi:
 
 
     @validate_call
-    def update_section(
+    async def update_section(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         form_api_sections_v1_update_section_request: Optional[FormApiSectionsV1UpdateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -3978,11 +4002,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param form_api_sections_v1_update_section_request: 
         :type form_api_sections_v1_update_section_request: FormApiSectionsV1UpdateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4025,11 +4049,11 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4037,11 +4061,11 @@ class SectionsApi:
 
 
     @validate_call
-    def update_section_with_http_info(
+    async def update_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         form_api_sections_v1_update_section_request: Optional[FormApiSectionsV1UpdateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -4060,11 +4084,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param form_api_sections_v1_update_section_request: 
         :type form_api_sections_v1_update_section_request: FormApiSectionsV1UpdateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4107,11 +4131,11 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4119,11 +4143,11 @@ class SectionsApi:
 
 
     @validate_call
-    def update_section_without_preload_content(
+    async def update_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         form_api_sections_v1_update_section_request: Optional[FormApiSectionsV1UpdateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -4142,11 +4166,11 @@ class SectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param form_api_sections_v1_update_section_request: 
         :type form_api_sections_v1_update_section_request: FormApiSectionsV1UpdateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4189,7 +4213,7 @@ class SectionsApi:
             '200': "FormApiSectionsV1SectionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4217,7 +4241,9 @@ class SectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

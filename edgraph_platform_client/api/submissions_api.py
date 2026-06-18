@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.form_api_submissions_v1_create_submission_request import FormApiSubmissionsV1CreateSubmissionRequest
 from edgraph_platform_client.models.form_api_submissions_v1_export_type import FormApiSubmissionsV1ExportType
 from edgraph_platform_client.models.form_api_submissions_v1_submission_created_response import FormApiSubmissionsV1SubmissionCreatedResponse
@@ -47,10 +47,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def create_submission(
+    async def create_submission(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         form_api_submissions_v1_create_submission_request: Optional[FormApiSubmissionsV1CreateSubmissionRequest] = None,
         _request_timeout: Union[
             None,
@@ -69,9 +69,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param form_api_submissions_v1_create_submission_request: 
         :type form_api_submissions_v1_create_submission_request: FormApiSubmissionsV1CreateSubmissionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -113,11 +113,11 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -125,10 +125,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def create_submission_with_http_info(
+    async def create_submission_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         form_api_submissions_v1_create_submission_request: Optional[FormApiSubmissionsV1CreateSubmissionRequest] = None,
         _request_timeout: Union[
             None,
@@ -147,9 +147,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param form_api_submissions_v1_create_submission_request: 
         :type form_api_submissions_v1_create_submission_request: FormApiSubmissionsV1CreateSubmissionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -191,11 +191,11 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -203,10 +203,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def create_submission_without_preload_content(
+    async def create_submission_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         form_api_submissions_v1_create_submission_request: Optional[FormApiSubmissionsV1CreateSubmissionRequest] = None,
         _request_timeout: Union[
             None,
@@ -225,9 +225,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param form_api_submissions_v1_create_submission_request: 
         :type form_api_submissions_v1_create_submission_request: FormApiSubmissionsV1CreateSubmissionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -269,7 +269,7 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -296,7 +296,9 @@ class SubmissionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -361,11 +363,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def delete_submission(
+    async def delete_submission(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -383,11 +385,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -428,11 +430,11 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -440,11 +442,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def delete_submission_with_http_info(
+    async def delete_submission_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -462,11 +464,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -507,11 +509,11 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -519,11 +521,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def delete_submission_without_preload_content(
+    async def delete_submission_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -541,11 +543,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -586,7 +588,7 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -613,7 +615,9 @@ class SubmissionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -662,10 +666,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def export_submissions(
+    async def export_submissions(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         type: Optional[FormApiSubmissionsV1ExportType] = None,
         _request_timeout: Union[
             None,
@@ -684,9 +688,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param type: 
         :type type: FormApiSubmissionsV1ExportType
         :param _request_timeout: timeout setting for this request. If one
@@ -729,11 +733,11 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -741,10 +745,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def export_submissions_with_http_info(
+    async def export_submissions_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         type: Optional[FormApiSubmissionsV1ExportType] = None,
         _request_timeout: Union[
             None,
@@ -763,9 +767,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param type: 
         :type type: FormApiSubmissionsV1ExportType
         :param _request_timeout: timeout setting for this request. If one
@@ -808,11 +812,11 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -820,10 +824,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def export_submissions_without_preload_content(
+    async def export_submissions_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         type: Optional[FormApiSubmissionsV1ExportType] = None,
         _request_timeout: Union[
             None,
@@ -842,9 +846,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param type: 
         :type type: FormApiSubmissionsV1ExportType
         :param _request_timeout: timeout setting for this request. If one
@@ -887,7 +891,7 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -914,7 +918,9 @@ class SubmissionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -965,11 +971,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def get_submission(
+    async def get_submission(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -987,11 +993,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1032,11 +1038,11 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1044,11 +1050,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def get_submission_with_http_info(
+    async def get_submission_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1066,11 +1072,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1111,11 +1117,11 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1123,11 +1129,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def get_submission_without_preload_content(
+    async def get_submission_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1145,11 +1151,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1190,7 +1196,7 @@ class SubmissionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1217,7 +1223,9 @@ class SubmissionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1266,10 +1274,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def search_submissions(
+    async def search_submissions(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1291,9 +1299,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1344,11 +1352,11 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1356,10 +1364,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def search_submissions_with_http_info(
+    async def search_submissions_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1381,9 +1389,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1434,11 +1442,11 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1446,10 +1454,10 @@ class SubmissionsApi:
 
 
     @validate_call
-    def search_submissions_without_preload_content(
+    async def search_submissions_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1471,9 +1479,9 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1524,7 +1532,7 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1554,7 +1562,9 @@ class SubmissionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1617,11 +1627,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def update_submission(
+    async def update_submission(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         form_api_submissions_v1_update_submission_request: Optional[FormApiSubmissionsV1UpdateSubmissionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1640,11 +1650,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param form_api_submissions_v1_update_submission_request: 
         :type form_api_submissions_v1_update_submission_request: FormApiSubmissionsV1UpdateSubmissionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1687,11 +1697,11 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1699,11 +1709,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def update_submission_with_http_info(
+    async def update_submission_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         form_api_submissions_v1_update_submission_request: Optional[FormApiSubmissionsV1UpdateSubmissionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1722,11 +1732,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param form_api_submissions_v1_update_submission_request: 
         :type form_api_submissions_v1_update_submission_request: FormApiSubmissionsV1UpdateSubmissionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1769,11 +1779,11 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1781,11 +1791,11 @@ class SubmissionsApi:
 
 
     @validate_call
-    def update_submission_without_preload_content(
+    async def update_submission_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        submission_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        submission_id: UUID,
         form_api_submissions_v1_update_submission_request: Optional[FormApiSubmissionsV1UpdateSubmissionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1804,11 +1814,11 @@ class SubmissionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param submission_id:  (required)
-        :type submission_id: str
+        :type submission_id: UUID
         :param form_api_submissions_v1_update_submission_request: 
         :type form_api_submissions_v1_update_submission_request: FormApiSubmissionsV1UpdateSubmissionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1851,7 +1861,7 @@ class SubmissionsApi:
             '200': "FormApiSubmissionsV1SubmissionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1879,7 +1889,9 @@ class SubmissionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

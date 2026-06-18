@@ -36,14 +36,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.RegistrationsAzureMarketplaceApi(api_client)
     registration_api_registration_v2_submit_tenant_registration_request = edgraph_platform_client.RegistrationApiRegistrationV2SubmitTenantRegistrationRequest() # RegistrationApiRegistrationV2SubmitTenantRegistrationRequest |  (optional)
 
     try:
         # Submits a tenant's registration request received through Azure [M]arketplace [On]boarding [A]ccelerator (MONA)
-        api_response = api_instance.submit_tenant_registration_azure_mona_async(registration_api_registration_v2_submit_tenant_registration_request=registration_api_registration_v2_submit_tenant_registration_request)
+        api_response = await api_instance.submit_tenant_registration_azure_mona_async(registration_api_registration_v2_submit_tenant_registration_request=registration_api_registration_v2_submit_tenant_registration_request)
         print("The response of RegistrationsAzureMarketplaceApi->submit_tenant_registration_azure_mona_async:\n")
         pprint(api_response)
     except Exception as e:

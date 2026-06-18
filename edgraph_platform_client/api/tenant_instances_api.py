@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -19,8 +18,8 @@ from typing_extensions import Annotated
 from pydantic import StrictStr
 from typing import Any, Optional
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_load_ed_fi_api_metadata_result import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_test_connection_response import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
 from edgraph_platform_client.api_response import ApiResponse
@@ -41,10 +40,10 @@ class TenantInstancesApi:
 
 
     @validate_call
-    def load_onboarding_step_ed_fi_api_metadata(
+    async def load_onboarding_step_ed_fi_api_metadata(
         self,
         tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest] = None,
+        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,8 +62,8 @@ class TenantInstancesApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest
+        :param ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +88,7 @@ class TenantInstancesApi:
 
         _param = self._load_onboarding_step_ed_fi_api_metadata_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request,
+            ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -103,11 +102,11 @@ class TenantInstancesApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -115,10 +114,10 @@ class TenantInstancesApi:
 
 
     @validate_call
-    def load_onboarding_step_ed_fi_api_metadata_with_http_info(
+    async def load_onboarding_step_ed_fi_api_metadata_with_http_info(
         self,
         tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest] = None,
+        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,8 +136,8 @@ class TenantInstancesApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest
+        :param ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,7 +162,7 @@ class TenantInstancesApi:
 
         _param = self._load_onboarding_step_ed_fi_api_metadata_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request,
+            ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -177,11 +176,11 @@ class TenantInstancesApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -189,10 +188,10 @@ class TenantInstancesApi:
 
 
     @validate_call
-    def load_onboarding_step_ed_fi_api_metadata_without_preload_content(
+    async def load_onboarding_step_ed_fi_api_metadata_without_preload_content(
         self,
         tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest] = None,
+        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -211,8 +210,8 @@ class TenantInstancesApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request: EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest
+        :param ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request: EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -237,7 +236,7 @@ class TenantInstancesApi:
 
         _param = self._load_onboarding_step_ed_fi_api_metadata_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request,
+            ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -251,7 +250,7 @@ class TenantInstancesApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -261,7 +260,7 @@ class TenantInstancesApi:
     def _load_onboarding_step_ed_fi_api_metadata_serialize(
         self,
         tenant_id,
-        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request,
+        ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request,
         _request_auth,
         _content_type,
         _headers,
@@ -277,7 +276,9 @@ class TenantInstancesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -287,8 +288,8 @@ class TenantInstancesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request
+        if ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request
 
 
         # set the HTTP header `Accept`
@@ -340,7 +341,7 @@ class TenantInstancesApi:
 
 
     @validate_call
-    def test_onboarding_step_connection(
+    async def test_onboarding_step_connection(
         self,
         tenant_id: StrictStr,
         body: Optional[Any] = None,
@@ -402,11 +403,11 @@ class TenantInstancesApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -414,7 +415,7 @@ class TenantInstancesApi:
 
 
     @validate_call
-    def test_onboarding_step_connection_with_http_info(
+    async def test_onboarding_step_connection_with_http_info(
         self,
         tenant_id: StrictStr,
         body: Optional[Any] = None,
@@ -476,11 +477,11 @@ class TenantInstancesApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -488,7 +489,7 @@ class TenantInstancesApi:
 
 
     @validate_call
-    def test_onboarding_step_connection_without_preload_content(
+    async def test_onboarding_step_connection_without_preload_content(
         self,
         tenant_id: StrictStr,
         body: Optional[Any] = None,
@@ -550,7 +551,7 @@ class TenantInstancesApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -576,7 +577,9 @@ class TenantInstancesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

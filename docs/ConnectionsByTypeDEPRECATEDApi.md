@@ -39,16 +39,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsByTypeDEPRECATEDApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     connection_type = 'connection_type_example' # str | 
     ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest() # EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest |  (optional)
 
     try:
         # Creates or Update a Connection by ConnectionType.
-        api_response = api_instance.create_or_update_state_reporting_connection_by_type_v1(tenant_id, connection_type, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request)
+        api_response = await api_instance.create_or_update_state_reporting_connection_by_type_v1(tenant_id, connection_type, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request)
         print("The response of ConnectionsByTypeDEPRECATEDApi->create_or_update_state_reporting_connection_by_type_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,7 +62,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **connection_type** | **str**|  | 
  **ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request** | [**EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest**](EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest.md)|  | [optional] 
 
@@ -121,15 +121,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsByTypeDEPRECATEDApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     connection_type = 'connection_type_example' # str | 
 
     try:
         # Deletes a Connection by Type
-        api_response = api_instance.delete_state_reporting_by_type_connection_v1(tenant_id, connection_type)
+        api_response = await api_instance.delete_state_reporting_by_type_connection_v1(tenant_id, connection_type)
         print("The response of ConnectionsByTypeDEPRECATEDApi->delete_state_reporting_by_type_connection_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -143,7 +143,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **connection_type** | **str**|  | 
 
 ### Return type
@@ -201,15 +201,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsByTypeDEPRECATEDApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     connection_type = 'connection_type_example' # str | 
 
     try:
         # Retrieves a Connection by Type.
-        api_response = api_instance.get_state_reporting_connection_by_type_v1(tenant_id, connection_type)
+        api_response = await api_instance.get_state_reporting_connection_by_type_v1(tenant_id, connection_type)
         print("The response of ConnectionsByTypeDEPRECATEDApi->get_state_reporting_connection_by_type_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -223,7 +223,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **connection_type** | **str**|  | 
 
 ### Return type

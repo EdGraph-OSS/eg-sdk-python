@@ -40,16 +40,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsRulesRecordsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes the Rules of a Reporting Period.
-        api_response = api_instance.delete_state_reporting_period_rules(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.delete_state_reporting_period_rules(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsRulesRecordsApi->delete_state_reporting_period_rules:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,9 +63,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -122,19 +122,19 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsRulesRecordsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 56 # int |  (optional)
     page_size = 56 # int |  (optional)
     exclude_from_post = True # bool |  (optional)
 
     try:
         # Retrieves the Invalid Records of all the Rules within a Reporting Period.
-        api_response = api_instance.search_state_reporting_period_records(tenant_id, environment_id, reporting_period_id, page_index=page_index, page_size=page_size, exclude_from_post=exclude_from_post)
+        api_response = await api_instance.search_state_reporting_period_records(tenant_id, environment_id, reporting_period_id, page_index=page_index, page_size=page_size, exclude_from_post=exclude_from_post)
         print("The response of EnvironmentsReportingPeriodsRulesRecordsApi->search_state_reporting_period_records:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,9 +148,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] 
  **page_size** | **int**|  | [optional] 
  **exclude_from_post** | **bool**|  | [optional] 
@@ -210,19 +210,19 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsRulesRecordsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    rule_id = 'rule_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    rule_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 56 # int |  (optional)
     page_size = 56 # int |  (optional)
 
     try:
         # Retrieves the Invalid Records of a Rule.
-        api_response = api_instance.search_state_reporting_period_rule_records(tenant_id, environment_id, reporting_period_id, rule_id, page_index=page_index, page_size=page_size)
+        api_response = await api_instance.search_state_reporting_period_rule_records(tenant_id, environment_id, reporting_period_id, rule_id, page_index=page_index, page_size=page_size)
         print("The response of EnvironmentsReportingPeriodsRulesRecordsApi->search_state_reporting_period_rule_records:\n")
         pprint(api_response)
     except Exception as e:
@@ -236,10 +236,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **rule_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **rule_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] 
  **page_size** | **int**|  | [optional] 
 
@@ -299,19 +299,19 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsRulesRecordsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    rule_id = 'rule_id_example' # str | 
-    record_id = 'record_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    rule_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    record_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request = edgraph_platform_client.EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest() # EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest |  (optional)
 
     try:
         # Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Record.
-        api_response = api_instance.set_state_reporting_period_rule_record_post_flag(tenant_id, environment_id, reporting_period_id, rule_id, record_id, ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request=ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request)
+        api_response = await api_instance.set_state_reporting_period_rule_record_post_flag(tenant_id, environment_id, reporting_period_id, rule_id, record_id, ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request=ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request)
         print("The response of EnvironmentsReportingPeriodsRulesRecordsApi->set_state_reporting_period_rule_record_post_flag:\n")
         pprint(api_response)
     except Exception as e:
@@ -325,11 +325,11 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **rule_id** | **str**|  | 
- **record_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **rule_id** | **UUID**|  | 
+ **record_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request** | [**EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest**](EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest.md)|  | [optional] 
 
 ### Return type
@@ -388,18 +388,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsRulesRecordsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    rule_id = 'rule_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    rule_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request = edgraph_platform_client.EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest() # EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest |  (optional)
 
     try:
         # Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Records in bulk.
-        api_response = api_instance.set_state_reporting_period_rule_record_post_flag_bulk(tenant_id, environment_id, reporting_period_id, rule_id, ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request=ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request)
+        api_response = await api_instance.set_state_reporting_period_rule_record_post_flag_bulk(tenant_id, environment_id, reporting_period_id, rule_id, ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request=ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request)
         print("The response of EnvironmentsReportingPeriodsRulesRecordsApi->set_state_reporting_period_rule_record_post_flag_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -413,10 +413,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **rule_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **rule_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request** | [**EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest**](EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest.md)|  | [optional] 
 
 ### Return type

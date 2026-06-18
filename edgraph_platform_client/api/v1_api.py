@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,12 +9,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
+from uuid import UUID
 from edgraph_platform_client.models.identity_api_user_v1_release_user_lockout_response import IdentityApiUserV1ReleaseUserLockoutResponse
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
@@ -38,10 +37,10 @@ class V1Api:
 
 
     @validate_call
-    def release_user_lockout(
+    async def release_user_lockout(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,9 +58,9 @@ class V1Api:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id: (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -100,11 +99,11 @@ class V1Api:
             '200': "IdentityApiUserV1ReleaseUserLockoutResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -112,10 +111,10 @@ class V1Api:
 
 
     @validate_call
-    def release_user_lockout_with_http_info(
+    async def release_user_lockout_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,9 +132,9 @@ class V1Api:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id: (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -174,11 +173,11 @@ class V1Api:
             '200': "IdentityApiUserV1ReleaseUserLockoutResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -186,10 +185,10 @@ class V1Api:
 
 
     @validate_call
-    def release_user_lockout_without_preload_content(
+    async def release_user_lockout_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,9 +206,9 @@ class V1Api:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id: (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -248,7 +247,7 @@ class V1Api:
             '200': "IdentityApiUserV1ReleaseUserLockoutResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -274,7 +273,9 @@ class V1Api:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

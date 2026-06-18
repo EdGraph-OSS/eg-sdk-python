@@ -46,15 +46,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     evaluation_api_evaluations_v1_create_evaluation_request = edgraph_platform_client.EvaluationApiEvaluationsV1CreateEvaluationRequest() # EvaluationApiEvaluationsV1CreateEvaluationRequest |  (optional)
 
     try:
         # Creates a new Evaluation for a given tenant
-        api_response = api_instance.create_evaluation(tenant_id, evaluation_api_evaluations_v1_create_evaluation_request=evaluation_api_evaluations_v1_create_evaluation_request)
+        api_response = await api_instance.create_evaluation(tenant_id, evaluation_api_evaluations_v1_create_evaluation_request=evaluation_api_evaluations_v1_create_evaluation_request)
         print("The response of EvaluationsApi->create_evaluation:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,7 +68,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **evaluation_api_evaluations_v1_create_evaluation_request** | [**EvaluationApiEvaluationsV1CreateEvaluationRequest**](EvaluationApiEvaluationsV1CreateEvaluationRequest.md)|  | [optional] 
 
 ### Return type
@@ -125,15 +125,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    evaluation_id = 'evaluation_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    evaluation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes an Evaluation for a given tenant
-        api_response = api_instance.delete_evaluation(tenant_id, evaluation_id)
+        api_response = await api_instance.delete_evaluation(tenant_id, evaluation_id)
         print("The response of EvaluationsApi->delete_evaluation:\n")
         pprint(api_response)
     except Exception as e:
@@ -147,8 +147,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **evaluation_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **evaluation_id** | **UUID**|  | 
 
 ### Return type
 
@@ -204,15 +204,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    evaluation_id = 'evaluation_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    evaluation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get an Evaluation for a given tenant
-        api_response = api_instance.get_evaluation(tenant_id, evaluation_id)
+        api_response = await api_instance.get_evaluation(tenant_id, evaluation_id)
         print("The response of EvaluationsApi->get_evaluation:\n")
         pprint(api_response)
     except Exception as e:
@@ -226,8 +226,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **evaluation_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **evaluation_id** | **UUID**|  | 
 
 ### Return type
 
@@ -257,8 +257,6 @@ Name | Type | Description  | Notes
 # **get_evaluation_count**
 > EvaluationApiEvaluationsV1EvaluationCountResponse get_evaluation_count(tenant_id)
 
-
-
 ### Example
 
 * OAuth Authentication (oauth2):
@@ -283,13 +281,13 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
-        api_response = api_instance.get_evaluation_count(tenant_id)
+        api_response = await api_instance.get_evaluation_count(tenant_id)
         print("The response of EvaluationsApi->get_evaluation_count:\n")
         pprint(api_response)
     except Exception as e:
@@ -303,7 +301,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -359,10 +357,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -370,7 +368,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches the Appraisers associated with an Evaluation for a given Tenant.
-        api_response = api_instance.search_evaluation_appraisers(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_evaluation_appraisers(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EvaluationsApi->search_evaluation_appraisers:\n")
         pprint(api_response)
     except Exception as e:
@@ -384,7 +382,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -444,10 +442,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -455,7 +453,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches the Campuses associated with an Evaluation for a given Tenant.
-        api_response = api_instance.search_evaluation_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_evaluation_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EvaluationsApi->search_evaluation_campuses:\n")
         pprint(api_response)
     except Exception as e:
@@ -469,7 +467,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -529,10 +527,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -540,7 +538,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches the Forms associated with an Evaluation for a given Tenant.
-        api_response = api_instance.search_evaluation_forms(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_evaluation_forms(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EvaluationsApi->search_evaluation_forms:\n")
         pprint(api_response)
     except Exception as e:
@@ -554,7 +552,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -614,10 +612,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -625,7 +623,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches the Staff associated with an Evaluation for a given Tenant.
-        api_response = api_instance.search_evaluation_staff(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_evaluation_staff(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EvaluationsApi->search_evaluation_staff:\n")
         pprint(api_response)
     except Exception as e:
@@ -639,7 +637,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -699,10 +697,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -710,7 +708,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches the Evaluations for a given tenant
-        api_response = api_instance.search_evaluations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_evaluations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EvaluationsApi->search_evaluations:\n")
         pprint(api_response)
     except Exception as e:
@@ -724,7 +722,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -785,16 +783,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    evaluation_id = 'evaluation_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    evaluation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     evaluation_api_evaluations_v1_update_evaluation_request = edgraph_platform_client.EvaluationApiEvaluationsV1UpdateEvaluationRequest() # EvaluationApiEvaluationsV1UpdateEvaluationRequest |  (optional)
 
     try:
         # Updates an Evaluation for a given tenant
-        api_response = api_instance.update_evaluation(tenant_id, evaluation_id, evaluation_api_evaluations_v1_update_evaluation_request=evaluation_api_evaluations_v1_update_evaluation_request)
+        api_response = await api_instance.update_evaluation(tenant_id, evaluation_id, evaluation_api_evaluations_v1_update_evaluation_request=evaluation_api_evaluations_v1_update_evaluation_request)
         print("The response of EvaluationsApi->update_evaluation:\n")
         pprint(api_response)
     except Exception as e:
@@ -808,8 +806,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **evaluation_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **evaluation_id** | **UUID**|  | 
  **evaluation_api_evaluations_v1_update_evaluation_request** | [**EvaluationApiEvaluationsV1UpdateEvaluationRequest**](EvaluationApiEvaluationsV1UpdateEvaluationRequest.md)|  | [optional] 
 
 ### Return type

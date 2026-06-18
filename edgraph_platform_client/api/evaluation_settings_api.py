@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_application_set_response import EvaluationApiEvaluationSettingsV1ApplicationSetResponse
 from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_evaluation_setting_response import EvaluationApiEvaluationSettingsV1EvaluationSettingResponse
 from edgraph_platform_client.models.evaluation_api_evaluation_settings_v1_set_application_request import EvaluationApiEvaluationSettingsV1SetApplicationRequest
@@ -43,9 +42,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def get_evaluation_setting(
+    async def get_evaluation_setting(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,7 +62,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -101,11 +100,11 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1EvaluationSettingResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -113,9 +112,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def get_evaluation_setting_with_http_info(
+    async def get_evaluation_setting_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,7 +132,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -171,11 +170,11 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1EvaluationSettingResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -183,9 +182,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def get_evaluation_setting_without_preload_content(
+    async def get_evaluation_setting_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,7 +202,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -241,7 +240,7 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1EvaluationSettingResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -266,7 +265,9 @@ class EvaluationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -311,9 +312,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def set_evaluation_setting_application_setting(
+    async def set_evaluation_setting_application_setting(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluation_settings_v1_set_application_request: Optional[EvaluationApiEvaluationSettingsV1SetApplicationRequest] = None,
         _request_timeout: Union[
             None,
@@ -332,7 +333,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluation_settings_v1_set_application_request: 
         :type evaluation_api_evaluation_settings_v1_set_application_request: EvaluationApiEvaluationSettingsV1SetApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -373,11 +374,11 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1ApplicationSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -385,9 +386,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def set_evaluation_setting_application_setting_with_http_info(
+    async def set_evaluation_setting_application_setting_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluation_settings_v1_set_application_request: Optional[EvaluationApiEvaluationSettingsV1SetApplicationRequest] = None,
         _request_timeout: Union[
             None,
@@ -406,7 +407,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluation_settings_v1_set_application_request: 
         :type evaluation_api_evaluation_settings_v1_set_application_request: EvaluationApiEvaluationSettingsV1SetApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -447,11 +448,11 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1ApplicationSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -459,9 +460,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def set_evaluation_setting_application_setting_without_preload_content(
+    async def set_evaluation_setting_application_setting_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluation_settings_v1_set_application_request: Optional[EvaluationApiEvaluationSettingsV1SetApplicationRequest] = None,
         _request_timeout: Union[
             None,
@@ -480,7 +481,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluation_settings_v1_set_application_request: 
         :type evaluation_api_evaluation_settings_v1_set_application_request: EvaluationApiEvaluationSettingsV1SetApplicationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -521,7 +522,7 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1ApplicationSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -547,7 +548,9 @@ class EvaluationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -610,9 +613,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def set_evaluation_setting_user_setting(
+    async def set_evaluation_setting_user_setting(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluation_settings_v1_set_users_request: Optional[EvaluationApiEvaluationSettingsV1SetUsersRequest] = None,
         _request_timeout: Union[
             None,
@@ -631,7 +634,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluation_settings_v1_set_users_request: 
         :type evaluation_api_evaluation_settings_v1_set_users_request: EvaluationApiEvaluationSettingsV1SetUsersRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -672,11 +675,11 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1UsersSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -684,9 +687,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def set_evaluation_setting_user_setting_with_http_info(
+    async def set_evaluation_setting_user_setting_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluation_settings_v1_set_users_request: Optional[EvaluationApiEvaluationSettingsV1SetUsersRequest] = None,
         _request_timeout: Union[
             None,
@@ -705,7 +708,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluation_settings_v1_set_users_request: 
         :type evaluation_api_evaluation_settings_v1_set_users_request: EvaluationApiEvaluationSettingsV1SetUsersRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -746,11 +749,11 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1UsersSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -758,9 +761,9 @@ class EvaluationSettingsApi:
 
 
     @validate_call
-    def set_evaluation_setting_user_setting_without_preload_content(
+    async def set_evaluation_setting_user_setting_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluation_settings_v1_set_users_request: Optional[EvaluationApiEvaluationSettingsV1SetUsersRequest] = None,
         _request_timeout: Union[
             None,
@@ -779,7 +782,7 @@ class EvaluationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluation_settings_v1_set_users_request: 
         :type evaluation_api_evaluation_settings_v1_set_users_request: EvaluationApiEvaluationSettingsV1SetUsersRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -820,7 +823,7 @@ class EvaluationSettingsApi:
             '200': "EvaluationApiEvaluationSettingsV1UsersSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -846,7 +849,9 @@ class EvaluationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

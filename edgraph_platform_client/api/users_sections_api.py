@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.identity_api_user_v1_add_section_bulk_request import IdentityApiUserV1AddSectionBulkRequest
 from edgraph_platform_client.models.identity_api_user_v1_add_section_request import IdentityApiUserV1AddSectionRequest
 from edgraph_platform_client.models.identity_api_user_v1_get_sections_response import IdentityApiUserV1GetSectionsResponse
@@ -50,10 +49,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def add_user_section(
+    async def add_user_section(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_add_section_request: Optional[IdentityApiUserV1AddSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -72,9 +71,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_add_section_request: 
         :type identity_api_user_v1_add_section_request: IdentityApiUserV1AddSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -116,11 +115,11 @@ class UsersSectionsApi:
             '200': "IdentityApiUserV1SectionAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -128,10 +127,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def add_user_section_with_http_info(
+    async def add_user_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_add_section_request: Optional[IdentityApiUserV1AddSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -150,9 +149,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_add_section_request: 
         :type identity_api_user_v1_add_section_request: IdentityApiUserV1AddSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -194,11 +193,11 @@ class UsersSectionsApi:
             '200': "IdentityApiUserV1SectionAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -206,10 +205,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def add_user_section_without_preload_content(
+    async def add_user_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_add_section_request: Optional[IdentityApiUserV1AddSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -228,9 +227,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_add_section_request: 
         :type identity_api_user_v1_add_section_request: IdentityApiUserV1AddSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -272,7 +271,7 @@ class UsersSectionsApi:
             '200': "IdentityApiUserV1SectionAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -299,7 +298,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -364,10 +365,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def add_user_section_bulk(
+    async def add_user_section_bulk(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_add_section_bulk_request: Optional[IdentityApiUserV1AddSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -386,9 +387,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_add_section_bulk_request: 
         :type identity_api_user_v1_add_section_bulk_request: IdentityApiUserV1AddSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -430,11 +431,11 @@ class UsersSectionsApi:
             '200': "IdentityApiUserV1SectionAddedBulkResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -442,10 +443,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def add_user_section_bulk_with_http_info(
+    async def add_user_section_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_add_section_bulk_request: Optional[IdentityApiUserV1AddSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -464,9 +465,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_add_section_bulk_request: 
         :type identity_api_user_v1_add_section_bulk_request: IdentityApiUserV1AddSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -508,11 +509,11 @@ class UsersSectionsApi:
             '200': "IdentityApiUserV1SectionAddedBulkResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -520,10 +521,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def add_user_section_bulk_without_preload_content(
+    async def add_user_section_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_add_section_bulk_request: Optional[IdentityApiUserV1AddSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -542,9 +543,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_add_section_bulk_request: 
         :type identity_api_user_v1_add_section_bulk_request: IdentityApiUserV1AddSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -586,7 +587,7 @@ class UsersSectionsApi:
             '200': "IdentityApiUserV1SectionAddedBulkResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -613,7 +614,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -678,10 +681,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def get_user_sections(
+    async def get_user_sections(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -699,9 +702,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -741,11 +744,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -753,10 +756,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def get_user_sections_with_http_info(
+    async def get_user_sections_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -774,9 +777,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -816,11 +819,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -828,10 +831,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def get_user_sections_without_preload_content(
+    async def get_user_sections_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -849,9 +852,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -891,7 +894,7 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -917,7 +920,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -964,11 +969,11 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def remove_user_section(
+    async def remove_user_section(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
-        user_section_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
+        user_section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -986,11 +991,11 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param user_section_id:  (required)
-        :type user_section_id: str
+        :type user_section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1031,11 +1036,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1043,11 +1048,11 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def remove_user_section_with_http_info(
+    async def remove_user_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
-        user_section_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
+        user_section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1065,11 +1070,11 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param user_section_id:  (required)
-        :type user_section_id: str
+        :type user_section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1110,11 +1115,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1122,11 +1127,11 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def remove_user_section_without_preload_content(
+    async def remove_user_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
-        user_section_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
+        user_section_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1144,11 +1149,11 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param user_section_id:  (required)
-        :type user_section_id: str
+        :type user_section_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1189,7 +1194,7 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1216,7 +1221,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1265,10 +1272,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def remove_user_section_bulk(
+    async def remove_user_section_bulk(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_remove_section_bulk_request: Optional[IdentityApiUserV1RemoveSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1287,9 +1294,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_remove_section_bulk_request: 
         :type identity_api_user_v1_remove_section_bulk_request: IdentityApiUserV1RemoveSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1332,11 +1339,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1344,10 +1351,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def remove_user_section_bulk_with_http_info(
+    async def remove_user_section_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_remove_section_bulk_request: Optional[IdentityApiUserV1RemoveSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1366,9 +1373,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_remove_section_bulk_request: 
         :type identity_api_user_v1_remove_section_bulk_request: IdentityApiUserV1RemoveSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1411,11 +1418,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1423,10 +1430,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def remove_user_section_bulk_without_preload_content(
+    async def remove_user_section_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_remove_section_bulk_request: Optional[IdentityApiUserV1RemoveSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1445,9 +1452,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_remove_section_bulk_request: 
         :type identity_api_user_v1_remove_section_bulk_request: IdentityApiUserV1RemoveSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1490,7 +1497,7 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1517,7 +1524,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1582,11 +1591,11 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def update_user_section(
+    async def update_user_section(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
-        user_section_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
+        user_section_id: UUID,
         identity_api_user_v1_update_section_request: Optional[IdentityApiUserV1UpdateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1605,11 +1614,11 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param user_section_id:  (required)
-        :type user_section_id: str
+        :type user_section_id: UUID
         :param identity_api_user_v1_update_section_request: 
         :type identity_api_user_v1_update_section_request: IdentityApiUserV1UpdateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1653,11 +1662,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1665,11 +1674,11 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def update_user_section_with_http_info(
+    async def update_user_section_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
-        user_section_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
+        user_section_id: UUID,
         identity_api_user_v1_update_section_request: Optional[IdentityApiUserV1UpdateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1688,11 +1697,11 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param user_section_id:  (required)
-        :type user_section_id: str
+        :type user_section_id: UUID
         :param identity_api_user_v1_update_section_request: 
         :type identity_api_user_v1_update_section_request: IdentityApiUserV1UpdateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1736,11 +1745,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1748,11 +1757,11 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def update_user_section_without_preload_content(
+    async def update_user_section_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
-        user_section_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
+        user_section_id: UUID,
         identity_api_user_v1_update_section_request: Optional[IdentityApiUserV1UpdateSectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -1771,11 +1780,11 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param user_section_id:  (required)
-        :type user_section_id: str
+        :type user_section_id: UUID
         :param identity_api_user_v1_update_section_request: 
         :type identity_api_user_v1_update_section_request: IdentityApiUserV1UpdateSectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1819,7 +1828,7 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1847,7 +1856,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1914,10 +1925,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def update_user_section_bulk(
+    async def update_user_section_bulk(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_update_section_bulk_request: Optional[IdentityApiUserV1UpdateSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1936,9 +1947,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_update_section_bulk_request: 
         :type identity_api_user_v1_update_section_bulk_request: IdentityApiUserV1UpdateSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1981,11 +1992,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1993,10 +2004,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def update_user_section_bulk_with_http_info(
+    async def update_user_section_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_update_section_bulk_request: Optional[IdentityApiUserV1UpdateSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -2015,9 +2026,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_update_section_bulk_request: 
         :type identity_api_user_v1_update_section_bulk_request: IdentityApiUserV1UpdateSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2060,11 +2071,11 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2072,10 +2083,10 @@ class UsersSectionsApi:
 
 
     @validate_call
-    def update_user_section_bulk_without_preload_content(
+    async def update_user_section_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         identity_api_user_v1_update_section_bulk_request: Optional[IdentityApiUserV1UpdateSectionBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -2094,9 +2105,9 @@ class UsersSectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param identity_api_user_v1_update_section_bulk_request: 
         :type identity_api_user_v1_update_section_bulk_request: IdentityApiUserV1UpdateSectionBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2139,7 +2150,7 @@ class UsersSectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2166,7 +2177,9 @@ class UsersSectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

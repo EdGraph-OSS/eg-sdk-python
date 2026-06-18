@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id** | **str** |  | [optional] 
+**tenant_id** | **UUID** |  | [optional] 
 **tenant_type** | **str** |  | [optional] 
 **tenant_types** | **List[str]** |  | [optional] 
 **organization_identifier** | **str** |  | [optional] 

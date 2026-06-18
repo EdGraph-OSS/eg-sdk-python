@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.form_api_form_components_v1_form_component_response import FormApiFormComponentsV1FormComponentResponse
 from edgraph_platform_client.models.form_api_form_components_v1_form_component_response_paginated_items_view_model import FormApiFormComponentsV1FormComponentResponsePaginatedItemsViewModel
 
@@ -40,10 +40,10 @@ class FormComponentsApi:
 
 
     @validate_call
-    def get_form_component(
+    async def get_form_component(
         self,
-        tenant_id: StrictStr,
-        form_component_id: StrictStr,
+        tenant_id: UUID,
+        form_component_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,9 +61,9 @@ class FormComponentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_component_id:  (required)
-        :type form_component_id: str
+        :type form_component_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -103,11 +103,11 @@ class FormComponentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -115,10 +115,10 @@ class FormComponentsApi:
 
 
     @validate_call
-    def get_form_component_with_http_info(
+    async def get_form_component_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_component_id: StrictStr,
+        tenant_id: UUID,
+        form_component_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,9 +136,9 @@ class FormComponentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_component_id:  (required)
-        :type form_component_id: str
+        :type form_component_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -178,11 +178,11 @@ class FormComponentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -190,10 +190,10 @@ class FormComponentsApi:
 
 
     @validate_call
-    def get_form_component_without_preload_content(
+    async def get_form_component_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_component_id: StrictStr,
+        tenant_id: UUID,
+        form_component_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -211,9 +211,9 @@ class FormComponentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_component_id:  (required)
-        :type form_component_id: str
+        :type form_component_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -253,7 +253,7 @@ class FormComponentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -279,7 +279,9 @@ class FormComponentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -326,9 +328,9 @@ class FormComponentsApi:
 
 
     @validate_call
-    def search_form_components(
+    async def search_form_components(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -350,7 +352,7 @@ class FormComponentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -400,11 +402,11 @@ class FormComponentsApi:
             '200': "FormApiFormComponentsV1FormComponentResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -412,9 +414,9 @@ class FormComponentsApi:
 
 
     @validate_call
-    def search_form_components_with_http_info(
+    async def search_form_components_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -436,7 +438,7 @@ class FormComponentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -486,11 +488,11 @@ class FormComponentsApi:
             '200': "FormApiFormComponentsV1FormComponentResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -498,9 +500,9 @@ class FormComponentsApi:
 
 
     @validate_call
-    def search_form_components_without_preload_content(
+    async def search_form_components_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -522,7 +524,7 @@ class FormComponentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -572,7 +574,7 @@ class FormComponentsApi:
             '200': "FormApiFormComponentsV1FormComponentResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -601,7 +603,9 @@ class FormComponentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

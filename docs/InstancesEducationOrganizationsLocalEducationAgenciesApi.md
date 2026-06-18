@@ -42,7 +42,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsLocalEducationAgenciesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -52,7 +52,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a LocalEducationAgency.
-        api_response = api_instance.create_local_education_agency_async(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_create_local_education_agency_request=edfi_admin_api_edfi_admin_v1_create_local_education_agency_request)
+        api_response = await api_instance.create_local_education_agency_async(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_create_local_education_agency_request=edfi_admin_api_edfi_admin_v1_create_local_education_agency_request)
         print("The response of InstancesEducationOrganizationsLocalEducationAgenciesApi->create_local_education_agency_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -125,7 +125,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsLocalEducationAgenciesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -135,7 +135,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a LocalEducationAgency.
-        api_instance.delete_local_education_agency_async(tenant_id, instance_id, year, local_education_agency_id)
+        await api_instance.delete_local_education_agency_async(tenant_id, instance_id, year, local_education_agency_id)
     except Exception as e:
         print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi->delete_local_education_agency_async: %s\n" % e)
 ```
@@ -207,7 +207,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsLocalEducationAgenciesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -217,7 +217,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a LocalEducationAgency by ID.
-        api_response = api_instance.get_local_education_agency_by_id_async(tenant_id, instance_id, year, local_education_agency_id)
+        api_response = await api_instance.get_local_education_agency_by_id_async(tenant_id, instance_id, year, local_education_agency_id)
         print("The response of InstancesEducationOrganizationsLocalEducationAgenciesApi->get_local_education_agency_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -291,7 +291,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsLocalEducationAgenciesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -304,7 +304,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of LocalEducationAgencies.
-        api_response = api_instance.getl_local_education_agencies_async(tenant_id, instance_id, year, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.getl_local_education_agencies_async(tenant_id, instance_id, year, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of InstancesEducationOrganizationsLocalEducationAgenciesApi->getl_local_education_agencies_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -382,7 +382,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsLocalEducationAgenciesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -393,7 +393,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Copies a LocalEducationAgency from one instance to another/other instance(s).
-        api_response = api_instance.sync_local_education_agency_async(tenant_id, instance_id, year, local_education_agency_id, edfi_admin_api_edfi_admin_v1_sync_local_education_agency_request=edfi_admin_api_edfi_admin_v1_sync_local_education_agency_request)
+        api_response = await api_instance.sync_local_education_agency_async(tenant_id, instance_id, year, local_education_agency_id, edfi_admin_api_edfi_admin_v1_sync_local_education_agency_request=edfi_admin_api_edfi_admin_v1_sync_local_education_agency_request)
         print("The response of InstancesEducationOrganizationsLocalEducationAgenciesApi->sync_local_education_agency_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -468,7 +468,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsLocalEducationAgenciesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -479,7 +479,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a LocalEducationAgency.
-        api_instance.update_local_education_agency_async(tenant_id, instance_id, year, local_education_agency_id, edfi_admin_api_edfi_admin_v1_update_local_education_agency_request=edfi_admin_api_edfi_admin_v1_update_local_education_agency_request)
+        await api_instance.update_local_education_agency_async(tenant_id, instance_id, year, local_education_agency_id, edfi_admin_api_edfi_admin_v1_update_local_education_agency_request=edfi_admin_api_edfi_admin_v1_update_local_education_agency_request)
     except Exception as e:
         print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi->update_local_education_agency_async: %s\n" % e)
 ```

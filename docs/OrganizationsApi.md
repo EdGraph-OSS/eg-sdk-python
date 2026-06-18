@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OrganizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Organization.
-        api_response = api_instance.create_organization_async(tenant_id, tenant_api_tenant_v1_create_organization_request=tenant_api_tenant_v1_create_organization_request)
+        api_response = await api_instance.create_organization_async(tenant_id, tenant_api_tenant_v1_create_organization_request=tenant_api_tenant_v1_create_organization_request)
         print("The response of OrganizationsApi->create_organization_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -120,7 +120,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OrganizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -128,7 +128,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes an Organization.
-        api_response = api_instance.delete_organization_async(tenant_id, organization_identifier)
+        api_response = await api_instance.delete_organization_async(tenant_id, organization_identifier)
         print("The response of OrganizationsApi->delete_organization_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -200,7 +200,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OrganizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -208,7 +208,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves an Organization by ID.
-        api_response = api_instance.get_organization_by_id_async(tenant_id, organization_identifier)
+        api_response = await api_instance.get_organization_by_id_async(tenant_id, organization_identifier)
         print("The response of OrganizationsApi->get_organization_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -279,7 +279,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OrganizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -290,7 +290,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Organizations.
-        api_response = api_instance.get_organizations_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_organizations_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of OrganizationsApi->get_organizations_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -365,7 +365,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OrganizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -374,7 +374,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates an Organization.
-        api_response = api_instance.update_organization_async(tenant_id, organization_identifier, tenant_api_tenant_v1_update_organization_request=tenant_api_tenant_v1_update_organization_request)
+        api_response = await api_instance.update_organization_async(tenant_id, organization_identifier, tenant_api_tenant_v1_update_organization_request=tenant_api_tenant_v1_update_organization_request)
         print("The response of OrganizationsApi->update_organization_async:\n")
         pprint(api_response)
     except Exception as e:

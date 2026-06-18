@@ -40,7 +40,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiSyncApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Ed-Fi Sync Job for a given tenant
-        api_response = api_instance.create_ed_fi_sync(tenant_id, ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto=ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto)
+        api_response = await api_instance.create_ed_fi_sync(tenant_id, ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto=ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto)
         print("The response of EdFiSyncApi->create_ed_fi_sync:\n")
         pprint(api_response)
     except Exception as e:
@@ -119,14 +119,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Executes an Ed-Fi Sync Job
-        api_response = api_instance.execute_ed_fi_sync_job(tenant_id)
+        api_response = await api_instance.execute_ed_fi_sync_job(tenant_id)
         print("The response of EdFiSyncApi->execute_ed_fi_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -140,7 +140,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -196,14 +196,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves Ed-Fi Sync Connection Data for a given tenant
-        api_response = api_instance.get_ed_fi_sync_data(tenant_id)
+        api_response = await api_instance.get_ed_fi_sync_data(tenant_id)
         print("The response of EdFiSyncApi->get_ed_fi_sync_data:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,7 +217,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -273,15 +273,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     body = None # object |  (optional)
 
     try:
         # Updates an Ed-Fi Sync for a given tenant
-        api_response = api_instance.update_ed_fi_sync(tenant_id, body=body)
+        api_response = await api_instance.update_ed_fi_sync(tenant_id, body=body)
         print("The response of EdFiSyncApi->update_ed_fi_sync:\n")
         pprint(api_response)
     except Exception as e:
@@ -295,7 +295,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **body** | **object**|  | [optional] 
 
 ### Return type

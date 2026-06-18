@@ -40,7 +40,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.GroupsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Adds users to group.
-        api_instance.add_users_to_group_async(tenant_id, group_id, analytics_api_groups_v1_add_group_users_request=analytics_api_groups_v1_add_group_users_request)
+        await api_instance.add_users_to_group_async(tenant_id, group_id, analytics_api_groups_v1_add_group_users_request=analytics_api_groups_v1_add_group_users_request)
     except Exception as e:
         print("Exception when calling GroupsApi->add_users_to_group_async: %s\n" % e)
 ```
@@ -121,7 +121,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.GroupsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -129,7 +129,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a group.
-        api_response = api_instance.create_analytics_power_bi_group(tenant_id, analytics_api_groups_v1_create_group_request=analytics_api_groups_v1_create_group_request)
+        api_response = await api_instance.create_analytics_power_bi_group(tenant_id, analytics_api_groups_v1_create_group_request=analytics_api_groups_v1_create_group_request)
         print("The response of GroupsApi->create_analytics_power_bi_group:\n")
         pprint(api_response)
     except Exception as e:
@@ -200,7 +200,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.GroupsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -208,7 +208,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a group.
-        api_instance.delete_analytics_power_bi_group(tenant_id, group_id)
+        await api_instance.delete_analytics_power_bi_group(tenant_id, group_id)
     except Exception as e:
         print("Exception when calling GroupsApi->delete_analytics_power_bi_group: %s\n" % e)
 ```
@@ -278,7 +278,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.GroupsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -288,7 +288,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves all users for a specific group.
-        api_response = api_instance.get_analytics_power_bi_group_users(tenant_id, group_id, skip_first_n=skip_first_n, top_first_n=top_first_n)
+        api_response = await api_instance.get_analytics_power_bi_group_users(tenant_id, group_id, skip_first_n=skip_first_n, top_first_n=top_first_n)
         print("The response of GroupsApi->get_analytics_power_bi_group_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -362,7 +362,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.GroupsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -370,7 +370,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of groups.
-        api_response = api_instance.get_groups_async(tenant_id, filter=filter)
+        api_response = await api_instance.get_groups_async(tenant_id, filter=filter)
         print("The response of GroupsApi->get_groups_async:\n")
         pprint(api_response)
     except Exception as e:

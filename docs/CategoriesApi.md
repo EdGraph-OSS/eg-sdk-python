@@ -48,17 +48,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    category_id = 'category_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     validations_api_containers_v1_add_data_steward_request = edgraph_platform_client.ValidationsApiContainersV1AddDataStewardRequest() # ValidationsApiContainersV1AddDataStewardRequest |  (optional)
 
     try:
         # Adds a Data Steward to a Category.
-        api_response = api_instance.add_category_data_steward(tenant_id, category_id, reporting_period_id, validations_api_containers_v1_add_data_steward_request=validations_api_containers_v1_add_data_steward_request)
+        api_response = await api_instance.add_category_data_steward(tenant_id, category_id, reporting_period_id, validations_api_containers_v1_add_data_steward_request=validations_api_containers_v1_add_data_steward_request)
         print("The response of CategoriesApi->add_category_data_steward:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,9 +72,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **category_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **validations_api_containers_v1_add_data_steward_request** | [**ValidationsApiContainersV1AddDataStewardRequest**](ValidationsApiContainersV1AddDataStewardRequest.md)|  | [optional] 
 
 ### Return type
@@ -133,16 +133,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     validations_api_containers_v1_add_data_steward_bulk_request = edgraph_platform_client.ValidationsApiContainersV1AddDataStewardBulkRequest() # ValidationsApiContainersV1AddDataStewardBulkRequest |  (optional)
 
     try:
         # Adds a Data Steward to Categories.
-        api_response = api_instance.add_category_data_steward_bulk(tenant_id, reporting_period_id, validations_api_containers_v1_add_data_steward_bulk_request=validations_api_containers_v1_add_data_steward_bulk_request)
+        api_response = await api_instance.add_category_data_steward_bulk(tenant_id, reporting_period_id, validations_api_containers_v1_add_data_steward_bulk_request=validations_api_containers_v1_add_data_steward_bulk_request)
         print("The response of CategoriesApi->add_category_data_steward_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -156,8 +156,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **validations_api_containers_v1_add_data_steward_bulk_request** | [**ValidationsApiContainersV1AddDataStewardBulkRequest**](ValidationsApiContainersV1AddDataStewardBulkRequest.md)|  | [optional] 
 
 ### Return type
@@ -215,15 +215,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    category_id = 'category_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Certifies a Category.
-        api_response = api_instance.certify_category(tenant_id, category_id)
+        api_response = await api_instance.certify_category(tenant_id, category_id)
         print("The response of CategoriesApi->certify_category:\n")
         pprint(api_response)
     except Exception as e:
@@ -237,8 +237,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **category_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
 
 ### Return type
 
@@ -295,15 +295,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get all Data Users
-        api_response = api_instance.get_data_users_bulk(tenant_id, reporting_period_id)
+        api_response = await api_instance.get_data_users_bulk(tenant_id, reporting_period_id)
         print("The response of CategoriesApi->get_data_users_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -317,8 +317,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -375,10 +375,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     filter = '' # str |  (optional) (default to '')
@@ -386,7 +386,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Categories.
-        api_response = api_instance.get_state_reporting_categories(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_state_reporting_categories(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of CategoriesApi->get_state_reporting_categories:\n")
         pprint(api_response)
     except Exception as e:
@@ -400,7 +400,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **filter** | **str**|  | [optional] [default to &#39;&#39;]
@@ -459,16 +459,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    category_id = 'category_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Removes the Data Owner of a Category.
-        api_instance.remove_category_data_owner(tenant_id, reporting_period_id, category_id)
+        await api_instance.remove_category_data_owner(tenant_id, reporting_period_id, category_id)
     except Exception as e:
         print("Exception when calling CategoriesApi->remove_category_data_owner: %s\n" % e)
 ```
@@ -480,9 +480,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **category_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
 
 ### Return type
 
@@ -537,17 +537,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    category_id = 'category_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     email = 'email_example' # str | 
 
     try:
         # Removes a Data Steward from a Category.
-        api_instance.remove_category_data_steward(tenant_id, category_id, reporting_period_id, email)
+        await api_instance.remove_category_data_steward(tenant_id, category_id, reporting_period_id, email)
     except Exception as e:
         print("Exception when calling CategoriesApi->remove_category_data_steward: %s\n" % e)
 ```
@@ -559,9 +559,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **category_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **email** | **str**|  | 
 
 ### Return type
@@ -618,16 +618,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    category_id = 'category_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Requests a Certification Reminder to be sent.
-        api_response = api_instance.request_category_certification_reminder(tenant_id, reporting_period_id, category_id)
+        api_response = await api_instance.request_category_certification_reminder(tenant_id, reporting_period_id, category_id)
         print("The response of CategoriesApi->request_category_certification_reminder:\n")
         pprint(api_response)
     except Exception as e:
@@ -641,9 +641,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **category_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
 
 ### Return type
 
@@ -701,17 +701,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    category_id = 'category_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     validations_api_containers_v1_set_data_owner_request = edgraph_platform_client.ValidationsApiContainersV1SetDataOwnerRequest() # ValidationsApiContainersV1SetDataOwnerRequest |  (optional)
 
     try:
         # Sets the Data Owner of a Category.
-        api_response = api_instance.set_category_data_owner(tenant_id, category_id, reporting_period_id, validations_api_containers_v1_set_data_owner_request=validations_api_containers_v1_set_data_owner_request)
+        api_response = await api_instance.set_category_data_owner(tenant_id, category_id, reporting_period_id, validations_api_containers_v1_set_data_owner_request=validations_api_containers_v1_set_data_owner_request)
         print("The response of CategoriesApi->set_category_data_owner:\n")
         pprint(api_response)
     except Exception as e:
@@ -725,9 +725,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **category_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **validations_api_containers_v1_set_data_owner_request** | [**ValidationsApiContainersV1SetDataOwnerRequest**](ValidationsApiContainersV1SetDataOwnerRequest.md)|  | [optional] 
 
 ### Return type
@@ -786,16 +786,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     validations_api_containers_v1_set_data_owner_bulk_request = edgraph_platform_client.ValidationsApiContainersV1SetDataOwnerBulkRequest() # ValidationsApiContainersV1SetDataOwnerBulkRequest |  (optional)
 
     try:
         # Sets the Data Owner of Categories.
-        api_response = api_instance.set_category_data_owner_bulk(tenant_id, reporting_period_id, validations_api_containers_v1_set_data_owner_bulk_request=validations_api_containers_v1_set_data_owner_bulk_request)
+        api_response = await api_instance.set_category_data_owner_bulk(tenant_id, reporting_period_id, validations_api_containers_v1_set_data_owner_bulk_request=validations_api_containers_v1_set_data_owner_bulk_request)
         print("The response of CategoriesApi->set_category_data_owner_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -809,8 +809,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **validations_api_containers_v1_set_data_owner_bulk_request** | [**ValidationsApiContainersV1SetDataOwnerBulkRequest**](ValidationsApiContainersV1SetDataOwnerBulkRequest.md)|  | [optional] 
 
 ### Return type
@@ -868,10 +868,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     content_type = 'content_type_example' # str |  (optional)
     content_disposition = 'content_disposition_example' # str |  (optional)
     headers = None # Dict[str, List[str]] |  (optional)
@@ -881,7 +881,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Upload a Category via a JSON file.
-        api_response = api_instance.upload_state_reporting_category(tenant_id, content_type=content_type, content_disposition=content_disposition, headers=headers, length=length, name=name, file_name=file_name)
+        api_response = await api_instance.upload_state_reporting_category(tenant_id, content_type=content_type, content_disposition=content_disposition, headers=headers, length=length, name=name, file_name=file_name)
         print("The response of CategoriesApi->upload_state_reporting_category:\n")
         pprint(api_response)
     except Exception as e:
@@ -895,7 +895,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **content_type** | **str**|  | [optional] 
  **content_disposition** | **str**|  | [optional] 
  **headers** | [**Dict[str, List[str]]**](Dict.md)|  | [optional] 
@@ -958,11 +958,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     content_type = 'content_type_example' # str |  (optional)
     content_disposition = 'content_disposition_example' # str |  (optional)
     headers = None # Dict[str, List[str]] |  (optional)
@@ -972,7 +972,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Upload a Category via a JSON file.
-        api_response = api_instance.upload_state_reporting_periods_from_category_json(tenant_id, environment_id, content_type=content_type, content_disposition=content_disposition, headers=headers, length=length, name=name, file_name=file_name)
+        api_response = await api_instance.upload_state_reporting_periods_from_category_json(tenant_id, environment_id, content_type=content_type, content_disposition=content_disposition, headers=headers, length=length, name=name, file_name=file_name)
         print("The response of CategoriesApi->upload_state_reporting_periods_from_category_json:\n")
         pprint(api_response)
     except Exception as e:
@@ -986,8 +986,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **content_type** | **str**|  | [optional] 
  **content_disposition** | **str**|  | [optional] 
  **headers** | [**Dict[str, List[str]]**](Dict.md)|  | [optional] 

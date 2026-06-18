@@ -38,13 +38,13 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyProfileApi(api_client)
 
     try:
         # Get the profile of the user that is currently logged in.
-        api_response = api_instance.get_my_profile()
+        api_response = await api_instance.get_my_profile()
         print("The response of MyProfileApi->get_my_profile:\n")
         pprint(api_response)
     except Exception as e:
@@ -111,14 +111,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyProfileApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get the tenant associated to the user.
-        api_response = api_instance.get_my_tenant(tenant_id)
+        api_response = await api_instance.get_my_tenant(tenant_id)
         print("The response of MyProfileApi->get_my_tenant:\n")
         pprint(api_response)
     except Exception as e:
@@ -132,7 +132,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -188,14 +188,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyProfileApi(api_client)
     number_of_tenants = 10 # int |  (optional) (default to 10)
 
     try:
         # Retrieves the profile of the user that is currently logged in, including the user's preferences and its associated tenants
-        api_response = api_instance.get_user_cache_async(number_of_tenants=number_of_tenants)
+        api_response = await api_instance.get_user_cache_async(number_of_tenants=number_of_tenants)
         print("The response of MyProfileApi->get_user_cache_async:\n")
         pprint(api_response)
     except Exception as e:

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request import EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request import EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest
 from edgraph_platform_client.models.identity_api_user_v1_get_seoaas_response import IdentityApiUserV1GetSEOAAsResponse
@@ -43,10 +43,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def add_user_seoaa(
+    async def add_user_seoaa(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest] = None,
         _request_timeout: Union[
             None,
@@ -65,9 +65,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -109,11 +109,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -121,10 +121,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def add_user_seoaa_with_http_info(
+    async def add_user_seoaa_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest] = None,
         _request_timeout: Union[
             None,
@@ -143,9 +143,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -187,11 +187,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -199,10 +199,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def add_user_seoaa_without_preload_content(
+    async def add_user_seoaa_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest] = None,
         _request_timeout: Union[
             None,
@@ -221,9 +221,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request: EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -265,7 +265,7 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -292,7 +292,9 @@ class UsersSEOAAsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -357,10 +359,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def delete_user_seoaa(
+    async def delete_user_seoaa(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         seoaa_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -379,9 +381,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param seoaa_id:  (required)
         :type seoaa_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -423,11 +425,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -435,10 +437,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def delete_user_seoaa_with_http_info(
+    async def delete_user_seoaa_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         seoaa_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -457,9 +459,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param seoaa_id:  (required)
         :type seoaa_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -501,11 +503,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -513,10 +515,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def delete_user_seoaa_without_preload_content(
+    async def delete_user_seoaa_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         seoaa_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -535,9 +537,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param seoaa_id:  (required)
         :type seoaa_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -579,7 +581,7 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -606,7 +608,9 @@ class UsersSEOAAsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -655,10 +659,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def search_user_seoaa(
+    async def search_user_seoaa(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -680,9 +684,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -733,11 +737,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1GetSEOAAsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -745,10 +749,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def search_user_seoaa_with_http_info(
+    async def search_user_seoaa_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -770,9 +774,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -823,11 +827,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1GetSEOAAsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -835,10 +839,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def search_user_seoaa_without_preload_content(
+    async def search_user_seoaa_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -860,9 +864,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -913,7 +917,7 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1GetSEOAAsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -943,7 +947,9 @@ class UsersSEOAAsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1006,10 +1012,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def update_user_seoaa(
+    async def update_user_seoaa(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         seoaa_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest] = None,
         _request_timeout: Union[
@@ -1029,9 +1035,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param seoaa_id:  (required)
         :type seoaa_id: str
         :param ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request: 
@@ -1076,11 +1082,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1088,10 +1094,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def update_user_seoaa_with_http_info(
+    async def update_user_seoaa_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         seoaa_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest] = None,
         _request_timeout: Union[
@@ -1111,9 +1117,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param seoaa_id:  (required)
         :type seoaa_id: str
         :param ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request: 
@@ -1158,11 +1164,11 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1170,10 +1176,10 @@ class UsersSEOAAsApi:
 
 
     @validate_call
-    def update_user_seoaa_without_preload_content(
+    async def update_user_seoaa_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         seoaa_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest] = None,
         _request_timeout: Union[
@@ -1193,9 +1199,9 @@ class UsersSEOAAsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param seoaa_id:  (required)
         :type seoaa_id: str
         :param ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request: 
@@ -1240,7 +1246,7 @@ class UsersSEOAAsApi:
             '200': "IdentityApiUserV1SEOAAUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1268,7 +1274,9 @@ class UsersSEOAAsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -23,6 +23,7 @@ from edgraph_platform_client.models.google_protobuf_well_known_types_null_value 
 from edgraph_platform_client.models.google_protobuf_well_known_types_value_kind_oneof_case import GoogleProtobufWellKnownTypesValueKindOneofCase
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GoogleProtobufWellKnownTypesValue(BaseModel):
     """
@@ -42,7 +43,8 @@ class GoogleProtobufWellKnownTypesValue(BaseModel):
     __properties: ClassVar[List[str]] = ["nullValue", "hasNullValue", "numberValue", "hasNumberValue", "stringValue", "hasStringValue", "boolValue", "hasBoolValue", "structValue", "listValue", "kindCase"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,8 +56,7 @@ class GoogleProtobufWellKnownTypesValue(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

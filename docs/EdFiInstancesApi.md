@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiInstancesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of EdFi Admin connections
-        api_response = api_instance.get_all_ed_fi_admin_connections_from_analytics_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_ed_fi_admin_connections_from_analytics_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EdFiInstancesApi->get_all_ed_fi_admin_connections_from_analytics_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -123,7 +123,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiInstancesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -134,7 +134,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of EdFi Admin instances
-        api_response = api_instance.get_all_ed_fi_admin_instances_from_analytics_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_ed_fi_admin_instances_from_analytics_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of EdFiInstancesApi->get_all_ed_fi_admin_instances_from_analytics_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -208,7 +208,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EdFiInstancesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -216,7 +216,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves an Ed-Fi Admin instance by ID.
-        api_response = api_instance.get_ed_fi_admin_instance_by_id_from_analytics_async(tenant_id, instance_id)
+        api_response = await api_instance.get_ed_fi_admin_instance_by_id_from_analytics_async(tenant_id, instance_id)
         print("The response of EdFiInstancesApi->get_ed_fi_admin_instance_by_id_from_analytics_async:\n")
         pprint(api_response)
     except Exception as e:

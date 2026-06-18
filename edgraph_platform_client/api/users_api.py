@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateLocalUserRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_user_basic_list_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel
@@ -57,7 +57,7 @@ class UsersApi:
 
 
     @validate_call
-    def activate_tenant_user_async(
+    async def activate_tenant_user_async(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -123,11 +123,11 @@ class UsersApi:
             '200': "IdentityApiUserV1UserActivatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -135,7 +135,7 @@ class UsersApi:
 
 
     @validate_call
-    def activate_tenant_user_async_with_http_info(
+    async def activate_tenant_user_async_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -201,11 +201,11 @@ class UsersApi:
             '200': "IdentityApiUserV1UserActivatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -213,7 +213,7 @@ class UsersApi:
 
 
     @validate_call
-    def activate_tenant_user_async_without_preload_content(
+    async def activate_tenant_user_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -279,7 +279,7 @@ class UsersApi:
             '200': "IdentityApiUserV1UserActivatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -306,7 +306,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -371,7 +373,7 @@ class UsersApi:
 
 
     @validate_call
-    def create_tenant_local_user_async(
+    async def create_tenant_local_user_async(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateLocalUserRequest] = None,
@@ -434,11 +436,11 @@ class UsersApi:
             '201': "IdentityApiUserV1LocalUserCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -446,7 +448,7 @@ class UsersApi:
 
 
     @validate_call
-    def create_tenant_local_user_async_with_http_info(
+    async def create_tenant_local_user_async_with_http_info(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateLocalUserRequest] = None,
@@ -509,11 +511,11 @@ class UsersApi:
             '201': "IdentityApiUserV1LocalUserCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -521,7 +523,7 @@ class UsersApi:
 
 
     @validate_call
-    def create_tenant_local_user_async_without_preload_content(
+    async def create_tenant_local_user_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateLocalUserRequest] = None,
@@ -584,7 +586,7 @@ class UsersApi:
             '201': "IdentityApiUserV1LocalUserCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -610,7 +612,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -673,7 +677,7 @@ class UsersApi:
 
 
     @validate_call
-    def deactivate_tenant_user_async(
+    async def deactivate_tenant_user_async(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -739,11 +743,11 @@ class UsersApi:
             '200': "IdentityApiUserV1UserDeactivatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -751,7 +755,7 @@ class UsersApi:
 
 
     @validate_call
-    def deactivate_tenant_user_async_with_http_info(
+    async def deactivate_tenant_user_async_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -817,11 +821,11 @@ class UsersApi:
             '200': "IdentityApiUserV1UserDeactivatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -829,7 +833,7 @@ class UsersApi:
 
 
     @validate_call
-    def deactivate_tenant_user_async_without_preload_content(
+    async def deactivate_tenant_user_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -895,7 +899,7 @@ class UsersApi:
             '200': "IdentityApiUserV1UserDeactivatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -922,7 +926,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -987,7 +993,7 @@ class UsersApi:
 
 
     @validate_call
-    def delete_tenant_user_async(
+    async def delete_tenant_user_async(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -1049,11 +1055,11 @@ class UsersApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1061,7 +1067,7 @@ class UsersApi:
 
 
     @validate_call
-    def delete_tenant_user_async_with_http_info(
+    async def delete_tenant_user_async_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -1123,11 +1129,11 @@ class UsersApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1135,7 +1141,7 @@ class UsersApi:
 
 
     @validate_call
-    def delete_tenant_user_async_without_preload_content(
+    async def delete_tenant_user_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -1197,7 +1203,7 @@ class UsersApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1223,7 +1229,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1270,9 +1278,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_form_users(
+    async def get_all_form_users(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1294,7 +1302,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size:
         :type page_size: int
         :param page_index:
@@ -1344,11 +1352,11 @@ class UsersApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1356,9 +1364,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_form_users_with_http_info(
+    async def get_all_form_users_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1380,7 +1388,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size:
         :type page_size: int
         :param page_index:
@@ -1430,11 +1438,11 @@ class UsersApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1442,9 +1450,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_form_users_without_preload_content(
+    async def get_all_form_users_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1466,7 +1474,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size:
         :type page_size: int
         :param page_index:
@@ -1516,7 +1524,7 @@ class UsersApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1545,7 +1553,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1606,7 +1616,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_tenant_users_async(
+    async def get_all_tenant_users_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -1680,11 +1690,11 @@ class UsersApi:
             '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicensePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1692,7 +1702,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_tenant_users_async_with_http_info(
+    async def get_all_tenant_users_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -1766,11 +1776,11 @@ class UsersApi:
             '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicensePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1778,7 +1788,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_tenant_users_async_without_preload_content(
+    async def get_all_tenant_users_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -1852,7 +1862,7 @@ class UsersApi:
             '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicensePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1881,7 +1891,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1942,9 +1954,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_users(
+    async def get_all_users(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1966,7 +1978,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size:
         :type page_size: int
         :param page_index:
@@ -2016,11 +2028,11 @@ class UsersApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2028,9 +2040,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_users_with_http_info(
+    async def get_all_users_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2052,7 +2064,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size:
         :type page_size: int
         :param page_index:
@@ -2102,11 +2114,11 @@ class UsersApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2114,9 +2126,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_all_users_without_preload_content(
+    async def get_all_users_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2138,7 +2150,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size:
         :type page_size: int
         :param page_index:
@@ -2188,7 +2200,7 @@ class UsersApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2217,7 +2229,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2278,7 +2292,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_tenant_user(
+    async def get_tenant_user(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2341,11 +2355,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2353,7 +2367,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_tenant_user_with_http_info(
+    async def get_tenant_user_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2416,11 +2430,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2428,7 +2442,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_tenant_user_without_preload_content(
+    async def get_tenant_user_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2491,7 +2505,7 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2517,7 +2531,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2564,7 +2580,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_tenant_user_profile_by_id_async(
+    async def get_tenant_user_profile_by_id_async(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2627,11 +2643,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2639,7 +2655,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_tenant_user_profile_by_id_async_with_http_info(
+    async def get_tenant_user_profile_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2702,11 +2718,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2714,7 +2730,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_tenant_user_profile_by_id_async_without_preload_content(
+    async def get_tenant_user_profile_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2777,7 +2793,7 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2803,7 +2819,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2850,7 +2868,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_user_tenant(
+    async def get_user_tenant(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2913,11 +2931,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2925,7 +2943,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_user_tenant_with_http_info(
+    async def get_user_tenant_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -2988,11 +3006,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3000,7 +3018,7 @@ class UsersApi:
 
 
     @validate_call
-    def get_user_tenant_without_preload_content(
+    async def get_user_tenant_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3063,7 +3081,7 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3089,7 +3107,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3136,9 +3156,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_user_tenant_status_profile(
+    async def get_user_tenant_status_profile(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         email: StrictStr,
         _request_timeout: Union[
             None,
@@ -3157,7 +3177,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param email:  (required)
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3199,11 +3219,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3211,9 +3231,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_user_tenant_status_profile_with_http_info(
+    async def get_user_tenant_status_profile_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         email: StrictStr,
         _request_timeout: Union[
             None,
@@ -3232,7 +3252,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param email:  (required)
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3274,11 +3294,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3286,9 +3306,9 @@ class UsersApi:
 
 
     @validate_call
-    def get_user_tenant_status_profile_without_preload_content(
+    async def get_user_tenant_status_profile_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         email: StrictStr,
         _request_timeout: Union[
             None,
@@ -3307,7 +3327,7 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param email:  (required)
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3349,7 +3369,7 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3375,7 +3395,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3422,7 +3444,7 @@ class UsersApi:
 
 
     @validate_call
-    def reset_mfa_status_async(
+    async def reset_mfa_status_async(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3485,11 +3507,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3497,7 +3519,7 @@ class UsersApi:
 
 
     @validate_call
-    def reset_mfa_status_async_with_http_info(
+    async def reset_mfa_status_async_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3560,11 +3582,11 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3572,7 +3594,7 @@ class UsersApi:
 
 
     @validate_call
-    def reset_mfa_status_async_without_preload_content(
+    async def reset_mfa_status_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3635,7 +3657,7 @@ class UsersApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3661,7 +3683,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3708,7 +3732,7 @@ class UsersApi:
 
 
     @validate_call
-    def reset_password_tenant_user_async(
+    async def reset_password_tenant_user_async(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3775,11 +3799,11 @@ class UsersApi:
             '200': "IdentityApiUserV1PasswordResettedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3787,7 +3811,7 @@ class UsersApi:
 
 
     @validate_call
-    def reset_password_tenant_user_async_with_http_info(
+    async def reset_password_tenant_user_async_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3854,11 +3878,11 @@ class UsersApi:
             '200': "IdentityApiUserV1PasswordResettedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3866,7 +3890,7 @@ class UsersApi:
 
 
     @validate_call
-    def reset_password_tenant_user_async_without_preload_content(
+    async def reset_password_tenant_user_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -3933,7 +3957,7 @@ class UsersApi:
             '200': "IdentityApiUserV1PasswordResettedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3960,7 +3984,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4025,7 +4051,7 @@ class UsersApi:
 
 
     @validate_call
-    def search_tenant_users(
+    async def search_tenant_users(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -4099,11 +4125,11 @@ class UsersApi:
             '200': "IdentityApiUserV2UsersSearchResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4111,7 +4137,7 @@ class UsersApi:
 
 
     @validate_call
-    def search_tenant_users_with_http_info(
+    async def search_tenant_users_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -4185,11 +4211,11 @@ class UsersApi:
             '200': "IdentityApiUserV2UsersSearchResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4197,7 +4223,7 @@ class UsersApi:
 
 
     @validate_call
-    def search_tenant_users_without_preload_content(
+    async def search_tenant_users_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -4271,7 +4297,7 @@ class UsersApi:
             '200': "IdentityApiUserV2UsersSearchResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4300,7 +4326,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4361,7 +4389,7 @@ class UsersApi:
 
 
     @validate_call
-    def search_user_licenses(
+    async def search_user_licenses(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -4439,11 +4467,11 @@ class UsersApi:
             '200': "IdentityApiUserV2UserLicensesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4451,7 +4479,7 @@ class UsersApi:
 
 
     @validate_call
-    def search_user_licenses_with_http_info(
+    async def search_user_licenses_with_http_info(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -4529,11 +4557,11 @@ class UsersApi:
             '200': "IdentityApiUserV2UserLicensesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4541,7 +4569,7 @@ class UsersApi:
 
 
     @validate_call
-    def search_user_licenses_without_preload_content(
+    async def search_user_licenses_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_id: StrictStr,
@@ -4619,7 +4647,7 @@ class UsersApi:
             '200': "IdentityApiUserV2UserLicensesResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4649,7 +4677,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4712,10 +4742,10 @@ class UsersApi:
 
 
     @validate_call
-    def search_user_licenses_bulk(
+    async def search_user_licenses_bulk(
         self,
         tenant_id: StrictStr,
-        user_id: Optional[List[StrictStr]] = None,
+        user_id: Optional[List[UUID]] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -4739,7 +4769,7 @@ class UsersApi:
         :param tenant_id:  (required)
         :type tenant_id: str
         :param user_id: 
-        :type user_id: List[str]
+        :type user_id: List[UUID]
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -4790,11 +4820,11 @@ class UsersApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResultBulk]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4802,10 +4832,10 @@ class UsersApi:
 
 
     @validate_call
-    def search_user_licenses_bulk_with_http_info(
+    async def search_user_licenses_bulk_with_http_info(
         self,
         tenant_id: StrictStr,
-        user_id: Optional[List[StrictStr]] = None,
+        user_id: Optional[List[UUID]] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -4829,7 +4859,7 @@ class UsersApi:
         :param tenant_id:  (required)
         :type tenant_id: str
         :param user_id: 
-        :type user_id: List[str]
+        :type user_id: List[UUID]
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -4880,11 +4910,11 @@ class UsersApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResultBulk]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4892,10 +4922,10 @@ class UsersApi:
 
 
     @validate_call
-    def search_user_licenses_bulk_without_preload_content(
+    async def search_user_licenses_bulk_without_preload_content(
         self,
         tenant_id: StrictStr,
-        user_id: Optional[List[StrictStr]] = None,
+        user_id: Optional[List[UUID]] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -4919,7 +4949,7 @@ class UsersApi:
         :param tenant_id:  (required)
         :type tenant_id: str
         :param user_id: 
-        :type user_id: List[str]
+        :type user_id: List[UUID]
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -4970,7 +5000,7 @@ class UsersApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResultBulk]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5001,7 +5031,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -5066,10 +5098,10 @@ class UsersApi:
 
 
     @validate_call
-    def update_tenant_user_async(
+    async def update_tenant_user_async(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest] = None,
         _request_timeout: Union[
             None,
@@ -5088,9 +5120,9 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5132,11 +5164,11 @@ class UsersApi:
             '200': "IdentityApiUserV1UserUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -5144,10 +5176,10 @@ class UsersApi:
 
 
     @validate_call
-    def update_tenant_user_async_with_http_info(
+    async def update_tenant_user_async_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest] = None,
         _request_timeout: Union[
             None,
@@ -5166,9 +5198,9 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5210,11 +5242,11 @@ class UsersApi:
             '200': "IdentityApiUserV1UserUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -5222,10 +5254,10 @@ class UsersApi:
 
 
     @validate_call
-    def update_tenant_user_async_without_preload_content(
+    async def update_tenant_user_async_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest] = None,
         _request_timeout: Union[
             None,
@@ -5244,9 +5276,9 @@ class UsersApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5288,7 +5320,7 @@ class UsersApi:
             '200': "IdentityApiUserV1UserUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5315,7 +5347,9 @@ class UsersApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

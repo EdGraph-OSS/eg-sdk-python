@@ -23,6 +23,7 @@ from edgraph_platform_client.models.identity_api_user_v2_user_extension import I
 from edgraph_platform_client.models.identity_api_user_v2_user_login import IdentityApiUserV2UserLogin
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class IdentityApiUserV2UserProfileResponse(BaseModel):
     """
@@ -52,7 +53,8 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenantCount", "createdDateTime", "lastModifiedDateTime", "extensions", "logins", "source", "lastLoginDateTime", "mfaCompleted", "platformRole", "tenantStatus", "tenantAdmin", "isDeleted", "deletedDateTime", "deletedBy"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,8 +66,7 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

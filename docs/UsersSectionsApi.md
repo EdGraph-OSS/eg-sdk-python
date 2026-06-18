@@ -43,16 +43,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_user_v1_add_section_request = edgraph_platform_client.IdentityApiUserV1AddSectionRequest() # IdentityApiUserV1AddSectionRequest |  (optional)
 
     try:
         # Adds a Section to a user.
-        api_response = api_instance.add_user_section(tenant_id, user_id, identity_api_user_v1_add_section_request=identity_api_user_v1_add_section_request)
+        api_response = await api_instance.add_user_section(tenant_id, user_id, identity_api_user_v1_add_section_request=identity_api_user_v1_add_section_request)
         print("The response of UsersSectionsApi->add_user_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,8 +66,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **identity_api_user_v1_add_section_request** | [**IdentityApiUserV1AddSectionRequest**](IdentityApiUserV1AddSectionRequest.md)|  | [optional] 
 
 ### Return type
@@ -125,16 +125,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_user_v1_add_section_bulk_request = edgraph_platform_client.IdentityApiUserV1AddSectionBulkRequest() # IdentityApiUserV1AddSectionBulkRequest |  (optional)
 
     try:
         # Adds Sections to a user in bulk.
-        api_response = api_instance.add_user_section_bulk(tenant_id, user_id, identity_api_user_v1_add_section_bulk_request=identity_api_user_v1_add_section_bulk_request)
+        api_response = await api_instance.add_user_section_bulk(tenant_id, user_id, identity_api_user_v1_add_section_bulk_request=identity_api_user_v1_add_section_bulk_request)
         print("The response of UsersSectionsApi->add_user_section_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,8 +148,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **identity_api_user_v1_add_section_bulk_request** | [**IdentityApiUserV1AddSectionBulkRequest**](IdentityApiUserV1AddSectionBulkRequest.md)|  | [optional] 
 
 ### Return type
@@ -206,15 +206,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Gets the Sections of a user.
-        api_response = api_instance.get_user_sections(tenant_id, user_id)
+        api_response = await api_instance.get_user_sections(tenant_id, user_id)
         print("The response of UsersSectionsApi->get_user_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -228,8 +228,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
 
 ### Return type
 
@@ -286,16 +286,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
-    user_section_id = 'user_section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Removes a Section from a user.
-        api_response = api_instance.remove_user_section(tenant_id, user_id, user_section_id)
+        api_response = await api_instance.remove_user_section(tenant_id, user_id, user_section_id)
         print("The response of UsersSectionsApi->remove_user_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -309,9 +309,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
- **user_section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
+ **user_section_id** | **UUID**|  | 
 
 ### Return type
 
@@ -369,16 +369,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_user_v1_remove_section_bulk_request = edgraph_platform_client.IdentityApiUserV1RemoveSectionBulkRequest() # IdentityApiUserV1RemoveSectionBulkRequest |  (optional)
 
     try:
         # Removes Sections from a user in bulk.
-        api_response = api_instance.remove_user_section_bulk(tenant_id, user_id, identity_api_user_v1_remove_section_bulk_request=identity_api_user_v1_remove_section_bulk_request)
+        api_response = await api_instance.remove_user_section_bulk(tenant_id, user_id, identity_api_user_v1_remove_section_bulk_request=identity_api_user_v1_remove_section_bulk_request)
         print("The response of UsersSectionsApi->remove_user_section_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -392,8 +392,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **identity_api_user_v1_remove_section_bulk_request** | [**IdentityApiUserV1RemoveSectionBulkRequest**](IdentityApiUserV1RemoveSectionBulkRequest.md)|  | [optional] 
 
 ### Return type
@@ -452,17 +452,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
-    user_section_id = 'user_section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_user_v1_update_section_request = edgraph_platform_client.IdentityApiUserV1UpdateSectionRequest() # IdentityApiUserV1UpdateSectionRequest |  (optional)
 
     try:
         # Updates the Section of a user.
-        api_response = api_instance.update_user_section(tenant_id, user_id, user_section_id, identity_api_user_v1_update_section_request=identity_api_user_v1_update_section_request)
+        api_response = await api_instance.update_user_section(tenant_id, user_id, user_section_id, identity_api_user_v1_update_section_request=identity_api_user_v1_update_section_request)
         print("The response of UsersSectionsApi->update_user_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -476,9 +476,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
- **user_section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
+ **user_section_id** | **UUID**|  | 
  **identity_api_user_v1_update_section_request** | [**IdentityApiUserV1UpdateSectionRequest**](IdentityApiUserV1UpdateSectionRequest.md)|  | [optional] 
 
 ### Return type
@@ -537,16 +537,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_user_v1_update_section_bulk_request = edgraph_platform_client.IdentityApiUserV1UpdateSectionBulkRequest() # IdentityApiUserV1UpdateSectionBulkRequest |  (optional)
 
     try:
         # Updates the Section of a user in bulk.
-        api_response = api_instance.update_user_section_bulk(tenant_id, user_id, identity_api_user_v1_update_section_bulk_request=identity_api_user_v1_update_section_bulk_request)
+        api_response = await api_instance.update_user_section_bulk(tenant_id, user_id, identity_api_user_v1_update_section_bulk_request=identity_api_user_v1_update_section_bulk_request)
         print("The response of UsersSectionsApi->update_user_section_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -560,8 +560,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **identity_api_user_v1_update_section_bulk_request** | [**IdentityApiUserV1UpdateSectionBulkRequest**](IdentityApiUserV1UpdateSectionBulkRequest.md)|  | [optional] 
 
 ### Return type

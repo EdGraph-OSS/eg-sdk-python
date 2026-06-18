@@ -37,14 +37,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyExtensionsApi(api_client)
     code = 'code_example' # str | 
 
     try:
         # Removes a user's profile extension.
-        api_response = api_instance.remove_user_extension(code)
+        api_response = await api_instance.remove_user_extension(code)
         print("The response of MyExtensionsApi->remove_user_extension:\n")
         pprint(api_response)
     except Exception as e:
@@ -115,14 +115,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyExtensionsApi(api_client)
     identity_api_user_v1_set_user_extension_request = edgraph_platform_client.IdentityApiUserV1SetUserExtensionRequest() # IdentityApiUserV1SetUserExtensionRequest |  (optional)
 
     try:
         # Creates or update a user's profile extension.
-        api_response = api_instance.set_user_extension(identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request)
+        api_response = await api_instance.set_user_extension(identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request)
         print("The response of MyExtensionsApi->set_user_extension:\n")
         pprint(api_response)
     except Exception as e:

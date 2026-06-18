@@ -42,7 +42,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.APIClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new OpenId API Client
-        api_response = api_instance.create_tenant_api_client_async(tenant_id, identity_api_api_client_v1_create_api_client_request=identity_api_api_client_v1_create_api_client_request)
+        api_response = await api_instance.create_tenant_api_client_async(tenant_id, identity_api_api_client_v1_create_api_client_request=identity_api_api_client_v1_create_api_client_request)
         print("The response of APIClientsApi->create_tenant_api_client_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -120,7 +120,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.APIClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -128,7 +128,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes an OpenId API Client
-        api_instance.delete_tenant_api_client_async(tenant_id, client_id)
+        await api_instance.delete_tenant_api_client_async(tenant_id, client_id)
     except Exception as e:
         print("Exception when calling APIClientsApi->delete_tenant_api_client_async: %s\n" % e)
 ```
@@ -197,7 +197,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.APIClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -208,7 +208,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of OpenId API Clients associated to this tenant
-        api_response = api_instance.get_all_tenant_api_clients_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_api_clients_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of APIClientsApi->get_all_tenant_api_clients_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -282,7 +282,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.APIClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -290,7 +290,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves an OpenId API Client
-        api_response = api_instance.get_tenant_api_client_by_id_async(tenant_id, client_id)
+        api_response = await api_instance.get_tenant_api_client_by_id_async(tenant_id, client_id)
         print("The response of APIClientsApi->get_tenant_api_client_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -363,7 +363,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.APIClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -372,7 +372,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Regenerates an OpenId API Client's secret
-        api_response = api_instance.regenerate_tenant_api_client_secret_async(tenant_id, client_id, identity_api_api_client_v1_regenerate_api_client_secret_request=identity_api_api_client_v1_regenerate_api_client_secret_request)
+        api_response = await api_instance.regenerate_tenant_api_client_secret_async(tenant_id, client_id, identity_api_api_client_v1_regenerate_api_client_secret_request=identity_api_api_client_v1_regenerate_api_client_secret_request)
         print("The response of APIClientsApi->regenerate_tenant_api_client_secret_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -445,7 +445,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.APIClientsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -454,7 +454,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates an OpenId API Client
-        api_response = api_instance.update_tenant_api_client_async(tenant_id, client_id, identity_api_api_client_v1_update_api_client_request=identity_api_api_client_v1_update_api_client_request)
+        api_response = await api_instance.update_tenant_api_client_async(tenant_id, client_id, identity_api_api_client_v1_update_api_client_request=identity_api_api_client_v1_update_api_client_request)
         print("The response of APIClientsApi->update_tenant_api_client_async:\n")
         pprint(api_response)
     except Exception as e:

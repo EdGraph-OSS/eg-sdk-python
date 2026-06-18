@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **tier_name** | **str** |  | [optional] 
 **ods_api_connection** | [**EdfiAdminApiEdfiAdminV1TierOdsApiConnection**](EdfiAdminApiEdfiAdminV1TierOdsApiConnection.md) |  | [optional] 
 **sql_connection** | [**EdfiAdminApiEdfiAdminV1TierSqlConnection**](EdfiAdminApiEdfiAdminV1TierSqlConnection.md) |  | [optional] 
+**admin_api_url** | **str** |  | [optional] 
 
 ## Example
 

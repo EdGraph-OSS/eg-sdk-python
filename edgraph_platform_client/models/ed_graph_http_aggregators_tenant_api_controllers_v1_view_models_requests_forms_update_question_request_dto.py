@@ -19,20 +19,22 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_validation_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionValidationRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_visibility_condition_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto
 from edgraph_platform_client.models.form_api_questions_v1_question_type import FormApiQuestionsV1QuestionType
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto(BaseModel):
     """
     EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    form_id: Optional[StrictStr] = Field(default=None, alias="formId")
-    section_id: Optional[StrictStr] = Field(default=None, alias="sectionId")
-    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    id: Optional[UUID] = None
+    form_id: Optional[UUID] = Field(default=None, alias="formId")
+    section_id: Optional[UUID] = Field(default=None, alias="sectionId")
+    tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
     title: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     type: Optional[FormApiQuestionsV1QuestionType] = None
@@ -48,7 +50,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQ
     __properties: ClassVar[List[str]] = ["id", "formId", "sectionId", "tenantId", "title", "description", "type", "required", "defaultValue", "validation", "options", "order", "component", "visibilityCondition", "customId", "multiline"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,8 +63,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQ
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -37,15 +37,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StateReportingStepsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     school_year = 56 # int | 
 
     try:
         # Get Steps Status for the tenant.
-        api_response = api_instance.get_steps(tenant_id, school_year)
+        api_response = await api_instance.get_steps(tenant_id, school_year)
         print("The response of StateReportingStepsApi->get_steps:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,7 +59,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **school_year** | **int**|  | 
 
 ### Return type
@@ -117,16 +117,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StateReportingStepsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     school_year = 56 # int | 
     validations_api_state_reporting_steps_v1_update_state_reporting_step_request = edgraph_platform_client.ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest() # ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest |  (optional)
 
     try:
         # Update Steps Status for the tenant.
-        api_response = api_instance.update_step(tenant_id, school_year, validations_api_state_reporting_steps_v1_update_state_reporting_step_request=validations_api_state_reporting_steps_v1_update_state_reporting_step_request)
+        api_response = await api_instance.update_step(tenant_id, school_year, validations_api_state_reporting_steps_v1_update_state_reporting_step_request=validations_api_state_reporting_steps_v1_update_state_reporting_step_request)
         print("The response of StateReportingStepsApi->update_step:\n")
         pprint(api_response)
     except Exception as e:
@@ -140,7 +140,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **school_year** | **int**|  | 
  **validations_api_state_reporting_steps_v1_update_state_reporting_step_request** | [**ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest**](ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest.md)|  | [optional] 
 

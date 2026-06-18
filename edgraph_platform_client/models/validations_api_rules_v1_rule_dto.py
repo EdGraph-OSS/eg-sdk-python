@@ -23,6 +23,7 @@ from edgraph_platform_client.models.validations_api_containers_v1_container_dto 
 from edgraph_platform_client.models.validations_api_rules_v1_url import ValidationsApiRulesV1Url
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ValidationsApiRulesV1RuleDto(BaseModel):
     """
@@ -54,7 +55,8 @@ class ValidationsApiRulesV1RuleDto(BaseModel):
     __properties: ClassVar[List[str]] = ["tenantId", "containerId", "id", "name", "description", "diagnosticSql", "countSql", "errorSeverityLevel", "errorMessage", "maxNumberResults", "ruleIdentification", "resolution", "tags", "version", "parentCollection", "parentContainer", "lastExecutionId", "lastExecutionStartDateTime", "lastExecutionEndDateTime", "lastExecutionTotalResults", "lastExecutionTotalInvalidResults", "collectionId", "urls"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -66,8 +68,7 @@ class ValidationsApiRulesV1RuleDto(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

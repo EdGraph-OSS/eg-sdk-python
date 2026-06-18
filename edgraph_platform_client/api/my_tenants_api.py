@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.identity_api_user_v1_user_tenant_profile_paginated_items_view_model import IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel
 from edgraph_platform_client.models.identity_api_user_v2_user_me_tenants_response_paginated_items_view_model import IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel
 
@@ -40,7 +40,7 @@ class MyTenantsApi:
 
 
     @validate_call
-    def get_user_tenants(
+    async def get_user_tenants(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -110,11 +110,11 @@ class MyTenantsApi:
             '200': "IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -122,7 +122,7 @@ class MyTenantsApi:
 
 
     @validate_call
-    def get_user_tenants_with_http_info(
+    async def get_user_tenants_with_http_info(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -192,11 +192,11 @@ class MyTenantsApi:
             '200': "IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -204,7 +204,7 @@ class MyTenantsApi:
 
 
     @validate_call
-    def get_user_tenants_without_preload_content(
+    async def get_user_tenants_without_preload_content(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -274,7 +274,7 @@ class MyTenantsApi:
             '200': "IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -302,7 +302,9 @@ class MyTenantsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -361,9 +363,9 @@ class MyTenantsApi:
 
 
     @validate_call
-    def search_my_licenses(
+    async def search_my_licenses(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -385,7 +387,7 @@ class MyTenantsApi:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index:
         :type page_index: int
         :param page_size:
@@ -435,11 +437,11 @@ class MyTenantsApi:
             '200': "IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -447,9 +449,9 @@ class MyTenantsApi:
 
 
     @validate_call
-    def search_my_licenses_with_http_info(
+    async def search_my_licenses_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -471,7 +473,7 @@ class MyTenantsApi:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index:
         :type page_index: int
         :param page_size:
@@ -521,11 +523,11 @@ class MyTenantsApi:
             '200': "IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -533,9 +535,9 @@ class MyTenantsApi:
 
 
     @validate_call
-    def search_my_licenses_without_preload_content(
+    async def search_my_licenses_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -557,7 +559,7 @@ class MyTenantsApi:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index:
         :type page_index: int
         :param page_size:
@@ -607,7 +609,7 @@ class MyTenantsApi:
             '200': "IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -636,7 +638,9 @@ class MyTenantsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -697,7 +701,7 @@ class MyTenantsApi:
 
 
     @validate_call
-    def search_my_tenants(
+    async def search_my_tenants(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -767,11 +771,11 @@ class MyTenantsApi:
             '200': "IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -779,7 +783,7 @@ class MyTenantsApi:
 
 
     @validate_call
-    def search_my_tenants_with_http_info(
+    async def search_my_tenants_with_http_info(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -849,11 +853,11 @@ class MyTenantsApi:
             '200': "IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -861,7 +865,7 @@ class MyTenantsApi:
 
 
     @validate_call
-    def search_my_tenants_without_preload_content(
+    async def search_my_tenants_without_preload_content(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -931,7 +935,7 @@ class MyTenantsApi:
             '200': "IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -959,7 +963,9 @@ class MyTenantsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

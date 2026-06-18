@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -42,7 +41,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def assign_my_group_to_capacity(
+    async def assign_my_group_to_capacity(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_assign_capacity_request: Optional[AnalyticsApiCapacitiesV1AssignCapacityRequest] = None,
@@ -105,11 +104,11 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -117,7 +116,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def assign_my_group_to_capacity_with_http_info(
+    async def assign_my_group_to_capacity_with_http_info(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_assign_capacity_request: Optional[AnalyticsApiCapacitiesV1AssignCapacityRequest] = None,
@@ -180,11 +179,11 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -192,7 +191,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def assign_my_group_to_capacity_without_preload_content(
+    async def assign_my_group_to_capacity_without_preload_content(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_assign_capacity_request: Optional[AnalyticsApiCapacitiesV1AssignCapacityRequest] = None,
@@ -255,7 +254,7 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -281,7 +280,9 @@ class CapacitiesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -344,7 +345,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def get_all_analytics_power_bi_capacities(
+    async def get_all_analytics_power_bi_capacities(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -402,11 +403,11 @@ class CapacitiesApi:
             '200': "AnalyticsApiCapacitiesV1CapacityResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -414,7 +415,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def get_all_analytics_power_bi_capacities_with_http_info(
+    async def get_all_analytics_power_bi_capacities_with_http_info(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -472,11 +473,11 @@ class CapacitiesApi:
             '200': "AnalyticsApiCapacitiesV1CapacityResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -484,7 +485,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def get_all_analytics_power_bi_capacities_without_preload_content(
+    async def get_all_analytics_power_bi_capacities_without_preload_content(
         self,
         tenant_id: StrictStr,
         _request_timeout: Union[
@@ -542,7 +543,7 @@ class CapacitiesApi:
             '200': "AnalyticsApiCapacitiesV1CapacityResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -567,7 +568,9 @@ class CapacitiesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -612,7 +615,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def resume_capacity_async(
+    async def resume_capacity_async(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_resume_capacity_request: Optional[AnalyticsApiCapacitiesV1ResumeCapacityRequest] = None,
@@ -675,11 +678,11 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -687,7 +690,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def resume_capacity_async_with_http_info(
+    async def resume_capacity_async_with_http_info(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_resume_capacity_request: Optional[AnalyticsApiCapacitiesV1ResumeCapacityRequest] = None,
@@ -750,11 +753,11 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -762,7 +765,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def resume_capacity_async_without_preload_content(
+    async def resume_capacity_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_resume_capacity_request: Optional[AnalyticsApiCapacitiesV1ResumeCapacityRequest] = None,
@@ -825,7 +828,7 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -851,7 +854,9 @@ class CapacitiesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -914,7 +919,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def suspend_capacity_async(
+    async def suspend_capacity_async(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_suspend_capacity_request: Optional[AnalyticsApiCapacitiesV1SuspendCapacityRequest] = None,
@@ -977,11 +982,11 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -989,7 +994,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def suspend_capacity_async_with_http_info(
+    async def suspend_capacity_async_with_http_info(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_suspend_capacity_request: Optional[AnalyticsApiCapacitiesV1SuspendCapacityRequest] = None,
@@ -1052,11 +1057,11 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1064,7 +1069,7 @@ class CapacitiesApi:
 
 
     @validate_call
-    def suspend_capacity_async_without_preload_content(
+    async def suspend_capacity_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         analytics_api_capacities_v1_suspend_capacity_request: Optional[AnalyticsApiCapacitiesV1SuspendCapacityRequest] = None,
@@ -1127,7 +1132,7 @@ class CapacitiesApi:
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1153,7 +1158,9 @@ class CapacitiesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -45,7 +44,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def create_local_education_agency_async(
+    async def create_local_education_agency_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -116,11 +115,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -128,7 +127,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def create_local_education_agency_async_with_http_info(
+    async def create_local_education_agency_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -199,11 +198,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -211,7 +210,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def create_local_education_agency_async_without_preload_content(
+    async def create_local_education_agency_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -282,7 +281,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -310,7 +309,9 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -377,7 +378,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def delete_local_education_agency_async(
+    async def delete_local_education_agency_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -448,11 +449,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -460,7 +461,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def delete_local_education_agency_async_with_http_info(
+    async def delete_local_education_agency_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -531,11 +532,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -543,7 +544,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def delete_local_education_agency_async_without_preload_content(
+    async def delete_local_education_agency_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -614,7 +615,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -642,7 +643,9 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -693,7 +696,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def get_local_education_agency_by_id_async(
+    async def get_local_education_agency_by_id_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -764,11 +767,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -776,7 +779,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def get_local_education_agency_by_id_async_with_http_info(
+    async def get_local_education_agency_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -847,11 +850,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -859,7 +862,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def get_local_education_agency_by_id_async_without_preload_content(
+    async def get_local_education_agency_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -930,7 +933,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -958,7 +961,9 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1009,7 +1014,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def getl_local_education_agencies_async(
+    async def getl_local_education_agencies_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1092,11 +1097,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1104,7 +1109,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def getl_local_education_agencies_async_with_http_info(
+    async def getl_local_education_agencies_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1187,11 +1192,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1199,7 +1204,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def getl_local_education_agencies_async_without_preload_content(
+    async def getl_local_education_agencies_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1282,7 +1287,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1313,7 +1318,9 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1378,7 +1385,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def sync_local_education_agency_async(
+    async def sync_local_education_agency_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1453,11 +1460,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1465,7 +1472,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def sync_local_education_agency_async_with_http_info(
+    async def sync_local_education_agency_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1540,11 +1547,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1552,7 +1559,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def sync_local_education_agency_async_without_preload_content(
+    async def sync_local_education_agency_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1627,7 +1634,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1656,7 +1663,9 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1725,7 +1734,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def update_local_education_agency_async(
+    async def update_local_education_agency_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1800,11 +1809,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1812,7 +1821,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def update_local_education_agency_async_with_http_info(
+    async def update_local_education_agency_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1887,11 +1896,11 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1899,7 +1908,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
 
 
     @validate_call
-    def update_local_education_agency_async_without_preload_content(
+    async def update_local_education_agency_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1974,7 +1983,7 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2003,7 +2012,9 @@ class InstancesEducationOrganizationsLocalEducationAgenciesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

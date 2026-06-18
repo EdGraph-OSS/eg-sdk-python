@@ -37,14 +37,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
 
     try:
         # Retrieves the profile of a specific tenant
-        api_response = api_instance.get_tenant_by_id_async(tenant_id)
+        api_response = await api_instance.get_tenant_by_id_async(tenant_id)
         print("The response of TenantsApi->get_tenant_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -117,7 +117,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -125,7 +125,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a tenant's profile
-        api_response = api_instance.update_tenant_async(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_tenants_update_tenant_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_tenants_update_tenant_request)
+        api_response = await api_instance.update_tenant_async(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_tenants_update_tenant_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_tenants_update_tenant_request)
         print("The response of TenantsApi->update_tenant_async:\n")
         pprint(api_response)
     except Exception as e:

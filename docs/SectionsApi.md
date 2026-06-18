@@ -49,16 +49,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_sections_v1_create_section_request = edgraph_platform_client.FormApiSectionsV1CreateSectionRequest() # FormApiSectionsV1CreateSectionRequest |  (optional)
 
     try:
         # Creates a new Section for a given form
-        api_response = api_instance.create_section(tenant_id, form_id, form_api_sections_v1_create_section_request=form_api_sections_v1_create_section_request)
+        api_response = await api_instance.create_section(tenant_id, form_id, form_api_sections_v1_create_section_request=form_api_sections_v1_create_section_request)
         print("The response of SectionsApi->create_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,8 +72,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **form_api_sections_v1_create_section_request** | [**FormApiSectionsV1CreateSectionRequest**](FormApiSectionsV1CreateSectionRequest.md)|  | [optional] 
 
 ### Return type
@@ -130,16 +130,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a Section.
-        api_response = api_instance.delete_section(tenant_id, form_id, section_id)
+        api_response = await api_instance.delete_section(tenant_id, form_id, section_id)
         print("The response of SectionsApi->delete_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -153,9 +153,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
 
 ### Return type
 
@@ -212,16 +212,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get Section.
-        api_response = api_instance.get_section(tenant_id, form_id, section_id)
+        api_response = await api_instance.get_section(tenant_id, form_id, section_id)
         print("The response of SectionsApi->get_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,9 +235,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
 
 ### Return type
 
@@ -294,10 +294,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -305,7 +305,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Section Academic Subjects.
-        api_response = api_instance.get_section_academic_subjects(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_section_academic_subjects(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_section_academic_subjects:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,7 +319,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -379,15 +379,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a Section by ID.
-        api_response = api_instance.get_section_by_id(tenant_id, section_id)
+        api_response = await api_instance.get_section_by_id(tenant_id, section_id)
         print("The response of SectionsApi->get_section_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -401,8 +401,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
 
 ### Return type
 
@@ -458,10 +458,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -469,7 +469,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Section Courses.
-        api_response = api_instance.get_section_courses(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_section_courses(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_section_courses:\n")
         pprint(api_response)
     except Exception as e:
@@ -483,7 +483,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -543,10 +543,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -554,7 +554,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Section Grade Levels.
-        api_response = api_instance.get_section_grade_levels(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_section_grade_levels(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_section_grade_levels:\n")
         pprint(api_response)
     except Exception as e:
@@ -568,7 +568,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -628,10 +628,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -639,7 +639,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Section Schools.
-        api_response = api_instance.get_section_schools(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_section_schools(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_section_schools:\n")
         pprint(api_response)
     except Exception as e:
@@ -653,7 +653,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -713,10 +713,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -724,7 +724,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Section Sessions.
-        api_response = api_instance.get_section_sessions(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_section_sessions(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_section_sessions:\n")
         pprint(api_response)
     except Exception as e:
@@ -738,7 +738,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -798,10 +798,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -809,7 +809,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Section Terms.
-        api_response = api_instance.get_section_terms(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_section_terms(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_section_terms:\n")
         pprint(api_response)
     except Exception as e:
@@ -823,7 +823,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -883,10 +883,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -894,7 +894,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Sections.
-        api_response = api_instance.get_sections(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_sections(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SectionsApi->get_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -908,7 +908,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -968,11 +968,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -980,7 +980,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search Sections
-        api_response = api_instance.search_sections(tenant_id, form_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_sections(tenant_id, form_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of SectionsApi->search_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -994,8 +994,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1056,17 +1056,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     form_api_sections_v1_update_section_request = edgraph_platform_client.FormApiSectionsV1UpdateSectionRequest() # FormApiSectionsV1UpdateSectionRequest |  (optional)
 
     try:
         # Updates a Section.
-        api_response = api_instance.update_section(tenant_id, form_id, section_id, form_api_sections_v1_update_section_request=form_api_sections_v1_update_section_request)
+        api_response = await api_instance.update_section(tenant_id, form_id, section_id, form_api_sections_v1_update_section_request=form_api_sections_v1_update_section_request)
         print("The response of SectionsApi->update_section:\n")
         pprint(api_response)
     except Exception as e:
@@ -1080,9 +1080,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
  **form_api_sections_v1_update_section_request** | [**FormApiSectionsV1UpdateSectionRequest**](FormApiSectionsV1UpdateSectionRequest.md)|  | [optional] 
 
 ### Return type

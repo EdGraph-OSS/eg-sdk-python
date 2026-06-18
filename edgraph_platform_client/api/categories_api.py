@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Dict, List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.validations_api_containers_v1_add_data_steward_bulk_request import ValidationsApiContainersV1AddDataStewardBulkRequest
 from edgraph_platform_client.models.validations_api_containers_v1_add_data_steward_request import ValidationsApiContainersV1AddDataStewardRequest
 from edgraph_platform_client.models.validations_api_containers_v1_categories_with_data_users_response import ValidationsApiContainersV1CategoriesWithDataUsersResponse
@@ -51,11 +51,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def add_category_data_steward(
+    async def add_category_data_steward(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_add_data_steward_request: Optional[ValidationsApiContainersV1AddDataStewardRequest] = None,
         _request_timeout: Union[
             None,
@@ -74,11 +74,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_add_data_steward_request: 
         :type validations_api_containers_v1_add_data_steward_request: ValidationsApiContainersV1AddDataStewardRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -122,11 +122,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -134,11 +134,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def add_category_data_steward_with_http_info(
+    async def add_category_data_steward_with_http_info(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_add_data_steward_request: Optional[ValidationsApiContainersV1AddDataStewardRequest] = None,
         _request_timeout: Union[
             None,
@@ -157,11 +157,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_add_data_steward_request: 
         :type validations_api_containers_v1_add_data_steward_request: ValidationsApiContainersV1AddDataStewardRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -205,11 +205,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -217,11 +217,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def add_category_data_steward_without_preload_content(
+    async def add_category_data_steward_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_add_data_steward_request: Optional[ValidationsApiContainersV1AddDataStewardRequest] = None,
         _request_timeout: Union[
             None,
@@ -240,11 +240,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_add_data_steward_request: 
         :type validations_api_containers_v1_add_data_steward_request: ValidationsApiContainersV1AddDataStewardRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -288,7 +288,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -316,7 +316,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -383,10 +385,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def add_category_data_steward_bulk(
+    async def add_category_data_steward_bulk(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_add_data_steward_bulk_request: Optional[ValidationsApiContainersV1AddDataStewardBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -405,9 +407,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_add_data_steward_bulk_request: 
         :type validations_api_containers_v1_add_data_steward_bulk_request: ValidationsApiContainersV1AddDataStewardBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -450,11 +452,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -462,10 +464,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def add_category_data_steward_bulk_with_http_info(
+    async def add_category_data_steward_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_add_data_steward_bulk_request: Optional[ValidationsApiContainersV1AddDataStewardBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -484,9 +486,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_add_data_steward_bulk_request: 
         :type validations_api_containers_v1_add_data_steward_bulk_request: ValidationsApiContainersV1AddDataStewardBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -529,11 +531,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -541,10 +543,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def add_category_data_steward_bulk_without_preload_content(
+    async def add_category_data_steward_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_add_data_steward_bulk_request: Optional[ValidationsApiContainersV1AddDataStewardBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -563,9 +565,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_add_data_steward_bulk_request: 
         :type validations_api_containers_v1_add_data_steward_bulk_request: ValidationsApiContainersV1AddDataStewardBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -608,7 +610,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -635,7 +637,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -700,10 +704,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def certify_category(
+    async def certify_category(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -721,9 +725,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -763,11 +767,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -775,10 +779,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def certify_category_with_http_info(
+    async def certify_category_with_http_info(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,9 +800,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -838,11 +842,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -850,10 +854,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def certify_category_without_preload_content(
+    async def certify_category_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -871,9 +875,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -913,7 +917,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -939,7 +943,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -986,10 +992,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def get_data_users_bulk(
+    async def get_data_users_bulk(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1007,9 +1013,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1049,11 +1055,11 @@ class CategoriesApi:
             '404': "EdGraphCommonErrorsCoreProblemDetails",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1061,10 +1067,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def get_data_users_bulk_with_http_info(
+    async def get_data_users_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1082,9 +1088,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1124,11 +1130,11 @@ class CategoriesApi:
             '404': "EdGraphCommonErrorsCoreProblemDetails",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1136,10 +1142,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def get_data_users_bulk_without_preload_content(
+    async def get_data_users_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1157,9 +1163,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1199,7 +1205,7 @@ class CategoriesApi:
             '404': "EdGraphCommonErrorsCoreProblemDetails",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1225,7 +1231,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1272,9 +1280,9 @@ class CategoriesApi:
 
 
     @validate_call
-    def get_state_reporting_categories(
+    async def get_state_reporting_categories(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -1296,7 +1304,7 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1346,11 +1354,11 @@ class CategoriesApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1358,9 +1366,9 @@ class CategoriesApi:
 
 
     @validate_call
-    def get_state_reporting_categories_with_http_info(
+    async def get_state_reporting_categories_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -1382,7 +1390,7 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1432,11 +1440,11 @@ class CategoriesApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1444,9 +1452,9 @@ class CategoriesApi:
 
 
     @validate_call
-    def get_state_reporting_categories_without_preload_content(
+    async def get_state_reporting_categories_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         filter: Optional[StrictStr] = None,
@@ -1468,7 +1476,7 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1518,7 +1526,7 @@ class CategoriesApi:
             '200': "ValidationsApiContainersV1PaginatedContainers",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1547,7 +1555,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1608,11 +1618,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def remove_category_data_owner(
+    async def remove_category_data_owner(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1630,11 +1640,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1674,11 +1684,11 @@ class CategoriesApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1686,11 +1696,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def remove_category_data_owner_with_http_info(
+    async def remove_category_data_owner_with_http_info(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1708,11 +1718,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1752,11 +1762,11 @@ class CategoriesApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1764,11 +1774,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def remove_category_data_owner_without_preload_content(
+    async def remove_category_data_owner_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1786,11 +1796,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1830,7 +1840,7 @@ class CategoriesApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1857,7 +1867,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1906,11 +1918,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def remove_category_data_steward(
+    async def remove_category_data_steward(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         email: StrictStr,
         _request_timeout: Union[
             None,
@@ -1929,11 +1941,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param email:  (required)
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1976,11 +1988,11 @@ class CategoriesApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1988,11 +2000,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def remove_category_data_steward_with_http_info(
+    async def remove_category_data_steward_with_http_info(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         email: StrictStr,
         _request_timeout: Union[
             None,
@@ -2011,11 +2023,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param email:  (required)
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2058,11 +2070,11 @@ class CategoriesApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2070,11 +2082,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def remove_category_data_steward_without_preload_content(
+    async def remove_category_data_steward_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         email: StrictStr,
         _request_timeout: Union[
             None,
@@ -2093,11 +2105,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param email:  (required)
         :type email: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2140,7 +2152,7 @@ class CategoriesApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2168,7 +2180,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2219,11 +2233,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def request_category_certification_reminder(
+    async def request_category_certification_reminder(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2241,11 +2255,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2286,11 +2300,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2298,11 +2312,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def request_category_certification_reminder_with_http_info(
+    async def request_category_certification_reminder_with_http_info(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2320,11 +2334,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2365,11 +2379,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2377,11 +2391,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def request_category_certification_reminder_without_preload_content(
+    async def request_category_certification_reminder_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
-        category_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
+        category_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2399,11 +2413,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2444,7 +2458,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2471,7 +2485,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2520,11 +2536,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def set_category_data_owner(
+    async def set_category_data_owner(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_set_data_owner_request: Optional[ValidationsApiContainersV1SetDataOwnerRequest] = None,
         _request_timeout: Union[
             None,
@@ -2543,11 +2559,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_set_data_owner_request: 
         :type validations_api_containers_v1_set_data_owner_request: ValidationsApiContainersV1SetDataOwnerRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2591,11 +2607,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2603,11 +2619,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def set_category_data_owner_with_http_info(
+    async def set_category_data_owner_with_http_info(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_set_data_owner_request: Optional[ValidationsApiContainersV1SetDataOwnerRequest] = None,
         _request_timeout: Union[
             None,
@@ -2626,11 +2642,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_set_data_owner_request: 
         :type validations_api_containers_v1_set_data_owner_request: ValidationsApiContainersV1SetDataOwnerRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2674,11 +2690,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2686,11 +2702,11 @@ class CategoriesApi:
 
 
     @validate_call
-    def set_category_data_owner_without_preload_content(
+    async def set_category_data_owner_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        category_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        category_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_set_data_owner_request: Optional[ValidationsApiContainersV1SetDataOwnerRequest] = None,
         _request_timeout: Union[
             None,
@@ -2709,11 +2725,11 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param category_id:  (required)
-        :type category_id: str
+        :type category_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_set_data_owner_request: 
         :type validations_api_containers_v1_set_data_owner_request: ValidationsApiContainersV1SetDataOwnerRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2757,7 +2773,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2785,7 +2801,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2852,10 +2870,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def set_category_data_owner_bulk(
+    async def set_category_data_owner_bulk(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_set_data_owner_bulk_request: Optional[ValidationsApiContainersV1SetDataOwnerBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -2874,9 +2892,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_set_data_owner_bulk_request: 
         :type validations_api_containers_v1_set_data_owner_bulk_request: ValidationsApiContainersV1SetDataOwnerBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2919,11 +2937,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2931,10 +2949,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def set_category_data_owner_bulk_with_http_info(
+    async def set_category_data_owner_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_set_data_owner_bulk_request: Optional[ValidationsApiContainersV1SetDataOwnerBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -2953,9 +2971,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_set_data_owner_bulk_request: 
         :type validations_api_containers_v1_set_data_owner_bulk_request: ValidationsApiContainersV1SetDataOwnerBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2998,11 +3016,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3010,10 +3028,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def set_category_data_owner_bulk_without_preload_content(
+    async def set_category_data_owner_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        reporting_period_id: UUID,
         validations_api_containers_v1_set_data_owner_bulk_request: Optional[ValidationsApiContainersV1SetDataOwnerBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -3032,9 +3050,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param validations_api_containers_v1_set_data_owner_bulk_request: 
         :type validations_api_containers_v1_set_data_owner_bulk_request: ValidationsApiContainersV1SetDataOwnerBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3077,7 +3095,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3104,7 +3122,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3169,9 +3189,9 @@ class CategoriesApi:
 
 
     @validate_call
-    def upload_state_reporting_category(
+    async def upload_state_reporting_category(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         content_type: Optional[StrictStr] = None,
         content_disposition: Optional[StrictStr] = None,
         headers: Optional[Dict[str, List[StrictStr]]] = None,
@@ -3195,7 +3215,7 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param content_type:
         :type content_type: str
         :param content_disposition:
@@ -3252,11 +3272,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3264,9 +3284,9 @@ class CategoriesApi:
 
 
     @validate_call
-    def upload_state_reporting_category_with_http_info(
+    async def upload_state_reporting_category_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         content_type: Optional[StrictStr] = None,
         content_disposition: Optional[StrictStr] = None,
         headers: Optional[Dict[str, List[StrictStr]]] = None,
@@ -3290,7 +3310,7 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param content_type:
         :type content_type: str
         :param content_disposition:
@@ -3347,11 +3367,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3359,9 +3379,9 @@ class CategoriesApi:
 
 
     @validate_call
-    def upload_state_reporting_category_without_preload_content(
+    async def upload_state_reporting_category_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         content_type: Optional[StrictStr] = None,
         content_disposition: Optional[StrictStr] = None,
         headers: Optional[Dict[str, List[StrictStr]]] = None,
@@ -3385,7 +3405,7 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param content_type:
         :type content_type: str
         :param content_disposition:
@@ -3442,7 +3462,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3473,7 +3493,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3543,10 +3565,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def upload_state_reporting_periods_from_category_json(
+    async def upload_state_reporting_periods_from_category_json(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         content_type: Optional[StrictStr] = None,
         content_disposition: Optional[StrictStr] = None,
         headers: Optional[Dict[str, List[StrictStr]]] = None,
@@ -3570,9 +3592,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param content_type:
         :type content_type: str
         :param content_disposition:
@@ -3630,11 +3652,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3642,10 +3664,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def upload_state_reporting_periods_from_category_json_with_http_info(
+    async def upload_state_reporting_periods_from_category_json_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         content_type: Optional[StrictStr] = None,
         content_disposition: Optional[StrictStr] = None,
         headers: Optional[Dict[str, List[StrictStr]]] = None,
@@ -3669,9 +3691,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param content_type:
         :type content_type: str
         :param content_disposition:
@@ -3729,11 +3751,11 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3741,10 +3763,10 @@ class CategoriesApi:
 
 
     @validate_call
-    def upload_state_reporting_periods_from_category_json_without_preload_content(
+    async def upload_state_reporting_periods_from_category_json_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         content_type: Optional[StrictStr] = None,
         content_disposition: Optional[StrictStr] = None,
         headers: Optional[Dict[str, List[StrictStr]]] = None,
@@ -3768,9 +3790,9 @@ class CategoriesApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param content_type:
         :type content_type: str
         :param content_disposition:
@@ -3828,7 +3850,7 @@ class CategoriesApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3860,7 +3882,9 @@ class CategoriesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

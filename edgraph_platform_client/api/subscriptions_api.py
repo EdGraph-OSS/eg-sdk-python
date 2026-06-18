@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -45,7 +44,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def create_tenant_subscription_async(
+    async def create_tenant_subscription_async(
         self,
         tenant_id: StrictStr,
         tenant_api_tenant_v1_create_subscription_request: Optional[TenantApiTenantV1CreateSubscriptionRequest] = None,
@@ -107,11 +106,11 @@ class SubscriptionsApi:
             '201': "TenantApiTenantV1SubscriptionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -119,7 +118,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def create_tenant_subscription_async_with_http_info(
+    async def create_tenant_subscription_async_with_http_info(
         self,
         tenant_id: StrictStr,
         tenant_api_tenant_v1_create_subscription_request: Optional[TenantApiTenantV1CreateSubscriptionRequest] = None,
@@ -181,11 +180,11 @@ class SubscriptionsApi:
             '201': "TenantApiTenantV1SubscriptionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -193,7 +192,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def create_tenant_subscription_async_without_preload_content(
+    async def create_tenant_subscription_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         tenant_api_tenant_v1_create_subscription_request: Optional[TenantApiTenantV1CreateSubscriptionRequest] = None,
@@ -255,7 +254,7 @@ class SubscriptionsApi:
             '201': "TenantApiTenantV1SubscriptionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -281,7 +280,9 @@ class SubscriptionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -344,7 +345,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_all_tenant_subscription_applications(
+    async def get_all_tenant_subscription_applications(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -414,11 +415,11 @@ class SubscriptionsApi:
             '200': "ApplicationApiApplicationV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -426,7 +427,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_all_tenant_subscription_applications_with_http_info(
+    async def get_all_tenant_subscription_applications_with_http_info(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -496,11 +497,11 @@ class SubscriptionsApi:
             '200': "ApplicationApiApplicationV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -508,7 +509,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_all_tenant_subscription_applications_without_preload_content(
+    async def get_all_tenant_subscription_applications_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -578,7 +579,7 @@ class SubscriptionsApi:
             '200': "ApplicationApiApplicationV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -606,7 +607,9 @@ class SubscriptionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -663,7 +666,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_all_tenant_subscriptions_async(
+    async def get_all_tenant_subscriptions_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -737,11 +740,11 @@ class SubscriptionsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionListResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -749,7 +752,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_all_tenant_subscriptions_async_with_http_info(
+    async def get_all_tenant_subscriptions_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -823,11 +826,11 @@ class SubscriptionsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionListResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -835,7 +838,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_all_tenant_subscriptions_async_without_preload_content(
+    async def get_all_tenant_subscriptions_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -909,7 +912,7 @@ class SubscriptionsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionListResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -938,7 +941,9 @@ class SubscriptionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -999,7 +1004,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_tenant_subscription_profile_by_id_async(
+    async def get_tenant_subscription_profile_by_id_async(
         self,
         tenant_id: StrictStr,
         subscription_id: StrictStr,
@@ -1062,11 +1067,11 @@ class SubscriptionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1074,7 +1079,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_tenant_subscription_profile_by_id_async_with_http_info(
+    async def get_tenant_subscription_profile_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         subscription_id: StrictStr,
@@ -1137,11 +1142,11 @@ class SubscriptionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1149,7 +1154,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def get_tenant_subscription_profile_by_id_async_without_preload_content(
+    async def get_tenant_subscription_profile_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         subscription_id: StrictStr,
@@ -1212,7 +1217,7 @@ class SubscriptionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1238,7 +1243,9 @@ class SubscriptionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1285,7 +1292,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def update_tenant_subscription_async(
+    async def update_tenant_subscription_async(
         self,
         tenant_id: StrictStr,
         subscription_id: StrictStr,
@@ -1351,11 +1358,11 @@ class SubscriptionsApi:
             '200': "TenantApiTenantV1SubscriptionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1363,7 +1370,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def update_tenant_subscription_async_with_http_info(
+    async def update_tenant_subscription_async_with_http_info(
         self,
         tenant_id: StrictStr,
         subscription_id: StrictStr,
@@ -1429,11 +1436,11 @@ class SubscriptionsApi:
             '200': "TenantApiTenantV1SubscriptionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1441,7 +1448,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def update_tenant_subscription_async_without_preload_content(
+    async def update_tenant_subscription_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         subscription_id: StrictStr,
@@ -1507,7 +1514,7 @@ class SubscriptionsApi:
             '200': "TenantApiTenantV1SubscriptionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1534,7 +1541,9 @@ class SubscriptionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

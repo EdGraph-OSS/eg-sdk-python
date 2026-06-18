@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **first_name** | **str** |  | [optional] 
 **last_name** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
+**platform_role** | **str** |  | [optional] 
 
 ## Example
 

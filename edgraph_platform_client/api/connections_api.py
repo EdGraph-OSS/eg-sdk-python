@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.data_sync_api_connection_v1_connection_list_response_paginated_items_view_model import DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.data_sync_api_connection_v1_connection_profile_response import DataSyncApiConnectionV1ConnectionProfileResponse
 from edgraph_platform_client.models.data_sync_api_connection_v1_connection_tested_response import DataSyncApiConnectionV1ConnectionTestedResponse
@@ -30,7 +30,6 @@ from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_ed_fi_connectio
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_ed_fi_connection_paginated_items_response import EdfiAdminApiEdfiAdminV1EdFiConnectionPaginatedItemsResponse
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_ed_fi_connection_updated_response import EdfiAdminApiEdfiAdminV1EdFiConnectionUpdatedResponse
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_ed_fi_ods_backup_descriptors_paginated_items_response import EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptorsPaginatedItemsResponse
-from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_resources_by_instance_year_paginated_items_response import EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request import EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest
 from edgraph_platform_client.models.ims_admin_api_v1_connections_connection_tested_response import IMSAdminApiV1ConnectionsConnectionTestedResponse
 from edgraph_platform_client.models.ims_admin_api_v1_connections_paged_connections_response import IMSAdminApiV1ConnectionsPagedConnectionsResponse
@@ -56,7 +55,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def connection_tested_response(
+    async def connection_tested_response(
         self,
         tenant_id: StrictStr,
         data_sync_api_connection_v1_test_connection_request: Optional[DataSyncApiConnectionV1TestConnectionRequest] = None,
@@ -118,11 +117,11 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -130,7 +129,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def connection_tested_response_with_http_info(
+    async def connection_tested_response_with_http_info(
         self,
         tenant_id: StrictStr,
         data_sync_api_connection_v1_test_connection_request: Optional[DataSyncApiConnectionV1TestConnectionRequest] = None,
@@ -192,11 +191,11 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -204,7 +203,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def connection_tested_response_without_preload_content(
+    async def connection_tested_response_without_preload_content(
         self,
         tenant_id: StrictStr,
         data_sync_api_connection_v1_test_connection_request: Optional[DataSyncApiConnectionV1TestConnectionRequest] = None,
@@ -266,7 +265,7 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -292,7 +291,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -355,9 +356,9 @@ class ConnectionsApi:
 
 
     @validate_call
-    def create_ed_fi_connection(
+    async def create_ed_fi_connection(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: Optional[EdfiAdminApiEdfiAdminV1CreateEdFiConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -376,7 +377,7 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: 
         :type edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: EdfiAdminApiEdfiAdminV1CreateEdFiConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -418,11 +419,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -430,9 +431,9 @@ class ConnectionsApi:
 
 
     @validate_call
-    def create_ed_fi_connection_with_http_info(
+    async def create_ed_fi_connection_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: Optional[EdfiAdminApiEdfiAdminV1CreateEdFiConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -451,7 +452,7 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: 
         :type edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: EdfiAdminApiEdfiAdminV1CreateEdFiConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -493,11 +494,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -505,9 +506,9 @@ class ConnectionsApi:
 
 
     @validate_call
-    def create_ed_fi_connection_without_preload_content(
+    async def create_ed_fi_connection_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: Optional[EdfiAdminApiEdfiAdminV1CreateEdFiConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -526,7 +527,7 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: 
         :type edfi_admin_api_edfi_admin_v1_create_ed_fi_connection_request: EdfiAdminApiEdfiAdminV1CreateEdFiConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -568,7 +569,7 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -594,7 +595,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -657,7 +660,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def create_tenant_data_sync_connection(
+    async def create_tenant_data_sync_connection(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_connections_create_connection_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsConnectionsCreateConnectionRequest] = None,
@@ -719,11 +722,11 @@ class ConnectionsApi:
             '201': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -731,7 +734,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def create_tenant_data_sync_connection_with_http_info(
+    async def create_tenant_data_sync_connection_with_http_info(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_connections_create_connection_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsConnectionsCreateConnectionRequest] = None,
@@ -793,11 +796,11 @@ class ConnectionsApi:
             '201': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -805,7 +808,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def create_tenant_data_sync_connection_without_preload_content(
+    async def create_tenant_data_sync_connection_without_preload_content(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_connections_create_connection_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsConnectionsCreateConnectionRequest] = None,
@@ -867,7 +870,7 @@ class ConnectionsApi:
             '201': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -893,7 +896,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -956,7 +961,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def delete_ed_fi_connection(
+    async def delete_ed_fi_connection(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1019,11 +1024,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1031,7 +1036,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def delete_ed_fi_connection_with_http_info(
+    async def delete_ed_fi_connection_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1094,11 +1099,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1106,7 +1111,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def delete_ed_fi_connection_without_preload_content(
+    async def delete_ed_fi_connection_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1169,7 +1174,7 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1195,7 +1200,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1242,7 +1249,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def delete_tenant_data_sync_connection(
+    async def delete_tenant_data_sync_connection(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1305,11 +1312,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1317,7 +1324,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def delete_tenant_data_sync_connection_with_http_info(
+    async def delete_tenant_data_sync_connection_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1380,11 +1387,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1392,7 +1399,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def delete_tenant_data_sync_connection_without_preload_content(
+    async def delete_tenant_data_sync_connection_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1455,7 +1462,7 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1481,7 +1488,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1528,7 +1537,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_all_tenant_data_sync_connections(
+    async def get_all_tenant_data_sync_connections(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -1602,11 +1611,11 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1614,7 +1623,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_all_tenant_data_sync_connections_with_http_info(
+    async def get_all_tenant_data_sync_connections_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -1688,11 +1697,11 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1700,7 +1709,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_all_tenant_data_sync_connections_without_preload_content(
+    async def get_all_tenant_data_sync_connections_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -1774,7 +1783,7 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1803,7 +1812,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1864,7 +1875,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_connection_by_id(
+    async def get_connection_by_id(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -1942,11 +1953,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsPagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1954,7 +1965,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_connection_by_id_with_http_info(
+    async def get_connection_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -2032,11 +2043,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsPagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2044,7 +2055,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_connection_by_id_without_preload_content(
+    async def get_connection_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -2122,7 +2133,7 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsPagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2152,7 +2163,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2215,10 +2228,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_connection_by_id(
+    async def get_ed_fi_connection_by_id(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2236,9 +2249,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2278,11 +2291,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2290,10 +2303,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_connection_by_id_with_http_info(
+    async def get_ed_fi_connection_by_id_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2311,9 +2324,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2353,11 +2366,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2365,10 +2378,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_connection_by_id_without_preload_content(
+    async def get_ed_fi_connection_by_id_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2386,9 +2399,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2428,7 +2441,7 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2454,7 +2467,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2501,7 +2516,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_connections_async(
+    async def get_ed_fi_connections_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -2575,11 +2590,11 @@ class ConnectionsApi:
             '200': "EdfiAdminApiEdfiAdminV1EdFiConnectionPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2587,7 +2602,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_connections_async_with_http_info(
+    async def get_ed_fi_connections_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -2661,11 +2676,11 @@ class ConnectionsApi:
             '200': "EdfiAdminApiEdfiAdminV1EdFiConnectionPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2673,7 +2688,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_connections_async_without_preload_content(
+    async def get_ed_fi_connections_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -2747,7 +2762,7 @@ class ConnectionsApi:
             '200': "EdfiAdminApiEdfiAdminV1EdFiConnectionPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2776,7 +2791,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2837,7 +2854,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_ods_backup_codes_descriptors_async(
+    async def get_ed_fi_ods_backup_codes_descriptors_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -2911,11 +2928,11 @@ class ConnectionsApi:
             '200': "EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptorsPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2923,7 +2940,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_ods_backup_codes_descriptors_async_with_http_info(
+    async def get_ed_fi_ods_backup_codes_descriptors_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -2997,11 +3014,11 @@ class ConnectionsApi:
             '200': "EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptorsPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3009,7 +3026,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_ods_backup_codes_descriptors_async_without_preload_content(
+    async def get_ed_fi_ods_backup_codes_descriptors_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3083,7 +3100,7 @@ class ConnectionsApi:
             '200': "EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptorsPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3112,7 +3129,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3173,376 +3192,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_ed_fi_resources_by_instance_year(
-        self,
-        tenant_id: StrictStr,
-        instance_id: StrictStr,
-        year: StrictInt,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse:
-        """Retrieves an Ed-Fi Resources by Instance Id and Year.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param instance_id:  (required)
-        :type instance_id: str
-        :param year:  (required)
-        :type year: int
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_ed_fi_resources_by_instance_year_serialize(
-            tenant_id=tenant_id,
-            instance_id=instance_id,
-            year=year,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-            '404': "EdGraphCommonErrorsCoreProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_ed_fi_resources_by_instance_year_with_http_info(
-        self,
-        tenant_id: StrictStr,
-        instance_id: StrictStr,
-        year: StrictInt,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse]:
-        """Retrieves an Ed-Fi Resources by Instance Id and Year.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param instance_id:  (required)
-        :type instance_id: str
-        :param year:  (required)
-        :type year: int
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_ed_fi_resources_by_instance_year_serialize(
-            tenant_id=tenant_id,
-            instance_id=instance_id,
-            year=year,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-            '404': "EdGraphCommonErrorsCoreProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_ed_fi_resources_by_instance_year_without_preload_content(
-        self,
-        tenant_id: StrictStr,
-        instance_id: StrictStr,
-        year: StrictInt,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Retrieves an Ed-Fi Resources by Instance Id and Year.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param instance_id:  (required)
-        :type instance_id: str
-        :param year:  (required)
-        :type year: int
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_ed_fi_resources_by_instance_year_serialize(
-            tenant_id=tenant_id,
-            instance_id=instance_id,
-            year=year,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-            '404': "EdGraphCommonErrorsCoreProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_ed_fi_resources_by_instance_year_serialize(
-        self,
-        tenant_id,
-        instance_id,
-        year,
-        page_index,
-        page_size,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        if instance_id is not None:
-            _path_params['instanceId'] = instance_id
-        if year is not None:
-            _path_params['year'] = year
-        # process the query parameters
-        if page_index is not None:
-            
-            _query_params.append(('pageIndex', page_index))
-            
-        if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/resources',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_paged_connections(
+    async def get_paged_connections(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3616,11 +3266,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsPagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3628,7 +3278,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_paged_connections_with_http_info(
+    async def get_paged_connections_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3702,11 +3352,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsPagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3714,7 +3364,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_paged_connections_without_preload_content(
+    async def get_paged_connections_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3788,7 +3438,7 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsPagedConnectionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3817,7 +3467,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3878,7 +3530,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_profile_by_id(
+    async def get_tenant_data_sync_connection_profile_by_id(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -3940,11 +3592,11 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3952,7 +3604,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_profile_by_id_with_http_info(
+    async def get_tenant_data_sync_connection_profile_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -4014,11 +3666,11 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4026,7 +3678,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def get_tenant_data_sync_connection_profile_by_id_without_preload_content(
+    async def get_tenant_data_sync_connection_profile_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -4088,7 +3740,7 @@ class ConnectionsApi:
             '200': "DataSyncApiConnectionV1ConnectionProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4114,7 +3766,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4161,7 +3815,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def test_connection_details_async(
+    async def test_connection_details_async(
         self,
         tenant_id: StrictStr,
         ims_admin_api_v1_connections_test_connection_details_request: Optional[IMSAdminApiV1ConnectionsTestConnectionDetailsRequest] = None,
@@ -4223,11 +3877,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4235,7 +3889,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def test_connection_details_async_with_http_info(
+    async def test_connection_details_async_with_http_info(
         self,
         tenant_id: StrictStr,
         ims_admin_api_v1_connections_test_connection_details_request: Optional[IMSAdminApiV1ConnectionsTestConnectionDetailsRequest] = None,
@@ -4297,11 +3951,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4309,7 +3963,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def test_connection_details_async_without_preload_content(
+    async def test_connection_details_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         ims_admin_api_v1_connections_test_connection_details_request: Optional[IMSAdminApiV1ConnectionsTestConnectionDetailsRequest] = None,
@@ -4371,7 +4025,7 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4397,7 +4051,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4460,10 +4116,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def test_connection_details_by_id_async(
+    async def test_connection_details_by_id_async(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         ims_admin_api_v1_connections_test_connection_details_by_id_request: Optional[IMSAdminApiV1ConnectionsTestConnectionDetailsByIdRequest] = None,
         _request_timeout: Union[
             None,
@@ -4482,9 +4138,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param ims_admin_api_v1_connections_test_connection_details_by_id_request: 
         :type ims_admin_api_v1_connections_test_connection_details_by_id_request: IMSAdminApiV1ConnectionsTestConnectionDetailsByIdRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4526,11 +4182,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4538,10 +4194,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def test_connection_details_by_id_async_with_http_info(
+    async def test_connection_details_by_id_async_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         ims_admin_api_v1_connections_test_connection_details_by_id_request: Optional[IMSAdminApiV1ConnectionsTestConnectionDetailsByIdRequest] = None,
         _request_timeout: Union[
             None,
@@ -4560,9 +4216,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param ims_admin_api_v1_connections_test_connection_details_by_id_request: 
         :type ims_admin_api_v1_connections_test_connection_details_by_id_request: IMSAdminApiV1ConnectionsTestConnectionDetailsByIdRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4604,11 +4260,11 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4616,10 +4272,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def test_connection_details_by_id_async_without_preload_content(
+    async def test_connection_details_by_id_async_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         ims_admin_api_v1_connections_test_connection_details_by_id_request: Optional[IMSAdminApiV1ConnectionsTestConnectionDetailsByIdRequest] = None,
         _request_timeout: Union[
             None,
@@ -4638,9 +4294,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param ims_admin_api_v1_connections_test_connection_details_by_id_request: 
         :type ims_admin_api_v1_connections_test_connection_details_by_id_request: IMSAdminApiV1ConnectionsTestConnectionDetailsByIdRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4682,7 +4338,7 @@ class ConnectionsApi:
             '200': "IMSAdminApiV1ConnectionsConnectionTestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4709,7 +4365,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4774,10 +4432,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def update_ed_fi_connection(
+    async def update_ed_fi_connection(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: Optional[EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -4796,9 +4454,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: 
         :type edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4841,11 +4499,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4853,10 +4511,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def update_ed_fi_connection_with_http_info(
+    async def update_ed_fi_connection_with_http_info(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: Optional[EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -4875,9 +4533,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: 
         :type edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4920,11 +4578,11 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4932,10 +4590,10 @@ class ConnectionsApi:
 
 
     @validate_call
-    def update_ed_fi_connection_without_preload_content(
+    async def update_ed_fi_connection_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        connection_id: StrictStr,
+        tenant_id: UUID,
+        connection_id: UUID,
         edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: Optional[EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest] = None,
         _request_timeout: Union[
             None,
@@ -4954,9 +4612,9 @@ class ConnectionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param connection_id:  (required)
-        :type connection_id: str
+        :type connection_id: UUID
         :param edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: 
         :type edfi_admin_api_edfi_admin_v1_update_ed_fi_connection_request: EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4999,7 +4657,7 @@ class ConnectionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5026,7 +4684,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -5091,7 +4751,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def update_tenant_data_sync_connection(
+    async def update_tenant_data_sync_connection(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -5157,11 +4817,11 @@ class ConnectionsApi:
             '200': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -5169,7 +4829,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def update_tenant_data_sync_connection_with_http_info(
+    async def update_tenant_data_sync_connection_with_http_info(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -5235,11 +4895,11 @@ class ConnectionsApi:
             '200': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -5247,7 +4907,7 @@ class ConnectionsApi:
 
 
     @validate_call
-    def update_tenant_data_sync_connection_without_preload_content(
+    async def update_tenant_data_sync_connection_without_preload_content(
         self,
         tenant_id: StrictStr,
         connection_id: StrictStr,
@@ -5313,7 +4973,7 @@ class ConnectionsApi:
             '200': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5340,7 +5000,9 @@ class ConnectionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

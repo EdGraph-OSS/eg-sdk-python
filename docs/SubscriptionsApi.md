@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubscriptionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new subscription
-        api_response = api_instance.create_tenant_subscription_async(tenant_id, tenant_api_tenant_v1_create_subscription_request=tenant_api_tenant_v1_create_subscription_request)
+        api_response = await api_instance.create_tenant_subscription_async(tenant_id, tenant_api_tenant_v1_create_subscription_request=tenant_api_tenant_v1_create_subscription_request)
         print("The response of SubscriptionsApi->create_tenant_subscription_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -120,7 +120,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubscriptionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -130,7 +130,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of applications available for subscription.
-        api_response = api_instance.get_all_tenant_subscription_applications(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by)
+        api_response = await api_instance.get_all_tenant_subscription_applications(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by)
         print("The response of SubscriptionsApi->get_all_tenant_subscription_applications:\n")
         pprint(api_response)
     except Exception as e:
@@ -203,7 +203,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubscriptionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -214,7 +214,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of subscriptions associated to this tenant
-        api_response = api_instance.get_all_tenant_subscriptions_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_subscriptions_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of SubscriptionsApi->get_all_tenant_subscriptions_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -288,7 +288,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubscriptionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -296,7 +296,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a subscription
-        api_response = api_instance.get_tenant_subscription_profile_by_id_async(tenant_id, subscription_id)
+        api_response = await api_instance.get_tenant_subscription_profile_by_id_async(tenant_id, subscription_id)
         print("The response of SubscriptionsApi->get_tenant_subscription_profile_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -369,7 +369,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SubscriptionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -378,7 +378,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a subscription
-        api_response = api_instance.update_tenant_subscription_async(tenant_id, subscription_id, tenant_api_tenant_v1_update_subscription_request=tenant_api_tenant_v1_update_subscription_request)
+        api_response = await api_instance.update_tenant_subscription_async(tenant_id, subscription_id, tenant_api_tenant_v1_update_subscription_request=tenant_api_tenant_v1_update_subscription_request)
         print("The response of SubscriptionsApi->update_tenant_subscription_async:\n")
         pprint(api_response)
     except Exception as e:

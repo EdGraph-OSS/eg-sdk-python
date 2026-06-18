@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TagsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a Tag.
-        api_response = api_instance.create_tag(tenant_id, validations_api_tags_v1_create_request=validations_api_tags_v1_create_request)
+        api_response = await api_instance.create_tag(tenant_id, validations_api_tags_v1_create_request=validations_api_tags_v1_create_request)
         print("The response of TagsApi->create_tag:\n")
         pprint(api_response)
     except Exception as e:
@@ -119,7 +119,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TagsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -127,7 +127,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a Tag.
-        api_instance.delete_tag(tenant_id, tag_id)
+        await api_instance.delete_tag(tenant_id, tag_id)
     except Exception as e:
         print("Exception when calling TagsApi->delete_tag: %s\n" % e)
 ```
@@ -197,7 +197,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TagsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -205,7 +205,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Tag by ID.
-        api_response = api_instance.get_tag_by_id(tenant_id, tag_id)
+        api_response = await api_instance.get_tag_by_id(tenant_id, tag_id)
         print("The response of TagsApi->get_tag_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -277,7 +277,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TagsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -288,7 +288,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Tags.
-        api_response = api_instance.get_tags(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_tags(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of TagsApi->get_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -362,7 +362,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TagsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -371,7 +371,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a Tag.
-        api_instance.update_tag(tenant_id, tag_id, validations_api_tags_v1_update_request=validations_api_tags_v1_update_request)
+        await api_instance.update_tag(tenant_id, tag_id, validations_api_tags_v1_update_request=validations_api_tags_v1_update_request)
     except Exception as e:
         print("Exception when calling TagsApi->update_tag: %s\n" % e)
 ```

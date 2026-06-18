@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
+from pydantic import StrictInt
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.validations_api_state_reporting_steps_v1_get_state_reporting_steps_response import ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse
 from edgraph_platform_client.models.validations_api_state_reporting_steps_v1_update_state_reporting_step_request import ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest
 
@@ -40,9 +40,9 @@ class StateReportingStepsApi:
 
 
     @validate_call
-    def get_steps(
+    async def get_steps(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         school_year: StrictInt,
         _request_timeout: Union[
             None,
@@ -61,7 +61,7 @@ class StateReportingStepsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param school_year:  (required)
         :type school_year: int
         :param _request_timeout: timeout setting for this request. If one
@@ -102,11 +102,11 @@ class StateReportingStepsApi:
             '200': "ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -114,9 +114,9 @@ class StateReportingStepsApi:
 
 
     @validate_call
-    def get_steps_with_http_info(
+    async def get_steps_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         school_year: StrictInt,
         _request_timeout: Union[
             None,
@@ -135,7 +135,7 @@ class StateReportingStepsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param school_year:  (required)
         :type school_year: int
         :param _request_timeout: timeout setting for this request. If one
@@ -176,11 +176,11 @@ class StateReportingStepsApi:
             '200': "ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -188,9 +188,9 @@ class StateReportingStepsApi:
 
 
     @validate_call
-    def get_steps_without_preload_content(
+    async def get_steps_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         school_year: StrictInt,
         _request_timeout: Union[
             None,
@@ -209,7 +209,7 @@ class StateReportingStepsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param school_year:  (required)
         :type school_year: int
         :param _request_timeout: timeout setting for this request. If one
@@ -250,7 +250,7 @@ class StateReportingStepsApi:
             '200': "ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -276,7 +276,9 @@ class StateReportingStepsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -323,9 +325,9 @@ class StateReportingStepsApi:
 
 
     @validate_call
-    def update_step(
+    async def update_step(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         school_year: StrictInt,
         validations_api_state_reporting_steps_v1_update_state_reporting_step_request: Optional[ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest] = None,
         _request_timeout: Union[
@@ -345,7 +347,7 @@ class StateReportingStepsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param school_year:  (required)
         :type school_year: int
         :param validations_api_state_reporting_steps_v1_update_state_reporting_step_request: 
@@ -389,11 +391,11 @@ class StateReportingStepsApi:
             '200': "ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -401,9 +403,9 @@ class StateReportingStepsApi:
 
 
     @validate_call
-    def update_step_with_http_info(
+    async def update_step_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         school_year: StrictInt,
         validations_api_state_reporting_steps_v1_update_state_reporting_step_request: Optional[ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest] = None,
         _request_timeout: Union[
@@ -423,7 +425,7 @@ class StateReportingStepsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param school_year:  (required)
         :type school_year: int
         :param validations_api_state_reporting_steps_v1_update_state_reporting_step_request: 
@@ -467,11 +469,11 @@ class StateReportingStepsApi:
             '200': "ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -479,9 +481,9 @@ class StateReportingStepsApi:
 
 
     @validate_call
-    def update_step_without_preload_content(
+    async def update_step_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         school_year: StrictInt,
         validations_api_state_reporting_steps_v1_update_state_reporting_step_request: Optional[ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest] = None,
         _request_timeout: Union[
@@ -501,7 +503,7 @@ class StateReportingStepsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param school_year:  (required)
         :type school_year: int
         :param validations_api_state_reporting_steps_v1_update_state_reporting_step_request: 
@@ -545,7 +547,7 @@ class StateReportingStepsApi:
             '200': "ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -572,7 +574,9 @@ class StateReportingStepsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

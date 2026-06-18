@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -21,12 +19,12 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "edgraph-platform-client"
-VERSION = "0.0.40"
-PYTHON_REQUIRES = ">=3.7"
+VERSION = "0.0.43"
+PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 2.1.0",
-    "python-dateutil",
-    "pydantic >= 2",
+    "python-dateutil >= 2.8.2",
+    "httpx >= 0.28.1",
+    "pydantic >= 2.11",
     "typing-extensions >= 4.7.1",
 ]
 

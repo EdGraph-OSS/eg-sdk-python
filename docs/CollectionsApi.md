@@ -49,7 +49,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -57,7 +57,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a Collection.
-        api_response = api_instance.create_collection(tenant_id, validations_api_containers_v1_create_collection_request=validations_api_containers_v1_create_collection_request)
+        api_response = await api_instance.create_collection(tenant_id, validations_api_containers_v1_create_collection_request=validations_api_containers_v1_create_collection_request)
         print("The response of CollectionsApi->create_collection:\n")
         pprint(api_response)
     except Exception as e:
@@ -129,7 +129,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -138,7 +138,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a Container.
-        api_response = api_instance.create_container(tenant_id, collection_id, validations_api_containers_v1_create_container_request=validations_api_containers_v1_create_container_request)
+        api_response = await api_instance.create_container(tenant_id, collection_id, validations_api_containers_v1_create_container_request=validations_api_containers_v1_create_container_request)
         print("The response of CollectionsApi->create_container:\n")
         pprint(api_response)
     except Exception as e:
@@ -209,7 +209,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -217,7 +217,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a Collection.
-        api_instance.delete_collection(tenant_id, collection_id)
+        await api_instance.delete_collection(tenant_id, collection_id)
     except Exception as e:
         print("Exception when calling CollectionsApi->delete_collection: %s\n" % e)
 ```
@@ -286,7 +286,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -295,7 +295,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a Container.
-        api_instance.delete_container(tenant_id, collection_id, container_id)
+        await api_instance.delete_container(tenant_id, collection_id, container_id)
     except Exception as e:
         print("Exception when calling CollectionsApi->delete_container: %s\n" % e)
 ```
@@ -366,7 +366,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -374,7 +374,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Collection by ID.
-        api_response = api_instance.get_collection_by_id(tenant_id, collection_id)
+        api_response = await api_instance.get_collection_by_id(tenant_id, collection_id)
         print("The response of CollectionsApi->get_collection_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -446,7 +446,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -454,7 +454,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves the JSON representation of a Collection. Useful for exporting into other systems.
-        api_response = api_instance.get_collection_json(tenant_id, collection_id)
+        api_response = await api_instance.get_collection_json(tenant_id, collection_id)
         print("The response of CollectionsApi->get_collection_json:\n")
         pprint(api_response)
     except Exception as e:
@@ -526,7 +526,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -537,7 +537,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Collections.
-        api_response = api_instance.get_collections(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_collections(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of CollectionsApi->get_collections:\n")
         pprint(api_response)
     except Exception as e:
@@ -611,7 +611,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -625,7 +625,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Collections.
-        api_response = api_instance.get_collections_tree(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, category_id=category_id, category_name=category_name, sub_category_id=sub_category_id, sub_category_name=sub_category_name)
+        api_response = await api_instance.get_collections_tree(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, category_id=category_id, category_name=category_name, sub_category_id=sub_category_id, sub_category_name=sub_category_name)
         print("The response of CollectionsApi->get_collections_tree:\n")
         pprint(api_response)
     except Exception as e:
@@ -702,7 +702,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -711,7 +711,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Container by ID.
-        api_response = api_instance.get_container_by_id(tenant_id, collection_id, container_id)
+        api_response = await api_instance.get_container_by_id(tenant_id, collection_id, container_id)
         print("The response of CollectionsApi->get_container_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -784,7 +784,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -796,7 +796,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Containers.
-        api_response = api_instance.get_containers(tenant_id, collection_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_containers(tenant_id, collection_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of CollectionsApi->get_containers:\n")
         pprint(api_response)
     except Exception as e:
@@ -871,7 +871,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -880,7 +880,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a Collection.
-        api_instance.update_collection(tenant_id, collection_id, validations_api_containers_v1_update_collection_request=validations_api_containers_v1_update_collection_request)
+        await api_instance.update_collection(tenant_id, collection_id, validations_api_containers_v1_update_collection_request=validations_api_containers_v1_update_collection_request)
     except Exception as e:
         print("Exception when calling CollectionsApi->update_collection: %s\n" % e)
 ```
@@ -951,7 +951,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -961,7 +961,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a Container.
-        api_instance.update_container(tenant_id, collection_id, container_id, validations_api_containers_v1_update_container_request=validations_api_containers_v1_update_container_request)
+        await api_instance.update_container(tenant_id, collection_id, container_id, validations_api_containers_v1_update_container_request=validations_api_containers_v1_update_container_request)
     except Exception as e:
         print("Exception when calling CollectionsApi->update_container: %s\n" % e)
 ```
@@ -1034,7 +1034,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CollectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1042,7 +1042,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Uploads a Collection JSON. Useful for importing from another system.
-        api_response = api_instance.upload_collection_json(tenant_id, validations_api_containers_v1_upload_collection_request=validations_api_containers_v1_upload_collection_request)
+        api_response = await api_instance.upload_collection_json(tenant_id, validations_api_containers_v1_upload_collection_request=validations_api_containers_v1_upload_collection_request)
         print("The response of CollectionsApi->upload_collection_json:\n")
         pprint(api_response)
     except Exception as e:

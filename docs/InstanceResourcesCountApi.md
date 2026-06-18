@@ -37,7 +37,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstanceResourcesCountApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -52,7 +52,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a paginated list of Instance Resources Count
-        api_response = api_instance.get_all_instance_resources_count_async(tenant_id, instance_id, year, application_id, api_client_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_instance_resources_count_async(tenant_id, instance_id, year, application_id, api_client_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of InstanceResourcesCountApi->get_all_instance_resources_count_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -130,7 +130,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstanceResourcesCountApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -142,7 +142,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves the JSON representation of Instance Resources Count. Useful for exporting into other systems.
-        api_response = api_instance.get_all_instance_resources_count_json(tenant_id, instance_id, year, application_id, api_client_id, filter=filter)
+        api_response = await api_instance.get_all_instance_resources_count_json(tenant_id, instance_id, year, application_id, api_client_id, filter=filter)
         print("The response of InstanceResourcesCountApi->get_all_instance_resources_count_json:\n")
         pprint(api_response)
     except Exception as e:

@@ -53,7 +53,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -62,7 +62,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Activates a user
-        api_response = api_instance.activate_tenant_user_async(tenant_id, user_id, identity_api_user_v1_activate_user_request=identity_api_user_v1_activate_user_request)
+        api_response = await api_instance.activate_tenant_user_async(tenant_id, user_id, identity_api_user_v1_activate_user_request=identity_api_user_v1_activate_user_request)
         print("The response of UsersApi->activate_tenant_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -137,7 +137,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -145,7 +145,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a user in the local identity provider
-        api_response = api_instance.create_tenant_local_user_async(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request)
+        api_response = await api_instance.create_tenant_local_user_async(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_local_user_request)
         print("The response of UsersApi->create_tenant_local_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,7 +217,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -226,7 +226,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deactivates a user
-        api_response = api_instance.deactivate_tenant_user_async(tenant_id, user_id, identity_api_user_v1_deactivate_user_request=identity_api_user_v1_deactivate_user_request)
+        api_response = await api_instance.deactivate_tenant_user_async(tenant_id, user_id, identity_api_user_v1_deactivate_user_request=identity_api_user_v1_deactivate_user_request)
         print("The response of UsersApi->deactivate_tenant_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -297,7 +297,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -305,7 +305,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a user
-        api_instance.delete_tenant_user_async(tenant_id, user_id)
+        await api_instance.delete_tenant_user_async(tenant_id, user_id)
     except Exception as e:
         print("Exception when calling UsersApi->delete_tenant_user_async: %s\n" % e)
 ```
@@ -374,10 +374,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -385,7 +385,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get All Users
-        api_response = api_instance.get_all_form_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_form_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersApi->get_all_form_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -399,7 +399,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -459,7 +459,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -470,7 +470,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of users associated to this tenant
-        api_response = api_instance.get_all_tenant_users_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_users_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersApi->get_all_tenant_users_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -544,10 +544,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -555,7 +555,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get All Users
-        api_response = api_instance.get_all_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersApi->get_all_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -569,7 +569,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -629,7 +629,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -637,7 +637,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get User
-        api_response = api_instance.get_tenant_user(tenant_id, user_id)
+        api_response = await api_instance.get_tenant_user(tenant_id, user_id)
         print("The response of UsersApi->get_tenant_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -709,7 +709,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -717,7 +717,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a user
-        api_response = api_instance.get_tenant_user_profile_by_id_async(tenant_id, user_id)
+        api_response = await api_instance.get_tenant_user_profile_by_id_async(tenant_id, user_id)
         print("The response of UsersApi->get_tenant_user_profile_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -789,7 +789,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -797,7 +797,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get User Tenant
-        api_response = api_instance.get_user_tenant(tenant_id, user_id)
+        api_response = await api_instance.get_user_tenant(tenant_id, user_id)
         print("The response of UsersApi->get_user_tenant:\n")
         pprint(api_response)
     except Exception as e:
@@ -869,15 +869,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     email = 'email_example' # str | 
 
     try:
         # Searches a user by email and retrieves it's minimal information and status.
-        api_response = api_instance.get_user_tenant_status_profile(tenant_id, email)
+        api_response = await api_instance.get_user_tenant_status_profile(tenant_id, email)
         print("The response of UsersApi->get_user_tenant_status_profile:\n")
         pprint(api_response)
     except Exception as e:
@@ -891,7 +891,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **email** | **str**|  | 
 
 ### Return type
@@ -948,7 +948,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -956,7 +956,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Reset the MFA Status for the User
-        api_instance.reset_mfa_status_async(tenant_id, user_id)
+        await api_instance.reset_mfa_status_async(tenant_id, user_id)
     except Exception as e:
         print("Exception when calling UsersApi->reset_mfa_status_async: %s\n" % e)
 ```
@@ -1029,7 +1029,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1038,7 +1038,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Resets a user's password
-        api_response = api_instance.reset_password_tenant_user_async(tenant_id, user_id, identity_api_user_v1_reset_password_request=identity_api_user_v1_reset_password_request)
+        api_response = await api_instance.reset_password_tenant_user_async(tenant_id, user_id, identity_api_user_v1_reset_password_request=identity_api_user_v1_reset_password_request)
         print("The response of UsersApi->reset_password_tenant_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -1110,7 +1110,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1121,7 +1121,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search Users
-        api_response = api_instance.search_tenant_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_tenant_users(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersApi->search_tenant_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -1195,7 +1195,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1207,7 +1207,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search User Licenses
-        api_response = api_instance.search_user_licenses(tenant_id, user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_user_licenses(tenant_id, user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersApi->search_user_licenses:\n")
         pprint(api_response)
     except Exception as e:
@@ -1282,11 +1282,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
-    user_id = ['user_id_example'] # List[str] |  (optional)
+    user_id = None # List[UUID] |  (optional)
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -1294,7 +1294,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search user licenses in bulk.
-        api_response = api_instance.search_user_licenses_bulk(tenant_id, user_id=user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_user_licenses_bulk(tenant_id, user_id=user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersApi->search_user_licenses_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -1309,7 +1309,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
- **user_id** | [**List[str]**](str.md)|  | [optional] 
+ **user_id** | [**List[UUID]**](UUID.md)|  | [optional] 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1370,16 +1370,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest |  (optional)
 
     try:
         # Creates or updates a user
-        api_response = api_instance.update_tenant_user_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request)
+        api_response = await api_instance.update_tenant_user_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request)
         print("The response of UsersApi->update_tenant_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -1393,8 +1393,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_tenant_user_request** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateTenantUserRequest.md)|  | [optional] 
 
 ### Return type

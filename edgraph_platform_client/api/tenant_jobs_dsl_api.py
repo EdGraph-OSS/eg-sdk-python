@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
 from typing import Any, Dict, Optional
+from uuid import UUID
 from edgraph_platform_client.models.data_sync_api_dsl_v1_create_job_request import DataSyncApiDslV1CreateJobRequest
 from edgraph_platform_client.models.data_sync_api_dsl_v1_dsl_job_executed_response import DataSyncApiDslV1DslJobExecutedResponse
 from edgraph_platform_client.models.data_sync_api_dsl_v1_dsl_profile import DataSyncApiDslV1DslProfile
@@ -43,9 +42,9 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def create_dsl_job(
+    async def create_dsl_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         data_sync_api_dsl_v1_create_job_request: Optional[DataSyncApiDslV1CreateJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -64,7 +63,7 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param data_sync_api_dsl_v1_create_job_request: 
         :type data_sync_api_dsl_v1_create_job_request: DataSyncApiDslV1CreateJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -105,11 +104,11 @@ class TenantJobsDSLApi:
             '200': "DataSyncApiDslV1JobCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -117,9 +116,9 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def create_dsl_job_with_http_info(
+    async def create_dsl_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         data_sync_api_dsl_v1_create_job_request: Optional[DataSyncApiDslV1CreateJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -138,7 +137,7 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param data_sync_api_dsl_v1_create_job_request: 
         :type data_sync_api_dsl_v1_create_job_request: DataSyncApiDslV1CreateJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -179,11 +178,11 @@ class TenantJobsDSLApi:
             '200': "DataSyncApiDslV1JobCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -191,9 +190,9 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def create_dsl_job_without_preload_content(
+    async def create_dsl_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         data_sync_api_dsl_v1_create_job_request: Optional[DataSyncApiDslV1CreateJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -212,7 +211,7 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param data_sync_api_dsl_v1_create_job_request: 
         :type data_sync_api_dsl_v1_create_job_request: DataSyncApiDslV1CreateJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -253,7 +252,7 @@ class TenantJobsDSLApi:
             '200': "DataSyncApiDslV1JobCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -279,7 +278,9 @@ class TenantJobsDSLApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -342,10 +343,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def execute_dsl_job(
+    async def execute_dsl_job(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -363,9 +364,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -404,11 +405,11 @@ class TenantJobsDSLApi:
             '202': "DataSyncApiDslV1DslJobExecutedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -416,10 +417,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def execute_dsl_job_with_http_info(
+    async def execute_dsl_job_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,9 +438,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -478,11 +479,11 @@ class TenantJobsDSLApi:
             '202': "DataSyncApiDslV1DslJobExecutedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -490,10 +491,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def execute_dsl_job_without_preload_content(
+    async def execute_dsl_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -511,9 +512,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -552,7 +553,7 @@ class TenantJobsDSLApi:
             '202': "DataSyncApiDslV1DslJobExecutedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -578,7 +579,9 @@ class TenantJobsDSLApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -625,10 +628,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def get_dsl_job(
+    async def get_dsl_job(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -646,9 +649,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -687,11 +690,11 @@ class TenantJobsDSLApi:
             '200': "DataSyncApiDslV1DslProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -699,10 +702,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def get_dsl_job_with_http_info(
+    async def get_dsl_job_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -720,9 +723,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -761,11 +764,11 @@ class TenantJobsDSLApi:
             '200': "DataSyncApiDslV1DslProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -773,10 +776,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def get_dsl_job_without_preload_content(
+    async def get_dsl_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -794,9 +797,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -835,7 +838,7 @@ class TenantJobsDSLApi:
             '200': "DataSyncApiDslV1DslProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -861,7 +864,9 @@ class TenantJobsDSLApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -908,10 +913,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def update_dsl_job(
+    async def update_dsl_job(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         data_sync_api_dsl_v1_update_job_request: Optional[DataSyncApiDslV1UpdateJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -930,9 +935,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param data_sync_api_dsl_v1_update_job_request: 
         :type data_sync_api_dsl_v1_update_job_request: DataSyncApiDslV1UpdateJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -975,11 +980,11 @@ class TenantJobsDSLApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -987,10 +992,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def update_dsl_job_with_http_info(
+    async def update_dsl_job_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         data_sync_api_dsl_v1_update_job_request: Optional[DataSyncApiDslV1UpdateJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1009,9 +1014,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param data_sync_api_dsl_v1_update_job_request: 
         :type data_sync_api_dsl_v1_update_job_request: DataSyncApiDslV1UpdateJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1054,11 +1059,11 @@ class TenantJobsDSLApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1066,10 +1071,10 @@ class TenantJobsDSLApi:
 
 
     @validate_call
-    def update_dsl_job_without_preload_content(
+    async def update_dsl_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         data_sync_api_dsl_v1_update_job_request: Optional[DataSyncApiDslV1UpdateJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1088,9 +1093,9 @@ class TenantJobsDSLApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param data_sync_api_dsl_v1_update_job_request: 
         :type data_sync_api_dsl_v1_update_job_request: DataSyncApiDslV1UpdateJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1133,7 +1138,7 @@ class TenantJobsDSLApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1160,7 +1165,9 @@ class TenantJobsDSLApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

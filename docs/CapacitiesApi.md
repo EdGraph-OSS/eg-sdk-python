@@ -39,7 +39,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CapacitiesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -47,7 +47,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Assigns the specified group to the specified capacity.
-        api_instance.assign_my_group_to_capacity(tenant_id, analytics_api_capacities_v1_assign_capacity_request=analytics_api_capacities_v1_assign_capacity_request)
+        await api_instance.assign_my_group_to_capacity(tenant_id, analytics_api_capacities_v1_assign_capacity_request=analytics_api_capacities_v1_assign_capacity_request)
     except Exception as e:
         print("Exception when calling CapacitiesApi->assign_my_group_to_capacity: %s\n" % e)
 ```
@@ -117,14 +117,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CapacitiesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
 
     try:
         # Retrieves a list of capacities in Power Bi that the user has access to.
-        api_response = api_instance.get_all_analytics_power_bi_capacities(tenant_id)
+        api_response = await api_instance.get_all_analytics_power_bi_capacities(tenant_id)
         print("The response of CapacitiesApi->get_all_analytics_power_bi_capacities:\n")
         pprint(api_response)
     except Exception as e:
@@ -194,7 +194,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CapacitiesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -202,7 +202,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Resumes currently suspended capacity
-        api_instance.resume_capacity_async(tenant_id, analytics_api_capacities_v1_resume_capacity_request=analytics_api_capacities_v1_resume_capacity_request)
+        await api_instance.resume_capacity_async(tenant_id, analytics_api_capacities_v1_resume_capacity_request=analytics_api_capacities_v1_resume_capacity_request)
     except Exception as e:
         print("Exception when calling CapacitiesApi->resume_capacity_async: %s\n" % e)
 ```
@@ -272,7 +272,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CapacitiesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -280,7 +280,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Suspends currently active capacity
-        api_instance.suspend_capacity_async(tenant_id, analytics_api_capacities_v1_suspend_capacity_request=analytics_api_capacities_v1_suspend_capacity_request)
+        await api_instance.suspend_capacity_async(tenant_id, analytics_api_capacities_v1_suspend_capacity_request=analytics_api_capacities_v1_suspend_capacity_request)
     except Exception as e:
         print("Exception when calling CapacitiesApi->suspend_capacity_async: %s\n" % e)
 ```

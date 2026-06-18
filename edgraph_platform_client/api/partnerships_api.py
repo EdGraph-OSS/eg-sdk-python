@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictBool, StrictInt, StrictStr
 from typing import List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.tenant_api_partnership_v1_paginated_items_response import TenantApiPartnershipV1PaginatedItemsResponse
 from edgraph_platform_client.models.tenant_api_partnership_v1_partnership_by_id_response import TenantApiPartnershipV1PartnershipByIdResponse
 
@@ -40,9 +40,9 @@ class PartnershipsApi:
 
 
     @validate_call
-    def get_all_partnerships(
+    async def get_all_partnerships(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -66,7 +66,7 @@ class PartnershipsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -122,11 +122,11 @@ class PartnershipsApi:
             '200': "TenantApiPartnershipV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -134,9 +134,9 @@ class PartnershipsApi:
 
 
     @validate_call
-    def get_all_partnerships_with_http_info(
+    async def get_all_partnerships_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -160,7 +160,7 @@ class PartnershipsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -216,11 +216,11 @@ class PartnershipsApi:
             '200': "TenantApiPartnershipV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -228,9 +228,9 @@ class PartnershipsApi:
 
 
     @validate_call
-    def get_all_partnerships_without_preload_content(
+    async def get_all_partnerships_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -254,7 +254,7 @@ class PartnershipsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -310,7 +310,7 @@ class PartnershipsApi:
             '200': "TenantApiPartnershipV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -342,7 +342,9 @@ class PartnershipsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -411,10 +413,10 @@ class PartnershipsApi:
 
 
     @validate_call
-    def get_partnership_by_id(
+    async def get_partnership_by_id(
         self,
-        tenant_id: StrictStr,
-        partnership_id: StrictStr,
+        tenant_id: UUID,
+        partnership_id: UUID,
         exclude_soft_deleted: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -433,9 +435,9 @@ class PartnershipsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param partnership_id:  (required)
-        :type partnership_id: str
+        :type partnership_id: UUID
         :param exclude_soft_deleted: 
         :type exclude_soft_deleted: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -478,11 +480,11 @@ class PartnershipsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -490,10 +492,10 @@ class PartnershipsApi:
 
 
     @validate_call
-    def get_partnership_by_id_with_http_info(
+    async def get_partnership_by_id_with_http_info(
         self,
-        tenant_id: StrictStr,
-        partnership_id: StrictStr,
+        tenant_id: UUID,
+        partnership_id: UUID,
         exclude_soft_deleted: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -512,9 +514,9 @@ class PartnershipsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param partnership_id:  (required)
-        :type partnership_id: str
+        :type partnership_id: UUID
         :param exclude_soft_deleted: 
         :type exclude_soft_deleted: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -557,11 +559,11 @@ class PartnershipsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -569,10 +571,10 @@ class PartnershipsApi:
 
 
     @validate_call
-    def get_partnership_by_id_without_preload_content(
+    async def get_partnership_by_id_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        partnership_id: StrictStr,
+        tenant_id: UUID,
+        partnership_id: UUID,
         exclude_soft_deleted: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -591,9 +593,9 @@ class PartnershipsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param partnership_id:  (required)
-        :type partnership_id: str
+        :type partnership_id: UUID
         :param exclude_soft_deleted: 
         :type exclude_soft_deleted: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -636,7 +638,7 @@ class PartnershipsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -663,7 +665,9 @@ class PartnershipsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **claim_set_name** | **str** |  | [optional] 
 **vendor_id** | **int** |  | [optional] 
 **operational_context_uri** | **str** |  | [optional] 
+**key** | **str** |  | [optional] 
+**secret** | **str** |  | [optional] 
 
 ## Example
 

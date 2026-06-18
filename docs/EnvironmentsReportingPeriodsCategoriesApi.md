@@ -37,19 +37,19 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsCategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 56 # int |  (optional)
     page_size = 56 # int |  (optional)
     order_by = 'order_by_example' # str |  (optional)
 
     try:
         # Retrieves the Categories of a Reporting Period.
-        api_response = api_instance.search_state_reporting_period_categories(tenant_id, environment_id, reporting_period_id, page_index=page_index, page_size=page_size, order_by=order_by)
+        api_response = await api_instance.search_state_reporting_period_categories(tenant_id, environment_id, reporting_period_id, page_index=page_index, page_size=page_size, order_by=order_by)
         print("The response of EnvironmentsReportingPeriodsCategoriesApi->search_state_reporting_period_categories:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,9 +63,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] 
  **page_size** | **int**|  | [optional] 
  **order_by** | **str**|  | [optional] 
@@ -125,20 +125,20 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsCategoriesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    category_id = 'category_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 56 # int |  (optional)
     page_size = 56 # int |  (optional)
     order_by = 'order_by_example' # str |  (optional)
 
     try:
         # Retrieves the Sub-Categories of a Reporting Period.
-        api_response = api_instance.search_state_reporting_period_sub_categories(tenant_id, environment_id, reporting_period_id, category_id, page_index=page_index, page_size=page_size, order_by=order_by)
+        api_response = await api_instance.search_state_reporting_period_sub_categories(tenant_id, environment_id, reporting_period_id, category_id, page_index=page_index, page_size=page_size, order_by=order_by)
         print("The response of EnvironmentsReportingPeriodsCategoriesApi->search_state_reporting_period_sub_categories:\n")
         pprint(api_response)
     except Exception as e:
@@ -152,10 +152,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **category_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] 
  **page_size** | **int**|  | [optional] 
  **order_by** | **str**|  | [optional] 

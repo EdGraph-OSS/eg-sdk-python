@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_evaluations_appraisers_searched_response import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_evaluations_staff_searched_response import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse
 from edgraph_platform_client.models.evaluation_api_evaluations_v1_campus_response_paginated_items_view_model import EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel
@@ -50,9 +50,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def create_evaluation(
+    async def create_evaluation(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluations_v1_create_evaluation_request: Optional[EvaluationApiEvaluationsV1CreateEvaluationRequest] = None,
         _request_timeout: Union[
             None,
@@ -71,7 +71,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluations_v1_create_evaluation_request: 
         :type evaluation_api_evaluations_v1_create_evaluation_request: EvaluationApiEvaluationsV1CreateEvaluationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -112,11 +112,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -124,9 +124,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def create_evaluation_with_http_info(
+    async def create_evaluation_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluations_v1_create_evaluation_request: Optional[EvaluationApiEvaluationsV1CreateEvaluationRequest] = None,
         _request_timeout: Union[
             None,
@@ -145,7 +145,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluations_v1_create_evaluation_request: 
         :type evaluation_api_evaluations_v1_create_evaluation_request: EvaluationApiEvaluationsV1CreateEvaluationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -186,11 +186,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -198,9 +198,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def create_evaluation_without_preload_content(
+    async def create_evaluation_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         evaluation_api_evaluations_v1_create_evaluation_request: Optional[EvaluationApiEvaluationsV1CreateEvaluationRequest] = None,
         _request_timeout: Union[
             None,
@@ -219,7 +219,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_api_evaluations_v1_create_evaluation_request: 
         :type evaluation_api_evaluations_v1_create_evaluation_request: EvaluationApiEvaluationsV1CreateEvaluationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -260,7 +260,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -286,7 +286,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -349,10 +351,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def delete_evaluation(
+    async def delete_evaluation(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -370,9 +372,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -411,11 +413,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -423,10 +425,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def delete_evaluation_with_http_info(
+    async def delete_evaluation_with_http_info(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -444,9 +446,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -485,11 +487,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -497,10 +499,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def delete_evaluation_without_preload_content(
+    async def delete_evaluation_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -518,9 +520,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -559,7 +561,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -585,7 +587,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -632,10 +636,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def get_evaluation(
+    async def get_evaluation(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -653,9 +657,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -694,11 +698,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -706,10 +710,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def get_evaluation_with_http_info(
+    async def get_evaluation_with_http_info(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -727,9 +731,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -768,11 +772,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -780,10 +784,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def get_evaluation_without_preload_content(
+    async def get_evaluation_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -801,9 +805,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -842,7 +846,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -868,7 +872,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -915,9 +921,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def get_evaluation_count(
+    async def get_evaluation_count(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -935,7 +941,7 @@ class EvaluationsApi:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -973,11 +979,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationCountResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -985,9 +991,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def get_evaluation_count_with_http_info(
+    async def get_evaluation_count_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1005,7 +1011,7 @@ class EvaluationsApi:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1043,11 +1049,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationCountResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1055,9 +1061,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def get_evaluation_count_without_preload_content(
+    async def get_evaluation_count_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1075,7 +1081,7 @@ class EvaluationsApi:
 
 
         :param tenant_id: (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1113,7 +1119,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationCountResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1138,7 +1144,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1183,9 +1191,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_appraisers(
+    async def search_evaluation_appraisers(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1207,7 +1215,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1257,11 +1265,11 @@ class EvaluationsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1269,9 +1277,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_appraisers_with_http_info(
+    async def search_evaluation_appraisers_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1293,7 +1301,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1343,11 +1351,11 @@ class EvaluationsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1355,9 +1363,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_appraisers_without_preload_content(
+    async def search_evaluation_appraisers_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1379,7 +1387,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1429,7 +1437,7 @@ class EvaluationsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1458,7 +1466,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1519,9 +1529,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_campuses(
+    async def search_evaluation_campuses(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1543,7 +1553,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1593,11 +1603,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1605,9 +1615,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_campuses_with_http_info(
+    async def search_evaluation_campuses_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1629,7 +1639,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1679,11 +1689,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1691,9 +1701,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_campuses_without_preload_content(
+    async def search_evaluation_campuses_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1715,7 +1725,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1765,7 +1775,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1794,7 +1804,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1855,9 +1867,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_forms(
+    async def search_evaluation_forms(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1879,7 +1891,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1929,11 +1941,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1941,9 +1953,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_forms_with_http_info(
+    async def search_evaluation_forms_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1965,7 +1977,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2015,11 +2027,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2027,9 +2039,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_forms_without_preload_content(
+    async def search_evaluation_forms_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2051,7 +2063,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2101,7 +2113,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2130,7 +2142,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2191,9 +2205,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_staff(
+    async def search_evaluation_staff(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2215,7 +2229,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2265,11 +2279,11 @@ class EvaluationsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2277,9 +2291,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_staff_with_http_info(
+    async def search_evaluation_staff_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2301,7 +2315,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2351,11 +2365,11 @@ class EvaluationsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2363,9 +2377,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluation_staff_without_preload_content(
+    async def search_evaluation_staff_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2387,7 +2401,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2437,7 +2451,7 @@ class EvaluationsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2466,7 +2480,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2527,9 +2543,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluations(
+    async def search_evaluations(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2551,7 +2567,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2601,11 +2617,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2613,9 +2629,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluations_with_http_info(
+    async def search_evaluations_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2637,7 +2653,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2687,11 +2703,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2699,9 +2715,9 @@ class EvaluationsApi:
 
 
     @validate_call
-    def search_evaluations_without_preload_content(
+    async def search_evaluations_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2723,7 +2739,7 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -2773,7 +2789,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2802,7 +2818,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2863,10 +2881,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def update_evaluation(
+    async def update_evaluation(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         evaluation_api_evaluations_v1_update_evaluation_request: Optional[EvaluationApiEvaluationsV1UpdateEvaluationRequest] = None,
         _request_timeout: Union[
             None,
@@ -2885,9 +2903,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param evaluation_api_evaluations_v1_update_evaluation_request: 
         :type evaluation_api_evaluations_v1_update_evaluation_request: EvaluationApiEvaluationsV1UpdateEvaluationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2929,11 +2947,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2941,10 +2959,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def update_evaluation_with_http_info(
+    async def update_evaluation_with_http_info(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         evaluation_api_evaluations_v1_update_evaluation_request: Optional[EvaluationApiEvaluationsV1UpdateEvaluationRequest] = None,
         _request_timeout: Union[
             None,
@@ -2963,9 +2981,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param evaluation_api_evaluations_v1_update_evaluation_request: 
         :type evaluation_api_evaluations_v1_update_evaluation_request: EvaluationApiEvaluationsV1UpdateEvaluationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3007,11 +3025,11 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3019,10 +3037,10 @@ class EvaluationsApi:
 
 
     @validate_call
-    def update_evaluation_without_preload_content(
+    async def update_evaluation_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        evaluation_id: StrictStr,
+        tenant_id: UUID,
+        evaluation_id: UUID,
         evaluation_api_evaluations_v1_update_evaluation_request: Optional[EvaluationApiEvaluationsV1UpdateEvaluationRequest] = None,
         _request_timeout: Union[
             None,
@@ -3041,9 +3059,9 @@ class EvaluationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param evaluation_id:  (required)
-        :type evaluation_id: str
+        :type evaluation_id: UUID
         :param evaluation_api_evaluations_v1_update_evaluation_request: 
         :type evaluation_api_evaluations_v1_update_evaluation_request: EvaluationApiEvaluationsV1UpdateEvaluationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3085,7 +3103,7 @@ class EvaluationsApi:
             '200': "EvaluationApiEvaluationsV1EvaluationUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3112,7 +3130,9 @@ class EvaluationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -20,8 +20,10 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_instance_type import EdfiAdminApiEdfiAdminV1InstanceType
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_ods_api_discovery_api import EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest(BaseModel):
     """
@@ -40,10 +42,13 @@ class EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest(BaseModel):
     instance_type: Optional[EdfiAdminApiEdfiAdminV1InstanceType] = Field(default=None, alias="instanceType")
     discovery_url: Optional[StrictStr] = Field(default=None, alias="discoveryUrl")
     metadata_json: Optional[StrictStr] = Field(default=None, alias="metadataJson")
-    __properties: ClassVar[List[str]] = ["connectionId", "tenantId", "connectionName", "edFiVersion", "edFiExtension", "metadataUrl", "clientId", "clientSecret", "tokenUrl", "resourcesUrl", "instanceType", "discoveryUrl", "metadataJson"]
+    discovery_document: Optional[EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi] = Field(default=None, alias="discoveryDocument")
+    admin_api_url: Optional[StrictStr] = Field(default=None, alias="adminApiUrl")
+    __properties: ClassVar[List[str]] = ["connectionId", "tenantId", "connectionName", "edFiVersion", "edFiExtension", "metadataUrl", "clientId", "clientSecret", "tokenUrl", "resourcesUrl", "instanceType", "discoveryUrl", "metadataJson", "discoveryDocument", "adminApiUrl"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,8 +60,7 @@ class EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -81,6 +85,9 @@ class EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of discovery_document
+        if self.discovery_document:
+            _dict['discoveryDocument'] = self.discovery_document.to_dict()
         # set to None if connection_id (nullable) is None
         # and model_fields_set contains the field
         if self.connection_id is None and "connection_id" in self.model_fields_set:
@@ -141,6 +148,11 @@ class EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest(BaseModel):
         if self.metadata_json is None and "metadata_json" in self.model_fields_set:
             _dict['metadataJson'] = None
 
+        # set to None if admin_api_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.admin_api_url is None and "admin_api_url" in self.model_fields_set:
+            _dict['adminApiUrl'] = None
+
         return _dict
 
     @classmethod
@@ -165,7 +177,9 @@ class EdfiAdminApiEdfiAdminV1UpdateEdFiConnectionRequest(BaseModel):
             "resourcesUrl": obj.get("resourcesUrl"),
             "instanceType": obj.get("instanceType"),
             "discoveryUrl": obj.get("discoveryUrl"),
-            "metadataJson": obj.get("metadataJson")
+            "metadataJson": obj.get("metadataJson"),
+            "discoveryDocument": EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi.from_dict(obj["discoveryDocument"]) if obj.get("discoveryDocument") is not None else None,
+            "adminApiUrl": obj.get("adminApiUrl")
         })
         return _obj
 

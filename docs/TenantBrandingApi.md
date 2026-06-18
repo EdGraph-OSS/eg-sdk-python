@@ -36,18 +36,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantBrandingApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    logo_file = None # bytearray |  (optional)
-    background_file = None # bytearray |  (optional)
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    logo_file = None # bytes |  (optional)
+    background_file = None # bytes |  (optional)
     brand_name = 'brand_name_example' # str |  (optional)
     enabled = True # bool |  (optional)
 
     try:
         # Updates the branding of tenant
-        api_response = api_instance.update_tenant_branding(tenant_id, logo_file=logo_file, background_file=background_file, brand_name=brand_name, enabled=enabled)
+        api_response = await api_instance.update_tenant_branding(tenant_id, logo_file=logo_file, background_file=background_file, brand_name=brand_name, enabled=enabled)
         print("The response of TenantBrandingApi->update_tenant_branding:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,9 +61,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **logo_file** | **bytearray**|  | [optional] 
- **background_file** | **bytearray**|  | [optional] 
+ **tenant_id** | **UUID**|  | 
+ **logo_file** | **bytes**|  | [optional] 
+ **background_file** | **bytes**|  | [optional] 
  **brand_name** | **str**|  | [optional] 
  **enabled** | **bool**|  | [optional] 
 

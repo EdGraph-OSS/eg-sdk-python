@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -45,7 +44,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def create_vendor_async(
+    async def create_vendor_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -112,11 +111,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -124,7 +123,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def create_vendor_async_with_http_info(
+    async def create_vendor_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -191,11 +190,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -203,7 +202,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def create_vendor_async_without_preload_content(
+    async def create_vendor_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -270,7 +269,7 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -297,7 +296,9 @@ class InstancesVendorsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -362,7 +363,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def delete_vendor_async(
+    async def delete_vendor_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -429,11 +430,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -441,7 +442,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def delete_vendor_async_with_http_info(
+    async def delete_vendor_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -508,11 +509,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -520,7 +521,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def delete_vendor_async_without_preload_content(
+    async def delete_vendor_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -587,7 +588,7 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -614,7 +615,9 @@ class InstancesVendorsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -663,7 +666,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def get_vendor_by_id_async(
+    async def get_vendor_by_id_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -730,11 +733,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -742,7 +745,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def get_vendor_by_id_async_with_http_info(
+    async def get_vendor_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -809,11 +812,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -821,7 +824,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def get_vendor_by_id_async_without_preload_content(
+    async def get_vendor_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -888,7 +891,7 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -915,7 +918,9 @@ class InstancesVendorsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -964,7 +969,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def get_vendors_async(
+    async def get_vendors_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1043,11 +1048,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1055,7 +1060,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def get_vendors_async_with_http_info(
+    async def get_vendors_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1134,11 +1139,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1146,7 +1151,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def get_vendors_async_without_preload_content(
+    async def get_vendors_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1225,7 +1230,7 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1255,7 +1260,9 @@ class InstancesVendorsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1318,7 +1325,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def sync_vendor_async(
+    async def sync_vendor_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1389,11 +1396,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1401,7 +1408,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def sync_vendor_async_with_http_info(
+    async def sync_vendor_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1472,11 +1479,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1484,7 +1491,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def sync_vendor_async_without_preload_content(
+    async def sync_vendor_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1555,7 +1562,7 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1583,7 +1590,9 @@ class InstancesVendorsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1650,7 +1659,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def update_vendor_async(
+    async def update_vendor_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1721,11 +1730,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1733,7 +1742,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def update_vendor_async_with_http_info(
+    async def update_vendor_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1804,11 +1813,11 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1816,7 +1825,7 @@ class InstancesVendorsApi:
 
 
     @validate_call
-    def update_vendor_async_without_preload_content(
+    async def update_vendor_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1887,7 +1896,7 @@ class InstancesVendorsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1915,7 +1924,9 @@ class InstancesVendorsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

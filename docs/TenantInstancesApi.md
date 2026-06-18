@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **load_onboarding_step_ed_fi_api_metadata**
-> EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult load_onboarding_step_ed_fi_api_metadata(tenant_id, ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request)
+> EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult load_onboarding_step_ed_fi_api_metadata(tenant_id, ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request)
 
 Loads connection metadata.
 
@@ -20,7 +20,7 @@ Loads connection metadata.
 ```python
 import edgraph_platform_client
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_load_ed_fi_api_metadata_result import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest
 from edgraph_platform_client.rest import ApiException
 from pprint import pprint
 
@@ -38,15 +38,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantInstancesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
-    ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest() # EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest |  (optional)
+    ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest() # EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest |  (optional)
 
     try:
         # Loads connection metadata.
-        api_response = api_instance.load_onboarding_step_ed_fi_api_metadata(tenant_id, ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request)
+        api_response = await api_instance.load_onboarding_step_ed_fi_api_metadata(tenant_id, ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request=ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request)
         print("The response of TenantInstancesApi->load_onboarding_step_ed_fi_api_metadata:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,7 +61,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
- **ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api_metadata_request** | [**EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest**](EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.md)|  | [optional] 
+ **ed_graph_http_aggregators_tenant_api_services_onboarding_steps_use_cases_ed_fi_api_metadata_request** | [**EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest**](EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -117,7 +117,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantInstancesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -125,7 +125,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Tests availability of provided connection metadata.
-        api_response = api_instance.test_onboarding_step_connection(tenant_id, body=body)
+        api_response = await api_instance.test_onboarding_step_connection(tenant_id, body=body)
         print("The response of TenantInstancesApi->test_onboarding_step_connection:\n")
         pprint(api_response)
     except Exception as e:

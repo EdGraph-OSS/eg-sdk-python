@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -42,7 +41,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def get_user_preferences(
+    async def get_user_preferences(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -112,11 +111,11 @@ class MyPreferencesApi:
             '200': "IdentityApiUserV1GetUserPreferencesResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -124,7 +123,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def get_user_preferences_with_http_info(
+    async def get_user_preferences_with_http_info(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -194,11 +193,11 @@ class MyPreferencesApi:
             '200': "IdentityApiUserV1GetUserPreferencesResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -206,7 +205,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def get_user_preferences_without_preload_content(
+    async def get_user_preferences_without_preload_content(
         self,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -276,7 +275,7 @@ class MyPreferencesApi:
             '200': "IdentityApiUserV1GetUserPreferencesResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -304,7 +303,9 @@ class MyPreferencesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -363,7 +364,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def preference(
+    async def preference(
         self,
         code: StrictStr,
         _request_timeout: Union[
@@ -421,11 +422,11 @@ class MyPreferencesApi:
             '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -433,7 +434,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def preference_with_http_info(
+    async def preference_with_http_info(
         self,
         code: StrictStr,
         _request_timeout: Union[
@@ -491,11 +492,11 @@ class MyPreferencesApi:
             '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -503,7 +504,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def preference_without_preload_content(
+    async def preference_without_preload_content(
         self,
         code: StrictStr,
         _request_timeout: Union[
@@ -561,7 +562,7 @@ class MyPreferencesApi:
             '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -586,7 +587,9 @@ class MyPreferencesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -631,7 +634,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def update_user_preference_async(
+    async def update_user_preference_async(
         self,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest] = None,
         _request_timeout: Union[
@@ -689,11 +692,11 @@ class MyPreferencesApi:
             '200': "IdentityApiUserV1UserPreferenceUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -701,7 +704,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def update_user_preference_async_with_http_info(
+    async def update_user_preference_async_with_http_info(
         self,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest] = None,
         _request_timeout: Union[
@@ -759,11 +762,11 @@ class MyPreferencesApi:
             '200': "IdentityApiUserV1UserPreferenceUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -771,7 +774,7 @@ class MyPreferencesApi:
 
 
     @validate_call
-    def update_user_preference_async_without_preload_content(
+    async def update_user_preference_async_without_preload_content(
         self,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest] = None,
         _request_timeout: Union[
@@ -829,7 +832,7 @@ class MyPreferencesApi:
             '200': "IdentityApiUserV1UserPreferenceUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -854,7 +857,9 @@ class MyPreferencesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

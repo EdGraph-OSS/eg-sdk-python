@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.analytics_api_lakehouses_v1_paginated_lakehouse_records_response import AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponse
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
@@ -39,9 +39,9 @@ class AnalyticsDataLakeApi:
 
 
     @validate_call
-    def get_paginated_lakehouse_records(
+    async def get_paginated_lakehouse_records(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -63,7 +63,7 @@ class AnalyticsDataLakeApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -113,11 +113,11 @@ class AnalyticsDataLakeApi:
             '200': "AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponse",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -125,9 +125,9 @@ class AnalyticsDataLakeApi:
 
 
     @validate_call
-    def get_paginated_lakehouse_records_with_http_info(
+    async def get_paginated_lakehouse_records_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -149,7 +149,7 @@ class AnalyticsDataLakeApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -199,11 +199,11 @@ class AnalyticsDataLakeApi:
             '200': "AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponse",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -211,9 +211,9 @@ class AnalyticsDataLakeApi:
 
 
     @validate_call
-    def get_paginated_lakehouse_records_without_preload_content(
+    async def get_paginated_lakehouse_records_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -235,7 +235,7 @@ class AnalyticsDataLakeApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -285,7 +285,7 @@ class AnalyticsDataLakeApi:
             '200': "AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponse",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -314,7 +314,9 @@ class AnalyticsDataLakeApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

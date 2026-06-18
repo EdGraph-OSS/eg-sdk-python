@@ -39,7 +39,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OnboardingStepsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -47,7 +47,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Onboarding Step.
-        api_response = api_instance.create_onboarding_step(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_onboarding_step_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_onboarding_step_request_dto)
+        api_response = await api_instance.create_onboarding_step(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_onboarding_step_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_create_onboarding_step_request_dto)
         print("The response of OnboardingStepsApi->create_onboarding_step:\n")
         pprint(api_response)
     except Exception as e:
@@ -118,14 +118,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OnboardingStepsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
 
     try:
         # Gets a list of Onboarding Steps.
-        api_response = api_instance.get_onboarding_steps(tenant_id)
+        api_response = await api_instance.get_onboarding_steps(tenant_id)
         print("The response of OnboardingStepsApi->get_onboarding_steps:\n")
         pprint(api_response)
     except Exception as e:
@@ -196,7 +196,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.OnboardingStepsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -205,7 +205,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates the status of an Onboarding Step.
-        api_response = api_instance.update_onboarding_step(tenant_id, step_number, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_onboarding_step_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_onboarding_step_request_dto)
+        api_response = await api_instance.update_onboarding_step(tenant_id, step_number, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_onboarding_step_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_onboarding_step_request_dto)
         print("The response of OnboardingStepsApi->update_onboarding_step:\n")
         pprint(api_response)
     except Exception as e:

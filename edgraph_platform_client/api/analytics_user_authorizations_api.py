@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -40,7 +39,7 @@ class AnalyticsUserAuthorizationsApi:
 
 
     @validate_call
-    def get_paginated_user_authorizations(
+    async def get_paginated_user_authorizations(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -114,11 +113,11 @@ class AnalyticsUserAuthorizationsApi:
             '200': "AnalyticsApiUserAuthorizationsV1UserAuthorizationsPaginatedItemsResponse",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -126,7 +125,7 @@ class AnalyticsUserAuthorizationsApi:
 
 
     @validate_call
-    def get_paginated_user_authorizations_with_http_info(
+    async def get_paginated_user_authorizations_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -200,11 +199,11 @@ class AnalyticsUserAuthorizationsApi:
             '200': "AnalyticsApiUserAuthorizationsV1UserAuthorizationsPaginatedItemsResponse",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -212,7 +211,7 @@ class AnalyticsUserAuthorizationsApi:
 
 
     @validate_call
-    def get_paginated_user_authorizations_without_preload_content(
+    async def get_paginated_user_authorizations_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -286,7 +285,7 @@ class AnalyticsUserAuthorizationsApi:
             '200': "AnalyticsApiUserAuthorizationsV1UserAuthorizationsPaginatedItemsResponse",
             '400': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -315,7 +314,9 @@ class AnalyticsUserAuthorizationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -376,7 +377,7 @@ class AnalyticsUserAuthorizationsApi:
 
 
     @validate_call
-    def soft_delete_user_authorization(
+    async def soft_delete_user_authorization(
         self,
         tenant_id: StrictStr,
         user_authorization_id: StrictStr,
@@ -438,11 +439,11 @@ class AnalyticsUserAuthorizationsApi:
             '200': "AnalyticsApiUserAuthorizationsV1UserAuthorizationSoftDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -450,7 +451,7 @@ class AnalyticsUserAuthorizationsApi:
 
 
     @validate_call
-    def soft_delete_user_authorization_with_http_info(
+    async def soft_delete_user_authorization_with_http_info(
         self,
         tenant_id: StrictStr,
         user_authorization_id: StrictStr,
@@ -512,11 +513,11 @@ class AnalyticsUserAuthorizationsApi:
             '200': "AnalyticsApiUserAuthorizationsV1UserAuthorizationSoftDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -524,7 +525,7 @@ class AnalyticsUserAuthorizationsApi:
 
 
     @validate_call
-    def soft_delete_user_authorization_without_preload_content(
+    async def soft_delete_user_authorization_without_preload_content(
         self,
         tenant_id: StrictStr,
         user_authorization_id: StrictStr,
@@ -586,7 +587,7 @@ class AnalyticsUserAuthorizationsApi:
             '200': "AnalyticsApiUserAuthorizationsV1UserAuthorizationSoftDeletedResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -612,7 +613,9 @@ class AnalyticsUserAuthorizationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -51,7 +50,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def create_application_async(
+    async def create_application_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -118,11 +117,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -130,7 +129,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def create_application_async_with_http_info(
+    async def create_application_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -197,11 +196,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -209,7 +208,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def create_application_async_without_preload_content(
+    async def create_application_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -276,7 +275,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -303,7 +302,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -368,7 +369,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def create_application_user_access_async(
+    async def create_application_user_access_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -443,11 +444,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -455,7 +456,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def create_application_user_access_async_with_http_info(
+    async def create_application_user_access_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -530,11 +531,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -542,7 +543,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def create_application_user_access_async_without_preload_content(
+    async def create_application_user_access_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -617,7 +618,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -646,7 +647,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -715,7 +718,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def delete_application_async(
+    async def delete_application_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -782,11 +785,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -794,7 +797,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def delete_application_async_with_http_info(
+    async def delete_application_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -861,11 +864,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -873,7 +876,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def delete_application_async_without_preload_content(
+    async def delete_application_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -940,7 +943,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -967,7 +970,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1016,7 +1021,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def delete_application_user_access_async(
+    async def delete_application_user_access_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1091,11 +1096,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1103,7 +1108,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def delete_application_user_access_async_with_http_info(
+    async def delete_application_user_access_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1178,11 +1183,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1190,7 +1195,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def delete_application_user_access_async_without_preload_content(
+    async def delete_application_user_access_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1265,7 +1270,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1294,7 +1299,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1347,7 +1354,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_access_async(
+    async def get_application_access_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1433,11 +1440,11 @@ class InstancesApplicationsApi:
             '200': "EdFiAdminApiApplicationAccessV1ApplicationAccessResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1445,7 +1452,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_access_async_with_http_info(
+    async def get_application_access_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1531,11 +1538,11 @@ class InstancesApplicationsApi:
             '200': "EdFiAdminApiApplicationAccessV1ApplicationAccessResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1543,7 +1550,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_access_async_without_preload_content(
+    async def get_application_access_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1629,7 +1636,7 @@ class InstancesApplicationsApi:
             '200': "EdFiAdminApiApplicationAccessV1ApplicationAccessResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1661,7 +1668,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1728,7 +1737,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_access_by_id_async(
+    async def get_application_access_by_id_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1803,11 +1812,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1815,7 +1824,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_access_by_id_async_with_http_info(
+    async def get_application_access_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1890,11 +1899,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1902,7 +1911,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_access_by_id_async_without_preload_content(
+    async def get_application_access_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -1977,7 +1986,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2006,7 +2015,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2059,7 +2070,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_api_client_by_id_async(
+    async def get_application_api_client_by_id_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2130,11 +2141,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2142,7 +2153,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_api_client_by_id_async_with_http_info(
+    async def get_application_api_client_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2213,11 +2224,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2225,7 +2236,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_api_client_by_id_async_without_preload_content(
+    async def get_application_api_client_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2296,7 +2307,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2324,7 +2335,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2375,7 +2388,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_api_clients_async(
+    async def get_application_api_clients_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2442,11 +2455,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2454,7 +2467,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_api_clients_async_with_http_info(
+    async def get_application_api_clients_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2521,11 +2534,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2533,7 +2546,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_api_clients_async_without_preload_content(
+    async def get_application_api_clients_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2600,7 +2613,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2627,7 +2640,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2676,7 +2691,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_by_id_async(
+    async def get_application_by_id_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2751,11 +2766,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2763,7 +2778,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_by_id_async_with_http_info(
+    async def get_application_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2838,11 +2853,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2850,7 +2865,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_application_by_id_async_without_preload_content(
+    async def get_application_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -2925,7 +2940,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2954,7 +2969,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3011,7 +3028,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_applications_async(
+    async def get_applications_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3090,11 +3107,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3102,7 +3119,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_applications_async_with_http_info(
+    async def get_applications_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3181,11 +3198,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3193,7 +3210,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def get_applications_async_without_preload_content(
+    async def get_applications_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3272,7 +3289,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3302,7 +3319,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3365,7 +3384,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def regenerate_api_client_secret_async(
+    async def regenerate_api_client_secret_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3436,11 +3455,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3448,7 +3467,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def regenerate_api_client_secret_async_with_http_info(
+    async def regenerate_api_client_secret_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3519,11 +3538,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3531,7 +3550,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def regenerate_api_client_secret_async_without_preload_content(
+    async def regenerate_api_client_secret_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3602,7 +3621,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3630,7 +3649,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3681,7 +3702,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def regenerate_application_api_client_credentials(
+    async def regenerate_application_api_client_credentials(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3748,11 +3769,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3760,7 +3781,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def regenerate_application_api_client_credentials_with_http_info(
+    async def regenerate_application_api_client_credentials_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3827,11 +3848,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3839,7 +3860,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def regenerate_application_api_client_credentials_without_preload_content(
+    async def regenerate_application_api_client_credentials_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -3906,7 +3927,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3933,7 +3954,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3982,7 +4005,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def sync_application_async(
+    async def sync_application_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4053,11 +4076,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4065,7 +4088,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def sync_application_async_with_http_info(
+    async def sync_application_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4136,11 +4159,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4148,7 +4171,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def sync_application_async_without_preload_content(
+    async def sync_application_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4219,7 +4242,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4247,7 +4270,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4314,7 +4339,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def update_application_async(
+    async def update_application_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4385,11 +4410,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4397,7 +4422,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def update_application_async_with_http_info(
+    async def update_application_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4468,11 +4493,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4480,7 +4505,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def update_application_async_without_preload_content(
+    async def update_application_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4551,7 +4576,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4579,7 +4604,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4646,7 +4673,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def update_application_user_access_async(
+    async def update_application_user_access_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4725,11 +4752,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4737,7 +4764,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def update_application_user_access_async_with_http_info(
+    async def update_application_user_access_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4816,11 +4843,11 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4828,7 +4855,7 @@ class InstancesApplicationsApi:
 
 
     @validate_call
-    def update_application_user_access_async_without_preload_content(
+    async def update_application_user_access_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -4907,7 +4934,7 @@ class InstancesApplicationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4937,7 +4964,9 @@ class InstancesApplicationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

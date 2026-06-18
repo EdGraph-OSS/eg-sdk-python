@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Any, Dict, Optional
+from uuid import UUID
 from edgraph_platform_client.models.data_sync_api_job_v1_activate_job_request import DataSyncApiJobV1ActivateJobRequest
 from edgraph_platform_client.models.data_sync_api_job_v1_cancel_job_request import DataSyncApiJobV1CancelJobRequest
 from edgraph_platform_client.models.data_sync_api_job_v1_deactivate_job_request import DataSyncApiJobV1DeactivateJobRequest
@@ -51,7 +51,7 @@ class JobsApi:
 
 
     @validate_call
-    def activate_tenant_data_sync_job(
+    async def activate_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -118,11 +118,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -130,7 +130,7 @@ class JobsApi:
 
 
     @validate_call
-    def activate_tenant_data_sync_job_with_http_info(
+    async def activate_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -197,11 +197,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -209,7 +209,7 @@ class JobsApi:
 
 
     @validate_call
-    def activate_tenant_data_sync_job_without_preload_content(
+    async def activate_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -276,7 +276,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -303,7 +303,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -368,7 +370,7 @@ class JobsApi:
 
 
     @validate_call
-    def cancel_job(
+    async def cancel_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -431,11 +433,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -443,7 +445,7 @@ class JobsApi:
 
 
     @validate_call
-    def cancel_job_with_http_info(
+    async def cancel_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -506,11 +508,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -518,7 +520,7 @@ class JobsApi:
 
 
     @validate_call
-    def cancel_job_without_preload_content(
+    async def cancel_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -581,7 +583,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -607,7 +609,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -654,7 +658,7 @@ class JobsApi:
 
 
     @validate_call
-    def cancel_tenant_data_sync_job(
+    async def cancel_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -721,11 +725,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -733,7 +737,7 @@ class JobsApi:
 
 
     @validate_call
-    def cancel_tenant_data_sync_job_with_http_info(
+    async def cancel_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -800,11 +804,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -812,7 +816,7 @@ class JobsApi:
 
 
     @validate_call
-    def cancel_tenant_data_sync_job_without_preload_content(
+    async def cancel_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -879,7 +883,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -906,7 +910,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -971,9 +977,9 @@ class JobsApi:
 
 
     @validate_call
-    def create_job(
+    async def create_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -992,7 +998,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1033,11 +1039,11 @@ class JobsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1045,9 +1051,9 @@ class JobsApi:
 
 
     @validate_call
-    def create_job_with_http_info(
+    async def create_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1066,7 +1072,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1107,11 +1113,11 @@ class JobsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1119,9 +1125,9 @@ class JobsApi:
 
 
     @validate_call
-    def create_job_without_preload_content(
+    async def create_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1140,7 +1146,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1181,7 +1187,7 @@ class JobsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1207,7 +1213,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1270,7 +1278,7 @@ class JobsApi:
 
 
     @validate_call
-    def create_tenant_data_sync_job(
+    async def create_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest] = None,
@@ -1332,11 +1340,11 @@ class JobsApi:
             '201': None,
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1344,7 +1352,7 @@ class JobsApi:
 
 
     @validate_call
-    def create_tenant_data_sync_job_with_http_info(
+    async def create_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest] = None,
@@ -1406,11 +1414,11 @@ class JobsApi:
             '201': None,
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1418,7 +1426,7 @@ class JobsApi:
 
 
     @validate_call
-    def create_tenant_data_sync_job_without_preload_content(
+    async def create_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest] = None,
@@ -1480,7 +1488,7 @@ class JobsApi:
             '201': None,
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1506,7 +1514,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1569,7 +1579,7 @@ class JobsApi:
 
 
     @validate_call
-    def deactivate_tenant_data_sync_job(
+    async def deactivate_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -1636,11 +1646,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1648,7 +1658,7 @@ class JobsApi:
 
 
     @validate_call
-    def deactivate_tenant_data_sync_job_with_http_info(
+    async def deactivate_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -1715,11 +1725,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1727,7 +1737,7 @@ class JobsApi:
 
 
     @validate_call
-    def deactivate_tenant_data_sync_job_without_preload_content(
+    async def deactivate_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -1794,7 +1804,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1821,7 +1831,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1886,9 +1898,9 @@ class JobsApi:
 
 
     @validate_call
-    def delete_job(
+    async def delete_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -1907,7 +1919,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
         :type job_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1949,11 +1961,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1961,9 +1973,9 @@ class JobsApi:
 
 
     @validate_call
-    def delete_job_with_http_info(
+    async def delete_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -1982,7 +1994,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
         :type job_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2024,11 +2036,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2036,9 +2048,9 @@ class JobsApi:
 
 
     @validate_call
-    def delete_job_without_preload_content(
+    async def delete_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -2057,7 +2069,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
         :type job_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2099,7 +2111,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2125,7 +2137,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2172,7 +2186,7 @@ class JobsApi:
 
 
     @validate_call
-    def delete_tenant_data_sync_job(
+    async def delete_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2235,11 +2249,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2247,7 +2261,7 @@ class JobsApi:
 
 
     @validate_call
-    def delete_tenant_data_sync_job_with_http_info(
+    async def delete_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2310,11 +2324,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2322,7 +2336,7 @@ class JobsApi:
 
 
     @validate_call
-    def delete_tenant_data_sync_job_without_preload_content(
+    async def delete_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2385,7 +2399,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2411,7 +2425,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2458,9 +2474,9 @@ class JobsApi:
 
 
     @validate_call
-    def execute_job(
+    async def execute_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -2479,7 +2495,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
         :type job_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2521,11 +2537,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2533,9 +2549,9 @@ class JobsApi:
 
 
     @validate_call
-    def execute_job_with_http_info(
+    async def execute_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -2554,7 +2570,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
         :type job_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2596,11 +2612,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2608,9 +2624,9 @@ class JobsApi:
 
 
     @validate_call
-    def execute_job_without_preload_content(
+    async def execute_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: StrictStr,
         _request_timeout: Union[
             None,
@@ -2629,7 +2645,7 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
         :type job_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2671,7 +2687,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2697,7 +2713,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2744,7 +2762,7 @@ class JobsApi:
 
 
     @validate_call
-    def execute_tenant_data_sync_job(
+    async def execute_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2811,11 +2829,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2823,7 +2841,7 @@ class JobsApi:
 
 
     @validate_call
-    def execute_tenant_data_sync_job_with_http_info(
+    async def execute_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2890,11 +2908,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2902,7 +2920,7 @@ class JobsApi:
 
 
     @validate_call
-    def execute_tenant_data_sync_job_without_preload_content(
+    async def execute_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2969,7 +2987,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2996,7 +3014,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3061,7 +3081,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_all_tenant_data_sync_jobs(
+    async def get_all_tenant_data_sync_jobs(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3135,11 +3155,11 @@ class JobsApi:
             '200': "DataSyncApiJobV1JobListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3147,7 +3167,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_all_tenant_data_sync_jobs_with_http_info(
+    async def get_all_tenant_data_sync_jobs_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3221,11 +3241,11 @@ class JobsApi:
             '200': "DataSyncApiJobV1JobListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3233,7 +3253,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_all_tenant_data_sync_jobs_without_preload_content(
+    async def get_all_tenant_data_sync_jobs_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -3307,7 +3327,7 @@ class JobsApi:
             '200': "DataSyncApiJobV1JobListResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3336,7 +3356,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3397,7 +3419,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_job_by_id(
+    async def get_job_by_id(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3460,11 +3482,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3472,7 +3494,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_job_by_id_with_http_info(
+    async def get_job_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3535,11 +3557,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3547,7 +3569,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_job_by_id_without_preload_content(
+    async def get_job_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3610,7 +3632,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3636,7 +3658,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3683,7 +3707,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_jobs(
+    async def get_jobs(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -3757,11 +3781,11 @@ class JobsApi:
             '200': "ValidationsApiJobsV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3769,7 +3793,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_jobs_with_http_info(
+    async def get_jobs_with_http_info(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -3843,11 +3867,11 @@ class JobsApi:
             '200': "ValidationsApiJobsV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3855,7 +3879,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_jobs_without_preload_content(
+    async def get_jobs_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -3929,7 +3953,7 @@ class JobsApi:
             '200': "ValidationsApiJobsV1PaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3958,7 +3982,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4019,7 +4045,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_tenant_data_sync_job_profile_by_id(
+    async def get_tenant_data_sync_job_profile_by_id(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4081,11 +4107,11 @@ class JobsApi:
             '200': "DataSyncApiJobV1JobProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4093,7 +4119,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_tenant_data_sync_job_profile_by_id_with_http_info(
+    async def get_tenant_data_sync_job_profile_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4155,11 +4181,11 @@ class JobsApi:
             '200': "DataSyncApiJobV1JobProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4167,7 +4193,7 @@ class JobsApi:
 
 
     @validate_call
-    def get_tenant_data_sync_job_profile_by_id_without_preload_content(
+    async def get_tenant_data_sync_job_profile_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4229,7 +4255,7 @@ class JobsApi:
             '200': "DataSyncApiJobV1JobProfileResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4255,7 +4281,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4302,7 +4330,7 @@ class JobsApi:
 
 
     @validate_call
-    def restart_job_schedule(
+    async def restart_job_schedule(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4365,11 +4393,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4377,7 +4405,7 @@ class JobsApi:
 
 
     @validate_call
-    def restart_job_schedule_with_http_info(
+    async def restart_job_schedule_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4440,11 +4468,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4452,7 +4480,7 @@ class JobsApi:
 
 
     @validate_call
-    def restart_job_schedule_without_preload_content(
+    async def restart_job_schedule_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4515,7 +4543,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4541,7 +4569,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4588,10 +4618,10 @@ class JobsApi:
 
 
     @validate_call
-    def update_job(
+    async def update_job(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -4610,9 +4640,9 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4655,11 +4685,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4667,10 +4697,10 @@ class JobsApi:
 
 
     @validate_call
-    def update_job_with_http_info(
+    async def update_job_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -4689,9 +4719,9 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4734,11 +4764,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4746,10 +4776,10 @@ class JobsApi:
 
 
     @validate_call
-    def update_job_without_preload_content(
+    async def update_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -4768,9 +4798,9 @@ class JobsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -4813,7 +4843,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4840,7 +4870,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -4905,7 +4937,7 @@ class JobsApi:
 
 
     @validate_call
-    def update_tenant_data_sync_job(
+    async def update_tenant_data_sync_job(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -4972,11 +5004,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -4984,7 +5016,7 @@ class JobsApi:
 
 
     @validate_call
-    def update_tenant_data_sync_job_with_http_info(
+    async def update_tenant_data_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -5051,11 +5083,11 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -5063,7 +5095,7 @@ class JobsApi:
 
 
     @validate_call
-    def update_tenant_data_sync_job_without_preload_content(
+    async def update_tenant_data_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -5130,7 +5162,7 @@ class JobsApi:
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -5157,7 +5189,9 @@ class JobsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

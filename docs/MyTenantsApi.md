@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyTenantsApi(api_client)
     page_index = 0 # int |  (optional) (default to 0)
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves the Tenants of the User that is currently logged in.
-        api_response = api_instance.get_user_tenants(page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_user_tenants(page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of MyTenantsApi->get_user_tenants:\n")
         pprint(api_response)
     except Exception as e:
@@ -121,10 +121,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyTenantsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     filter = '' # str |  (optional) (default to '')
@@ -132,7 +132,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search the user's licenses.
-        api_response = api_instance.search_my_licenses(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.search_my_licenses(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of MyTenantsApi->search_my_licenses:\n")
         pprint(api_response)
     except Exception as e:
@@ -146,7 +146,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **filter** | **str**|  | [optional] [default to &#39;&#39;]
@@ -206,7 +206,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.MyTenantsApi(api_client)
     page_index = 0 # int |  (optional) (default to 0)
@@ -216,7 +216,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches tenants associated to the user.
-        api_response = api_instance.search_my_tenants(page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.search_my_tenants(page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of MyTenantsApi->search_my_tenants:\n")
         pprint(api_response)
     except Exception as e:

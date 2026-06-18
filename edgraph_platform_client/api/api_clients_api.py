@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -46,7 +45,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def create_tenant_api_client_async(
+    async def create_tenant_api_client_async(
         self,
         tenant_id: StrictStr,
         identity_api_api_client_v1_create_api_client_request: Optional[IdentityApiApiClientV1CreateApiClientRequest] = None,
@@ -108,11 +107,11 @@ class APIClientsApi:
             '201': "IdentityApiApiClientV1ApiClientCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -120,7 +119,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def create_tenant_api_client_async_with_http_info(
+    async def create_tenant_api_client_async_with_http_info(
         self,
         tenant_id: StrictStr,
         identity_api_api_client_v1_create_api_client_request: Optional[IdentityApiApiClientV1CreateApiClientRequest] = None,
@@ -182,11 +181,11 @@ class APIClientsApi:
             '201': "IdentityApiApiClientV1ApiClientCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -194,7 +193,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def create_tenant_api_client_async_without_preload_content(
+    async def create_tenant_api_client_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         identity_api_api_client_v1_create_api_client_request: Optional[IdentityApiApiClientV1CreateApiClientRequest] = None,
@@ -256,7 +255,7 @@ class APIClientsApi:
             '201': "IdentityApiApiClientV1ApiClientCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -282,7 +281,9 @@ class APIClientsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -345,7 +346,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def delete_tenant_api_client_async(
+    async def delete_tenant_api_client_async(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -407,11 +408,11 @@ class APIClientsApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -419,7 +420,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def delete_tenant_api_client_async_with_http_info(
+    async def delete_tenant_api_client_async_with_http_info(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -481,11 +482,11 @@ class APIClientsApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -493,7 +494,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def delete_tenant_api_client_async_without_preload_content(
+    async def delete_tenant_api_client_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -555,7 +556,7 @@ class APIClientsApi:
             '204': None,
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -581,7 +582,9 @@ class APIClientsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -628,7 +631,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def get_all_tenant_api_clients_async(
+    async def get_all_tenant_api_clients_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -702,11 +705,11 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientPaginatedItemsResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -714,7 +717,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def get_all_tenant_api_clients_async_with_http_info(
+    async def get_all_tenant_api_clients_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -788,11 +791,11 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientPaginatedItemsResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -800,7 +803,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def get_all_tenant_api_clients_async_without_preload_content(
+    async def get_all_tenant_api_clients_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -874,7 +877,7 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientPaginatedItemsResponsePaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -903,7 +906,9 @@ class APIClientsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -964,7 +969,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def get_tenant_api_client_by_id_async(
+    async def get_tenant_api_client_by_id_async(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1027,11 +1032,11 @@ class APIClientsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1039,7 +1044,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def get_tenant_api_client_by_id_async_with_http_info(
+    async def get_tenant_api_client_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1102,11 +1107,11 @@ class APIClientsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1114,7 +1119,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def get_tenant_api_client_by_id_async_without_preload_content(
+    async def get_tenant_api_client_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1177,7 +1182,7 @@ class APIClientsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1203,7 +1208,9 @@ class APIClientsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1250,7 +1257,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def regenerate_tenant_api_client_secret_async(
+    async def regenerate_tenant_api_client_secret_async(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1316,11 +1323,11 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientSecretRegeneratedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1328,7 +1335,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def regenerate_tenant_api_client_secret_async_with_http_info(
+    async def regenerate_tenant_api_client_secret_async_with_http_info(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1394,11 +1401,11 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientSecretRegeneratedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1406,7 +1413,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def regenerate_tenant_api_client_secret_async_without_preload_content(
+    async def regenerate_tenant_api_client_secret_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1472,7 +1479,7 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientSecretRegeneratedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1499,7 +1506,9 @@ class APIClientsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1564,7 +1573,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def update_tenant_api_client_async(
+    async def update_tenant_api_client_async(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1630,11 +1639,11 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1642,7 +1651,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def update_tenant_api_client_async_with_http_info(
+    async def update_tenant_api_client_async_with_http_info(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1708,11 +1717,11 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1720,7 +1729,7 @@ class APIClientsApi:
 
 
     @validate_call
-    def update_tenant_api_client_async_without_preload_content(
+    async def update_tenant_api_client_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         client_id: StrictStr,
@@ -1786,7 +1795,7 @@ class APIClientsApi:
             '200': "IdentityApiApiClientV1ApiClientUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1813,7 +1822,9 @@ class APIClientsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -40,7 +39,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_all_ed_fi_admin_connections_from_analytics_async(
+    async def get_all_ed_fi_admin_connections_from_analytics_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -114,11 +113,11 @@ class EdFiInstancesApi:
             '200': "AnalyticsApiReportsV1ReportPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -126,7 +125,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_all_ed_fi_admin_connections_from_analytics_async_with_http_info(
+    async def get_all_ed_fi_admin_connections_from_analytics_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -200,11 +199,11 @@ class EdFiInstancesApi:
             '200': "AnalyticsApiReportsV1ReportPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -212,7 +211,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_all_ed_fi_admin_connections_from_analytics_async_without_preload_content(
+    async def get_all_ed_fi_admin_connections_from_analytics_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -286,7 +285,7 @@ class EdFiInstancesApi:
             '200': "AnalyticsApiReportsV1ReportPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -315,7 +314,9 @@ class EdFiInstancesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -376,7 +377,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_all_ed_fi_admin_instances_from_analytics_async(
+    async def get_all_ed_fi_admin_instances_from_analytics_async(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -450,11 +451,11 @@ class EdFiInstancesApi:
             '200': "AnalyticsApiReportsV1ReportPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -462,7 +463,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_all_ed_fi_admin_instances_from_analytics_async_with_http_info(
+    async def get_all_ed_fi_admin_instances_from_analytics_async_with_http_info(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -536,11 +537,11 @@ class EdFiInstancesApi:
             '200': "AnalyticsApiReportsV1ReportPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -548,7 +549,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_all_ed_fi_admin_instances_from_analytics_async_without_preload_content(
+    async def get_all_ed_fi_admin_instances_from_analytics_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_size: Optional[StrictInt] = None,
@@ -622,7 +623,7 @@ class EdFiInstancesApi:
             '200': "AnalyticsApiReportsV1ReportPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -651,7 +652,9 @@ class EdFiInstancesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -712,7 +715,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_ed_fi_admin_instance_by_id_from_analytics_async(
+    async def get_ed_fi_admin_instance_by_id_from_analytics_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -774,11 +777,11 @@ class EdFiInstancesApi:
             '200': "EdfiAdminApiEdfiAdminV1Instance",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -786,7 +789,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_ed_fi_admin_instance_by_id_from_analytics_async_with_http_info(
+    async def get_ed_fi_admin_instance_by_id_from_analytics_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -848,11 +851,11 @@ class EdFiInstancesApi:
             '200': "EdfiAdminApiEdfiAdminV1Instance",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -860,7 +863,7 @@ class EdFiInstancesApi:
 
 
     @validate_call
-    def get_ed_fi_admin_instance_by_id_from_analytics_async_without_preload_content(
+    async def get_ed_fi_admin_instance_by_id_from_analytics_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -922,7 +925,7 @@ class EdFiInstancesApi:
             '200': "EdfiAdminApiEdfiAdminV1Instance",
             '400': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -948,7 +951,9 @@ class EdFiInstancesApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

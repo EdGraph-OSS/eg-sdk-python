@@ -43,7 +43,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -52,7 +52,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a ClaimSet.
-        api_response = api_instance.create_claim_set_async(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_save_claim_set_request=edfi_admin_api_edfi_admin_v1_save_claim_set_request)
+        api_response = await api_instance.create_claim_set_async(tenant_id, instance_id, edfi_admin_api_edfi_admin_v1_save_claim_set_request=edfi_admin_api_edfi_admin_v1_save_claim_set_request)
         print("The response of InstancesClaimSetsApi->create_claim_set_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -124,7 +124,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -133,7 +133,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a ClaimSet.
-        api_instance.delete_claim_set_async(tenant_id, instance_id, claim_set_id)
+        await api_instance.delete_claim_set_async(tenant_id, instance_id, claim_set_id)
     except Exception as e:
         print("Exception when calling InstancesClaimSetsApi->delete_claim_set_async: %s\n" % e)
 ```
@@ -204,7 +204,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -213,7 +213,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a ClaimSet by ID.
-        api_response = api_instance.get_claim_set_by_id_async(tenant_id, instance_id, claim_set_id)
+        api_response = await api_instance.get_claim_set_by_id_async(tenant_id, instance_id, claim_set_id)
         print("The response of InstancesClaimSetsApi->get_claim_set_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -286,7 +286,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -298,7 +298,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of ClaimSets.
-        api_response = api_instance.get_claim_sets_async(tenant_id, instance_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_claim_sets_async(tenant_id, instance_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of InstancesClaimSetsApi->get_claim_sets_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -374,7 +374,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -383,7 +383,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a grid of Resource Claims.
-        api_response = api_instance.get_resource_claims_grid_async(tenant_id, instance_id, claim_set_id)
+        api_response = await api_instance.get_resource_claims_grid_async(tenant_id, instance_id, claim_set_id)
         print("The response of InstancesClaimSetsApi->get_resource_claims_grid_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -456,7 +456,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -466,7 +466,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Copies a Claim Set from one instance to another/other instance(s)
-        api_instance.sync_claim_set_async(tenant_id, instance_id, claim_set_id, edfi_admin_api_edfi_admin_v1_sync_claim_set_request=edfi_admin_api_edfi_admin_v1_sync_claim_set_request)
+        await api_instance.sync_claim_set_async(tenant_id, instance_id, claim_set_id, edfi_admin_api_edfi_admin_v1_sync_claim_set_request=edfi_admin_api_edfi_admin_v1_sync_claim_set_request)
     except Exception as e:
         print("Exception when calling InstancesClaimSetsApi->sync_claim_set_async: %s\n" % e)
 ```
@@ -539,7 +539,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesClaimSetsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -549,7 +549,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a ClaimSet.
-        api_response = api_instance.update_claim_set_async(tenant_id, instance_id, claim_set_id, edfi_admin_api_edfi_admin_v1_save_claim_set_request=edfi_admin_api_edfi_admin_v1_save_claim_set_request)
+        api_response = await api_instance.update_claim_set_async(tenant_id, instance_id, claim_set_id, edfi_admin_api_edfi_admin_v1_save_claim_set_request=edfi_admin_api_edfi_admin_v1_save_claim_set_request)
         print("The response of InstancesClaimSetsApi->update_claim_set_async:\n")
         pprint(api_response)
     except Exception as e:

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id** | **str** |  | [optional] 
-**job_id** | **str** |  | [optional] 
+**tenant_id** | **UUID** |  | [optional] 
+**job_id** | **UUID** |  | [optional] 
 
 ## Example
 

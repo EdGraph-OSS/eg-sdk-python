@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsEdFiApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of districts from an Ed-Fi API using the DataSync connection metadata
-        api_response = api_instance.get_tenant_data_sync_connection_ed_fi_districts(tenant_id, connection_id)
+        api_response = await api_instance.get_tenant_data_sync_connection_ed_fi_districts(tenant_id, connection_id)
         print("The response of ConnectionsEdFiApi->get_tenant_data_sync_connection_ed_fi_districts:\n")
         pprint(api_response)
     except Exception as e:
@@ -120,7 +120,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsEdFiApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -128,7 +128,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of education organization identification system descriptors from an Ed-Fi API using the DataSync connection metadata
-        api_response = api_instance.get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors(tenant_id, connection_id)
+        api_response = await api_instance.get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors(tenant_id, connection_id)
         print("The response of ConnectionsEdFiApi->get_tenant_data_sync_connection_ed_fi_education_organization_id_descriptors:\n")
         pprint(api_response)
     except Exception as e:
@@ -199,7 +199,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsEdFiApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -207,7 +207,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of school years from an Ed-Fi API using the DataSync connection metadata
-        api_response = api_instance.get_tenant_data_sync_connection_ed_fi_school_years(tenant_id, connection_id)
+        api_response = await api_instance.get_tenant_data_sync_connection_ed_fi_school_years(tenant_id, connection_id)
         print("The response of ConnectionsEdFiApi->get_tenant_data_sync_connection_ed_fi_school_years:\n")
         pprint(api_response)
     except Exception as e:
@@ -278,7 +278,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsEdFiApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -286,7 +286,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of staff identification system descriptors from an Ed-Fi API using the DataSync connection metadata
-        api_response = api_instance.get_tenant_data_sync_connection_ed_fi_staff_id_descriptors(tenant_id, connection_id)
+        api_response = await api_instance.get_tenant_data_sync_connection_ed_fi_staff_id_descriptors(tenant_id, connection_id)
         print("The response of ConnectionsEdFiApi->get_tenant_data_sync_connection_ed_fi_staff_id_descriptors:\n")
         pprint(api_response)
     except Exception as e:
@@ -357,7 +357,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsEdFiApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -365,7 +365,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of student identification system descriptors from an Ed-Fi API using the DataSync connection metadata
-        api_response = api_instance.get_tenant_data_sync_connection_ed_fi_student_id_descriptors(tenant_id, connection_id)
+        api_response = await api_instance.get_tenant_data_sync_connection_ed_fi_student_id_descriptors(tenant_id, connection_id)
         print("The response of ConnectionsEdFiApi->get_tenant_data_sync_connection_ed_fi_student_id_descriptors:\n")
         pprint(api_response)
     except Exception as e:
@@ -436,7 +436,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConnectionsEdFiApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -444,7 +444,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of term descriptors from an Ed-Fi API using the DataSync connection metadata
-        api_response = api_instance.get_tenant_data_sync_connection_ed_fi_term_descriptors(tenant_id, connection_id)
+        api_response = await api_instance.get_tenant_data_sync_connection_ed_fi_term_descriptors(tenant_id, connection_id)
         print("The response of ConnectionsEdFiApi->get_tenant_data_sync_connection_ed_fi_term_descriptors:\n")
         pprint(api_response)
     except Exception as e:

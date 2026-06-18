@@ -51,16 +51,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Cancel the Validation Run of a Reporting Period.
-        api_response = api_instance.cancel_state_reporting_period_run(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.cancel_state_reporting_period_run(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsApi->cancel_state_reporting_period_run:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,9 +74,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -133,16 +133,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Closes a Reporting Period.
-        api_response = api_instance.close_state_reporting_period(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.close_state_reporting_period(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsApi->close_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -156,9 +156,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -216,16 +216,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_create_reporting_period_request = edgraph_platform_client.EdGraphServicesStateReportingV1CreateReportingPeriodRequest() # EdGraphServicesStateReportingV1CreateReportingPeriodRequest |  (optional)
 
     try:
         # Creates a new Reporting Period.
-        api_response = api_instance.create_state_reporting_period(tenant_id, environment_id, ed_graph_services_state_reporting_v1_create_reporting_period_request=ed_graph_services_state_reporting_v1_create_reporting_period_request)
+        api_response = await api_instance.create_state_reporting_period(tenant_id, environment_id, ed_graph_services_state_reporting_v1_create_reporting_period_request=ed_graph_services_state_reporting_v1_create_reporting_period_request)
         print("The response of EnvironmentsReportingPeriodsApi->create_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -239,8 +239,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_create_reporting_period_request** | [**EdGraphServicesStateReportingV1CreateReportingPeriodRequest**](EdGraphServicesStateReportingV1CreateReportingPeriodRequest.md)|  | [optional] 
 
 ### Return type
@@ -298,16 +298,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a Reporting Period.
-        api_response = api_instance.delete_state_reporting_period(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.delete_state_reporting_period(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsApi->delete_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -321,9 +321,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -380,16 +380,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a Reporting Period by ID.
-        api_response = api_instance.get_state_reporting_period(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.get_state_reporting_period(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsApi->get_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -403,9 +403,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -462,16 +462,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves the Certification Status of Reporting Period.
-        api_response = api_instance.get_state_reporting_period_certification_status(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.get_state_reporting_period_certification_status(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsApi->get_state_reporting_period_certification_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -485,9 +485,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -544,16 +544,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves the Validation Summary of Reporting Period.
-        api_response = api_instance.get_state_reporting_period_validation_summary(tenant_id, environment_id, reporting_period_id)
+        api_response = await api_instance.get_state_reporting_period_validation_summary(tenant_id, environment_id, reporting_period_id)
         print("The response of EnvironmentsReportingPeriodsApi->get_state_reporting_period_validation_summary:\n")
         pprint(api_response)
     except Exception as e:
@@ -567,9 +567,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
 
 ### Return type
 
@@ -626,17 +626,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
-    category_id = 'category_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    category_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves the Validation Summary of Reporting Period by Category.
-        api_response = api_instance.get_state_reporting_period_validation_summary_by_category(tenant_id, environment_id, reporting_period_id, category_id)
+        api_response = await api_instance.get_state_reporting_period_validation_summary_by_category(tenant_id, environment_id, reporting_period_id, category_id)
         print("The response of EnvironmentsReportingPeriodsApi->get_state_reporting_period_validation_summary_by_category:\n")
         pprint(api_response)
     except Exception as e:
@@ -650,10 +650,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
- **category_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
+ **category_id** | **UUID**|  | 
 
 ### Return type
 
@@ -711,17 +711,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_post_reporting_period_request = edgraph_platform_client.EdGraphServicesStateReportingV1PostReportingPeriodRequest() # EdGraphServicesStateReportingV1PostReportingPeriodRequest |  (optional)
 
     try:
         # Posts a Reporting Period.
-        api_response = api_instance.post_state_reporting_period(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_post_reporting_period_request=ed_graph_services_state_reporting_v1_post_reporting_period_request)
+        api_response = await api_instance.post_state_reporting_period(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_post_reporting_period_request=ed_graph_services_state_reporting_v1_post_reporting_period_request)
         print("The response of EnvironmentsReportingPeriodsApi->post_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -735,9 +735,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_post_reporting_period_request** | [**EdGraphServicesStateReportingV1PostReportingPeriodRequest**](EdGraphServicesStateReportingV1PostReportingPeriodRequest.md)|  | [optional] 
 
 ### Return type
@@ -796,17 +796,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_run_reporting_period_request = edgraph_platform_client.EdGraphServicesStateReportingV1RunReportingPeriodRequest() # EdGraphServicesStateReportingV1RunReportingPeriodRequest |  (optional)
 
     try:
         # Run a Reporting Period.
-        api_response = api_instance.run_state_reporting_period(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_run_reporting_period_request=ed_graph_services_state_reporting_v1_run_reporting_period_request)
+        api_response = await api_instance.run_state_reporting_period(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_run_reporting_period_request=ed_graph_services_state_reporting_v1_run_reporting_period_request)
         print("The response of EnvironmentsReportingPeriodsApi->run_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -820,9 +820,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_run_reporting_period_request** | [**EdGraphServicesStateReportingV1RunReportingPeriodRequest**](EdGraphServicesStateReportingV1RunReportingPeriodRequest.md)|  | [optional] 
 
 ### Return type
@@ -880,11 +880,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = 'order_by_example' # str |  (optional)
@@ -892,7 +892,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Reporting Periods.
-        api_response = api_instance.search_state_reporting_periods(tenant_id, environment_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_state_reporting_periods(tenant_id, environment_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of EnvironmentsReportingPeriodsApi->search_state_reporting_periods:\n")
         pprint(api_response)
     except Exception as e:
@@ -906,8 +906,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] 
@@ -968,17 +968,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_set_reporting_period_current_step_request = edgraph_platform_client.EdGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest() # EdGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest |  (optional)
 
     try:
         # Sets the current step of a Reporting Period.
-        api_response = api_instance.set_state_reporting_period_current_step(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_set_reporting_period_current_step_request=ed_graph_services_state_reporting_v1_set_reporting_period_current_step_request)
+        api_response = await api_instance.set_state_reporting_period_current_step(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_set_reporting_period_current_step_request=ed_graph_services_state_reporting_v1_set_reporting_period_current_step_request)
         print("The response of EnvironmentsReportingPeriodsApi->set_state_reporting_period_current_step:\n")
         pprint(api_response)
     except Exception as e:
@@ -992,9 +992,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_set_reporting_period_current_step_request** | [**EdGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest**](EdGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest.md)|  | [optional] 
 
 ### Return type
@@ -1053,18 +1053,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     step_number = 56 # int | 
     ed_graph_services_state_reporting_v1_set_reporting_period_step_status_request = edgraph_platform_client.EdGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest() # EdGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest |  (optional)
 
     try:
         # Sets the status of a Reporting Period step.
-        api_response = api_instance.set_state_reporting_period_step_status(tenant_id, environment_id, reporting_period_id, step_number, ed_graph_services_state_reporting_v1_set_reporting_period_step_status_request=ed_graph_services_state_reporting_v1_set_reporting_period_step_status_request)
+        api_response = await api_instance.set_state_reporting_period_step_status(tenant_id, environment_id, reporting_period_id, step_number, ed_graph_services_state_reporting_v1_set_reporting_period_step_status_request=ed_graph_services_state_reporting_v1_set_reporting_period_step_status_request)
         print("The response of EnvironmentsReportingPeriodsApi->set_state_reporting_period_step_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -1078,9 +1078,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **step_number** | **int**|  | 
  **ed_graph_services_state_reporting_v1_set_reporting_period_step_status_request** | [**EdGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest**](EdGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest.md)|  | [optional] 
 
@@ -1140,17 +1140,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_toggle_reporting_period_selected_request = edgraph_platform_client.EdGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest() # EdGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest |  (optional)
 
     try:
         # Toggles the Selected state of a Reporting Period.
-        api_response = api_instance.toggle_state_reporting_period_selected(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_toggle_reporting_period_selected_request=ed_graph_services_state_reporting_v1_toggle_reporting_period_selected_request)
+        api_response = await api_instance.toggle_state_reporting_period_selected(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_toggle_reporting_period_selected_request=ed_graph_services_state_reporting_v1_toggle_reporting_period_selected_request)
         print("The response of EnvironmentsReportingPeriodsApi->toggle_state_reporting_period_selected:\n")
         pprint(api_response)
     except Exception as e:
@@ -1164,9 +1164,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_toggle_reporting_period_selected_request** | [**EdGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest**](EdGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest.md)|  | [optional] 
 
 ### Return type
@@ -1225,17 +1225,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    reporting_period_id = 'reporting_period_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    reporting_period_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_update_reporting_period_request = edgraph_platform_client.EdGraphServicesStateReportingV1UpdateReportingPeriodRequest() # EdGraphServicesStateReportingV1UpdateReportingPeriodRequest |  (optional)
 
     try:
         # Updates a Reporting Period.
-        api_response = api_instance.update_state_reporting_period(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_update_reporting_period_request=ed_graph_services_state_reporting_v1_update_reporting_period_request)
+        api_response = await api_instance.update_state_reporting_period(tenant_id, environment_id, reporting_period_id, ed_graph_services_state_reporting_v1_update_reporting_period_request=ed_graph_services_state_reporting_v1_update_reporting_period_request)
         print("The response of EnvironmentsReportingPeriodsApi->update_state_reporting_period:\n")
         pprint(api_response)
     except Exception as e:
@@ -1249,9 +1249,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **reporting_period_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **reporting_period_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_update_reporting_period_request** | [**EdGraphServicesStateReportingV1UpdateReportingPeriodRequest**](EdGraphServicesStateReportingV1UpdateReportingPeriodRequest.md)|  | [optional] 
 
 ### Return type
@@ -1310,16 +1310,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsReportingPeriodsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_update_reporting_period_bulk_request = edgraph_platform_client.EdGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest() # EdGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest |  (optional)
 
     try:
         # Updates Reporting Periods in bulk.
-        api_response = api_instance.update_state_reporting_period_bulk(tenant_id, environment_id, ed_graph_services_state_reporting_v1_update_reporting_period_bulk_request=ed_graph_services_state_reporting_v1_update_reporting_period_bulk_request)
+        api_response = await api_instance.update_state_reporting_period_bulk(tenant_id, environment_id, ed_graph_services_state_reporting_v1_update_reporting_period_bulk_request=ed_graph_services_state_reporting_v1_update_reporting_period_bulk_request)
         print("The response of EnvironmentsReportingPeriodsApi->update_state_reporting_period_bulk:\n")
         pprint(api_response)
     except Exception as e:
@@ -1333,8 +1333,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_update_reporting_period_bulk_request** | [**EdGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest**](EdGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest.md)|  | [optional] 
 
 ### Return type

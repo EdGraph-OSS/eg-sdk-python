@@ -23,6 +23,7 @@ from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_education_organ
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_education_organization_category_descriptor import EdfiAdminApiEdfiAdminV1EducationOrganizationCategoryDescriptor
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdfiAdminApiEdfiAdminV1LocalEducationAgency(BaseModel):
     """
@@ -46,7 +47,8 @@ class EdfiAdminApiEdfiAdminV1LocalEducationAgency(BaseModel):
     __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "educationOrganizationId", "localEducationAgencyId", "nameOfInstitution", "shortnameOfInstitution", "webSite", "operationalStatusDescriptorId", "discriminator", "createDate", "lastModifiedDate", "addresses", "categories", "localEducationAgencyCategoryDescriptorCodeValue", "id"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +60,7 @@ class EdfiAdminApiEdfiAdminV1LocalEducationAgency(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

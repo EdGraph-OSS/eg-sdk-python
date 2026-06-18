@@ -10,8 +10,6 @@ Method | HTTP request | Description
 # **release_user_lockout**
 > IdentityApiUserV1ReleaseUserLockoutResponse release_user_lockout(tenant_id, user_id)
 
-
-
 ### Example
 
 * OAuth Authentication (oauth2):
@@ -36,14 +34,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.V1Api(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
-        api_response = api_instance.release_user_lockout(tenant_id, user_id)
+        api_response = await api_instance.release_user_lockout(tenant_id, user_id)
         print("The response of V1Api->release_user_lockout:\n")
         pprint(api_response)
     except Exception as e:
@@ -57,8 +55,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
 
 ### Return type
 

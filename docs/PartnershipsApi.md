@@ -37,10 +37,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.PartnershipsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = 'order_by_example' # str |  (optional)
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Partnerships.
-        api_response = api_instance.get_all_partnerships(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, partner_tenant_id=partner_tenant_id, partnership_type=partnership_type, exclude_soft_deleted=exclude_soft_deleted)
+        api_response = await api_instance.get_all_partnerships(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, partner_tenant_id=partner_tenant_id, partnership_type=partnership_type, exclude_soft_deleted=exclude_soft_deleted)
         print("The response of PartnershipsApi->get_all_partnerships:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,7 +64,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] 
@@ -126,16 +126,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.PartnershipsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    partnership_id = 'partnership_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    partnership_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     exclude_soft_deleted = True # bool |  (optional) (default to True)
 
     try:
         # Retrieves a Partnership by ID.
-        api_response = api_instance.get_partnership_by_id(tenant_id, partnership_id, exclude_soft_deleted=exclude_soft_deleted)
+        api_response = await api_instance.get_partnership_by_id(tenant_id, partnership_id, exclude_soft_deleted=exclude_soft_deleted)
         print("The response of PartnershipsApi->get_partnership_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -149,8 +149,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **partnership_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **partnership_id** | **UUID**|  | 
  **exclude_soft_deleted** | **bool**|  | [optional] [default to True]
 
 ### Return type

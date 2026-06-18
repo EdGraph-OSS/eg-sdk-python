@@ -42,15 +42,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StaffClassificationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_staff_classification_v1_create_staff_classification_request = edgraph_platform_client.IdentityApiStaffClassificationV1CreateStaffClassificationRequest() # IdentityApiStaffClassificationV1CreateStaffClassificationRequest |  (optional)
 
     try:
         # Creates a StaffClassification.
-        api_response = api_instance.create_staff_classification(tenant_id, identity_api_staff_classification_v1_create_staff_classification_request=identity_api_staff_classification_v1_create_staff_classification_request)
+        api_response = await api_instance.create_staff_classification(tenant_id, identity_api_staff_classification_v1_create_staff_classification_request=identity_api_staff_classification_v1_create_staff_classification_request)
         print("The response of StaffClassificationsApi->create_staff_classification:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,7 +64,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **identity_api_staff_classification_v1_create_staff_classification_request** | [**IdentityApiStaffClassificationV1CreateStaffClassificationRequest**](IdentityApiStaffClassificationV1CreateStaffClassificationRequest.md)|  | [optional] 
 
 ### Return type
@@ -121,15 +121,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StaffClassificationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    staff_classification_id = 'staff_classification_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    staff_classification_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a StaffClassification.
-        api_response = api_instance.delete_staff_classification(tenant_id, staff_classification_id)
+        api_response = await api_instance.delete_staff_classification(tenant_id, staff_classification_id)
         print("The response of StaffClassificationsApi->delete_staff_classification:\n")
         pprint(api_response)
     except Exception as e:
@@ -143,8 +143,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **staff_classification_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **staff_classification_id** | **UUID**|  | 
 
 ### Return type
 
@@ -200,15 +200,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StaffClassificationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    staff_classification_id = 'staff_classification_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    staff_classification_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a StaffClassification by ID.
-        api_response = api_instance.get_staff_classification_by_id(tenant_id, staff_classification_id)
+        api_response = await api_instance.get_staff_classification_by_id(tenant_id, staff_classification_id)
         print("The response of StaffClassificationsApi->get_staff_classification_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -222,8 +222,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **staff_classification_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **staff_classification_id** | **UUID**|  | 
 
 ### Return type
 
@@ -280,10 +280,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StaffClassificationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -291,7 +291,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of StaffClassifications.
-        api_response = api_instance.get_staff_classifications(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_staff_classifications(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of StaffClassificationsApi->get_staff_classifications:\n")
         pprint(api_response)
     except Exception as e:
@@ -305,7 +305,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -365,17 +365,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StaffClassificationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     filter = '' # str |  (optional) (default to '')
 
     try:
         # Retrieves a list of unique Staff Classification Namespaces.
-        api_response = api_instance.get_staff_classifications_namespaces(tenant_id, page_index=page_index, page_size=page_size, filter=filter)
+        api_response = await api_instance.get_staff_classifications_namespaces(tenant_id, page_index=page_index, page_size=page_size, filter=filter)
         print("The response of StaffClassificationsApi->get_staff_classifications_namespaces:\n")
         pprint(api_response)
     except Exception as e:
@@ -389,7 +389,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **filter** | **str**|  | [optional] [default to &#39;&#39;]
@@ -449,16 +449,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.StaffClassificationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    staff_classification_id = 'staff_classification_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    staff_classification_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_staff_classification_v1_update_staff_classification_request = edgraph_platform_client.IdentityApiStaffClassificationV1UpdateStaffClassificationRequest() # IdentityApiStaffClassificationV1UpdateStaffClassificationRequest |  (optional)
 
     try:
         # Updates a StaffClassification.
-        api_response = api_instance.update_staff_classification(tenant_id, staff_classification_id, identity_api_staff_classification_v1_update_staff_classification_request=identity_api_staff_classification_v1_update_staff_classification_request)
+        api_response = await api_instance.update_staff_classification(tenant_id, staff_classification_id, identity_api_staff_classification_v1_update_staff_classification_request=identity_api_staff_classification_v1_update_staff_classification_request)
         print("The response of StaffClassificationsApi->update_staff_classification:\n")
         pprint(api_response)
     except Exception as e:
@@ -472,8 +472,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **staff_classification_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **staff_classification_id** | **UUID**|  | 
  **identity_api_staff_classification_v1_update_staff_classification_request** | [**IdentityApiStaffClassificationV1UpdateStaffClassificationRequest**](IdentityApiStaffClassificationV1UpdateStaffClassificationRequest.md)|  | [optional] 
 
 ### Return type

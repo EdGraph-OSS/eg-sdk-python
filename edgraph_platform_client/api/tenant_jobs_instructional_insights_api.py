@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request import IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest
 from edgraph_platform_client.models.identity_api_instructional_insights_v1_instructional_insights_security_sync_job_created_response import IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse
 from edgraph_platform_client.models.identity_api_instructional_insights_v1_instructional_insights_security_sync_job_executed_response import IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse
@@ -46,7 +46,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def create_instructional_insights_security_sync_job(
+    async def create_instructional_insights_security_sync_job(
         self,
         tenant_id: StrictStr,
         identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request: Optional[IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest] = None,
@@ -108,11 +108,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -120,7 +120,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def create_instructional_insights_security_sync_job_with_http_info(
+    async def create_instructional_insights_security_sync_job_with_http_info(
         self,
         tenant_id: StrictStr,
         identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request: Optional[IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest] = None,
@@ -182,11 +182,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -194,7 +194,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def create_instructional_insights_security_sync_job_without_preload_content(
+    async def create_instructional_insights_security_sync_job_without_preload_content(
         self,
         tenant_id: StrictStr,
         identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request: Optional[IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest] = None,
@@ -256,7 +256,7 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -282,7 +282,9 @@ class TenantJobsInstructionalInsightsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -345,9 +347,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def execute_instructional_insights_security_sync_job(
+    async def execute_instructional_insights_security_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -365,7 +367,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -403,11 +405,11 @@ class TenantJobsInstructionalInsightsApi:
             '202': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -415,9 +417,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def execute_instructional_insights_security_sync_job_with_http_info(
+    async def execute_instructional_insights_security_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -435,7 +437,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -473,11 +475,11 @@ class TenantJobsInstructionalInsightsApi:
             '202': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -485,9 +487,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def execute_instructional_insights_security_sync_job_without_preload_content(
+    async def execute_instructional_insights_security_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -505,7 +507,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -543,7 +545,7 @@ class TenantJobsInstructionalInsightsApi:
             '202': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -568,7 +570,9 @@ class TenantJobsInstructionalInsightsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -613,9 +617,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def get_instructional_insights_security_sync_job(
+    async def get_instructional_insights_security_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -633,7 +637,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -671,11 +675,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -683,9 +687,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def get_instructional_insights_security_sync_job_with_http_info(
+    async def get_instructional_insights_security_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -703,7 +707,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -741,11 +745,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -753,9 +757,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def get_instructional_insights_security_sync_job_without_preload_content(
+    async def get_instructional_insights_security_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -773,7 +777,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -811,7 +815,7 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -836,7 +840,9 @@ class TenantJobsInstructionalInsightsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -881,10 +887,10 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def search_instructional_insights_security_sync_job_execution_logs(
+    async def search_instructional_insights_security_sync_job_execution_logs(
         self,
-        tenant_id: StrictStr,
-        execution_id: StrictStr,
+        tenant_id: UUID,
+        execution_id: UUID,
         job_id: Optional[StrictStr] = None,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -908,9 +914,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param execution_id:  (required)
-        :type execution_id: str
+        :type execution_id: UUID
         :param job_id: 
         :type job_id: str
         :param page_index: 
@@ -967,11 +973,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -979,10 +985,10 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def search_instructional_insights_security_sync_job_execution_logs_with_http_info(
+    async def search_instructional_insights_security_sync_job_execution_logs_with_http_info(
         self,
-        tenant_id: StrictStr,
-        execution_id: StrictStr,
+        tenant_id: UUID,
+        execution_id: UUID,
         job_id: Optional[StrictStr] = None,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -1006,9 +1012,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param execution_id:  (required)
-        :type execution_id: str
+        :type execution_id: UUID
         :param job_id: 
         :type job_id: str
         :param page_index: 
@@ -1065,11 +1071,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1077,10 +1083,10 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def search_instructional_insights_security_sync_job_execution_logs_without_preload_content(
+    async def search_instructional_insights_security_sync_job_execution_logs_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        execution_id: StrictStr,
+        tenant_id: UUID,
+        execution_id: UUID,
         job_id: Optional[StrictStr] = None,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -1104,9 +1110,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param execution_id:  (required)
-        :type execution_id: str
+        :type execution_id: UUID
         :param job_id: 
         :type job_id: str
         :param page_index: 
@@ -1163,7 +1169,7 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1195,7 +1201,9 @@ class TenantJobsInstructionalInsightsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1266,9 +1274,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def search_instructional_insights_security_sync_job_executions(
+    async def search_instructional_insights_security_sync_job_executions(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: Optional[StrictStr] = None,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -1291,7 +1299,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id: 
         :type job_id: str
         :param page_index: 
@@ -1344,11 +1352,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1356,9 +1364,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def search_instructional_insights_security_sync_job_executions_with_http_info(
+    async def search_instructional_insights_security_sync_job_executions_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: Optional[StrictStr] = None,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -1381,7 +1389,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id: 
         :type job_id: str
         :param page_index: 
@@ -1434,11 +1442,11 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1446,9 +1454,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def search_instructional_insights_security_sync_job_executions_without_preload_content(
+    async def search_instructional_insights_security_sync_job_executions_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         job_id: Optional[StrictStr] = None,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
@@ -1471,7 +1479,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id: 
         :type job_id: str
         :param page_index: 
@@ -1524,7 +1532,7 @@ class TenantJobsInstructionalInsightsApi:
             '200': "IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1554,7 +1562,9 @@ class TenantJobsInstructionalInsightsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1619,9 +1629,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def update_instructional_insights_security_sync_job(
+    async def update_instructional_insights_security_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: Optional[IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1640,7 +1650,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: 
         :type identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1681,11 +1691,11 @@ class TenantJobsInstructionalInsightsApi:
             '204': "MicrosoftAspNetCoreMvcNoContentResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1693,9 +1703,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def update_instructional_insights_security_sync_job_with_http_info(
+    async def update_instructional_insights_security_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: Optional[IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1714,7 +1724,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: 
         :type identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1755,11 +1765,11 @@ class TenantJobsInstructionalInsightsApi:
             '204': "MicrosoftAspNetCoreMvcNoContentResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1767,9 +1777,9 @@ class TenantJobsInstructionalInsightsApi:
 
 
     @validate_call
-    def update_instructional_insights_security_sync_job_without_preload_content(
+    async def update_instructional_insights_security_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: Optional[IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest] = None,
         _request_timeout: Union[
             None,
@@ -1788,7 +1798,7 @@ class TenantJobsInstructionalInsightsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: 
         :type identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request: IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1829,7 +1839,7 @@ class TenantJobsInstructionalInsightsApi:
             '204': "MicrosoftAspNetCoreMvcNoContentResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1855,7 +1865,9 @@ class TenantJobsInstructionalInsightsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

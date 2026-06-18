@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(BaseModel):
     """
@@ -33,10 +34,13 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(BaseModel):
     claim_set_name: Optional[StrictStr] = Field(default=None, alias="claimSetName")
     vendor_id: Optional[StrictInt] = Field(default=None, alias="vendorId")
     operational_context_uri: Optional[StrictStr] = Field(default=None, alias="operationalContextUri")
-    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "applicationId", "applicationName", "claimSetName", "vendorId", "operationalContextUri"]
+    key: Optional[StrictStr] = None
+    secret: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "applicationId", "applicationName", "claimSetName", "vendorId", "operationalContextUri", "key", "secret"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,8 +52,7 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -99,6 +102,16 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(BaseModel):
         if self.operational_context_uri is None and "operational_context_uri" in self.model_fields_set:
             _dict['operationalContextUri'] = None
 
+        # set to None if key (nullable) is None
+        # and model_fields_set contains the field
+        if self.key is None and "key" in self.model_fields_set:
+            _dict['key'] = None
+
+        # set to None if secret (nullable) is None
+        # and model_fields_set contains the field
+        if self.secret is None and "secret" in self.model_fields_set:
+            _dict['secret'] = None
+
         return _dict
 
     @classmethod
@@ -117,7 +130,9 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(BaseModel):
             "applicationName": obj.get("applicationName"),
             "claimSetName": obj.get("claimSetName"),
             "vendorId": obj.get("vendorId"),
-            "operationalContextUri": obj.get("operationalContextUri")
+            "operationalContextUri": obj.get("operationalContextUri"),
+            "key": obj.get("key"),
+            "secret": obj.get("secret")
         })
         return _obj
 

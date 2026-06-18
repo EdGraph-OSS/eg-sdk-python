@@ -19,10 +19,12 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_job_category import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_schedule import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest(BaseModel):
     """
@@ -34,11 +36,12 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateVa
     schedule: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule] = None
     notification_emails: Optional[List[StrictStr]] = Field(default=None, alias="notificationEmails")
     categories: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory]] = None
-    environment_id: Optional[StrictStr] = Field(default=None, alias="environmentId")
+    environment_id: Optional[UUID] = Field(default=None, alias="environmentId")
     __properties: ClassVar[List[str]] = ["tenantId", "jobId", "name", "schedule", "notificationEmails", "categories", "environmentId"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +53,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateVa
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

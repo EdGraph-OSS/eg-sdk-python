@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**tenant_id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
+**tenant_id** | **UUID** |  | [optional] 
 **connection_name** | **str** |  | [optional] 
 
 ## Example

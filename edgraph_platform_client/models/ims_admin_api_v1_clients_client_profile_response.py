@@ -26,6 +26,7 @@ from edgraph_platform_client.models.ims_admin_api_v1_clients_token_expiration im
 from edgraph_platform_client.models.ims_admin_api_v1_clients_token_usage import IMSAdminApiV1ClientsTokenUsage
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class IMSAdminApiV1ClientsClientProfileResponse(BaseModel):
     """
@@ -72,7 +73,8 @@ class IMSAdminApiV1ClientsClientProfileResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["tenantId", "applicationId", "clientId", "clientName", "description", "clientUri", "logoUri", "enabled", "accessTokenType", "tokenUsage", "refreshTokenExpiration", "enableLocalLogin", "allowOfflineAccess", "allowAccessTokensViaBrowser", "updateAccessTokenClaimsOnRefresh", "alwaysIncludeUserClaimsInIdToken", "identityTokenLifetime", "accessTokenLifetime", "authorizationCodeLifetime", "absoluteRefreshTokenLifetime", "slidingRefreshTokenLifetime", "requireClientSecret", "requireConsent", "allowedScopes", "allowedCorsOrigins", "allowedGrantTypes", "identityProviderRestrictions", "redirectUris", "postLogoutRedirectUris", "clientSecrets", "claims", "requirePkce", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "instanceId", "selectedScope"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -84,8 +86,7 @@ class IMSAdminApiV1ClientsClientProfileResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

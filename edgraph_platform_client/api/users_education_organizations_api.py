@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
+from pydantic import StrictInt
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest
 from edgraph_platform_client.models.identity_api_user_v1_education_organization_added_response import IdentityApiUserV1EducationOrganizationAddedResponse
@@ -44,10 +44,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def add_user_education_organization(
+    async def add_user_education_organization(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest] = None,
         _request_timeout: Union[
             None,
@@ -66,9 +66,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -110,11 +110,11 @@ class UsersEducationOrganizationsApi:
             '200': "IdentityApiUserV1EducationOrganizationAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -122,10 +122,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def add_user_education_organization_with_http_info(
+    async def add_user_education_organization_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest] = None,
         _request_timeout: Union[
             None,
@@ -144,9 +144,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -188,11 +188,11 @@ class UsersEducationOrganizationsApi:
             '200': "IdentityApiUserV1EducationOrganizationAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -200,10 +200,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def add_user_education_organization_without_preload_content(
+    async def add_user_education_organization_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest] = None,
         _request_timeout: Union[
             None,
@@ -222,9 +222,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_add_education_organization_request: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -266,7 +266,7 @@ class UsersEducationOrganizationsApi:
             '200': "IdentityApiUserV1EducationOrganizationAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -293,7 +293,9 @@ class UsersEducationOrganizationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -358,10 +360,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def get_user_education_organizations(
+    async def get_user_education_organizations(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -379,9 +381,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -421,11 +423,11 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -433,10 +435,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def get_user_education_organizations_with_http_info(
+    async def get_user_education_organizations_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -454,9 +456,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -496,11 +498,11 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -508,10 +510,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def get_user_education_organizations_without_preload_content(
+    async def get_user_education_organizations_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -529,9 +531,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -571,7 +573,7 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -597,7 +599,9 @@ class UsersEducationOrganizationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -644,10 +648,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def remove_user_education_organization(
+    async def remove_user_education_organization(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         education_organization_id: StrictInt,
         _request_timeout: Union[
             None,
@@ -666,9 +670,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param education_organization_id:  (required)
         :type education_organization_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -711,11 +715,11 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -723,10 +727,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def remove_user_education_organization_with_http_info(
+    async def remove_user_education_organization_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         education_organization_id: StrictInt,
         _request_timeout: Union[
             None,
@@ -745,9 +749,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param education_organization_id:  (required)
         :type education_organization_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -790,11 +794,11 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -802,10 +806,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def remove_user_education_organization_without_preload_content(
+    async def remove_user_education_organization_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         education_organization_id: StrictInt,
         _request_timeout: Union[
             None,
@@ -824,9 +828,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param education_organization_id:  (required)
         :type education_organization_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -869,7 +873,7 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -896,7 +900,9 @@ class UsersEducationOrganizationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -945,10 +951,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def update_user_education_organization(
+    async def update_user_education_organization(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         education_organization_id: StrictInt,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest] = None,
         _request_timeout: Union[
@@ -968,9 +974,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param education_organization_id:  (required)
         :type education_organization_id: int
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request: 
@@ -1016,11 +1022,11 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1028,10 +1034,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def update_user_education_organization_with_http_info(
+    async def update_user_education_organization_with_http_info(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         education_organization_id: StrictInt,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest] = None,
         _request_timeout: Union[
@@ -1051,9 +1057,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param education_organization_id:  (required)
         :type education_organization_id: int
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request: 
@@ -1099,11 +1105,11 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1111,10 +1117,10 @@ class UsersEducationOrganizationsApi:
 
 
     @validate_call
-    def update_user_education_organization_without_preload_content(
+    async def update_user_education_organization_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        user_id: StrictStr,
+        tenant_id: UUID,
+        user_id: UUID,
         education_organization_id: StrictInt,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest] = None,
         _request_timeout: Union[
@@ -1134,9 +1140,9 @@ class UsersEducationOrganizationsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param user_id:  (required)
-        :type user_id: str
+        :type user_id: UUID
         :param education_organization_id:  (required)
         :type education_organization_id: int
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_education_organizations_update_education_organization_request: 
@@ -1182,7 +1188,7 @@ class UsersEducationOrganizationsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1210,7 +1216,9 @@ class UsersEducationOrganizationsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

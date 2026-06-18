@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -43,7 +42,7 @@ class TagsApi:
 
 
     @validate_call
-    def create_tag(
+    async def create_tag(
         self,
         tenant_id: StrictStr,
         validations_api_tags_v1_create_request: Optional[ValidationsApiTagsV1CreateRequest] = None,
@@ -105,11 +104,11 @@ class TagsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -117,7 +116,7 @@ class TagsApi:
 
 
     @validate_call
-    def create_tag_with_http_info(
+    async def create_tag_with_http_info(
         self,
         tenant_id: StrictStr,
         validations_api_tags_v1_create_request: Optional[ValidationsApiTagsV1CreateRequest] = None,
@@ -179,11 +178,11 @@ class TagsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -191,7 +190,7 @@ class TagsApi:
 
 
     @validate_call
-    def create_tag_without_preload_content(
+    async def create_tag_without_preload_content(
         self,
         tenant_id: StrictStr,
         validations_api_tags_v1_create_request: Optional[ValidationsApiTagsV1CreateRequest] = None,
@@ -253,7 +252,7 @@ class TagsApi:
             '201': "ValidationsApiCoreV1CreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -279,7 +278,9 @@ class TagsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -342,7 +343,7 @@ class TagsApi:
 
 
     @validate_call
-    def delete_tag(
+    async def delete_tag(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -405,11 +406,11 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -417,7 +418,7 @@ class TagsApi:
 
 
     @validate_call
-    def delete_tag_with_http_info(
+    async def delete_tag_with_http_info(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -480,11 +481,11 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -492,7 +493,7 @@ class TagsApi:
 
 
     @validate_call
-    def delete_tag_without_preload_content(
+    async def delete_tag_without_preload_content(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -555,7 +556,7 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -581,7 +582,9 @@ class TagsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -628,7 +631,7 @@ class TagsApi:
 
 
     @validate_call
-    def get_tag_by_id(
+    async def get_tag_by_id(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -691,11 +694,11 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -703,7 +706,7 @@ class TagsApi:
 
 
     @validate_call
-    def get_tag_by_id_with_http_info(
+    async def get_tag_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -766,11 +769,11 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -778,7 +781,7 @@ class TagsApi:
 
 
     @validate_call
-    def get_tag_by_id_without_preload_content(
+    async def get_tag_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -841,7 +844,7 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -867,7 +870,9 @@ class TagsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -914,7 +919,7 @@ class TagsApi:
 
 
     @validate_call
-    def get_tags(
+    async def get_tags(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -988,11 +993,11 @@ class TagsApi:
             '200': "ValidationsApiTagsV1PaginatedTags",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1000,7 +1005,7 @@ class TagsApi:
 
 
     @validate_call
-    def get_tags_with_http_info(
+    async def get_tags_with_http_info(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1074,11 +1079,11 @@ class TagsApi:
             '200': "ValidationsApiTagsV1PaginatedTags",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1086,7 +1091,7 @@ class TagsApi:
 
 
     @validate_call
-    def get_tags_without_preload_content(
+    async def get_tags_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1160,7 +1165,7 @@ class TagsApi:
             '200': "ValidationsApiTagsV1PaginatedTags",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1189,7 +1194,9 @@ class TagsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1250,7 +1257,7 @@ class TagsApi:
 
 
     @validate_call
-    def update_tag(
+    async def update_tag(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -1317,11 +1324,11 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1329,7 +1336,7 @@ class TagsApi:
 
 
     @validate_call
-    def update_tag_with_http_info(
+    async def update_tag_with_http_info(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -1396,11 +1403,11 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1408,7 +1415,7 @@ class TagsApi:
 
 
     @validate_call
-    def update_tag_without_preload_content(
+    async def update_tag_without_preload_content(
         self,
         tenant_id: StrictStr,
         tag_id: StrictStr,
@@ -1475,7 +1482,7 @@ class TagsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1502,7 +1509,9 @@ class TagsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

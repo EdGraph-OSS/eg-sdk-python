@@ -24,6 +24,7 @@ from edgraph_platform_client.models.ims_admin_api_v1_db_backup_codes_db_backup_c
 from edgraph_platform_client.models.ims_admin_api_v1_tiers_tier import IMSAdminApiV1TiersTier
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class IMSAdminApiV1InstancesInstanceListResponse(BaseModel):
     """
@@ -47,7 +48,8 @@ class IMSAdminApiV1InstancesInstanceListResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["instanceId", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "tenantId", "name", "useCustomId", "customId", "description", "connection", "tier", "backupCode", "status", "schoolYear"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,8 +61,7 @@ class IMSAdminApiV1InstancesInstanceListResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

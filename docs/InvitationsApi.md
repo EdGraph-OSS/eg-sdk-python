@@ -38,7 +38,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InvitationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -46,7 +46,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes an invitation
-        api_instance.delete_tenant_invitation_async(tenant_id, invitation_id)
+        await api_instance.delete_tenant_invitation_async(tenant_id, invitation_id)
     except Exception as e:
         print("Exception when calling InvitationsApi->delete_tenant_invitation_async: %s\n" % e)
 ```
@@ -115,7 +115,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InvitationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -126,7 +126,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of invitations associated to this tenant
-        api_response = api_instance.get_all_tenant_invitations_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_invitations_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of InvitationsApi->get_all_tenant_invitations_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -200,7 +200,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InvitationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -208,7 +208,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a specific invitation
-        api_response = api_instance.get_tenant_invitation_by_id_async(tenant_id, invitation_id)
+        api_response = await api_instance.get_tenant_invitation_by_id_async(tenant_id, invitation_id)
         print("The response of InvitationsApi->get_tenant_invitation_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -281,7 +281,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InvitationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -289,7 +289,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates and sends an invitation to a user
-        api_response = api_instance.send_tenant_invitation_async(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_send_invitation_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_send_invitation_request)
+        api_response = await api_instance.send_tenant_invitation_async(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_send_invitation_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_send_invitation_request)
         print("The response of InvitationsApi->send_tenant_invitation_async:\n")
         pprint(api_response)
     except Exception as e:

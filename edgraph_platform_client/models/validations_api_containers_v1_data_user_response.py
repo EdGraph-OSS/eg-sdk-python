@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.validations_api_containers_v1_collection_user import ValidationsApiContainersV1CollectionUser
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ValidationsApiContainersV1DataUserResponse(BaseModel):
     """
@@ -37,7 +38,8 @@ class ValidationsApiContainersV1DataUserResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["collectionId", "reportingPeriodId", "tenantId", "dataOwner", "dataStewards", "id", "environmentId"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,8 +51,7 @@ class ValidationsApiContainersV1DataUserResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

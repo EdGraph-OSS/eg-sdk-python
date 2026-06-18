@@ -40,17 +40,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsStateEducationAgenciesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     instance_id = 'instance_id_example' # str | 
     year = 56 # int | 
     edfi_admin_api_edfi_admin_v1_create_state_education_agency_request = edgraph_platform_client.EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest() # EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest |  (optional)
 
     try:
         # Creates a StateEducationAgency.
-        api_response = api_instance.create_state_education_agency_async(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_create_state_education_agency_request=edfi_admin_api_edfi_admin_v1_create_state_education_agency_request)
+        api_response = await api_instance.create_state_education_agency_async(tenant_id, instance_id, year, edfi_admin_api_edfi_admin_v1_create_state_education_agency_request=edfi_admin_api_edfi_admin_v1_create_state_education_agency_request)
         print("The response of InstancesEducationOrganizationsStateEducationAgenciesApi->create_state_education_agency_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,7 +64,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **instance_id** | **str**|  | 
  **year** | **int**|  | 
  **edfi_admin_api_edfi_admin_v1_create_state_education_agency_request** | [**EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest**](EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest.md)|  | [optional] 
@@ -123,17 +123,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsStateEducationAgenciesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     instance_id = 'instance_id_example' # str | 
     year = 56 # int | 
-    state_education_agency_id = 'state_education_agency_id_example' # str | 
+    state_education_agency_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a StateEducationAgency.
-        api_instance.delete_state_education_agency_async(tenant_id, instance_id, year, state_education_agency_id)
+        await api_instance.delete_state_education_agency_async(tenant_id, instance_id, year, state_education_agency_id)
     except Exception as e:
         print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi->delete_state_education_agency_async: %s\n" % e)
 ```
@@ -145,10 +145,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **instance_id** | **str**|  | 
  **year** | **int**|  | 
- **state_education_agency_id** | **str**|  | 
+ **state_education_agency_id** | **UUID**|  | 
 
 ### Return type
 
@@ -205,17 +205,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsStateEducationAgenciesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     instance_id = 'instance_id_example' # str | 
     year = 56 # int | 
-    state_education_agency_id = 'state_education_agency_id_example' # str | 
+    state_education_agency_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a StateEducationAgency by ID.
-        api_response = api_instance.get_state_education_agency_by_id_async(tenant_id, instance_id, year, state_education_agency_id)
+        api_response = await api_instance.get_state_education_agency_by_id_async(tenant_id, instance_id, year, state_education_agency_id)
         print("The response of InstancesEducationOrganizationsStateEducationAgenciesApi->get_state_education_agency_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -229,10 +229,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **instance_id** | **str**|  | 
  **year** | **int**|  | 
- **state_education_agency_id** | **str**|  | 
+ **state_education_agency_id** | **UUID**|  | 
 
 ### Return type
 
@@ -289,18 +289,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesEducationOrganizationsStateEducationAgenciesApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     instance_id = 'instance_id_example' # str | 
     year = 56 # int | 
-    state_education_agency_id = 'state_education_agency_id_example' # str | 
+    state_education_agency_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     edfi_admin_api_edfi_admin_v1_update_state_education_agency_request = edgraph_platform_client.EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest() # EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest |  (optional)
 
     try:
         # Updates a StateEducationAgency.
-        api_instance.update_state_education_agency_async(tenant_id, instance_id, year, state_education_agency_id, edfi_admin_api_edfi_admin_v1_update_state_education_agency_request=edfi_admin_api_edfi_admin_v1_update_state_education_agency_request)
+        await api_instance.update_state_education_agency_async(tenant_id, instance_id, year, state_education_agency_id, edfi_admin_api_edfi_admin_v1_update_state_education_agency_request=edfi_admin_api_edfi_admin_v1_update_state_education_agency_request)
     except Exception as e:
         print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi->update_state_education_agency_async: %s\n" % e)
 ```
@@ -312,10 +312,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **instance_id** | **str**|  | 
  **year** | **int**|  | 
- **state_education_agency_id** | **str**|  | 
+ **state_education_agency_id** | **UUID**|  | 
  **edfi_admin_api_edfi_admin_v1_update_state_education_agency_request** | [**EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest**](EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.md)|  | [optional] 
 
 ### Return type

@@ -36,7 +36,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesLogsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -51,7 +51,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves HTTP logs for a given instance
-        api_response = api_instance.get_instance_http_logs(tenant_id, instance_id, year, page_size=page_size, page_index=page_index, var_from=var_from, to=to, var_field=var_field, order=order)
+        api_response = await api_instance.get_instance_http_logs(tenant_id, instance_id, year, page_size=page_size, page_index=page_index, var_from=var_from, to=to, var_field=var_field, order=order)
         print("The response of InstancesLogsApi->get_instance_http_logs:\n")
         pprint(api_response)
     except Exception as e:

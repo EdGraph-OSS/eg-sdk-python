@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Any, Dict, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_create_environment_request import EdGraphServicesStateReportingV1CreateEnvironmentRequest
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_environment_created_response import EdGraphServicesStateReportingV1EnvironmentCreatedResponse
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_environment_deleted_response import EdGraphServicesStateReportingV1EnvironmentDeletedResponse
@@ -52,7 +52,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def create_environment(
+    async def create_environment(
         self,
         tenant_id: StrictStr,
         validations_api_db_environments_v1_create_request: Optional[ValidationsApiDbEnvironmentsV1CreateRequest] = None,
@@ -115,11 +115,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -127,7 +127,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def create_environment_with_http_info(
+    async def create_environment_with_http_info(
         self,
         tenant_id: StrictStr,
         validations_api_db_environments_v1_create_request: Optional[ValidationsApiDbEnvironmentsV1CreateRequest] = None,
@@ -190,11 +190,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -202,7 +202,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def create_environment_without_preload_content(
+    async def create_environment_without_preload_content(
         self,
         tenant_id: StrictStr,
         validations_api_db_environments_v1_create_request: Optional[ValidationsApiDbEnvironmentsV1CreateRequest] = None,
@@ -265,7 +265,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -291,7 +291,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -354,9 +356,9 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def create_state_reporting_environment(
+    async def create_state_reporting_environment(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_services_state_reporting_v1_create_environment_request: Optional[EdGraphServicesStateReportingV1CreateEnvironmentRequest] = None,
         _request_timeout: Union[
             None,
@@ -375,7 +377,7 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_services_state_reporting_v1_create_environment_request: 
         :type ed_graph_services_state_reporting_v1_create_environment_request: EdGraphServicesStateReportingV1CreateEnvironmentRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -417,11 +419,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -429,9 +431,9 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def create_state_reporting_environment_with_http_info(
+    async def create_state_reporting_environment_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_services_state_reporting_v1_create_environment_request: Optional[EdGraphServicesStateReportingV1CreateEnvironmentRequest] = None,
         _request_timeout: Union[
             None,
@@ -450,7 +452,7 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_services_state_reporting_v1_create_environment_request: 
         :type ed_graph_services_state_reporting_v1_create_environment_request: EdGraphServicesStateReportingV1CreateEnvironmentRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -492,11 +494,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -504,9 +506,9 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def create_state_reporting_environment_without_preload_content(
+    async def create_state_reporting_environment_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_services_state_reporting_v1_create_environment_request: Optional[EdGraphServicesStateReportingV1CreateEnvironmentRequest] = None,
         _request_timeout: Union[
             None,
@@ -525,7 +527,7 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_services_state_reporting_v1_create_environment_request: 
         :type ed_graph_services_state_reporting_v1_create_environment_request: EdGraphServicesStateReportingV1CreateEnvironmentRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -567,7 +569,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -593,7 +595,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -656,7 +660,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def delete_environment(
+    async def delete_environment(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -719,11 +723,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -731,7 +735,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def delete_environment_with_http_info(
+    async def delete_environment_with_http_info(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -794,11 +798,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -806,7 +810,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def delete_environment_without_preload_content(
+    async def delete_environment_without_preload_content(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -869,7 +873,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -895,7 +899,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -942,10 +948,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def delete_state_reporting_environment(
+    async def delete_state_reporting_environment(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -963,9 +969,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1005,11 +1011,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1017,10 +1023,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def delete_state_reporting_environment_with_http_info(
+    async def delete_state_reporting_environment_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1038,9 +1044,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1080,11 +1086,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1092,10 +1098,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def delete_state_reporting_environment_without_preload_content(
+    async def delete_state_reporting_environment_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1113,9 +1119,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1155,7 +1161,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1181,7 +1187,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1228,7 +1236,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_environment_by_id(
+    async def get_environment_by_id(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -1291,11 +1299,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1303,7 +1311,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_environment_by_id_with_http_info(
+    async def get_environment_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -1366,11 +1374,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1378,7 +1386,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_environment_by_id_without_preload_content(
+    async def get_environment_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -1441,7 +1449,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1467,7 +1475,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1514,7 +1524,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_environments(
+    async def get_environments(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1588,11 +1598,11 @@ class EnvironmentsApi:
             '200': "ValidationsApiDbEnvironmentsV1PaginatedDbEnvironments",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1600,7 +1610,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_environments_with_http_info(
+    async def get_environments_with_http_info(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1674,11 +1684,11 @@ class EnvironmentsApi:
             '200': "ValidationsApiDbEnvironmentsV1PaginatedDbEnvironments",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1686,7 +1696,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_environments_without_preload_content(
+    async def get_environments_without_preload_content(
         self,
         tenant_id: StrictStr,
         page_index: Optional[StrictInt] = None,
@@ -1760,7 +1770,7 @@ class EnvironmentsApi:
             '200': "ValidationsApiDbEnvironmentsV1PaginatedDbEnvironments",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1789,7 +1799,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1850,10 +1862,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_state_reporting_environment(
+    async def get_state_reporting_environment(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1871,9 +1883,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1913,11 +1925,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1925,10 +1937,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_state_reporting_environment_with_http_info(
+    async def get_state_reporting_environment_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1946,9 +1958,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1988,11 +2000,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2000,10 +2012,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def get_state_reporting_environment_without_preload_content(
+    async def get_state_reporting_environment_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2021,9 +2033,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2063,7 +2075,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2089,7 +2101,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2136,9 +2150,9 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def search_state_reporting_environments(
+    async def search_state_reporting_environments(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2160,7 +2174,7 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2210,11 +2224,11 @@ class EnvironmentsApi:
             '200': "EdGraphServicesStateReportingV1PaginatedEnvironmentsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2222,9 +2236,9 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def search_state_reporting_environments_with_http_info(
+    async def search_state_reporting_environments_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2246,7 +2260,7 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2296,11 +2310,11 @@ class EnvironmentsApi:
             '200': "EdGraphServicesStateReportingV1PaginatedEnvironmentsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2308,9 +2322,9 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def search_state_reporting_environments_without_preload_content(
+    async def search_state_reporting_environments_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -2332,7 +2346,7 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -2382,7 +2396,7 @@ class EnvironmentsApi:
             '200': "EdGraphServicesStateReportingV1PaginatedEnvironmentsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2411,7 +2425,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2472,7 +2488,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def test_environment_connection(
+    async def test_environment_connection(
         self,
         tenant_id: StrictStr,
         validations_api_db_environments_v1_test_connection_request: Optional[ValidationsApiDbEnvironmentsV1TestConnectionRequest] = None,
@@ -2534,11 +2550,11 @@ class EnvironmentsApi:
             '200': "ValidationsApiDbEnvironmentsV1TestConnectionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2546,7 +2562,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def test_environment_connection_with_http_info(
+    async def test_environment_connection_with_http_info(
         self,
         tenant_id: StrictStr,
         validations_api_db_environments_v1_test_connection_request: Optional[ValidationsApiDbEnvironmentsV1TestConnectionRequest] = None,
@@ -2608,11 +2624,11 @@ class EnvironmentsApi:
             '200': "ValidationsApiDbEnvironmentsV1TestConnectionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2620,7 +2636,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def test_environment_connection_without_preload_content(
+    async def test_environment_connection_without_preload_content(
         self,
         tenant_id: StrictStr,
         validations_api_db_environments_v1_test_connection_request: Optional[ValidationsApiDbEnvironmentsV1TestConnectionRequest] = None,
@@ -2682,7 +2698,7 @@ class EnvironmentsApi:
             '200': "ValidationsApiDbEnvironmentsV1TestConnectionResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2708,7 +2724,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2771,7 +2789,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def update_environment(
+    async def update_environment(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -2838,11 +2856,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2850,7 +2868,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def update_environment_with_http_info(
+    async def update_environment_with_http_info(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -2917,11 +2935,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2929,7 +2947,7 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def update_environment_without_preload_content(
+    async def update_environment_without_preload_content(
         self,
         tenant_id: StrictStr,
         environment_id: StrictStr,
@@ -2996,7 +3014,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3023,7 +3041,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3088,10 +3108,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def update_state_reporting_environment(
+    async def update_state_reporting_environment(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         ed_graph_services_state_reporting_v1_update_environment_request: Optional[EdGraphServicesStateReportingV1UpdateEnvironmentRequest] = None,
         _request_timeout: Union[
             None,
@@ -3110,9 +3130,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param ed_graph_services_state_reporting_v1_update_environment_request: 
         :type ed_graph_services_state_reporting_v1_update_environment_request: EdGraphServicesStateReportingV1UpdateEnvironmentRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3155,11 +3175,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3167,10 +3187,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def update_state_reporting_environment_with_http_info(
+    async def update_state_reporting_environment_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         ed_graph_services_state_reporting_v1_update_environment_request: Optional[EdGraphServicesStateReportingV1UpdateEnvironmentRequest] = None,
         _request_timeout: Union[
             None,
@@ -3189,9 +3209,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param ed_graph_services_state_reporting_v1_update_environment_request: 
         :type ed_graph_services_state_reporting_v1_update_environment_request: EdGraphServicesStateReportingV1UpdateEnvironmentRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3234,11 +3254,11 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3246,10 +3266,10 @@ class EnvironmentsApi:
 
 
     @validate_call
-    def update_state_reporting_environment_without_preload_content(
+    async def update_state_reporting_environment_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
         ed_graph_services_state_reporting_v1_update_environment_request: Optional[EdGraphServicesStateReportingV1UpdateEnvironmentRequest] = None,
         _request_timeout: Union[
             None,
@@ -3268,9 +3288,9 @@ class EnvironmentsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param ed_graph_services_state_reporting_v1_update_environment_request: 
         :type ed_graph_services_state_reporting_v1_update_environment_request: EdGraphServicesStateReportingV1UpdateEnvironmentRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3313,7 +3333,7 @@ class EnvironmentsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3340,7 +3360,9 @@ class EnvironmentsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

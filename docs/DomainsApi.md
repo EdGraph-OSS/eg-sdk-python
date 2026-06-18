@@ -42,7 +42,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.DomainsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new domain
-        api_response = api_instance.create_tenant_domain_async(tenant_id, tenant_api_tenant_v1_create_domain_request=tenant_api_tenant_v1_create_domain_request)
+        api_response = await api_instance.create_tenant_domain_async(tenant_id, tenant_api_tenant_v1_create_domain_request=tenant_api_tenant_v1_create_domain_request)
         print("The response of DomainsApi->create_tenant_domain_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -120,7 +120,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.DomainsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -128,7 +128,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a user
-        api_instance.delete_tenant_domain_async(tenant_id, domain_name)
+        await api_instance.delete_tenant_domain_async(tenant_id, domain_name)
     except Exception as e:
         print("Exception when calling DomainsApi->delete_tenant_domain_async: %s\n" % e)
 ```
@@ -197,7 +197,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.DomainsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -208,7 +208,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of domains associated to this tenant
-        api_response = api_instance.get_all_tenant_domains_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_domains_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of DomainsApi->get_all_tenant_domains_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -282,7 +282,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.DomainsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -290,7 +290,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a domain
-        api_response = api_instance.get_tenant_domain_profile_by_name_async(tenant_id, domain_name)
+        api_response = await api_instance.get_tenant_domain_profile_by_name_async(tenant_id, domain_name)
         print("The response of DomainsApi->get_tenant_domain_profile_by_name_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -363,7 +363,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.DomainsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -372,7 +372,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a domain
-        api_response = api_instance.update_tenant_domain_async(tenant_id, domain_name, tenant_api_tenant_v1_update_domain_request=tenant_api_tenant_v1_update_domain_request)
+        api_response = await api_instance.update_tenant_domain_async(tenant_id, domain_name, tenant_api_tenant_v1_update_domain_request=tenant_api_tenant_v1_update_domain_request)
         print("The response of DomainsApi->update_tenant_domain_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -445,7 +445,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.DomainsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -454,7 +454,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Verify a  tenant's domain
-        api_response = api_instance.verify_tenant_domain_async(tenant_id, domain_name, tenant_api_tenant_v1_verify_domain_request=tenant_api_tenant_v1_verify_domain_request)
+        api_response = await api_instance.verify_tenant_domain_async(tenant_id, domain_name, tenant_api_tenant_v1_verify_domain_request=tenant_api_tenant_v1_verify_domain_request)
         print("The response of DomainsApi->verify_tenant_domain_async:\n")
         pprint(api_response)
     except Exception as e:

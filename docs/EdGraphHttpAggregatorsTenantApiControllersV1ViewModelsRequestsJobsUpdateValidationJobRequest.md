@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **schedule** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule.md) |  | [optional] 
 **notification_emails** | **List[str]** |  | [optional] 
 **categories** | [**List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory]**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory.md) |  | [optional] 
-**environment_id** | **str** |  | [optional] 
+**environment_id** | **UUID** |  | [optional] 
 
 ## Example
 

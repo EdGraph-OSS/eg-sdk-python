@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | [optional] 
+**user_id** | **UUID** |  | [optional] 
 **licenses** | [**EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult**](EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult.md) |  | [optional] 
 
 ## Example

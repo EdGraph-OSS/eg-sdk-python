@@ -44,7 +44,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -52,7 +52,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Queues a job to generate the report views in the ODS Database.
-        api_response = api_instance.generate_reports_async(tenant_id, instance_id)
+        api_response = await api_instance.generate_reports_async(tenant_id, instance_id)
         print("The response of InstancesReportsApi->generate_reports_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -124,7 +124,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -132,7 +132,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves the status of the report views in Instance.
-        api_response = api_instance.get_reports_status_async(tenant_id, instance_id)
+        api_response = await api_instance.get_reports_status_async(tenant_id, instance_id)
         print("The response of InstancesReportsApi->get_reports_status_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -204,7 +204,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -213,7 +213,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Schools By Type\" report.
-        api_response = api_instance.get_schools_by_type_report_async(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_schools_by_type_report_async(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_schools_by_type_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -286,7 +286,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -295,7 +295,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Students Economic Situation\" report.
-        api_response = api_instance.get_student_economic_situation_report_async(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_student_economic_situation_report_async(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_student_economic_situation_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -368,7 +368,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -377,7 +377,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Student Enrollment By Ethnicity\" report.
-        api_response = api_instance.get_student_enrollment_by_ethnicity_report(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_student_enrollment_by_ethnicity_report(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_student_enrollment_by_ethnicity_report:\n")
         pprint(api_response)
     except Exception as e:
@@ -450,7 +450,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -459,7 +459,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Student Enrollment By Gender\" report.
-        api_response = api_instance.get_student_enrollment_by_gender_report_async(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_student_enrollment_by_gender_report_async(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_student_enrollment_by_gender_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -532,7 +532,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -541,7 +541,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Student Enrollment By Race\" report.
-        api_response = api_instance.get_student_enrollment_by_race_report_async(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_student_enrollment_by_race_report_async(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_student_enrollment_by_race_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -614,7 +614,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -623,7 +623,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Students By Program\" report.
-        api_response = api_instance.get_students_by_program_report_async(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_students_by_program_report_async(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_students_by_program_report_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -696,7 +696,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.InstancesReportsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -705,7 +705,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a \"Total Enrollments\" report.
-        api_response = api_instance.get_total_enrollments_report_async(tenant_id, instance_id, local_education_agency_id)
+        api_response = await api_instance.get_total_enrollments_report_async(tenant_id, instance_id, local_education_agency_id)
         print("The response of InstancesReportsApi->get_total_enrollments_report_async:\n")
         pprint(api_response)
     except Exception as e:

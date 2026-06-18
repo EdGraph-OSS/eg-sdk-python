@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -42,7 +41,7 @@ class ClientsSecretsApi:
 
 
     @validate_call
-    def add_client_secret(
+    async def add_client_secret(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -112,11 +111,11 @@ class ClientsSecretsApi:
             '200': "IMSAdminApiV1ClientsClientSecretAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -124,7 +123,7 @@ class ClientsSecretsApi:
 
 
     @validate_call
-    def add_client_secret_with_http_info(
+    async def add_client_secret_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -194,11 +193,11 @@ class ClientsSecretsApi:
             '200': "IMSAdminApiV1ClientsClientSecretAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -206,7 +205,7 @@ class ClientsSecretsApi:
 
 
     @validate_call
-    def add_client_secret_without_preload_content(
+    async def add_client_secret_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -276,7 +275,7 @@ class ClientsSecretsApi:
             '200': "IMSAdminApiV1ClientsClientSecretAddedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -304,7 +303,9 @@ class ClientsSecretsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -371,7 +372,7 @@ class ClientsSecretsApi:
 
 
     @validate_call
-    def regenerate_one_roster_api_client_secret_async(
+    async def regenerate_one_roster_api_client_secret_async(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -441,11 +442,11 @@ class ClientsSecretsApi:
             '200': "IMSAdminApiV1ClientsClientSecretRegeneratedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -453,7 +454,7 @@ class ClientsSecretsApi:
 
 
     @validate_call
-    def regenerate_one_roster_api_client_secret_async_with_http_info(
+    async def regenerate_one_roster_api_client_secret_async_with_http_info(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -523,11 +524,11 @@ class ClientsSecretsApi:
             '200': "IMSAdminApiV1ClientsClientSecretRegeneratedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -535,7 +536,7 @@ class ClientsSecretsApi:
 
 
     @validate_call
-    def regenerate_one_roster_api_client_secret_async_without_preload_content(
+    async def regenerate_one_roster_api_client_secret_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         instance_id: StrictStr,
@@ -605,7 +606,7 @@ class ClientsSecretsApi:
             '200': "IMSAdminApiV1ClientsClientSecretRegeneratedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -633,7 +634,9 @@ class ClientsSecretsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v2_responses_user_license_role import EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicense(BaseModel):
     """
@@ -38,7 +39,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicense(BaseModel
     __properties: ClassVar[List[str]] = ["applicationId", "applicationName", "role", "licenseStatus", "licenseSource", "educationOrganizationId", "educationOrganizationSource", "staffClassification"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +52,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicense(BaseModel
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

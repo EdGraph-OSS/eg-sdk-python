@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import List, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_validation_results_api_jobs_job_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_validation_results_api_records_record_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_validation_results_api_rules_rule_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto
@@ -43,7 +43,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_records_async(
+    async def find_results_api_job_run_records_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -117,11 +117,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -129,7 +129,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_records_async_with_http_info(
+    async def find_results_api_job_run_records_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -203,11 +203,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -215,7 +215,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_records_async_without_preload_content(
+    async def find_results_api_job_run_records_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -289,7 +289,7 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -318,7 +318,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -375,7 +377,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_rule_records_async(
+    async def find_results_api_job_run_rule_records_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -453,11 +455,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -465,7 +467,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_rule_records_async_with_http_info(
+    async def find_results_api_job_run_rule_records_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -543,11 +545,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -555,7 +557,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_rule_records_async_without_preload_content(
+    async def find_results_api_job_run_rule_records_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -633,7 +635,7 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -663,7 +665,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -722,7 +726,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_rules_async(
+    async def find_results_api_job_run_rules_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -796,11 +800,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -808,7 +812,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_rules_async_with_http_info(
+    async def find_results_api_job_run_rules_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -882,11 +886,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -894,7 +898,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_run_rules_async_without_preload_content(
+    async def find_results_api_job_run_rules_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -968,7 +972,7 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -997,7 +1001,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1054,7 +1060,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_runs_async(
+    async def find_results_api_job_runs_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -1124,11 +1130,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1136,7 +1142,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_runs_async_with_http_info(
+    async def find_results_api_job_runs_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -1206,11 +1212,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1218,7 +1224,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_job_runs_async_without_preload_content(
+    async def find_results_api_job_runs_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -1288,7 +1294,7 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1316,7 +1322,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1371,7 +1379,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_jobs_async(
+    async def find_results_api_jobs_async(
         self,
         tenant_id: StrictStr,
         offset: Optional[StrictInt] = None,
@@ -1437,11 +1445,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1449,7 +1457,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_jobs_async_with_http_info(
+    async def find_results_api_jobs_async_with_http_info(
         self,
         tenant_id: StrictStr,
         offset: Optional[StrictInt] = None,
@@ -1515,11 +1523,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1527,7 +1535,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_jobs_async_without_preload_content(
+    async def find_results_api_jobs_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         offset: Optional[StrictInt] = None,
@@ -1593,7 +1601,7 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1620,7 +1628,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1673,11 +1683,11 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_rule_summaries(
+    async def find_results_api_rule_summaries(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        run_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        run_id: UUID,
         offset: Optional[StrictInt] = None,
         limit: Optional[StrictInt] = None,
         _request_timeout: Union[
@@ -1697,11 +1707,11 @@ class ValidationResultsAPIApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param run_id:  (required)
-        :type run_id: str
+        :type run_id: UUID
         :param offset: 
         :type offset: int
         :param limit: 
@@ -1747,11 +1757,11 @@ class ValidationResultsAPIApi:
             '200': "List[ValidationsApiResultsV1RuleSummary]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1759,11 +1769,11 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_rule_summaries_with_http_info(
+    async def find_results_api_rule_summaries_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        run_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        run_id: UUID,
         offset: Optional[StrictInt] = None,
         limit: Optional[StrictInt] = None,
         _request_timeout: Union[
@@ -1783,11 +1793,11 @@ class ValidationResultsAPIApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param run_id:  (required)
-        :type run_id: str
+        :type run_id: UUID
         :param offset: 
         :type offset: int
         :param limit: 
@@ -1833,11 +1843,11 @@ class ValidationResultsAPIApi:
             '200': "List[ValidationsApiResultsV1RuleSummary]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1845,11 +1855,11 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_rule_summaries_without_preload_content(
+    async def find_results_api_rule_summaries_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        run_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        run_id: UUID,
         offset: Optional[StrictInt] = None,
         limit: Optional[StrictInt] = None,
         _request_timeout: Union[
@@ -1869,11 +1879,11 @@ class ValidationResultsAPIApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param run_id:  (required)
-        :type run_id: str
+        :type run_id: UUID
         :param offset: 
         :type offset: int
         :param limit: 
@@ -1919,7 +1929,7 @@ class ValidationResultsAPIApi:
             '200': "List[ValidationsApiResultsV1RuleSummary]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1948,7 +1958,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2005,7 +2017,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_rules_async(
+    async def find_results_api_rules_async(
         self,
         tenant_id: StrictStr,
         offset: Optional[StrictInt] = None,
@@ -2071,11 +2083,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2083,7 +2095,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_rules_async_with_http_info(
+    async def find_results_api_rules_async_with_http_info(
         self,
         tenant_id: StrictStr,
         offset: Optional[StrictInt] = None,
@@ -2149,11 +2161,11 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2161,7 +2173,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def find_results_api_rules_async_without_preload_content(
+    async def find_results_api_rules_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         offset: Optional[StrictInt] = None,
@@ -2227,7 +2239,7 @@ class ValidationResultsAPIApi:
             '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto]",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2254,7 +2266,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2307,7 +2321,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_latest_job_run_async(
+    async def get_latest_job_run_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2370,11 +2384,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2382,7 +2396,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_latest_job_run_async_with_http_info(
+    async def get_latest_job_run_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2445,11 +2459,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2457,7 +2471,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_latest_job_run_async_without_preload_content(
+    async def get_latest_job_run_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2520,7 +2534,7 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2546,7 +2560,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2593,7 +2609,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_by_id(
+    async def get_results_api_job_by_id(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2656,11 +2672,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2668,7 +2684,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_by_id_with_http_info(
+    async def get_results_api_job_by_id_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2731,11 +2747,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2743,7 +2759,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_by_id_without_preload_content(
+    async def get_results_api_job_by_id_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2806,7 +2822,7 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2832,7 +2848,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2879,7 +2897,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_run_by_id_async(
+    async def get_results_api_job_run_by_id_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -2946,11 +2964,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2958,7 +2976,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_run_by_id_async_with_http_info(
+    async def get_results_api_job_run_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3025,11 +3043,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3037,7 +3055,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_run_by_id_async_without_preload_content(
+    async def get_results_api_job_run_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3104,7 +3122,7 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3131,7 +3149,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3180,7 +3200,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_run_rule_by_id_async(
+    async def get_results_api_job_run_rule_by_id_async(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3251,11 +3271,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3263,7 +3283,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_run_rule_by_id_async_with_http_info(
+    async def get_results_api_job_run_rule_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3334,11 +3354,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3346,7 +3366,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_job_run_rule_by_id_async_without_preload_content(
+    async def get_results_api_job_run_rule_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         job_id: StrictStr,
@@ -3417,7 +3437,7 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3445,7 +3465,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3496,7 +3518,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_rule_by_id_async(
+    async def get_results_api_rule_by_id_async(
         self,
         tenant_id: StrictStr,
         rule_id: StrictStr,
@@ -3559,11 +3581,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3571,7 +3593,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_rule_by_id_async_with_http_info(
+    async def get_results_api_rule_by_id_async_with_http_info(
         self,
         tenant_id: StrictStr,
         rule_id: StrictStr,
@@ -3634,11 +3656,11 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3646,7 +3668,7 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_rule_by_id_async_without_preload_content(
+    async def get_results_api_rule_by_id_async_without_preload_content(
         self,
         tenant_id: StrictStr,
         rule_id: StrictStr,
@@ -3709,7 +3731,7 @@ class ValidationResultsAPIApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -3735,7 +3757,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3782,12 +3806,12 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_rule_summary(
+    async def get_results_api_rule_summary(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        run_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        run_id: UUID,
+        rule_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3805,13 +3829,13 @@ class ValidationResultsAPIApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param run_id:  (required)
-        :type run_id: str
+        :type run_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3852,11 +3876,11 @@ class ValidationResultsAPIApi:
             '200': "ValidationsApiResultsV1RuleSummary",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3864,12 +3888,12 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_rule_summary_with_http_info(
+    async def get_results_api_rule_summary_with_http_info(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        run_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        run_id: UUID,
+        rule_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3887,13 +3911,13 @@ class ValidationResultsAPIApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param run_id:  (required)
-        :type run_id: str
+        :type run_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3934,11 +3958,11 @@ class ValidationResultsAPIApi:
             '200': "ValidationsApiResultsV1RuleSummary",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -3946,12 +3970,12 @@ class ValidationResultsAPIApi:
 
 
     @validate_call
-    def get_results_api_rule_summary_without_preload_content(
+    async def get_results_api_rule_summary_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        job_id: StrictStr,
-        run_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        job_id: UUID,
+        run_id: UUID,
+        rule_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3969,13 +3993,13 @@ class ValidationResultsAPIApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param job_id:  (required)
-        :type job_id: str
+        :type job_id: UUID
         :param run_id:  (required)
-        :type run_id: str
+        :type run_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4016,7 +4040,7 @@ class ValidationResultsAPIApi:
             '200': "ValidationsApiResultsV1RuleSummary",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -4044,7 +4068,9 @@ class ValidationResultsAPIApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

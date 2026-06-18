@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **composites_url** | **str** |  | [optional] 
 **resources_url** | **str** |  | [optional] 
 **discovery_url** | **str** |  | [optional] 
+**discovery_document** | [**EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi**](EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi.md) |  | [optional] 
 
 ## Example
 

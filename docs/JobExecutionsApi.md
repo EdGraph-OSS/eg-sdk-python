@@ -37,7 +37,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobExecutionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of DataSync Job Executions
-        api_response = api_instance.get_all_tenant_data_sync_job_executions(tenant_id, job_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_data_sync_job_executions(tenant_id, job_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of JobExecutionsApi->get_all_tenant_data_sync_job_executions:\n")
         pprint(api_response)
     except Exception as e:
@@ -125,7 +125,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobExecutionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -137,7 +137,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Gets job executions by a given job Id
-        api_response = api_instance.get_tenant_job_executions_by_job_id(tenant_id, job_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_tenant_job_executions_by_job_id(tenant_id, job_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of JobExecutionsApi->get_tenant_job_executions_by_job_id:\n")
         pprint(api_response)
     except Exception as e:

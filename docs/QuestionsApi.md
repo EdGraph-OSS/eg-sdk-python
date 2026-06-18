@@ -41,17 +41,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.QuestionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto |  (optional)
 
     try:
         # Creates a new Question for a given section
-        api_response = api_instance.create_question(tenant_id, form_id, section_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto)
+        api_response = await api_instance.create_question(tenant_id, form_id, section_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto)
         print("The response of QuestionsApi->create_question:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,9 +65,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.md)|  | [optional] 
 
 ### Return type
@@ -124,17 +124,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.QuestionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
-    question_id = 'question_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    question_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a Question.
-        api_response = api_instance.delete_question(tenant_id, form_id, section_id, question_id)
+        api_response = await api_instance.delete_question(tenant_id, form_id, section_id, question_id)
         print("The response of QuestionsApi->delete_question:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,10 +148,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
- **question_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
+ **question_id** | **UUID**|  | 
 
 ### Return type
 
@@ -208,17 +208,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.QuestionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
-    question_id = 'question_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    question_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get Question.
-        api_response = api_instance.get_question(tenant_id, form_id, section_id, question_id)
+        api_response = await api_instance.get_question(tenant_id, form_id, section_id, question_id)
         print("The response of QuestionsApi->get_question:\n")
         pprint(api_response)
     except Exception as e:
@@ -232,10 +232,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
- **question_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
+ **question_id** | **UUID**|  | 
 
 ### Return type
 
@@ -292,12 +292,12 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.QuestionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -305,7 +305,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search Questions
-        api_response = api_instance.search_questions(tenant_id, form_id, section_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_questions(tenant_id, form_id, section_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of QuestionsApi->search_questions:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,9 +319,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -382,18 +382,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.QuestionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
-    question_id = 'question_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    question_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto |  (optional)
 
     try:
         # Updates a Question.
-        api_response = api_instance.update_question(tenant_id, form_id, section_id, question_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto)
+        api_response = await api_instance.update_question(tenant_id, form_id, section_id, question_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto)
         print("The response of QuestionsApi->update_question:\n")
         pprint(api_response)
     except Exception as e:
@@ -407,10 +407,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
- **question_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
+ **question_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto.md)|  | [optional] 
 
 ### Return type

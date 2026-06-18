@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **connection_id** | **str** |  | [optional] 
 **tenant_id** | **str** |  | [optional] 
-**environment_id** | **str** |  | [optional] 
+**environment_id** | **UUID** |  | [optional] 
 
 ## Example
 

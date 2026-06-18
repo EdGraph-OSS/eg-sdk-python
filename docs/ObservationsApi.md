@@ -58,15 +58,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest |  (optional)
 
     try:
         # Creates a new Observation for a given tenant
-        api_response = api_instance.create_observation(tenant_id, ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request)
+        api_response = await api_instance.create_observation(tenant_id, ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request)
         print("The response of ObservationsApi->create_observation:\n")
         pprint(api_response)
     except Exception as e:
@@ -80,7 +80,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_create_observation_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest.md)|  | [optional] 
 
 ### Return type
@@ -138,17 +138,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     observation_id = 'observation_id_example' # str | 
     ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest |  (optional)
 
     try:
         # Creates a submission for an available form referencing an existing observation
-        api_response = api_instance.create_observation_submission(tenant_id, form_id, observation_id, ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_request)
+        api_response = await api_instance.create_observation_submission(tenant_id, form_id, observation_id, ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_request=ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_request)
         print("The response of ObservationsApi->create_observation_submission:\n")
         pprint(api_response)
     except Exception as e:
@@ -162,8 +162,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **observation_id** | **str**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_create_observation_submission_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest.md)|  | [optional] 
 
@@ -221,15 +221,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    observation_id = 'observation_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    observation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes an Observation for a given tenant
-        api_response = api_instance.delete_observation(tenant_id, observation_id)
+        api_response = await api_instance.delete_observation(tenant_id, observation_id)
         print("The response of ObservationsApi->delete_observation:\n")
         pprint(api_response)
     except Exception as e:
@@ -243,8 +243,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **observation_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **observation_id** | **UUID**|  | 
 
 ### Return type
 
@@ -300,16 +300,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    dashboard_id = 'dashboard_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    dashboard_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     persona_identifier = 'persona_identifier_example' # str |  (optional)
 
     try:
         # Get Observation Dashboard
-        api_response = api_instance.get_dashboard(tenant_id, dashboard_id, persona_identifier=persona_identifier)
+        api_response = await api_instance.get_dashboard(tenant_id, dashboard_id, persona_identifier=persona_identifier)
         print("The response of ObservationsApi->get_dashboard:\n")
         pprint(api_response)
     except Exception as e:
@@ -323,8 +323,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **dashboard_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **dashboard_id** | **UUID**|  | 
  **persona_identifier** | **str**|  | [optional] 
 
 ### Return type
@@ -381,15 +381,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    dashboard_id = 'dashboard_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    dashboard_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Save user preferences for a given Dashboard
-        api_response = api_instance.get_dashboard_preferences(tenant_id, dashboard_id)
+        api_response = await api_instance.get_dashboard_preferences(tenant_id, dashboard_id)
         print("The response of ObservationsApi->get_dashboard_preferences:\n")
         pprint(api_response)
     except Exception as e:
@@ -403,8 +403,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **dashboard_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **dashboard_id** | **UUID**|  | 
 
 ### Return type
 
@@ -460,11 +460,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    evaluee_id = 'evaluee_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    evaluee_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -472,7 +472,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Gets the Sections of an evaluee.
-        api_response = api_instance.get_evaluee_sections(tenant_id, evaluee_id, page_index=page_index, page_size=page_size, order_by=order_by, filter_by=filter_by)
+        api_response = await api_instance.get_evaluee_sections(tenant_id, evaluee_id, page_index=page_index, page_size=page_size, order_by=order_by, filter_by=filter_by)
         print("The response of ObservationsApi->get_evaluee_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -486,8 +486,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **evaluee_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **evaluee_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -548,18 +548,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
-    section_id = 'section_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    section_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
 
     try:
         # Search Questions
-        api_response = api_instance.get_form_questions(tenant_id, form_id, section_id, page_index=page_index, page_size=page_size)
+        api_response = await api_instance.get_form_questions(tenant_id, form_id, section_id, page_index=page_index, page_size=page_size)
         print("The response of ObservationsApi->get_form_questions:\n")
         pprint(api_response)
     except Exception as e:
@@ -573,9 +573,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
- **section_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
+ **section_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
 
@@ -633,17 +633,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
 
     try:
         # Search Observation Form Sections
-        api_response = api_instance.get_form_sections(tenant_id, form_id, page_index=page_index, page_size=page_size)
+        api_response = await api_instance.get_form_sections(tenant_id, form_id, page_index=page_index, page_size=page_size)
         print("The response of ObservationsApi->get_form_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -657,8 +657,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
 
@@ -716,15 +716,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    observation_id = 'observation_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    observation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get an Observation for a given tenant
-        api_response = api_instance.get_observation_by_id(tenant_id, observation_id)
+        api_response = await api_instance.get_observation_by_id(tenant_id, observation_id)
         print("The response of ObservationsApi->get_observation_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -738,8 +738,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **observation_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **observation_id** | **UUID**|  | 
 
 ### Return type
 
@@ -795,16 +795,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    observation_id = 'observation_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    observation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get an observation form's draft
-        api_response = api_instance.get_observation_draft(tenant_id, observation_id, form_id)
+        api_response = await api_instance.get_observation_draft(tenant_id, observation_id, form_id)
         print("The response of ObservationsApi->get_observation_draft:\n")
         pprint(api_response)
     except Exception as e:
@@ -818,9 +818,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **observation_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **observation_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -876,16 +876,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    observation_id = 'observation_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    observation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Gets a submission for a specific observation
-        api_response = api_instance.get_observation_submission(tenant_id, observation_id, form_id)
+        api_response = await api_instance.get_observation_submission(tenant_id, observation_id, form_id)
         print("The response of ObservationsApi->get_observation_submission:\n")
         pprint(api_response)
     except Exception as e:
@@ -899,9 +899,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **observation_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **observation_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
 
 ### Return type
 
@@ -957,10 +957,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -968,7 +968,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get Available Campuses
-        api_response = api_instance.get_paginated_available_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, name_of_institution=name_of_institution)
+        api_response = await api_instance.get_paginated_available_campuses(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, name_of_institution=name_of_institution)
         print("The response of ObservationsApi->get_paginated_available_campuses:\n")
         pprint(api_response)
     except Exception as e:
@@ -982,7 +982,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1042,10 +1042,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -1053,7 +1053,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get Paginated Available Forms
-        api_response = api_instance.get_paginated_available_forms(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_paginated_available_forms(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of ObservationsApi->get_paginated_available_forms:\n")
         pprint(api_response)
     except Exception as e:
@@ -1067,7 +1067,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1127,10 +1127,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     campus_id = 'campus_id_example' # str | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
@@ -1139,7 +1139,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Sections for a given available campus.
-        api_response = api_instance.get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_paginated_campus_sections(tenant_id, campus_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of ObservationsApi->get_paginated_campus_sections:\n")
         pprint(api_response)
     except Exception as e:
@@ -1153,7 +1153,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **campus_id** | **str**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
@@ -1214,10 +1214,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -1228,7 +1228,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get paginated evaluees
-        api_response = api_instance.get_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_id=evaluee_id, first_name=first_name, last_name=last_name)
+        api_response = await api_instance.get_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_id=evaluee_id, first_name=first_name, last_name=last_name)
         print("The response of ObservationsApi->get_paginated_evaluees:\n")
         pprint(api_response)
     except Exception as e:
@@ -1242,7 +1242,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1305,10 +1305,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -1322,7 +1322,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Get Paginated Observations for a given tenant
-        api_response = api_instance.get_paginated_observations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_name=evaluee_name, evaluee_id=evaluee_id, form_id=form_id, status=status, var_from=var_from, to=to)
+        api_response = await api_instance.get_paginated_observations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_name=evaluee_name, evaluee_id=evaluee_id, form_id=form_id, status=status, var_from=var_from, to=to)
         print("The response of ObservationsApi->get_paginated_observations:\n")
         pprint(api_response)
     except Exception as e:
@@ -1336,7 +1336,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1402,16 +1402,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     evaluee_id = 'evaluee_id_example' # str |  (optional)
     campus = 'campus_example' # str |  (optional)
 
     try:
         # Get submitted Observations count
-        api_response = api_instance.get_submitted_observations_count(tenant_id, evaluee_id=evaluee_id, campus=campus)
+        api_response = await api_instance.get_submitted_observations_count(tenant_id, evaluee_id=evaluee_id, campus=campus)
         print("The response of ObservationsApi->get_submitted_observations_count:\n")
         pprint(api_response)
     except Exception as e:
@@ -1425,7 +1425,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **evaluee_id** | **str**|  | [optional] 
  **campus** | **str**|  | [optional] 
 
@@ -1484,16 +1484,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    dashboard_id = 'dashboard_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    dashboard_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest |  (optional)
 
     try:
         # Save user preferences for a given Dashboard
-        api_response = api_instance.save_dashboard_preferences(tenant_id, dashboard_id, ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request=ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request)
+        api_response = await api_instance.save_dashboard_preferences(tenant_id, dashboard_id, ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request=ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request)
         print("The response of ObservationsApi->save_dashboard_preferences:\n")
         pprint(api_response)
     except Exception as e:
@@ -1507,8 +1507,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **dashboard_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **dashboard_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.md)|  | [optional] 
 
 ### Return type
@@ -1565,10 +1565,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -1577,7 +1577,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search paginated evaluees
-        api_response = api_instance.search_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, first_name=first_name, last_name=last_name)
+        api_response = await api_instance.search_paginated_evaluees(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, first_name=first_name, last_name=last_name)
         print("The response of ObservationsApi->search_paginated_evaluees:\n")
         pprint(api_response)
     except Exception as e:
@@ -1591,7 +1591,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -1653,16 +1653,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    observation_id = 'observation_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    observation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest |  (optional)
 
     try:
         # Update an Observation for a given tenant
-        api_response = api_instance.update_observation(tenant_id, observation_id, ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request)
+        api_response = await api_instance.update_observation(tenant_id, observation_id, ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request=ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request)
         print("The response of ObservationsApi->update_observation:\n")
         pprint(api_response)
     except Exception as e:
@@ -1676,8 +1676,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **observation_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **observation_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.md)|  | [optional] 
 
 ### Return type
@@ -1735,17 +1735,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    observation_id = 'observation_id_example' # str | 
-    form_id = 'form_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    observation_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest |  (optional)
 
     try:
         # Creates a draft for an observation forms
-        api_response = api_instance.upsert_observation_draft(tenant_id, observation_id, form_id, ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request=ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request)
+        api_response = await api_instance.upsert_observation_draft(tenant_id, observation_id, form_id, ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request=ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request)
         print("The response of ObservationsApi->upsert_observation_draft:\n")
         pprint(api_response)
     except Exception as e:
@@ -1759,9 +1759,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **observation_id** | **str**|  | 
- **form_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **observation_id** | **UUID**|  | 
+ **form_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest.md)|  | [optional] 
 
 ### Return type
@@ -1819,15 +1819,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ObservationsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest() # EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest |  (optional)
 
     try:
         # Verify user access to dashboards
-        api_response = api_instance.verify_dashboard_access(tenant_id, ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request)
+        api_response = await api_instance.verify_dashboard_access(tenant_id, ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request=ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request)
         print("The response of ObservationsApi->verify_dashboard_access:\n")
         pprint(api_response)
     except Exception as e:
@@ -1841,7 +1841,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.md)|  | [optional] 
 
 ### Return type

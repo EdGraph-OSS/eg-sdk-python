@@ -48,7 +48,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -59,7 +59,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Job Run Records from the Validation Results API.
-        api_response = api_instance.find_results_api_job_run_records_async(tenant_id, job_id, run_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_job_run_records_async(tenant_id, job_id, run_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_job_run_records_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -133,7 +133,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -145,7 +145,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Job Run Rule Records from the Validation Results API.
-        api_response = api_instance.find_results_api_job_run_rule_records_async(tenant_id, job_id, run_id, rule_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_job_run_rule_records_async(tenant_id, job_id, run_id, rule_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_job_run_rule_records_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -220,7 +220,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -231,7 +231,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Job Run Rules from the Validation Results API.
-        api_response = api_instance.find_results_api_job_run_rules_async(tenant_id, job_id, run_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_job_run_rules_async(tenant_id, job_id, run_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_job_run_rules_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -305,7 +305,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -315,7 +315,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Job Runs from the Validation Results API.
-        api_response = api_instance.find_results_api_job_runs_async(tenant_id, job_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_job_runs_async(tenant_id, job_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_job_runs_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -388,7 +388,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -397,7 +397,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Jobs from the Validation Results API.
-        api_response = api_instance.find_results_api_jobs_async(tenant_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_jobs_async(tenant_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_jobs_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -469,18 +469,18 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
-    run_id = 'run_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    run_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     offset = 0 # int |  (optional) (default to 0)
     limit = 25 # int |  (optional) (default to 25)
 
     try:
         # Retrieves a list Rule Summaries from the Validation Results API.
-        api_response = api_instance.find_results_api_rule_summaries(tenant_id, job_id, run_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_rule_summaries(tenant_id, job_id, run_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_rule_summaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -494,9 +494,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
- **run_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
+ **run_id** | **UUID**|  | 
  **offset** | **int**|  | [optional] [default to 0]
  **limit** | **int**|  | [optional] [default to 25]
 
@@ -554,7 +554,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -563,7 +563,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Rules from Validation Results API.
-        api_response = api_instance.find_results_api_rules_async(tenant_id, offset=offset, limit=limit)
+        api_response = await api_instance.find_results_api_rules_async(tenant_id, offset=offset, limit=limit)
         print("The response of ValidationResultsAPIApi->find_results_api_rules_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -635,7 +635,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -643,7 +643,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves the latest Job Run from the Validation Results API.
-        api_response = api_instance.get_latest_job_run_async(tenant_id, job_id)
+        api_response = await api_instance.get_latest_job_run_async(tenant_id, job_id)
         print("The response of ValidationResultsAPIApi->get_latest_job_run_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -715,7 +715,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -723,7 +723,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Job by ID from the Validation Results API.
-        api_response = api_instance.get_results_api_job_by_id(tenant_id, job_id)
+        api_response = await api_instance.get_results_api_job_by_id(tenant_id, job_id)
         print("The response of ValidationResultsAPIApi->get_results_api_job_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -795,7 +795,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -804,7 +804,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Job Run by ID from the Validation Results API.
-        api_response = api_instance.get_results_api_job_run_by_id_async(tenant_id, job_id, run_id)
+        api_response = await api_instance.get_results_api_job_run_by_id_async(tenant_id, job_id, run_id)
         print("The response of ValidationResultsAPIApi->get_results_api_job_run_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -877,7 +877,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -887,7 +887,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Job Run Rule by ID from the Validation Results API.
-        api_response = api_instance.get_results_api_job_run_rule_by_id_async(tenant_id, job_id, run_id, rule_id)
+        api_response = await api_instance.get_results_api_job_run_rule_by_id_async(tenant_id, job_id, run_id, rule_id)
         print("The response of ValidationResultsAPIApi->get_results_api_job_run_rule_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -961,7 +961,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -969,7 +969,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Rule by ID from the Validation Results API.
-        api_response = api_instance.get_results_api_rule_by_id_async(tenant_id, rule_id)
+        api_response = await api_instance.get_results_api_rule_by_id_async(tenant_id, rule_id)
         print("The response of ValidationResultsAPIApi->get_results_api_rule_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -1041,17 +1041,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ValidationResultsAPIApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
-    run_id = 'run_id_example' # str | 
-    rule_id = 'rule_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    run_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    rule_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Get Rule Summary by ID from the Validation Results API.
-        api_response = api_instance.get_results_api_rule_summary(tenant_id, job_id, run_id, rule_id)
+        api_response = await api_instance.get_results_api_rule_summary(tenant_id, job_id, run_id, rule_id)
         print("The response of ValidationResultsAPIApi->get_results_api_rule_summary:\n")
         pprint(api_response)
     except Exception as e:
@@ -1065,10 +1065,10 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
- **run_id** | **str**|  | 
- **rule_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
+ **run_id** | **UUID**|  | 
+ **rule_id** | **UUID**|  | 
 
 ### Return type
 

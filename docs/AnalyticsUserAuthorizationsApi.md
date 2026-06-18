@@ -37,7 +37,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsUserAuthorizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves paginated user authorizations
-        api_response = api_instance.get_paginated_user_authorizations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_paginated_user_authorizations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of AnalyticsUserAuthorizationsApi->get_paginated_user_authorizations:\n")
         pprint(api_response)
     except Exception as e:
@@ -122,7 +122,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsUserAuthorizationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -130,7 +130,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Soft Deletes a user authorization by Id
-        api_response = api_instance.soft_delete_user_authorization(tenant_id, user_authorization_id)
+        api_response = await api_instance.soft_delete_user_authorization(tenant_id, user_authorization_id)
         print("The response of AnalyticsUserAuthorizationsApi->soft_delete_user_authorization:\n")
         pprint(api_response)
     except Exception as e:

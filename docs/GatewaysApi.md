@@ -36,14 +36,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.GatewaysApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
 
     try:
         # Retrieves a list of gateways in Power Bi that the user has access to.
-        api_response = api_instance.get_all_analytics_gateways_async(tenant_id)
+        api_response = await api_instance.get_all_analytics_gateways_async(tenant_id)
         print("The response of GatewaysApi->get_all_analytics_gateways_async:\n")
         pprint(api_response)
     except Exception as e:

@@ -11,7 +11,7 @@ from edgraph_platform_client.api.applications_tiles_api import ApplicationsTiles
 from edgraph_platform_client.api.cache_api import CacheApi
 from edgraph_platform_client.api.capacities_api import CapacitiesApi
 from edgraph_platform_client.api.categories_api import CategoriesApi
-from edgraph_platform_client.api.changes_logs_api import ChangesLogsApi
+from edgraph_platform_client.api.change_logs_api import ChangeLogsApi
 from edgraph_platform_client.api.clients_secrets_api import ClientsSecretsApi
 from edgraph_platform_client.api.collections_api import CollectionsApi
 from edgraph_platform_client.api.configurations_api import ConfigurationsApi
@@ -52,6 +52,9 @@ from edgraph_platform_client.api.instances_instance_applications_api_clients_api
 from edgraph_platform_client.api.instances_logs_api import InstancesLogsApi
 from edgraph_platform_client.api.instances_reports_api import InstancesReportsApi
 from edgraph_platform_client.api.instances_vendors_api import InstancesVendorsApi
+from edgraph_platform_client.api.integration_products_api import IntegrationProductsApi
+from edgraph_platform_client.api.integration_types_api import IntegrationTypesApi
+from edgraph_platform_client.api.integration_vendors_api import IntegrationVendorsApi
 from edgraph_platform_client.api.invitations_api import InvitationsApi
 from edgraph_platform_client.api.job_execution_logs_api import JobExecutionLogsApi
 from edgraph_platform_client.api.job_executions_api import JobExecutionsApi
@@ -77,7 +80,6 @@ from edgraph_platform_client.api.reports_api import ReportsApi
 from edgraph_platform_client.api.rules_api import RulesApi
 from edgraph_platform_client.api.sections_api import SectionsApi
 from edgraph_platform_client.api.settings_api import SettingsApi
-from edgraph_platform_client.api.specifications_api import SpecificationsApi
 from edgraph_platform_client.api.staff_classifications_api import StaffClassificationsApi
 from edgraph_platform_client.api.state_reporting_steps_api import StateReportingStepsApi
 from edgraph_platform_client.api.submissions_api import SubmissionsApi
@@ -85,6 +87,7 @@ from edgraph_platform_client.api.subscriptions_api import SubscriptionsApi
 from edgraph_platform_client.api.tags_api import TagsApi
 from edgraph_platform_client.api.tenant_branding_api import TenantBrandingApi
 from edgraph_platform_client.api.tenant_instances_api import TenantInstancesApi
+from edgraph_platform_client.api.tenant_integrations_api import TenantIntegrationsApi
 from edgraph_platform_client.api.tenant_jobs_dsl_api import TenantJobsDSLApi
 from edgraph_platform_client.api.tenant_jobs_instructional_insights_api import TenantJobsInstructionalInsightsApi
 from edgraph_platform_client.api.tenant_security_score_sync_api import TenantSecurityScoreSyncApi

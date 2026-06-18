@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -41,7 +40,7 @@ class MyExtensionsApi:
 
 
     @validate_call
-    def remove_user_extension(
+    async def remove_user_extension(
         self,
         code: StrictStr,
         _request_timeout: Union[
@@ -99,11 +98,11 @@ class MyExtensionsApi:
             '200': "IdentityApiUserV1UserExtensionRemovedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -111,7 +110,7 @@ class MyExtensionsApi:
 
 
     @validate_call
-    def remove_user_extension_with_http_info(
+    async def remove_user_extension_with_http_info(
         self,
         code: StrictStr,
         _request_timeout: Union[
@@ -169,11 +168,11 @@ class MyExtensionsApi:
             '200': "IdentityApiUserV1UserExtensionRemovedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -181,7 +180,7 @@ class MyExtensionsApi:
 
 
     @validate_call
-    def remove_user_extension_without_preload_content(
+    async def remove_user_extension_without_preload_content(
         self,
         code: StrictStr,
         _request_timeout: Union[
@@ -239,7 +238,7 @@ class MyExtensionsApi:
             '200': "IdentityApiUserV1UserExtensionRemovedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -264,7 +263,9 @@ class MyExtensionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -309,7 +310,7 @@ class MyExtensionsApi:
 
 
     @validate_call
-    def set_user_extension(
+    async def set_user_extension(
         self,
         identity_api_user_v1_set_user_extension_request: Optional[IdentityApiUserV1SetUserExtensionRequest] = None,
         _request_timeout: Union[
@@ -367,11 +368,11 @@ class MyExtensionsApi:
             '200': "IdentityApiUserV1UserExtensionSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -379,7 +380,7 @@ class MyExtensionsApi:
 
 
     @validate_call
-    def set_user_extension_with_http_info(
+    async def set_user_extension_with_http_info(
         self,
         identity_api_user_v1_set_user_extension_request: Optional[IdentityApiUserV1SetUserExtensionRequest] = None,
         _request_timeout: Union[
@@ -437,11 +438,11 @@ class MyExtensionsApi:
             '200': "IdentityApiUserV1UserExtensionSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -449,7 +450,7 @@ class MyExtensionsApi:
 
 
     @validate_call
-    def set_user_extension_without_preload_content(
+    async def set_user_extension_without_preload_content(
         self,
         identity_api_user_v1_set_user_extension_request: Optional[IdentityApiUserV1SetUserExtensionRequest] = None,
         _request_timeout: Union[
@@ -507,7 +508,7 @@ class MyExtensionsApi:
             '200': "IdentityApiUserV1UserExtensionSetResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -532,7 +533,9 @@ class MyExtensionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -40,7 +40,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsConnectorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -48,7 +48,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new connector
-        api_response = api_instance.create_connector(tenant_id, body=body)
+        api_response = await api_instance.create_connector(tenant_id, body=body)
         print("The response of AnalyticsConnectorsApi->create_connector:\n")
         pprint(api_response)
     except Exception as e:
@@ -119,7 +119,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsConnectorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -127,7 +127,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a connector by Id
-        api_response = api_instance.delete_connector(tenant_id, connector_id)
+        api_response = await api_instance.delete_connector(tenant_id, connector_id)
         print("The response of AnalyticsConnectorsApi->delete_connector:\n")
         pprint(api_response)
     except Exception as e:
@@ -198,7 +198,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsConnectorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -206,7 +206,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a connector profile by Id
-        api_response = api_instance.get_adls_gen2_connector_by_id(tenant_id, connector_id)
+        api_response = await api_instance.get_adls_gen2_connector_by_id(tenant_id, connector_id)
         print("The response of AnalyticsConnectorsApi->get_adls_gen2_connector_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -278,7 +278,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsConnectorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -289,7 +289,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves paginated connectors
-        api_response = api_instance.get_paginated_connectors(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_paginated_connectors(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of AnalyticsConnectorsApi->get_paginated_connectors:\n")
         pprint(api_response)
     except Exception as e:
@@ -363,7 +363,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.AnalyticsConnectorsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -372,7 +372,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a connector by Id
-        api_response = api_instance.update_connector(tenant_id, connector_id, body=body)
+        api_response = await api_instance.update_connector(tenant_id, connector_id, body=body)
         print("The response of AnalyticsConnectorsApi->update_connector:\n")
         pprint(api_response)
     except Exception as e:

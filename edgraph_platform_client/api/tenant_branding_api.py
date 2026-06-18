@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictBool, StrictBytes, StrictStr
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
+from uuid import UUID
 from edgraph_platform_client.models.tenant_api_tenant_v1_tenant_updated_response import TenantApiTenantV1TenantUpdatedResponse
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
@@ -39,11 +39,11 @@ class TenantBrandingApi:
 
 
     @validate_call
-    def update_tenant_branding(
+    async def update_tenant_branding(
         self,
-        tenant_id: StrictStr,
-        logo_file: Optional[Union[StrictBytes, StrictStr]] = None,
-        background_file: Optional[Union[StrictBytes, StrictStr]] = None,
+        tenant_id: UUID,
+        logo_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
+        background_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         brand_name: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
         _request_timeout: Union[
@@ -63,11 +63,11 @@ class TenantBrandingApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param logo_file:
-        :type logo_file: bytearray
+        :type logo_file: bytes
         :param background_file:
-        :type background_file: bytearray
+        :type background_file: bytes
         :param brand_name:
         :type brand_name: str
         :param enabled:
@@ -113,11 +113,11 @@ class TenantBrandingApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': "TenantApiTenantV1TenantUpdatedResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -125,11 +125,11 @@ class TenantBrandingApi:
 
 
     @validate_call
-    def update_tenant_branding_with_http_info(
+    async def update_tenant_branding_with_http_info(
         self,
-        tenant_id: StrictStr,
-        logo_file: Optional[Union[StrictBytes, StrictStr]] = None,
-        background_file: Optional[Union[StrictBytes, StrictStr]] = None,
+        tenant_id: UUID,
+        logo_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
+        background_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         brand_name: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
         _request_timeout: Union[
@@ -149,11 +149,11 @@ class TenantBrandingApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param logo_file:
-        :type logo_file: bytearray
+        :type logo_file: bytes
         :param background_file:
-        :type background_file: bytearray
+        :type background_file: bytes
         :param brand_name:
         :type brand_name: str
         :param enabled:
@@ -199,11 +199,11 @@ class TenantBrandingApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': "TenantApiTenantV1TenantUpdatedResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -211,11 +211,11 @@ class TenantBrandingApi:
 
 
     @validate_call
-    def update_tenant_branding_without_preload_content(
+    async def update_tenant_branding_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        logo_file: Optional[Union[StrictBytes, StrictStr]] = None,
-        background_file: Optional[Union[StrictBytes, StrictStr]] = None,
+        tenant_id: UUID,
+        logo_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
+        background_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         brand_name: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
         _request_timeout: Union[
@@ -235,11 +235,11 @@ class TenantBrandingApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param logo_file:
-        :type logo_file: bytearray
+        :type logo_file: bytes
         :param background_file:
-        :type background_file: bytearray
+        :type background_file: bytes
         :param brand_name:
         :type brand_name: str
         :param enabled:
@@ -285,7 +285,7 @@ class TenantBrandingApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '200': "TenantApiTenantV1TenantUpdatedResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -314,7 +314,9 @@ class TenantBrandingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

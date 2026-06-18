@@ -43,16 +43,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest() # EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest |  (optional)
 
     try:
         # Creates a new Connection.
-        api_response = api_instance.create_state_reporting_connection(tenant_id, environment_id, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request)
+        api_response = await api_instance.create_state_reporting_connection(tenant_id, environment_id, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request)
         print("The response of EnvironmentsConnectionsApi->create_state_reporting_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,8 +66,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_create_connection_request** | [**EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest**](EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest.md)|  | [optional] 
 
 ### Return type
@@ -125,16 +125,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    connection_id = 'connection_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes a Connection.
-        api_response = api_instance.delete_state_reporting_connection(tenant_id, environment_id, connection_id)
+        api_response = await api_instance.delete_state_reporting_connection(tenant_id, environment_id, connection_id)
         print("The response of EnvironmentsConnectionsApi->delete_state_reporting_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,9 +148,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **connection_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **connection_id** | **UUID**|  | 
 
 ### Return type
 
@@ -207,17 +207,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     instance_type = 'instance_type_example' # str |  (optional)
     connection_type = 'connection_type_example' # str |  (optional)
 
     try:
         # Retrieves a list of Connections.
-        api_response = api_instance.find_state_reporting_connections(tenant_id, environment_id, instance_type=instance_type, connection_type=connection_type)
+        api_response = await api_instance.find_state_reporting_connections(tenant_id, environment_id, instance_type=instance_type, connection_type=connection_type)
         print("The response of EnvironmentsConnectionsApi->find_state_reporting_connections:\n")
         pprint(api_response)
     except Exception as e:
@@ -232,7 +232,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **environment_id** | **UUID**|  | 
  **instance_type** | **str**|  | [optional] 
  **connection_type** | **str**|  | [optional] 
 
@@ -290,16 +290,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    connection_id = 'connection_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a Connection by ID.
-        api_response = api_instance.get_state_reporting_connection(tenant_id, environment_id, connection_id)
+        api_response = await api_instance.get_state_reporting_connection(tenant_id, environment_id, connection_id)
         print("The response of EnvironmentsConnectionsApi->get_state_reporting_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -313,9 +313,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **connection_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **connection_id** | **UUID**|  | 
 
 ### Return type
 
@@ -372,16 +372,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    connection_id = 'connection_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Tests a Connection by ID.
-        api_response = api_instance.test_state_reporting_connection_by_id(tenant_id, environment_id, connection_id)
+        api_response = await api_instance.test_state_reporting_connection_by_id(tenant_id, environment_id, connection_id)
         print("The response of EnvironmentsConnectionsApi->test_state_reporting_connection_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -395,9 +395,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **connection_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **connection_id** | **UUID**|  | 
 
 ### Return type
 
@@ -455,16 +455,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest() # EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest |  (optional)
 
     try:
         # Tests a Connection by Type.
-        api_response = api_instance.test_state_reporting_connection_by_type(tenant_id, environment_id, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request)
+        api_response = await api_instance.test_state_reporting_connection_by_type(tenant_id, environment_id, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request)
         print("The response of EnvironmentsConnectionsApi->test_state_reporting_connection_by_type:\n")
         pprint(api_response)
     except Exception as e:
@@ -478,8 +478,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_test_connection_by_type_request** | [**EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest**](EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest.md)|  | [optional] 
 
 ### Return type
@@ -538,17 +538,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsConnectionsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
-    connection_id = 'connection_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest() # EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest |  (optional)
 
     try:
         # Updates a Connection.
-        api_response = api_instance.update_state_reporting_connection(tenant_id, environment_id, connection_id, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request)
+        api_response = await api_instance.update_state_reporting_connection(tenant_id, environment_id, connection_id, ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request=ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request)
         print("The response of EnvironmentsConnectionsApi->update_state_reporting_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -562,9 +562,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
- **connection_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
+ **connection_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_state_reporting_v1_update_connection_request** | [**EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest**](EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest.md)|  | [optional] 
 
 ### Return type

@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersLicensesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Assigns a license to a user in the context of a specific tenant
-        api_response = api_instance.assign_license_tenant_user_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_request)
+        api_response = await api_instance.assign_license_tenant_user_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_request)
         print("The response of UsersLicensesApi->assign_license_tenant_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -123,7 +123,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersLicensesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -132,7 +132,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Assigns one or more licenses to a user in the context of a specific tenant
-        api_response = api_instance.assign_license_tenant_user_bulk_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_bulk_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_bulk_request)
+        api_response = await api_instance.assign_license_tenant_user_bulk_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_bulk_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_assign_license_bulk_request)
         print("The response of UsersLicensesApi->assign_license_tenant_user_bulk_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -204,7 +204,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersLicensesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -216,7 +216,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of user licenses in the context of a specific tenant
-        api_response = api_instance.get_all_tenant_user_application_licenses_async(tenant_id, user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_user_application_licenses_async(tenant_id, user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersLicensesApi->get_all_tenant_user_application_licenses_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -292,7 +292,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersLicensesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -301,7 +301,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Revokes a license from a user in the context of a specific tenant
-        api_response = api_instance.revoke_license_tenant_user_async(tenant_id, user_id, identity_api_user_v1_revoke_license_request=identity_api_user_v1_revoke_license_request)
+        api_response = await api_instance.revoke_license_tenant_user_async(tenant_id, user_id, identity_api_user_v1_revoke_license_request=identity_api_user_v1_revoke_license_request)
         print("The response of UsersLicensesApi->revoke_license_tenant_user_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -374,7 +374,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersLicensesApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -383,7 +383,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Revokes one or more licenses from a user in the context of a specific tenant
-        api_response = api_instance.revoke_license_tenant_user_bulk_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_revoke_license_bulk_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_revoke_license_bulk_request)
+        api_response = await api_instance.revoke_license_tenant_user_bulk_async(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_revoke_license_bulk_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_licenses_revoke_license_bulk_request)
         print("The response of UsersLicensesApi->revoke_license_tenant_user_bulk_async:\n")
         pprint(api_response)
     except Exception as e:

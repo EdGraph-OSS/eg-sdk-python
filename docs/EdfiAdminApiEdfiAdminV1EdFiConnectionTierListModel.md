@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **tier_id** | **str** |  | [optional] 
 **tier_name** | **str** |  | [optional] 
 **ods_api_connection** | [**EdfiAdminApiEdfiAdminV1TierOdsApiConnectionListModel**](EdfiAdminApiEdfiAdminV1TierOdsApiConnectionListModel.md) |  | [optional] 
+**admin_api_url** | **str** |  | [optional] 
 
 ## Example
 

@@ -19,8 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_ods_api_discovery_api import EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(BaseModel):
     """
@@ -30,10 +32,12 @@ class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(BaseModel):
     composites_url: Optional[StrictStr] = Field(default=None, alias="compositesUrl")
     resources_url: Optional[StrictStr] = Field(default=None, alias="resourcesUrl")
     discovery_url: Optional[StrictStr] = Field(default=None, alias="discoveryUrl")
-    __properties: ClassVar[List[str]] = ["accessTypeId", "compositesUrl", "resourcesUrl", "discoveryUrl"]
+    discovery_document: Optional[EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi] = Field(default=None, alias="discoveryDocument")
+    __properties: ClassVar[List[str]] = ["accessTypeId", "compositesUrl", "resourcesUrl", "discoveryUrl", "discoveryDocument"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,8 +49,7 @@ class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -71,6 +74,9 @@ class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of discovery_document
+        if self.discovery_document:
+            _dict['discoveryDocument'] = self.discovery_document.to_dict()
         # set to None if access_type_id (nullable) is None
         # and model_fields_set contains the field
         if self.access_type_id is None and "access_type_id" in self.model_fields_set:
@@ -106,7 +112,8 @@ class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(BaseModel):
             "accessTypeId": obj.get("accessTypeId"),
             "compositesUrl": obj.get("compositesUrl"),
             "resourcesUrl": obj.get("resourcesUrl"),
-            "discoveryUrl": obj.get("discoveryUrl")
+            "discoveryUrl": obj.get("discoveryUrl"),
+            "discoveryDocument": EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi.from_dict(obj["discoveryDocument"]) if obj.get("discoveryDocument") is not None else None
         })
         return _obj
 

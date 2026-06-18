@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,13 +9,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictBool, StrictInt, StrictStr
+from pydantic import StrictBool, StrictInt
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_paginated_records import EdGraphServicesStateReportingV1PaginatedRecords
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_paginated_rule_records import EdGraphServicesStateReportingV1PaginatedRuleRecords
 from edgraph_platform_client.models.ed_graph_services_state_reporting_v1_reporting_period_created_response import EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse
@@ -44,11 +44,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def delete_state_reporting_period_rules(
+    async def delete_state_reporting_period_rules(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,11 +66,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -111,11 +111,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -123,11 +123,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def delete_state_reporting_period_rules_with_http_info(
+    async def delete_state_reporting_period_rules_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -145,11 +145,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -190,11 +190,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -202,11 +202,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def delete_state_reporting_period_rules_without_preload_content(
+    async def delete_state_reporting_period_rules_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -224,11 +224,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -269,7 +269,7 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -296,7 +296,9 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -345,11 +347,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def search_state_reporting_period_records(
+    async def search_state_reporting_period_records(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         exclude_from_post: Optional[StrictBool] = None,
@@ -370,11 +372,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -424,11 +426,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -436,11 +438,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def search_state_reporting_period_records_with_http_info(
+    async def search_state_reporting_period_records_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         exclude_from_post: Optional[StrictBool] = None,
@@ -461,11 +463,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -515,11 +517,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -527,11 +529,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def search_state_reporting_period_records_without_preload_content(
+    async def search_state_reporting_period_records_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         exclude_from_post: Optional[StrictBool] = None,
@@ -552,11 +554,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -606,7 +608,7 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -636,7 +638,9 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -697,12 +701,12 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def search_state_reporting_period_rule_records(
+    async def search_state_reporting_period_rule_records(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         _request_timeout: Union[
@@ -722,13 +726,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -776,11 +780,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -788,12 +792,12 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def search_state_reporting_period_rule_records_with_http_info(
+    async def search_state_reporting_period_rule_records_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         _request_timeout: Union[
@@ -813,13 +817,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -867,11 +871,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -879,12 +883,12 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def search_state_reporting_period_rule_records_without_preload_content(
+    async def search_state_reporting_period_rule_records_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         _request_timeout: Union[
@@ -904,13 +908,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -958,7 +962,7 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -988,7 +992,9 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1047,13 +1053,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def set_state_reporting_period_rule_record_post_flag(
+    async def set_state_reporting_period_rule_record_post_flag(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
-        record_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
+        record_id: UUID,
         ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: Optional[EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest] = None,
         _request_timeout: Union[
             None,
@@ -1072,15 +1078,15 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param record_id:  (required)
-        :type record_id: str
+        :type record_id: UUID
         :param ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: 
         :type ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1126,11 +1132,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1138,13 +1144,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def set_state_reporting_period_rule_record_post_flag_with_http_info(
+    async def set_state_reporting_period_rule_record_post_flag_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
-        record_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
+        record_id: UUID,
         ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: Optional[EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest] = None,
         _request_timeout: Union[
             None,
@@ -1163,15 +1169,15 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param record_id:  (required)
-        :type record_id: str
+        :type record_id: UUID
         :param ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: 
         :type ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1217,11 +1223,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1229,13 +1235,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def set_state_reporting_period_rule_record_post_flag_without_preload_content(
+    async def set_state_reporting_period_rule_record_post_flag_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
-        record_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
+        record_id: UUID,
         ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: Optional[EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest] = None,
         _request_timeout: Union[
             None,
@@ -1254,15 +1260,15 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param record_id:  (required)
-        :type record_id: str
+        :type record_id: UUID
         :param ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: 
         :type ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_request: EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1308,7 +1314,7 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1338,7 +1344,9 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1409,12 +1417,12 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def set_state_reporting_period_rule_record_post_flag_bulk(
+    async def set_state_reporting_period_rule_record_post_flag_bulk(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
         ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: Optional[EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1433,13 +1441,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: 
         :type ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1484,11 +1492,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1496,12 +1504,12 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def set_state_reporting_period_rule_record_post_flag_bulk_with_http_info(
+    async def set_state_reporting_period_rule_record_post_flag_bulk_with_http_info(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
         ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: Optional[EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1520,13 +1528,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: 
         :type ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1571,11 +1579,11 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1583,12 +1591,12 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
     @validate_call
-    def set_state_reporting_period_rule_record_post_flag_bulk_without_preload_content(
+    async def set_state_reporting_period_rule_record_post_flag_bulk_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        environment_id: StrictStr,
-        reporting_period_id: StrictStr,
-        rule_id: StrictStr,
+        tenant_id: UUID,
+        environment_id: UUID,
+        reporting_period_id: UUID,
+        rule_id: UUID,
         ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: Optional[EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest] = None,
         _request_timeout: Union[
             None,
@@ -1607,13 +1615,13 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param environment_id:  (required)
-        :type environment_id: str
+        :type environment_id: UUID
         :param reporting_period_id:  (required)
-        :type reporting_period_id: str
+        :type reporting_period_id: UUID
         :param rule_id:  (required)
-        :type rule_id: str
+        :type rule_id: UUID
         :param ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: 
         :type ed_graph_services_state_reporting_v1_set_reporting_period_rule_record_post_flag_bulk_request: EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1658,7 +1666,7 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '201': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1687,7 +1695,9 @@ class EnvironmentsReportingPeriodsRulesRecordsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

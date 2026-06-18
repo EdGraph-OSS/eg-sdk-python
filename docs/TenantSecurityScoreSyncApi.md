@@ -41,7 +41,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantSecurityScoreSyncApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Security Score Sync Job for a given tenant
-        api_response = api_instance.create_security_score_sync_job(tenant_id, ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request=ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request)
+        api_response = await api_instance.create_security_score_sync_job(tenant_id, ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request=ed_graph_http_aggregators_tenant_api_services_security_score_sync_create_security_score_sync_job_request)
         print("The response of TenantSecurityScoreSyncApi->create_security_score_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -119,14 +119,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantSecurityScoreSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Executes an Security Score Sync Job
-        api_instance.execute_security_score_sync_job(tenant_id)
+        await api_instance.execute_security_score_sync_job(tenant_id)
     except Exception as e:
         print("Exception when calling TenantSecurityScoreSyncApi->execute_security_score_sync_job: %s\n" % e)
 ```
@@ -138,7 +138,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -195,14 +195,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantSecurityScoreSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a Security Score Sync Job for a given tenant
-        api_response = api_instance.get_security_score_sync_job(tenant_id)
+        api_response = await api_instance.get_security_score_sync_job(tenant_id)
         print("The response of TenantSecurityScoreSyncApi->get_security_score_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -216,7 +216,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -272,16 +272,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantSecurityScoreSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
-    job_execution_id = 'job_execution_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_execution_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves a Security Score Sync Job Execution for a given tenant
-        api_response = api_instance.get_security_score_sync_job_execution(tenant_id, job_id, job_execution_id)
+        api_response = await api_instance.get_security_score_sync_job_execution(tenant_id, job_id, job_execution_id)
         print("The response of TenantSecurityScoreSyncApi->get_security_score_sync_job_execution:\n")
         pprint(api_response)
     except Exception as e:
@@ -295,9 +295,9 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
- **job_execution_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
+ **job_execution_id** | **UUID**|  | 
 
 ### Return type
 
@@ -353,15 +353,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantSecurityScoreSyncApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest() # EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest |  (optional)
 
     try:
         # Updates a Security Score Sync for a given tenant
-        api_instance.update_security_score_sync_job(tenant_id, ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request=ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request)
+        await api_instance.update_security_score_sync_job(tenant_id, ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request=ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request)
     except Exception as e:
         print("Exception when calling TenantSecurityScoreSyncApi->update_security_score_sync_job: %s\n" % e)
 ```
@@ -373,7 +373,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_services_security_score_sync_update_security_score_sync_job_request** | [**EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest**](EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest.md)|  | [optional] 
 
 ### Return type

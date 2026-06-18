@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Any, Dict, Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_forms_v1_form_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request import EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_response import EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse
@@ -50,9 +50,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def add_available_persona(
+    async def add_available_persona(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest] = None,
         _request_timeout: Union[
             None,
@@ -71,7 +71,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -112,11 +112,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -124,9 +124,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def add_available_persona_with_http_info(
+    async def add_available_persona_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest] = None,
         _request_timeout: Union[
             None,
@@ -145,7 +145,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -186,11 +186,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -198,9 +198,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def add_available_persona_without_preload_content(
+    async def add_available_persona_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest] = None,
         _request_timeout: Union[
             None,
@@ -219,7 +219,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -260,7 +260,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -286,7 +286,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -349,9 +351,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_application_settings(
+    async def get_application_settings(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -369,7 +371,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -407,11 +409,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -419,9 +421,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_application_settings_with_http_info(
+    async def get_application_settings_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -439,7 +441,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -477,11 +479,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -489,9 +491,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_application_settings_without_preload_content(
+    async def get_application_settings_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -509,7 +511,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -547,7 +549,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -572,7 +574,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -617,9 +621,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_forms(
+    async def get_paginated_forms(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -641,7 +645,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -691,11 +695,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -703,9 +707,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_forms_with_http_info(
+    async def get_paginated_forms_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -727,7 +731,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -777,11 +781,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -789,9 +793,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_forms_without_preload_content(
+    async def get_paginated_forms_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -813,7 +817,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -863,7 +867,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -892,7 +896,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -953,9 +959,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_personas(
+    async def get_paginated_personas(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -973,7 +979,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1011,11 +1017,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1023,9 +1029,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_personas_with_http_info(
+    async def get_paginated_personas_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1043,7 +1049,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1081,11 +1087,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1093,9 +1099,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_personas_without_preload_content(
+    async def get_paginated_personas_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1113,7 +1119,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1151,7 +1157,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1176,7 +1182,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1221,9 +1229,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_staff_classifications(
+    async def get_paginated_staff_classifications(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1245,7 +1253,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1295,11 +1303,11 @@ class ObservationSettingsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1307,9 +1315,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_staff_classifications_with_http_info(
+    async def get_paginated_staff_classifications_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1331,7 +1339,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1381,11 +1389,11 @@ class ObservationSettingsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1393,9 +1401,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_paginated_staff_classifications_without_preload_content(
+    async def get_paginated_staff_classifications_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         page_index: Optional[StrictInt] = None,
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1417,7 +1425,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param page_index: 
         :type page_index: int
         :param page_size: 
@@ -1467,7 +1475,7 @@ class ObservationSettingsApi:
             '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1496,7 +1504,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1557,9 +1567,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_staff_classifications_settings(
+    async def get_staff_classifications_settings(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1577,7 +1587,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1615,11 +1625,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1627,9 +1637,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_staff_classifications_settings_with_http_info(
+    async def get_staff_classifications_settings_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1647,7 +1657,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1685,11 +1695,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1697,9 +1707,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_staff_classifications_settings_without_preload_content(
+    async def get_staff_classifications_settings_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1717,7 +1727,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1755,7 +1765,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1780,7 +1790,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1825,9 +1837,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_tea_tenant_organizations(
+    async def get_tea_tenant_organizations(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         tea_tenant_id: Optional[StrictStr] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
@@ -1850,7 +1862,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param tea_tenant_id: 
         :type tea_tenant_id: str
         :param page_size: 
@@ -1903,11 +1915,11 @@ class ObservationSettingsApi:
             '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1915,9 +1927,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_tea_tenant_organizations_with_http_info(
+    async def get_tea_tenant_organizations_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         tea_tenant_id: Optional[StrictStr] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
@@ -1940,7 +1952,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param tea_tenant_id: 
         :type tea_tenant_id: str
         :param page_size: 
@@ -1993,11 +2005,11 @@ class ObservationSettingsApi:
             '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2005,9 +2017,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def get_tea_tenant_organizations_without_preload_content(
+    async def get_tea_tenant_organizations_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         tea_tenant_id: Optional[StrictStr] = None,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
@@ -2030,7 +2042,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param tea_tenant_id: 
         :type tea_tenant_id: str
         :param page_size: 
@@ -2083,7 +2095,7 @@ class ObservationSettingsApi:
             '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2113,7 +2125,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2178,9 +2192,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def set_application_settings(
+    async def set_application_settings(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest] = None,
         _request_timeout: Union[
             None,
@@ -2199,7 +2213,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2240,11 +2254,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2252,9 +2266,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def set_application_settings_with_http_info(
+    async def set_application_settings_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest] = None,
         _request_timeout: Union[
             None,
@@ -2273,7 +2287,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2314,11 +2328,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2326,9 +2340,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def set_application_settings_without_preload_content(
+    async def set_application_settings_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest] = None,
         _request_timeout: Union[
             None,
@@ -2347,7 +2361,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2388,7 +2402,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2414,7 +2428,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2477,9 +2493,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def set_role_personas_settings(
+    async def set_role_personas_settings(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest] = None,
         _request_timeout: Union[
             None,
@@ -2498,7 +2514,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2539,11 +2555,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2551,9 +2567,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def set_role_personas_settings_with_http_info(
+    async def set_role_personas_settings_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest] = None,
         _request_timeout: Union[
             None,
@@ -2572,7 +2588,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2613,11 +2629,11 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2625,9 +2641,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def set_role_personas_settings_without_preload_content(
+    async def set_role_personas_settings_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest] = None,
         _request_timeout: Union[
             None,
@@ -2646,7 +2662,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: 
         :type ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2687,7 +2703,7 @@ class ObservationSettingsApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2713,7 +2729,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2776,9 +2794,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def verify_sys_admin_credentials(
+    async def verify_sys_admin_credentials(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2796,7 +2814,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2834,11 +2852,11 @@ class ObservationSettingsApi:
             '200': "object",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2846,9 +2864,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def verify_sys_admin_credentials_with_http_info(
+    async def verify_sys_admin_credentials_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2866,7 +2884,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2904,11 +2922,11 @@ class ObservationSettingsApi:
             '200': "object",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -2916,9 +2934,9 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    def verify_sys_admin_credentials_without_preload_content(
+    async def verify_sys_admin_credentials_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2936,7 +2954,7 @@ class ObservationSettingsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2974,7 +2992,7 @@ class ObservationSettingsApi:
             '200': "object",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -2999,7 +3017,9 @@ class ObservationSettingsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

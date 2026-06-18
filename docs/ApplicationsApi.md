@@ -37,7 +37,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ApplicationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -45,7 +45,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves an application
-        api_response = api_instance.get_tenant_application_profile_by_id_async(tenant_id, application_id)
+        api_response = await api_instance.get_tenant_application_profile_by_id_async(tenant_id, application_id)
         print("The response of ApplicationsApi->get_tenant_application_profile_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -117,7 +117,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ApplicationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -128,7 +128,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of applications associated to this tenant
-        api_response = api_instance.get_tenant_applications_async(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_tenant_applications_async(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of ApplicationsApi->get_tenant_applications_async:\n")
         pprint(api_response)
     except Exception as e:

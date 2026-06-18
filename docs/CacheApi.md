@@ -35,13 +35,13 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.CacheApi(api_client)
 
     try:
         # Refreshes the user's profile cache.
-        api_instance.refresh_user_profile_cache()
+        await api_instance.refresh_user_profile_cache()
     except Exception as e:
         print("Exception when calling CacheApi->refresh_user_profile_cache: %s\n" % e)
 ```

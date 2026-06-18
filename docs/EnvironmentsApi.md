@@ -47,7 +47,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -55,7 +55,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Environment.
-        api_response = api_instance.create_environment(tenant_id, validations_api_db_environments_v1_create_request=validations_api_db_environments_v1_create_request)
+        api_response = await api_instance.create_environment(tenant_id, validations_api_db_environments_v1_create_request=validations_api_db_environments_v1_create_request)
         print("The response of EnvironmentsApi->create_environment:\n")
         pprint(api_response)
     except Exception as e:
@@ -128,15 +128,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_create_environment_request = edgraph_platform_client.EdGraphServicesStateReportingV1CreateEnvironmentRequest() # EdGraphServicesStateReportingV1CreateEnvironmentRequest |  (optional)
 
     try:
         # Creates a new Environment.
-        api_response = api_instance.create_state_reporting_environment(tenant_id, ed_graph_services_state_reporting_v1_create_environment_request=ed_graph_services_state_reporting_v1_create_environment_request)
+        api_response = await api_instance.create_state_reporting_environment(tenant_id, ed_graph_services_state_reporting_v1_create_environment_request=ed_graph_services_state_reporting_v1_create_environment_request)
         print("The response of EnvironmentsApi->create_state_reporting_environment:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,7 +150,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_create_environment_request** | [**EdGraphServicesStateReportingV1CreateEnvironmentRequest**](EdGraphServicesStateReportingV1CreateEnvironmentRequest.md)|  | [optional] 
 
 ### Return type
@@ -207,7 +207,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -215,7 +215,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes an Environment.
-        api_instance.delete_environment(tenant_id, environment_id)
+        await api_instance.delete_environment(tenant_id, environment_id)
     except Exception as e:
         print("Exception when calling EnvironmentsApi->delete_environment: %s\n" % e)
 ```
@@ -285,15 +285,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Deletes an Environment.
-        api_response = api_instance.delete_state_reporting_environment(tenant_id, environment_id)
+        api_response = await api_instance.delete_state_reporting_environment(tenant_id, environment_id)
         print("The response of EnvironmentsApi->delete_state_reporting_environment:\n")
         pprint(api_response)
     except Exception as e:
@@ -307,8 +307,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
 
 ### Return type
 
@@ -365,7 +365,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -373,7 +373,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves an Environment by ID.
-        api_response = api_instance.get_environment_by_id(tenant_id, environment_id)
+        api_response = await api_instance.get_environment_by_id(tenant_id, environment_id)
         print("The response of EnvironmentsApi->get_environment_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -445,7 +445,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -456,7 +456,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Environments.
-        api_response = api_instance.get_environments(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_environments(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of EnvironmentsApi->get_environments:\n")
         pprint(api_response)
     except Exception as e:
@@ -530,15 +530,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves an Environment by ID.
-        api_response = api_instance.get_state_reporting_environment(tenant_id, environment_id)
+        api_response = await api_instance.get_state_reporting_environment(tenant_id, environment_id)
         print("The response of EnvironmentsApi->get_state_reporting_environment:\n")
         pprint(api_response)
     except Exception as e:
@@ -552,8 +552,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
 
 ### Return type
 
@@ -610,10 +610,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = 'order_by_example' # str |  (optional)
@@ -621,7 +621,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Environments.
-        api_response = api_instance.search_state_reporting_environments(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_state_reporting_environments(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of EnvironmentsApi->search_state_reporting_environments:\n")
         pprint(api_response)
     except Exception as e:
@@ -635,7 +635,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] 
@@ -696,7 +696,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -704,7 +704,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Tests if the provided connection string can establish a valid connection.
-        api_response = api_instance.test_environment_connection(tenant_id, validations_api_db_environments_v1_test_connection_request=validations_api_db_environments_v1_test_connection_request)
+        api_response = await api_instance.test_environment_connection(tenant_id, validations_api_db_environments_v1_test_connection_request=validations_api_db_environments_v1_test_connection_request)
         print("The response of EnvironmentsApi->test_environment_connection:\n")
         pprint(api_response)
     except Exception as e:
@@ -775,7 +775,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -784,7 +784,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates an Environment.
-        api_response = api_instance.update_environment(tenant_id, environment_id, validations_api_db_environments_v1_update_request=validations_api_db_environments_v1_update_request)
+        api_response = await api_instance.update_environment(tenant_id, environment_id, validations_api_db_environments_v1_update_request=validations_api_db_environments_v1_update_request)
         print("The response of EnvironmentsApi->update_environment:\n")
         pprint(api_response)
     except Exception as e:
@@ -858,16 +858,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnvironmentsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    environment_id = 'environment_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    environment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_services_state_reporting_v1_update_environment_request = edgraph_platform_client.EdGraphServicesStateReportingV1UpdateEnvironmentRequest() # EdGraphServicesStateReportingV1UpdateEnvironmentRequest |  (optional)
 
     try:
         # Updates an Environment.
-        api_response = api_instance.update_state_reporting_environment(tenant_id, environment_id, ed_graph_services_state_reporting_v1_update_environment_request=ed_graph_services_state_reporting_v1_update_environment_request)
+        api_response = await api_instance.update_state_reporting_environment(tenant_id, environment_id, ed_graph_services_state_reporting_v1_update_environment_request=ed_graph_services_state_reporting_v1_update_environment_request)
         print("The response of EnvironmentsApi->update_state_reporting_environment:\n")
         pprint(api_response)
     except Exception as e:
@@ -881,8 +881,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **environment_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **environment_id** | **UUID**|  | 
  **ed_graph_services_state_reporting_v1_update_environment_request** | [**EdGraphServicesStateReportingV1UpdateEnvironmentRequest**](EdGraphServicesStateReportingV1UpdateEnvironmentRequest.md)|  | [optional] 
 
 ### Return type

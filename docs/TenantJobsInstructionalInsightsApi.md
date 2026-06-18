@@ -42,7 +42,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsInstructionalInsightsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -50,7 +50,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates an Instructional Insights Security Sync Job for a given tenant
-        api_response = api_instance.create_instructional_insights_security_sync_job(tenant_id, identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request=identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request)
+        api_response = await api_instance.create_instructional_insights_security_sync_job(tenant_id, identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request=identity_api_instructional_insights_v1_create_instructional_insights_security_sync_job_request)
         print("The response of TenantJobsInstructionalInsightsApi->create_instructional_insights_security_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -121,14 +121,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsInstructionalInsightsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Executes an Instructional Insights Security Sync Job
-        api_response = api_instance.execute_instructional_insights_security_sync_job(tenant_id)
+        api_response = await api_instance.execute_instructional_insights_security_sync_job(tenant_id)
         print("The response of TenantJobsInstructionalInsightsApi->execute_instructional_insights_security_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -142,7 +142,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -198,14 +198,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsInstructionalInsightsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Retrieves an Instructional Insights Security Sync Job for a given tenant
-        api_response = api_instance.get_instructional_insights_security_sync_job(tenant_id)
+        api_response = await api_instance.get_instructional_insights_security_sync_job(tenant_id)
         print("The response of TenantJobsInstructionalInsightsApi->get_instructional_insights_security_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -219,7 +219,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -275,11 +275,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsInstructionalInsightsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    execution_id = 'execution_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    execution_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     job_id = '' # str |  (optional) (default to '')
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
@@ -289,7 +289,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches Instructional Insights Security Sync Job Execution Logs for a given tenant and execution
-        api_response = api_instance.search_instructional_insights_security_sync_job_execution_logs(tenant_id, execution_id, job_id=job_id, page_index=page_index, page_size=page_size, order_by=order_by, level=level, message=message)
+        api_response = await api_instance.search_instructional_insights_security_sync_job_execution_logs(tenant_id, execution_id, job_id=job_id, page_index=page_index, page_size=page_size, order_by=order_by, level=level, message=message)
         print("The response of TenantJobsInstructionalInsightsApi->search_instructional_insights_security_sync_job_execution_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -303,8 +303,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **execution_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **execution_id** | **UUID**|  | 
  **job_id** | **str**|  | [optional] [default to &#39;&#39;]
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
@@ -366,10 +366,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsInstructionalInsightsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     job_id = '' # str |  (optional) (default to '')
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
@@ -378,7 +378,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches Instructional Insights Security Sync Job Executions for a given tenant
-        api_response = api_instance.search_instructional_insights_security_sync_job_executions(tenant_id, job_id=job_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_instructional_insights_security_sync_job_executions(tenant_id, job_id=job_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of TenantJobsInstructionalInsightsApi->search_instructional_insights_security_sync_job_executions:\n")
         pprint(api_response)
     except Exception as e:
@@ -392,7 +392,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **job_id** | **str**|  | [optional] [default to &#39;&#39;]
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
@@ -454,15 +454,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.TenantJobsInstructionalInsightsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request = edgraph_platform_client.IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest() # IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest |  (optional)
 
     try:
         # Updates an Instructional Insights Security Sync Job for a given tenant
-        api_response = api_instance.update_instructional_insights_security_sync_job(tenant_id, identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request=identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request)
+        api_response = await api_instance.update_instructional_insights_security_sync_job(tenant_id, identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request=identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request)
         print("The response of TenantJobsInstructionalInsightsApi->update_instructional_insights_security_sync_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -476,7 +476,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **identity_api_instructional_insights_v1_update_instructional_insights_security_sync_job_request** | [**IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest**](IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest.md)|  | [optional] 
 
 ### Return type

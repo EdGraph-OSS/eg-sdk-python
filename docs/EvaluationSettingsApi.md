@@ -38,14 +38,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationSettingsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
         # Gets the Evaluation Settings for a given tenant
-        api_response = api_instance.get_evaluation_setting(tenant_id)
+        api_response = await api_instance.get_evaluation_setting(tenant_id)
         print("The response of EvaluationSettingsApi->get_evaluation_setting:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,7 +59,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
 
 ### Return type
 
@@ -116,15 +116,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationSettingsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     evaluation_api_evaluation_settings_v1_set_application_request = edgraph_platform_client.EvaluationApiEvaluationSettingsV1SetApplicationRequest() # EvaluationApiEvaluationSettingsV1SetApplicationRequest |  (optional)
 
     try:
         # Sets the Application Settings of an Evaluation for a given Tenant
-        api_response = api_instance.set_evaluation_setting_application_setting(tenant_id, evaluation_api_evaluation_settings_v1_set_application_request=evaluation_api_evaluation_settings_v1_set_application_request)
+        api_response = await api_instance.set_evaluation_setting_application_setting(tenant_id, evaluation_api_evaluation_settings_v1_set_application_request=evaluation_api_evaluation_settings_v1_set_application_request)
         print("The response of EvaluationSettingsApi->set_evaluation_setting_application_setting:\n")
         pprint(api_response)
     except Exception as e:
@@ -138,7 +138,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **evaluation_api_evaluation_settings_v1_set_application_request** | [**EvaluationApiEvaluationSettingsV1SetApplicationRequest**](EvaluationApiEvaluationSettingsV1SetApplicationRequest.md)|  | [optional] 
 
 ### Return type
@@ -196,15 +196,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EvaluationSettingsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     evaluation_api_evaluation_settings_v1_set_users_request = edgraph_platform_client.EvaluationApiEvaluationSettingsV1SetUsersRequest() # EvaluationApiEvaluationSettingsV1SetUsersRequest |  (optional)
 
     try:
         # Sets the User Settings of an Evaluation for a given Tenant
-        api_response = api_instance.set_evaluation_setting_user_setting(tenant_id, evaluation_api_evaluation_settings_v1_set_users_request=evaluation_api_evaluation_settings_v1_set_users_request)
+        api_response = await api_instance.set_evaluation_setting_user_setting(tenant_id, evaluation_api_evaluation_settings_v1_set_users_request=evaluation_api_evaluation_settings_v1_set_users_request)
         print("The response of EvaluationSettingsApi->set_evaluation_setting_user_setting:\n")
         pprint(api_response)
     except Exception as e:
@@ -218,7 +218,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **evaluation_api_evaluation_settings_v1_set_users_request** | [**EvaluationApiEvaluationSettingsV1SetUsersRequest**](EvaluationApiEvaluationSettingsV1SetUsersRequest.md)|  | [optional] 
 
 ### Return type

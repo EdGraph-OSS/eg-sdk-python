@@ -44,7 +44,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -53,7 +53,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new configuration.
-        api_response = api_instance.create_analytics_configuration_async(tenant_id, workspace_name, analytics_api_configurations_v1_create_configuration_request=analytics_api_configurations_v1_create_configuration_request)
+        api_response = await api_instance.create_analytics_configuration_async(tenant_id, workspace_name, analytics_api_configurations_v1_create_configuration_request=analytics_api_configurations_v1_create_configuration_request)
         print("The response of ConfigurationsApi->create_analytics_configuration_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -125,7 +125,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -133,7 +133,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a configuration.
-        api_instance.delete_analytics_configuration_async(tenant_id, configuration_id)
+        await api_instance.delete_analytics_configuration_async(tenant_id, configuration_id)
     except Exception as e:
         print("Exception when calling ConfigurationsApi->delete_analytics_configuration_async: %s\n" % e)
 ```
@@ -203,7 +203,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -214,7 +214,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves all configurations.
-        api_response = api_instance.get_all_analytics_configurations_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_analytics_configurations_async(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of ConfigurationsApi->get_all_analytics_configurations_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -289,7 +289,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -297,7 +297,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a configuration by ID.
-        api_response = api_instance.get_analytics_configuration_by_id_async(tenant_id, configuration_id)
+        api_response = await api_instance.get_analytics_configuration_by_id_async(tenant_id, configuration_id)
         print("The response of ConfigurationsApi->get_analytics_configuration_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -369,14 +369,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
 
     try:
         # Retrieves current default configuration.
-        api_response = api_instance.get_analytics_configuration_by_tenant_id_async(tenant_id)
+        api_response = await api_instance.get_analytics_configuration_by_tenant_id_async(tenant_id)
         print("The response of ConfigurationsApi->get_analytics_configuration_by_tenant_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -447,14 +447,14 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
 
     try:
         # Verifies if current default configuration has required values for correct functionality.
-        api_response = api_instance.has_valid_analytics_configuration_async(tenant_id)
+        api_response = await api_instance.has_valid_analytics_configuration_async(tenant_id)
         print("The response of ConfigurationsApi->has_valid_analytics_configuration_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -526,7 +526,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -535,7 +535,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a configuration.
-        api_response = api_instance.update_analytics_configuration_async(tenant_id, configuration_id, analytics_api_configurations_v1_update_configuration_request=analytics_api_configurations_v1_update_configuration_request)
+        api_response = await api_instance.update_analytics_configuration_async(tenant_id, configuration_id, analytics_api_configurations_v1_update_configuration_request=analytics_api_configurations_v1_update_configuration_request)
         print("The response of ConfigurationsApi->update_analytics_configuration_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -609,7 +609,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.ConfigurationsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -617,7 +617,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Verifies if AAD token generation is possible with user provided values.
-        api_response = api_instance.validate_aad_token_async(tenant_id, analytics_api_configurations_v1_analytics_azure_ad=analytics_api_configurations_v1_analytics_azure_ad)
+        api_response = await api_instance.validate_aad_token_async(tenant_id, analytics_api_configurations_v1_analytics_azure_ad=analytics_api_configurations_v1_analytics_azure_ad)
         print("The response of ConfigurationsApi->validate_aad_token_async:\n")
         pprint(api_response)
     except Exception as e:

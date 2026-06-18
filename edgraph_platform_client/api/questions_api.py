@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
 from typing import Optional
+from uuid import UUID
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_response_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDto
@@ -45,11 +45,11 @@ class QuestionsApi:
 
 
     @validate_call
-    def create_question(
+    async def create_question(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto] = None,
         _request_timeout: Union[
             None,
@@ -68,11 +68,11 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto
         :param _request_timeout: timeout setting for this request. If one
@@ -115,11 +115,11 @@ class QuestionsApi:
             '200': "FormApiQuestionsV1QuestionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -127,11 +127,11 @@ class QuestionsApi:
 
 
     @validate_call
-    def create_question_with_http_info(
+    async def create_question_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto] = None,
         _request_timeout: Union[
             None,
@@ -150,11 +150,11 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto
         :param _request_timeout: timeout setting for this request. If one
@@ -197,11 +197,11 @@ class QuestionsApi:
             '200': "FormApiQuestionsV1QuestionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -209,11 +209,11 @@ class QuestionsApi:
 
 
     @validate_call
-    def create_question_without_preload_content(
+    async def create_question_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto] = None,
         _request_timeout: Union[
             None,
@@ -232,11 +232,11 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_create_question_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto
         :param _request_timeout: timeout setting for this request. If one
@@ -279,7 +279,7 @@ class QuestionsApi:
             '200': "FormApiQuestionsV1QuestionCreatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -307,7 +307,9 @@ class QuestionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -374,12 +376,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def delete_question(
+    async def delete_question(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -397,13 +399,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -445,11 +447,11 @@ class QuestionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -457,12 +459,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def delete_question_with_http_info(
+    async def delete_question_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -480,13 +482,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -528,11 +530,11 @@ class QuestionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -540,12 +542,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def delete_question_without_preload_content(
+    async def delete_question_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -563,13 +565,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -611,7 +613,7 @@ class QuestionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -639,7 +641,9 @@ class QuestionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -690,12 +694,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def get_question(
+    async def get_question(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -713,13 +717,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -761,11 +765,11 @@ class QuestionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -773,12 +777,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def get_question_with_http_info(
+    async def get_question_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,13 +800,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -844,11 +848,11 @@ class QuestionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -856,12 +860,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def get_question_without_preload_content(
+    async def get_question_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -879,13 +883,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -927,7 +931,7 @@ class QuestionsApi:
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
             '404': "MicrosoftAspNetCoreMvcProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -955,7 +959,9 @@ class QuestionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1006,11 +1012,11 @@ class QuestionsApi:
 
 
     @validate_call
-    def search_questions(
+    async def search_questions(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1032,11 +1038,11 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1088,11 +1094,11 @@ class QuestionsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1100,11 +1106,11 @@ class QuestionsApi:
 
 
     @validate_call
-    def search_questions_with_http_info(
+    async def search_questions_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1126,11 +1132,11 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1182,11 +1188,11 @@ class QuestionsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1194,11 +1200,11 @@ class QuestionsApi:
 
 
     @validate_call
-    def search_questions_without_preload_content(
+    async def search_questions_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -1220,11 +1226,11 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -1276,7 +1282,7 @@ class QuestionsApi:
             '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1307,7 +1313,9 @@ class QuestionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1372,12 +1380,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def update_question(
+    async def update_question(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto] = None,
         _request_timeout: Union[
             None,
@@ -1396,13 +1404,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto
         :param _request_timeout: timeout setting for this request. If one
@@ -1446,11 +1454,11 @@ class QuestionsApi:
             '200': "FormApiQuestionsV1QuestionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1458,12 +1466,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def update_question_with_http_info(
+    async def update_question_with_http_info(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto] = None,
         _request_timeout: Union[
             None,
@@ -1482,13 +1490,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto
         :param _request_timeout: timeout setting for this request. If one
@@ -1532,11 +1540,11 @@ class QuestionsApi:
             '200': "FormApiQuestionsV1QuestionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1544,12 +1552,12 @@ class QuestionsApi:
 
 
     @validate_call
-    def update_question_without_preload_content(
+    async def update_question_without_preload_content(
         self,
-        tenant_id: StrictStr,
-        form_id: StrictStr,
-        section_id: StrictStr,
-        question_id: StrictStr,
+        tenant_id: UUID,
+        form_id: UUID,
+        section_id: UUID,
+        question_id: UUID,
         ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto] = None,
         _request_timeout: Union[
             None,
@@ -1568,13 +1576,13 @@ class QuestionsApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param form_id:  (required)
-        :type form_id: str
+        :type form_id: UUID
         :param section_id:  (required)
-        :type section_id: str
+        :type section_id: UUID
         :param question_id:  (required)
-        :type question_id: str
+        :type question_id: UUID
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: 
         :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_forms_update_question_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto
         :param _request_timeout: timeout setting for this request. If one
@@ -1618,7 +1626,7 @@ class QuestionsApi:
             '200': "FormApiQuestionsV1QuestionUpdatedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1647,7 +1655,9 @@ class QuestionsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -40,16 +40,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSEOAAsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest() # EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest |  (optional)
 
     try:
         # Add User SEOAAs
-        api_response = api_instance.add_user_seoaa(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request=ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request)
+        api_response = await api_instance.add_user_seoaa(tenant_id, user_id, ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request=ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request)
         print("The response of UsersSEOAAsApi->add_user_seoaa:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,8 +63,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v2_requests_add_seoaa_request** | [**EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest**](EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest.md)|  | [optional] 
 
 ### Return type
@@ -121,16 +121,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSEOAAsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     seoaa_id = 'seoaa_id_example' # str | 
 
     try:
         # Delete User SEOAAs
-        api_response = api_instance.delete_user_seoaa(tenant_id, user_id, seoaa_id)
+        api_response = await api_instance.delete_user_seoaa(tenant_id, user_id, seoaa_id)
         print("The response of UsersSEOAAsApi->delete_user_seoaa:\n")
         pprint(api_response)
     except Exception as e:
@@ -144,8 +144,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **seoaa_id** | **str**|  | 
 
 ### Return type
@@ -202,11 +202,11 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSEOAAsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_size = 10 # int |  (optional) (default to 10)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -214,7 +214,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Search User SEOAAs
-        api_response = api_instance.search_user_seoaa(tenant_id, user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.search_user_seoaa(tenant_id, user_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of UsersSEOAAsApi->search_user_seoaa:\n")
         pprint(api_response)
     except Exception as e:
@@ -228,8 +228,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **page_size** | **int**|  | [optional] [default to 10]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -290,17 +290,17 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.UsersSEOAAsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    user_id = 'user_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    user_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     seoaa_id = 'seoaa_id_example' # str | 
     ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest() # EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest |  (optional)
 
     try:
         # Update User SEOAAs
-        api_response = api_instance.update_user_seoaa(tenant_id, user_id, seoaa_id, ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request=ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request)
+        api_response = await api_instance.update_user_seoaa(tenant_id, user_id, seoaa_id, ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request=ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request)
         print("The response of UsersSEOAAsApi->update_user_seoaa:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,8 +314,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **user_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **user_id** | **UUID**|  | 
  **seoaa_id** | **str**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v2_requests_update_seoaa_request** | [**EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest**](EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest.md)|  | [optional] 
 

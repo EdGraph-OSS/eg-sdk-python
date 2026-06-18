@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id** | **str** |  | [optional] 
-**data_sync_connection_id** | **str** |  | [optional] 
-**data_sync_job_id** | **str** |  | [optional] 
+**tenant_id** | **UUID** |  | [optional] 
+**data_sync_connection_id** | **UUID** |  | [optional] 
+**data_sync_job_id** | **UUID** |  | [optional] 
 **ed_fi_instance_id** | **str** |  | [optional] 
 
 ## Example

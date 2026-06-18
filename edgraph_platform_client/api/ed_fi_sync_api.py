@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     All Api
 
@@ -11,6 +9,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 from typing import Any, Optional
+from uuid import UUID
 from edgraph_platform_client.models.data_sync_api_ed_fi_roster_sync_v1_ed_fi_roster_sync_job_profile import DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile
 from edgraph_platform_client.models.data_sync_api_job_v1_job_execution_requested_response import DataSyncApiJobV1JobExecutionRequestedResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto import EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto
@@ -43,7 +43,7 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def create_ed_fi_sync(
+    async def create_ed_fi_sync(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto: Optional[EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto] = None,
@@ -105,11 +105,11 @@ class EdFiSyncApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -117,7 +117,7 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def create_ed_fi_sync_with_http_info(
+    async def create_ed_fi_sync_with_http_info(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto: Optional[EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto] = None,
@@ -179,11 +179,11 @@ class EdFiSyncApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -191,7 +191,7 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def create_ed_fi_sync_without_preload_content(
+    async def create_ed_fi_sync_without_preload_content(
         self,
         tenant_id: StrictStr,
         ed_graph_http_aggregators_tenant_api_services_ed_fi_roster_sync_create_ed_fi_roster_sync_job_request_dto: Optional[EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto] = None,
@@ -253,7 +253,7 @@ class EdFiSyncApi:
             '200': "EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -279,7 +279,9 @@ class EdFiSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -342,9 +344,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def execute_ed_fi_sync_job(
+    async def execute_ed_fi_sync_job(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -362,7 +364,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -400,11 +402,11 @@ class EdFiSyncApi:
             '200': "DataSyncApiJobV1JobExecutionRequestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -412,9 +414,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def execute_ed_fi_sync_job_with_http_info(
+    async def execute_ed_fi_sync_job_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -432,7 +434,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -470,11 +472,11 @@ class EdFiSyncApi:
             '200': "DataSyncApiJobV1JobExecutionRequestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -482,9 +484,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def execute_ed_fi_sync_job_without_preload_content(
+    async def execute_ed_fi_sync_job_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -502,7 +504,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -540,7 +542,7 @@ class EdFiSyncApi:
             '200': "DataSyncApiJobV1JobExecutionRequestedResponse",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -565,7 +567,9 @@ class EdFiSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -610,9 +614,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def get_ed_fi_sync_data(
+    async def get_ed_fi_sync_data(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -630,7 +634,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -668,11 +672,11 @@ class EdFiSyncApi:
             '200': "DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -680,9 +684,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def get_ed_fi_sync_data_with_http_info(
+    async def get_ed_fi_sync_data_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -700,7 +704,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -738,11 +742,11 @@ class EdFiSyncApi:
             '200': "DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -750,9 +754,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def get_ed_fi_sync_data_without_preload_content(
+    async def get_ed_fi_sync_data_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -770,7 +774,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -808,7 +812,7 @@ class EdFiSyncApi:
             '200': "DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -833,7 +837,9 @@ class EdFiSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -878,9 +884,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def update_ed_fi_sync(
+    async def update_ed_fi_sync(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         body: Optional[Any] = None,
         _request_timeout: Union[
             None,
@@ -899,7 +905,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param body: 
         :type body: object
         :param _request_timeout: timeout setting for this request. If one
@@ -940,11 +946,11 @@ class EdFiSyncApi:
             '200': "MicrosoftAspNetCoreMvcNoContentResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -952,9 +958,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def update_ed_fi_sync_with_http_info(
+    async def update_ed_fi_sync_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         body: Optional[Any] = None,
         _request_timeout: Union[
             None,
@@ -973,7 +979,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param body: 
         :type body: object
         :param _request_timeout: timeout setting for this request. If one
@@ -1014,11 +1020,11 @@ class EdFiSyncApi:
             '200': "MicrosoftAspNetCoreMvcNoContentResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1026,9 +1032,9 @@ class EdFiSyncApi:
 
 
     @validate_call
-    def update_ed_fi_sync_without_preload_content(
+    async def update_ed_fi_sync_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: UUID,
         body: Optional[Any] = None,
         _request_timeout: Union[
             None,
@@ -1047,7 +1053,7 @@ class EdFiSyncApi:
 
 
         :param tenant_id:  (required)
-        :type tenant_id: str
+        :type tenant_id: UUID
         :param body: 
         :type body: object
         :param _request_timeout: timeout setting for this request. If one
@@ -1088,7 +1094,7 @@ class EdFiSyncApi:
             '200': "MicrosoftAspNetCoreMvcNoContentResult",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1114,7 +1120,9 @@ class EdFiSyncApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

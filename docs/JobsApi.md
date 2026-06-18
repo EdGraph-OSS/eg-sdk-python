@@ -52,7 +52,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -61,7 +61,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Activate a DataSync job matching the primary key
-        api_instance.activate_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_activate_job_request=data_sync_api_job_v1_activate_job_request)
+        await api_instance.activate_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_activate_job_request=data_sync_api_job_v1_activate_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->activate_tenant_data_sync_job: %s\n" % e)
 ```
@@ -131,7 +131,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -139,7 +139,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Requests a Job cancellation.
-        api_response = api_instance.cancel_job(tenant_id, job_id)
+        api_response = await api_instance.cancel_job(tenant_id, job_id)
         print("The response of JobsApi->cancel_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -211,7 +211,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -220,7 +220,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Cancel a DataSync job matching the primary key
-        api_instance.cancel_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_cancel_job_request=data_sync_api_job_v1_cancel_job_request)
+        await api_instance.cancel_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_cancel_job_request=data_sync_api_job_v1_cancel_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->cancel_tenant_data_sync_job: %s\n" % e)
 ```
@@ -292,15 +292,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest |  (optional)
 
     try:
         # Creates a Job.
-        api_response = api_instance.create_job(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request)
+        api_response = await api_instance.create_job(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request)
         print("The response of JobsApi->create_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,7 +314,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_validations_create_validation_job_request** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest.md)|  | [optional] 
 
 ### Return type
@@ -371,7 +371,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -379,7 +379,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Creates a new DataSync job
-        api_instance.create_tenant_data_sync_job(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request)
+        await api_instance.create_tenant_data_sync_job(tenant_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_create_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->create_tenant_data_sync_job: %s\n" % e)
 ```
@@ -448,7 +448,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -457,7 +457,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Deactivate a DataSync job matching the primary key
-        api_instance.deactivate_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_deactivate_job_request=data_sync_api_job_v1_deactivate_job_request)
+        await api_instance.deactivate_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_deactivate_job_request=data_sync_api_job_v1_deactivate_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->deactivate_tenant_data_sync_job: %s\n" % e)
 ```
@@ -527,15 +527,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     job_id = 'job_id_example' # str | 
 
     try:
         # Deletes a Job.
-        api_instance.delete_job(tenant_id, job_id)
+        await api_instance.delete_job(tenant_id, job_id)
     except Exception as e:
         print("Exception when calling JobsApi->delete_job: %s\n" % e)
 ```
@@ -547,7 +547,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **job_id** | **str**|  | 
 
 ### Return type
@@ -604,7 +604,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -612,7 +612,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a DataSync job matching the primary key
-        api_instance.delete_tenant_data_sync_job(tenant_id, job_id)
+        await api_instance.delete_tenant_data_sync_job(tenant_id, job_id)
     except Exception as e:
         print("Exception when calling JobsApi->delete_tenant_data_sync_job: %s\n" % e)
 ```
@@ -681,15 +681,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     job_id = 'job_id_example' # str | 
 
     try:
         # Requests a Job execution.
-        api_response = api_instance.execute_job(tenant_id, job_id)
+        api_response = await api_instance.execute_job(tenant_id, job_id)
         print("The response of JobsApi->execute_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -703,7 +703,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **job_id** | **str**|  | 
 
 ### Return type
@@ -761,7 +761,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -770,7 +770,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Execute a DataSync job matching the primary key
-        api_instance.execute_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_execute_job_request=data_sync_api_job_v1_execute_job_request)
+        await api_instance.execute_tenant_data_sync_job(tenant_id, job_id, data_sync_api_job_v1_execute_job_request=data_sync_api_job_v1_execute_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->execute_tenant_data_sync_job: %s\n" % e)
 ```
@@ -841,7 +841,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -852,7 +852,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of DataSync Jobs
-        api_response = api_instance.get_all_tenant_data_sync_jobs(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_all_tenant_data_sync_jobs(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter)
         print("The response of JobsApi->get_all_tenant_data_sync_jobs:\n")
         pprint(api_response)
     except Exception as e:
@@ -926,7 +926,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -934,7 +934,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a Job by ID.
-        api_response = api_instance.get_job_by_id(tenant_id, job_id)
+        api_response = await api_instance.get_job_by_id(tenant_id, job_id)
         print("The response of JobsApi->get_job_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -1006,7 +1006,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1017,7 +1017,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of Jobs.
-        api_response = api_instance.get_jobs(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
+        api_response = await api_instance.get_jobs(tenant_id, page_index=page_index, page_size=page_size, filter=filter, order_by=order_by)
         print("The response of JobsApi->get_jobs:\n")
         pprint(api_response)
     except Exception as e:
@@ -1091,7 +1091,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1099,7 +1099,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a specific DataSync job using its primary key
-        api_response = api_instance.get_tenant_data_sync_job_profile_by_id(tenant_id, job_id)
+        api_response = await api_instance.get_tenant_data_sync_job_profile_by_id(tenant_id, job_id)
         print("The response of JobsApi->get_tenant_data_sync_job_profile_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -1169,7 +1169,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1177,7 +1177,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Requests a Job schedule restart.
-        api_instance.restart_job_schedule(tenant_id, job_id)
+        await api_instance.restart_job_schedule(tenant_id, job_id)
     except Exception as e:
         print("Exception when calling JobsApi->restart_job_schedule: %s\n" % e)
 ```
@@ -1247,16 +1247,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-    job_id = 'job_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    job_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest |  (optional)
 
     try:
         # Updates a Job.
-        api_instance.update_job(tenant_id, job_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request)
+        await api_instance.update_job(tenant_id, job_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->update_job: %s\n" % e)
 ```
@@ -1268,8 +1268,8 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
- **job_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
+ **job_id** | **UUID**|  | 
  **ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_validation_job_request** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest.md)|  | [optional] 
 
 ### Return type
@@ -1327,7 +1327,7 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.JobsApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
@@ -1336,7 +1336,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a DataSync job matching the primary key
-        api_instance.update_tenant_data_sync_job(tenant_id, job_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_job_request)
+        await api_instance.update_tenant_data_sync_job(tenant_id, job_id, ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_job_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_jobs_update_job_request)
     except Exception as e:
         print("Exception when calling JobsApi->update_tenant_data_sync_job: %s\n" % e)
 ```

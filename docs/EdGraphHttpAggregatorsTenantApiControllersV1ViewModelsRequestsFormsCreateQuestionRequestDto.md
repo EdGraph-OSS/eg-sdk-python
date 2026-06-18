@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**form_id** | **str** |  | [optional] 
-**section_id** | **str** |  | [optional] 
-**tenant_id** | **str** |  | [optional] 
+**form_id** | **UUID** |  | [optional] 
+**section_id** | **UUID** |  | [optional] 
+**tenant_id** | **UUID** |  | [optional] 
 **title** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **type** | [**FormApiQuestionsV1QuestionType**](FormApiQuestionsV1QuestionType.md) |  | [optional] 

@@ -23,6 +23,7 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_control
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_evaluations_staff_search_status import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse(BaseModel):
     """
@@ -36,7 +37,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluations
     __properties: ClassVar[List[str]] = ["pageIndex", "pageSize", "count", "data", "status"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,8 +50,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluations
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

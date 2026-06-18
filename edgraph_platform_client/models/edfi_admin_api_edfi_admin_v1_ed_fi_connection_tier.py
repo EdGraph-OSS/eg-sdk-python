@@ -23,6 +23,7 @@ from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_tier_ods_api_co
 from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_tier_sql_connection import EdfiAdminApiEdfiAdminV1TierSqlConnection
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdfiAdminApiEdfiAdminV1EdFiConnectionTier(BaseModel):
     """
@@ -32,10 +33,12 @@ class EdfiAdminApiEdfiAdminV1EdFiConnectionTier(BaseModel):
     tier_name: Optional[StrictStr] = Field(default=None, alias="tierName")
     ods_api_connection: Optional[EdfiAdminApiEdfiAdminV1TierOdsApiConnection] = Field(default=None, alias="odsApiConnection")
     sql_connection: Optional[EdfiAdminApiEdfiAdminV1TierSqlConnection] = Field(default=None, alias="sqlConnection")
-    __properties: ClassVar[List[str]] = ["tierId", "tierName", "odsApiConnection", "sqlConnection"]
+    admin_api_url: Optional[StrictStr] = Field(default=None, alias="adminApiUrl")
+    __properties: ClassVar[List[str]] = ["tierId", "tierName", "odsApiConnection", "sqlConnection", "adminApiUrl"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +50,7 @@ class EdfiAdminApiEdfiAdminV1EdFiConnectionTier(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -89,6 +91,11 @@ class EdfiAdminApiEdfiAdminV1EdFiConnectionTier(BaseModel):
         if self.tier_name is None and "tier_name" in self.model_fields_set:
             _dict['tierName'] = None
 
+        # set to None if admin_api_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.admin_api_url is None and "admin_api_url" in self.model_fields_set:
+            _dict['adminApiUrl'] = None
+
         return _dict
 
     @classmethod
@@ -104,7 +111,8 @@ class EdfiAdminApiEdfiAdminV1EdFiConnectionTier(BaseModel):
             "tierId": obj.get("tierId"),
             "tierName": obj.get("tierName"),
             "odsApiConnection": EdfiAdminApiEdfiAdminV1TierOdsApiConnection.from_dict(obj["odsApiConnection"]) if obj.get("odsApiConnection") is not None else None,
-            "sqlConnection": EdfiAdminApiEdfiAdminV1TierSqlConnection.from_dict(obj["sqlConnection"]) if obj.get("sqlConnection") is not None else None
+            "sqlConnection": EdfiAdminApiEdfiAdminV1TierSqlConnection.from_dict(obj["sqlConnection"]) if obj.get("sqlConnection") is not None else None,
+            "adminApiUrl": obj.get("adminApiUrl")
         })
         return _obj
 

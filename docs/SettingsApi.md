@@ -38,10 +38,10 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SettingsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     page_index = 0 # int |  (optional) (default to 0)
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
@@ -49,7 +49,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of the Tenant's settings.
-        api_response = api_instance.get_tenant_settings(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_tenant_settings(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SettingsApi->get_tenant_settings:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,7 +63,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **page_index** | **int**|  | [optional] [default to 0]
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
@@ -123,15 +123,15 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SettingsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     code = 'code_example' # str | 
 
     try:
         # Retrieves a Tenant's settings by code.
-        api_response = api_instance.get_tenant_settings_by_code(tenant_id, code)
+        api_response = await api_instance.get_tenant_settings_by_code(tenant_id, code)
         print("The response of SettingsApi->get_tenant_settings_by_code:\n")
         pprint(api_response)
     except Exception as e:
@@ -145,7 +145,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **code** | **str**|  | 
 
 ### Return type
@@ -203,16 +203,16 @@ configuration = edgraph_platform_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with edgraph_platform_client.ApiClient(configuration) as api_client:
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.SettingsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     code = 'code_example' # str | 
     tenant_api_tenant_v1_set_app_settings_request = edgraph_platform_client.TenantApiTenantV1SetAppSettingsRequest() # TenantApiTenantV1SetAppSettingsRequest |  (optional)
 
     try:
         # Creates/updates a Tenant's settings.
-        api_response = api_instance.set_tenant_settings(tenant_id, code, tenant_api_tenant_v1_set_app_settings_request=tenant_api_tenant_v1_set_app_settings_request)
+        api_response = await api_instance.set_tenant_settings(tenant_id, code, tenant_api_tenant_v1_set_app_settings_request=tenant_api_tenant_v1_set_app_settings_request)
         print("The response of SettingsApi->set_tenant_settings:\n")
         pprint(api_response)
     except Exception as e:
@@ -226,7 +226,7 @@ with edgraph_platform_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
+ **tenant_id** | **UUID**|  | 
  **code** | **str**|  | 
  **tenant_api_tenant_v1_set_app_settings_request** | [**TenantApiTenantV1SetAppSettingsRequest**](TenantApiTenantV1SetAppSettingsRequest.md)|  | [optional] 
 

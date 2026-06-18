@@ -19,14 +19,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserResponse(BaseModel):
     """
     EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserResponse
     """ # noqa: E501
-    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
+    user_id: Optional[UUID] = Field(default=None, alias="userId")
     first_name: Optional[StrictStr] = Field(default=None, alias="firstName")
     last_name: Optional[StrictStr] = Field(default=None, alias="lastName")
     email: Optional[StrictStr] = None
@@ -35,7 +37,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluations
     __properties: ClassVar[List[str]] = ["userId", "firstName", "lastName", "email", "numberOfEvaluations", "campus"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +50,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluations
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
