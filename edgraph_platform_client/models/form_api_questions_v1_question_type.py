@@ -35,6 +35,7 @@ class FormApiQuestionsV1QuestionType(str, Enum):
     SCORING = 'Scoring'
     HTML = 'Html'
     IMAGE = 'Image'
+    CHECKBOX = 'Checkbox'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

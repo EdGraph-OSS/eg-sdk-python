@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_observation**](ObservationsApi.md#create_observation) | **POST** /tenants/{tenantId}/observations | Creates a new Observation for a given tenant
 [**create_observation_submission**](ObservationsApi.md#create_observation_submission) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit | Creates a submission for an available form referencing an existing observation
 [**delete_observation**](ObservationsApi.md#delete_observation) | **DELETE** /tenants/{tenantId}/observations/{observationId} | Deletes an Observation for a given tenant
+[**get_available_campuses_total_evaluees**](ObservationsApi.md#get_available_campuses_total_evaluees) | **GET** /tenants/{tenantId}/observations/total-evaluees | Get the total number of evaluees across all available campuses
 [**get_dashboard**](ObservationsApi.md#get_dashboard) | **GET** /tenants/{tenantId}/observations/dashboards/{dashboardId} | Get Observation Dashboard
 [**get_dashboard_preferences**](ObservationsApi.md#get_dashboard_preferences) | **GET** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard
 [**get_evaluee_sections**](ObservationsApi.md#get_evaluee_sections) | **GET** /tenants/{tenantId}/observations/evaluees/{evalueeId}/sections | Gets the Sections of an evaluee.
@@ -249,6 +250,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_available_campuses_total_evaluees**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse get_available_campuses_total_evaluees(tenant_id)
+
+Get the total number of evaluees across all available campuses
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_available_campuses_total_evaluees_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.ObservationsApi(api_client)
+    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get the total number of evaluees across all available campuses
+        api_response = await api_instance.get_available_campuses_total_evaluees(tenant_id)
+        print("The response of ObservationsApi->get_available_campuses_total_evaluees:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ObservationsApi->get_available_campuses_total_evaluees: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **UUID**|  | 
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse.md)
 
 ### Authorization
 

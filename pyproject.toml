@@ -1,6 +1,6 @@
 [project]
 name = "edgraph_platform_client"
-version = "0.0.44"
+version = "0.0.45"
 description = "All Api"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
