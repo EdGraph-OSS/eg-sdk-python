@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ed_fi_instance_id** | **str** |  | [optional] 
 **use_ssa_instead_of_seoaa** | [**DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions**](DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions.md) |  | [optional] 
 **import_section_and_course_data** | **bool** |  | [optional] 
+**use_staff_ed_org_contact_association_for_emails** | **bool** |  | [optional] 
 
 ## Example
 

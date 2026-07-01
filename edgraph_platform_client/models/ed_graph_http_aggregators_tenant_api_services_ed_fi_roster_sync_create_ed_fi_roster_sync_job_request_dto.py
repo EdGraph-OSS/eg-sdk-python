@@ -31,7 +31,8 @@ class EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJ
     mode: Optional[StrictStr] = None
     use_ssa_instead_of_seoaa: Optional[DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions] = Field(default=None, alias="use_SSA_InsteadOf_SEOAA")
     import_section_and_course_data: Optional[StrictBool] = Field(default=None, alias="importSectionAndCourseData")
-    __properties: ClassVar[List[str]] = ["mode", "use_SSA_InsteadOf_SEOAA", "importSectionAndCourseData"]
+    use_staff_ed_org_contact_association_for_emails: Optional[StrictBool] = Field(default=None, alias="useStaffEdOrgContactAssociationForEmails")
+    __properties: ClassVar[List[str]] = ["mode", "use_SSA_InsteadOf_SEOAA", "importSectionAndCourseData", "useStaffEdOrgContactAssociationForEmails"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -94,7 +95,8 @@ class EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJ
         _obj = cls.model_validate({
             "mode": obj.get("mode"),
             "use_SSA_InsteadOf_SEOAA": DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions.from_dict(obj["use_SSA_InsteadOf_SEOAA"]) if obj.get("use_SSA_InsteadOf_SEOAA") is not None else None,
-            "importSectionAndCourseData": obj.get("importSectionAndCourseData")
+            "importSectionAndCourseData": obj.get("importSectionAndCourseData"),
+            "useStaffEdOrgContactAssociationForEmails": obj.get("useStaffEdOrgContactAssociationForEmails")
         })
         return _obj
 

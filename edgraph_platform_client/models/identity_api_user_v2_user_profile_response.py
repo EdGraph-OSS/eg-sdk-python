@@ -47,10 +47,7 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
     platform_role: Optional[StrictStr] = Field(default=None, alias="platformRole")
     tenant_status: Optional[StrictStr] = Field(default=None, alias="tenantStatus")
     tenant_admin: Optional[StrictBool] = Field(default=None, alias="tenantAdmin")
-    is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
-    deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
-    __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenantCount", "createdDateTime", "lastModifiedDateTime", "extensions", "logins", "source", "lastLoginDateTime", "mfaCompleted", "platformRole", "tenantStatus", "tenantAdmin", "isDeleted", "deletedDateTime", "deletedBy"]
+    __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenantCount", "createdDateTime", "lastModifiedDateTime", "extensions", "logins", "source", "lastLoginDateTime", "mfaCompleted", "platformRole", "tenantStatus", "tenantAdmin"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -189,16 +186,6 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
         if self.tenant_admin is None and "tenant_admin" in self.model_fields_set:
             _dict['tenantAdmin'] = None
 
-        # set to None if deleted_date_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
-            _dict['deletedDateTime'] = None
-
-        # set to None if deleted_by (nullable) is None
-        # and model_fields_set contains the field
-        if self.deleted_by is None and "deleted_by" in self.model_fields_set:
-            _dict['deletedBy'] = None
-
         return _dict
 
     @classmethod
@@ -228,10 +215,7 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
             "mfaCompleted": obj.get("mfaCompleted"),
             "platformRole": obj.get("platformRole"),
             "tenantStatus": obj.get("tenantStatus"),
-            "tenantAdmin": obj.get("tenantAdmin"),
-            "isDeleted": obj.get("isDeleted"),
-            "deletedDateTime": obj.get("deletedDateTime"),
-            "deletedBy": obj.get("deletedBy")
+            "tenantAdmin": obj.get("tenantAdmin")
         })
         return _obj
 

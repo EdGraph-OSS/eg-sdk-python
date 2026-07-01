@@ -24,9 +24,6 @@ Name | Type | Description | Notes
 **platform_role** | **str** |  | [optional] 
 **tenant_status** | **str** |  | [optional] 
 **tenant_admin** | **bool** |  | [optional] 
-**is_deleted** | **bool** |  | [optional] 
-**deleted_date_time** | **str** |  | [optional] 
-**deleted_by** | **str** |  | [optional] 
 
 ## Example
 

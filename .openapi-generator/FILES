@@ -562,9 +562,7 @@ docs/FormApiFormsV1FormSource.md
 docs/FormApiFormsV1FormStatus.md
 docs/FormApiFormsV1FormUpdatedResponse.md
 docs/FormApiFormsV1FullFormCreatedResponse.md
-docs/FormApiFormsV1FullFormSchemaResponse.md
 docs/FormApiFormsV1FullFormUpdatedResponse.md
-docs/FormApiFormsV1SchemaStatus.md
 docs/FormApiFormsV1SetFormAccessRequest.md
 docs/FormApiFormsV1UpdateFormRequest.md
 docs/FormApiFormsV1UpdateFullFormRequest.md
@@ -1684,9 +1682,7 @@ edgraph_platform_client/models/form_api_forms_v1_form_source.py
 edgraph_platform_client/models/form_api_forms_v1_form_status.py
 edgraph_platform_client/models/form_api_forms_v1_form_updated_response.py
 edgraph_platform_client/models/form_api_forms_v1_full_form_created_response.py
-edgraph_platform_client/models/form_api_forms_v1_full_form_schema_response.py
 edgraph_platform_client/models/form_api_forms_v1_full_form_updated_response.py
-edgraph_platform_client/models/form_api_forms_v1_schema_status.py
 edgraph_platform_client/models/form_api_forms_v1_set_form_access_request.py
 edgraph_platform_client/models/form_api_forms_v1_update_form_request.py
 edgraph_platform_client/models/form_api_forms_v1_update_full_form_request.py
@@ -2109,5 +2105,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_ed_graph_http_aggregators_tenant_api_services_observations_get_available_campuses_total_evaluees_response.py
 tox.ini

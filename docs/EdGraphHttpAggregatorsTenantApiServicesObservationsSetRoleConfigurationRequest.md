@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **tenant_id** | **str** |  | [optional] 
 **role** | **str** |  | [optional] 
 **assigned_persona_identifiers** | **List[str]** |  | [optional] 
+**ignore_organization** | **bool** |  | [optional] 
 
 ## Example
 

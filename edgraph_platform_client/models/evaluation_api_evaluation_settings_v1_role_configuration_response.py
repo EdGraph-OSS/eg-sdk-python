@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,8 @@ class EvaluationApiEvaluationSettingsV1RoleConfigurationResponse(BaseModel):
     """ # noqa: E501
     role: Optional[StrictStr] = None
     assigned_persona_identifiers: Optional[List[StrictStr]] = Field(default=None, alias="assignedPersonaIdentifiers")
-    __properties: ClassVar[List[str]] = ["role", "assignedPersonaIdentifiers"]
+    ignore_organization: Optional[StrictBool] = Field(default=None, alias="ignoreOrganization")
+    __properties: ClassVar[List[str]] = ["role", "assignedPersonaIdentifiers", "ignoreOrganization"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -82,6 +83,11 @@ class EvaluationApiEvaluationSettingsV1RoleConfigurationResponse(BaseModel):
         if self.assigned_persona_identifiers is None and "assigned_persona_identifiers" in self.model_fields_set:
             _dict['assignedPersonaIdentifiers'] = None
 
+        # set to None if ignore_organization (nullable) is None
+        # and model_fields_set contains the field
+        if self.ignore_organization is None and "ignore_organization" in self.model_fields_set:
+            _dict['ignoreOrganization'] = None
+
         return _dict
 
     @classmethod
@@ -95,7 +101,8 @@ class EvaluationApiEvaluationSettingsV1RoleConfigurationResponse(BaseModel):
 
         _obj = cls.model_validate({
             "role": obj.get("role"),
-            "assignedPersonaIdentifiers": obj.get("assignedPersonaIdentifiers")
+            "assignedPersonaIdentifiers": obj.get("assignedPersonaIdentifiers"),
+            "ignoreOrganization": obj.get("ignoreOrganization")
         })
         return _obj
 

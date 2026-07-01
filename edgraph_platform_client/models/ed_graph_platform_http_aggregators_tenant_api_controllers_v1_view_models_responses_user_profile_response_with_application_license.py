@@ -50,10 +50,7 @@ class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUse
     source: Optional[StrictStr] = None
     last_login_date_time: Optional[StrictStr] = Field(default=None, alias="lastLoginDateTime")
     mfa_completed: Optional[StrictBool] = Field(default=None, alias="mfaCompleted")
-    is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
-    deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
-    __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenants", "preferences", "browserDebugEnabled", "licenses", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "logins", "source", "lastLoginDateTime", "mfaCompleted", "isDeleted", "deletedDateTime", "deletedBy"]
+    __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenants", "preferences", "browserDebugEnabled", "licenses", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "logins", "source", "lastLoginDateTime", "mfaCompleted"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -207,16 +204,6 @@ class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUse
         if self.last_login_date_time is None and "last_login_date_time" in self.model_fields_set:
             _dict['lastLoginDateTime'] = None
 
-        # set to None if deleted_date_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
-            _dict['deletedDateTime'] = None
-
-        # set to None if deleted_by (nullable) is None
-        # and model_fields_set contains the field
-        if self.deleted_by is None and "deleted_by" in self.model_fields_set:
-            _dict['deletedBy'] = None
-
         return _dict
 
     @classmethod
@@ -247,10 +234,7 @@ class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUse
             "logins": [EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserLogin.from_dict(_item) for _item in obj["logins"]] if obj.get("logins") is not None else None,
             "source": obj.get("source"),
             "lastLoginDateTime": obj.get("lastLoginDateTime"),
-            "mfaCompleted": obj.get("mfaCompleted"),
-            "isDeleted": obj.get("isDeleted"),
-            "deletedDateTime": obj.get("deletedDateTime"),
-            "deletedBy": obj.get("deletedBy")
+            "mfaCompleted": obj.get("mfaCompleted")
         })
         return _obj
 

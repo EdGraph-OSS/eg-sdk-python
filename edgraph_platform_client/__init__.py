@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.45"
+__version__ = "0.0.46"
 
 # Define package exports
 __all__ = [
@@ -656,9 +656,7 @@ __all__ = [
     "FormApiFormsV1FormStatus",
     "FormApiFormsV1FormUpdatedResponse",
     "FormApiFormsV1FullFormCreatedResponse",
-    "FormApiFormsV1FullFormSchemaResponse",
     "FormApiFormsV1FullFormUpdatedResponse",
-    "FormApiFormsV1SchemaStatus",
     "FormApiFormsV1SetFormAccessRequest",
     "FormApiFormsV1UpdateFormRequest",
     "FormApiFormsV1UpdateFullFormRequest",
@@ -1717,9 +1715,7 @@ from edgraph_platform_client.models.form_api_forms_v1_form_source import FormApi
 from edgraph_platform_client.models.form_api_forms_v1_form_status import FormApiFormsV1FormStatus as FormApiFormsV1FormStatus
 from edgraph_platform_client.models.form_api_forms_v1_form_updated_response import FormApiFormsV1FormUpdatedResponse as FormApiFormsV1FormUpdatedResponse
 from edgraph_platform_client.models.form_api_forms_v1_full_form_created_response import FormApiFormsV1FullFormCreatedResponse as FormApiFormsV1FullFormCreatedResponse
-from edgraph_platform_client.models.form_api_forms_v1_full_form_schema_response import FormApiFormsV1FullFormSchemaResponse as FormApiFormsV1FullFormSchemaResponse
 from edgraph_platform_client.models.form_api_forms_v1_full_form_updated_response import FormApiFormsV1FullFormUpdatedResponse as FormApiFormsV1FullFormUpdatedResponse
-from edgraph_platform_client.models.form_api_forms_v1_schema_status import FormApiFormsV1SchemaStatus as FormApiFormsV1SchemaStatus
 from edgraph_platform_client.models.form_api_forms_v1_set_form_access_request import FormApiFormsV1SetFormAccessRequest as FormApiFormsV1SetFormAccessRequest
 from edgraph_platform_client.models.form_api_forms_v1_update_form_request import FormApiFormsV1UpdateFormRequest as FormApiFormsV1UpdateFormRequest
 from edgraph_platform_client.models.form_api_forms_v1_update_full_form_request import FormApiFormsV1UpdateFullFormRequest as FormApiFormsV1UpdateFullFormRequest

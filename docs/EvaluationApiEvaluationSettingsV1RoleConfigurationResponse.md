@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **role** | **str** |  | [optional] 
 **assigned_persona_identifiers** | **List[str]** |  | [optional] [readonly] 
+**ignore_organization** | **bool** |  | [optional] 
 
 ## Example
 

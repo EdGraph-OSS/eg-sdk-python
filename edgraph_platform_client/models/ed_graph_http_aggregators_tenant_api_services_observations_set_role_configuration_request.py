@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationReq
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
     role: Optional[StrictStr] = None
     assigned_persona_identifiers: Optional[List[StrictStr]] = Field(default=None, alias="assignedPersonaIdentifiers")
-    __properties: ClassVar[List[str]] = ["tenantId", "role", "assignedPersonaIdentifiers"]
+    ignore_organization: Optional[StrictBool] = Field(default=None, alias="ignoreOrganization")
+    __properties: ClassVar[List[str]] = ["tenantId", "role", "assignedPersonaIdentifiers", "ignoreOrganization"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -100,7 +101,8 @@ class EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationReq
         _obj = cls.model_validate({
             "tenantId": obj.get("tenantId"),
             "role": obj.get("role"),
-            "assignedPersonaIdentifiers": obj.get("assignedPersonaIdentifiers")
+            "assignedPersonaIdentifiers": obj.get("assignedPersonaIdentifiers"),
+            "ignoreOrganization": obj.get("ignoreOrganization")
         })
         return _obj
 

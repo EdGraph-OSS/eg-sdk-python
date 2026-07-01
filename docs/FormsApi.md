@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**duplicate_form**](FormsApi.md#duplicate_form) | **POST** /tenants/{tenantId}/forms/{formId}/duplicate | Duplicates all Form data for a given tenant (with Sections and Questions).
 [**get_form**](FormsApi.md#get_form) | **GET** /tenants/{tenantId}/forms/{formId} | Get Form.
 [**get_form_access**](FormsApi.md#get_form_access) | **GET** /tenants/{tenantId}/forms/{formId}/access | Get the Access Type for a Form.
-[**get_full_form_schema**](FormsApi.md#get_full_form_schema) | **GET** /tenants/{tenantId}/forms/{formId}/full/schemas | Get a Forms Json and UI React JSON compatible Schema.
 [**import_form**](FormsApi.md#import_form) | **POST** /tenants/{tenantId}/forms/import | Imports all form data for a given tenant.
 [**search_forms**](FormsApi.md#search_forms) | **GET** /tenants/{tenantId}/forms | Search Forms
 [**set_form_access**](FormsApi.md#set_form_access) | **PUT** /tenants/{tenantId}/forms/{formId}/access | Sets the Access Type for a Form.
@@ -474,86 +473,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FormApiFormsV1FormAccessResponse**](FormApiFormsV1FormAccessResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
-**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
-**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
-**200** | The requested resource was successfully retrieved. |  -  |
-**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_full_form_schema**
-> FormApiFormsV1FullFormSchemaResponse get_full_form_schema(tenant_id, form_id)
-
-Get a Forms Json and UI React JSON compatible Schema.
-
-### Example
-
-* OAuth Authentication (oauth2):
-
-```python
-import edgraph_platform_client
-from edgraph_platform_client.models.form_api_forms_v1_full_form_schema_response import FormApiFormsV1FullFormSchemaResponse
-from edgraph_platform_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
-# See configuration.py for a list of all supported configuration parameters.
-configuration = edgraph_platform_client.Configuration(
-    host = "https://api.dev.edgraph.com/tenant"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-async with edgraph_platform_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = edgraph_platform_client.FormsApi(api_client)
-    tenant_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    form_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-
-    try:
-        # Get a Forms Json and UI React JSON compatible Schema.
-        api_response = await api_instance.get_full_form_schema(tenant_id, form_id)
-        print("The response of FormsApi->get_full_form_schema:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FormsApi->get_full_form_schema: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenant_id** | **UUID**|  | 
- **form_id** | **UUID**|  | 
-
-### Return type
-
-[**FormApiFormsV1FullFormSchemaResponse**](FormApiFormsV1FullFormSchemaResponse.md)
 
 ### Authorization
 
