@@ -45,7 +45,8 @@ class DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(BaseModel):
     use_ssa_instead_of_seoaa: Optional[DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions] = Field(default=None, alias="useSSAInsteadOfSEOAA")
     import_section_and_course_data: Optional[StrictBool] = Field(default=None, alias="importSectionAndCourseData")
     use_staff_ed_org_contact_association_for_emails: Optional[StrictBool] = Field(default=None, alias="useStaffEdOrgContactAssociationForEmails")
-    __properties: ClassVar[List[str]] = ["tenantId", "mode", "provider", "connectionId", "jobId", "clientId", "clientSecret", "baseUrl", "authenticationUrl", "resourcesUrl", "enabled", "edFiInstanceId", "useSSAInsteadOfSEOAA", "importSectionAndCourseData", "useStaffEdOrgContactAssociationForEmails"]
+    ignore_end_dates: Optional[StrictBool] = Field(default=None, alias="ignoreEndDates")
+    __properties: ClassVar[List[str]] = ["tenantId", "mode", "provider", "connectionId", "jobId", "clientId", "clientSecret", "baseUrl", "authenticationUrl", "resourcesUrl", "enabled", "edFiInstanceId", "useSSAInsteadOfSEOAA", "importSectionAndCourseData", "useStaffEdOrgContactAssociationForEmails", "ignoreEndDates"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -149,6 +150,11 @@ class DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(BaseModel):
         if self.use_staff_ed_org_contact_association_for_emails is None and "use_staff_ed_org_contact_association_for_emails" in self.model_fields_set:
             _dict['useStaffEdOrgContactAssociationForEmails'] = None
 
+        # set to None if ignore_end_dates (nullable) is None
+        # and model_fields_set contains the field
+        if self.ignore_end_dates is None and "ignore_end_dates" in self.model_fields_set:
+            _dict['ignoreEndDates'] = None
+
         return _dict
 
     @classmethod
@@ -175,7 +181,8 @@ class DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(BaseModel):
             "edFiInstanceId": obj.get("edFiInstanceId"),
             "useSSAInsteadOfSEOAA": DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions.from_dict(obj["useSSAInsteadOfSEOAA"]) if obj.get("useSSAInsteadOfSEOAA") is not None else None,
             "importSectionAndCourseData": obj.get("importSectionAndCourseData"),
-            "useStaffEdOrgContactAssociationForEmails": obj.get("useStaffEdOrgContactAssociationForEmails")
+            "useStaffEdOrgContactAssociationForEmails": obj.get("useStaffEdOrgContactAssociationForEmails"),
+            "ignoreEndDates": obj.get("ignoreEndDates")
         })
         return _obj
 

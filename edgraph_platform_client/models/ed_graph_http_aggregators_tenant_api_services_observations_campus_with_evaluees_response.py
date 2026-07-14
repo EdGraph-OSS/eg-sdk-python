@@ -17,23 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_onboarding_steps_ed_fi_api import EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi
-from edgraph_platform_client.models.system_net_http_status_code import SystemNetHttpStatusCode
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult(BaseModel):
+class EdGraphHttpAggregatorsTenantApiServicesObservationsCampusWithEvalueesResponse(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult
+    EdGraphHttpAggregatorsTenantApiServicesObservationsCampusWithEvalueesResponse
     """ # noqa: E501
-    is_success: Optional[StrictBool] = Field(default=None, alias="isSuccess")
-    value: Optional[EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi] = None
-    error: Optional[StrictStr] = None
-    status_code: Optional[SystemNetHttpStatusCode] = Field(default=None, alias="statusCode")
-    __properties: ClassVar[List[str]] = ["isSuccess", "value", "error", "statusCode"]
+    campus: Optional[StrictStr] = None
+    evaluees: Optional[List[EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse]] = None
+    __properties: ClassVar[List[str]] = ["campus", "evaluees"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -53,7 +50,7 @@ class EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMe
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult from a JSON string"""
+        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsCampusWithEvalueesResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,19 +71,28 @@ class EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMe
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
-        # set to None if error (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in evaluees (list)
+        _items = []
+        if self.evaluees:
+            for _item_evaluees in self.evaluees:
+                if _item_evaluees:
+                    _items.append(_item_evaluees.to_dict())
+            _dict['evaluees'] = _items
+        # set to None if campus (nullable) is None
         # and model_fields_set contains the field
-        if self.error is None and "error" in self.model_fields_set:
-            _dict['error'] = None
+        if self.campus is None and "campus" in self.model_fields_set:
+            _dict['campus'] = None
+
+        # set to None if evaluees (nullable) is None
+        # and model_fields_set contains the field
+        if self.evaluees is None and "evaluees" in self.model_fields_set:
+            _dict['evaluees'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult from a dict"""
+        """Create an instance of EdGraphHttpAggregatorsTenantApiServicesObservationsCampusWithEvalueesResponse from a dict"""
         if obj is None:
             return None
 
@@ -94,10 +100,8 @@ class EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMe
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "isSuccess": obj.get("isSuccess"),
-            "value": EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi.from_dict(obj["value"]) if obj.get("value") is not None else None,
-            "error": obj.get("error"),
-            "statusCode": obj.get("statusCode")
+            "campus": obj.get("campus"),
+            "evaluees": [EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse.from_dict(_item) for _item in obj["evaluees"]] if obj.get("evaluees") is not None else None
         })
         return _obj
 

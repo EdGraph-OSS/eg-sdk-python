@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **use_ssa_instead_of_seoaa** | [**DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions**](DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions.md) |  | [optional] 
 **import_section_and_course_data** | **bool** |  | [optional] 
 **use_staff_ed_org_contact_association_for_emails** | **bool** |  | [optional] 
+**ignore_end_dates** | **bool** |  | [optional] 
 
 ## Example
 

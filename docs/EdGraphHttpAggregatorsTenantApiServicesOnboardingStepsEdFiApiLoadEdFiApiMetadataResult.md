@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **is_success** | **bool** |  | [optional] 
 **value** | [**EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi**](EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi.md) |  | [optional] 
 **error** | **str** |  | [optional] 
+**status_code** | [**SystemNetHttpStatusCode**](SystemNetHttpStatusCode.md) |  | [optional] 
 
 ## Example
 

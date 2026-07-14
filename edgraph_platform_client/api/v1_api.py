@@ -304,7 +304,7 @@ class V1Api:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/students/{tenantId}/students/{id}',
+            resource_path='/tenants/{tenantId}/students/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -656,7 +656,7 @@ class V1Api:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/students/{tenantId}',
+            resource_path='/tenants/{tenantId}/students',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1254,7 +1254,7 @@ class V1Api:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/students/{tenantId}/{studentId}/contacts',
+            resource_path='/tenants/{tenantId}/{studentId}/contacts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
