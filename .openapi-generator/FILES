@@ -2111,7 +2111,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_ed_graph_http_aggregators_tenant_api_services_observations_campus_with_evaluees_response.py
-test/test_ed_graph_http_aggregators_tenant_api_services_observations_get_campuses_with_evaluees_response.py
-test/test_system_net_http_status_code.py
 tox.ini
