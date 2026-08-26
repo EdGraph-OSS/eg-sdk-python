@@ -60,7 +60,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityApiUserV1GetUserPreferencesResponse:
-        """Retrieves the user's preferences.
+        """(Deprecated) Retrieves the user's preferences.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param page_index: 
@@ -92,6 +92,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /me/preferences is deprecated.", DeprecationWarning)
 
         _param = self._get_user_preferences_serialize(
             page_index=page_index,
@@ -142,7 +143,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityApiUserV1GetUserPreferencesResponse]:
-        """Retrieves the user's preferences.
+        """(Deprecated) Retrieves the user's preferences.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param page_index: 
@@ -174,6 +175,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /me/preferences is deprecated.", DeprecationWarning)
 
         _param = self._get_user_preferences_serialize(
             page_index=page_index,
@@ -224,7 +226,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves the user's preferences.
+        """(Deprecated) Retrieves the user's preferences.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param page_index: 
@@ -256,6 +258,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /me/preferences is deprecated.", DeprecationWarning)
 
         _param = self._get_user_preferences_serialize(
             page_index=page_index,
@@ -380,7 +383,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse:
-        """Retrieves a user's preference by code.
+        """(Deprecated) Retrieves a user's preference by code.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param code:  (required)
@@ -406,6 +409,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /me/preferences/{code} is deprecated.", DeprecationWarning)
 
         _param = self._preference_serialize(
             code=code,
@@ -450,7 +454,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse]:
-        """Retrieves a user's preference by code.
+        """(Deprecated) Retrieves a user's preference by code.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param code:  (required)
@@ -476,6 +480,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /me/preferences/{code} is deprecated.", DeprecationWarning)
 
         _param = self._preference_serialize(
             code=code,
@@ -520,7 +525,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves a user's preference by code.
+        """(Deprecated) Retrieves a user's preference by code.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param code:  (required)
@@ -546,6 +551,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /me/preferences/{code} is deprecated.", DeprecationWarning)
 
         _param = self._preference_serialize(
             code=code,
@@ -650,7 +656,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityApiUserV1UserPreferenceUpdatedResponse:
-        """Creates or update a user's preference.
+        """(Deprecated) Creates or update a user's preference.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request: 
@@ -676,6 +682,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /me/preferences is deprecated.", DeprecationWarning)
 
         _param = self._update_user_preference_async_serialize(
             ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request,
@@ -720,7 +727,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityApiUserV1UserPreferenceUpdatedResponse]:
-        """Creates or update a user's preference.
+        """(Deprecated) Creates or update a user's preference.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request: 
@@ -746,6 +753,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /me/preferences is deprecated.", DeprecationWarning)
 
         _param = self._update_user_preference_async_serialize(
             ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request,
@@ -790,7 +798,7 @@ class MyPreferencesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates or update a user's preference.
+        """(Deprecated) Creates or update a user's preference.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request: 
@@ -816,6 +824,7 @@ class MyPreferencesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /me/preferences is deprecated.", DeprecationWarning)
 
         _param = self._update_user_preference_async_serialize(
             ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request,

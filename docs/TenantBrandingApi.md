@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **update_tenant_branding**
-> TenantApiTenantV1TenantUpdatedResponse update_tenant_branding(tenant_id, logo_file=logo_file, background_file=background_file, brand_name=brand_name, enabled=enabled)
+> TenantApiTenantV1TenantUpdatedResponse update_tenant_branding(tenant_id, logo_file=logo_file, background_file=background_file, brand_name=brand_name, enabled=enabled, remove_background=remove_background, remove_logo=remove_logo)
 
 Updates the branding of tenant
 
@@ -44,10 +44,12 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     background_file = None # bytes |  (optional)
     brand_name = 'brand_name_example' # str |  (optional)
     enabled = True # bool |  (optional)
+    remove_background = True # bool |  (optional)
+    remove_logo = True # bool |  (optional)
 
     try:
         # Updates the branding of tenant
-        api_response = await api_instance.update_tenant_branding(tenant_id, logo_file=logo_file, background_file=background_file, brand_name=brand_name, enabled=enabled)
+        api_response = await api_instance.update_tenant_branding(tenant_id, logo_file=logo_file, background_file=background_file, brand_name=brand_name, enabled=enabled, remove_background=remove_background, remove_logo=remove_logo)
         print("The response of TenantBrandingApi->update_tenant_branding:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,6 +68,8 @@ Name | Type | Description  | Notes
  **background_file** | **bytes**|  | [optional] 
  **brand_name** | **str**|  | [optional] 
  **enabled** | **bool**|  | [optional] 
+ **remove_background** | **bool**|  | [optional] 
+ **remove_logo** | **bool**|  | [optional] 
 
 ### Return type
 

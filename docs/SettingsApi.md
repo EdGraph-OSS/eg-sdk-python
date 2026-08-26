@@ -4,15 +4,15 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_tenant_settings**](SettingsApi.md#get_tenant_settings) | **GET** /tenants/{tenantId}/settings | Retrieves a list of the Tenant&#39;s settings.
-[**get_tenant_settings_by_code**](SettingsApi.md#get_tenant_settings_by_code) | **GET** /tenants/{tenantId}/settings/{code} | Retrieves a Tenant&#39;s settings by code.
-[**set_tenant_settings**](SettingsApi.md#set_tenant_settings) | **POST** /tenants/{tenantId}/settings/{code} | Creates/updates a Tenant&#39;s settings.
+[**get_tenant_settings**](SettingsApi.md#get_tenant_settings) | **GET** /tenants/{tenantId}/settings | Retrieves a list of the Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
+[**get_tenant_settings_by_code**](SettingsApi.md#get_tenant_settings_by_code) | **GET** /tenants/{tenantId}/settings/{code} | Retrieves a Tenant&#39;s settings by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
+[**set_tenant_settings**](SettingsApi.md#set_tenant_settings) | **POST** /tenants/{tenantId}/settings/{code} | Creates/updates a Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 # **get_tenant_settings**
 > TenantApiTenantV1GetAppSettingsResponse get_tenant_settings(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
 
-Retrieves a list of the Tenant's settings.
+Retrieves a list of the Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -48,7 +48,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     filter = '' # str |  (optional) (default to '')
 
     try:
-        # Retrieves a list of the Tenant's settings.
+        # Retrieves a list of the Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.get_tenant_settings(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of SettingsApi->get_tenant_settings:\n")
         pprint(api_response)
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 # **get_tenant_settings_by_code**
 > TenantApiTenantV1TenantAppSettings get_tenant_settings_by_code(tenant_id, code)
 
-Retrieves a Tenant's settings by code.
+Retrieves a Tenant's settings by code.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -130,7 +130,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     code = 'code_example' # str | 
 
     try:
-        # Retrieves a Tenant's settings by code.
+        # Retrieves a Tenant's settings by code.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.get_tenant_settings_by_code(tenant_id, code)
         print("The response of SettingsApi->get_tenant_settings_by_code:\n")
         pprint(api_response)
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 # **set_tenant_settings**
 > TenantApiTenantV1SetAppSettingsResponse set_tenant_settings(tenant_id, code, tenant_api_tenant_v1_set_app_settings_request=tenant_api_tenant_v1_set_app_settings_request)
 
-Creates/updates a Tenant's settings.
+Creates/updates a Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -211,7 +211,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     tenant_api_tenant_v1_set_app_settings_request = edgraph_platform_client.TenantApiTenantV1SetAppSettingsRequest() # TenantApiTenantV1SetAppSettingsRequest |  (optional)
 
     try:
-        # Creates/updates a Tenant's settings.
+        # Creates/updates a Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.set_tenant_settings(tenant_id, code, tenant_api_tenant_v1_set_app_settings_request=tenant_api_tenant_v1_set_app_settings_request)
         print("The response of SettingsApi->set_tenant_settings:\n")
         pprint(api_response)

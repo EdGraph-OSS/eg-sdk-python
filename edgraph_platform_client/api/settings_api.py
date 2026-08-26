@@ -62,7 +62,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantApiTenantV1GetAppSettingsResponse:
-        """Retrieves a list of the Tenant's settings.
+        """(Deprecated) Retrieves a list of the Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -96,6 +96,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /tenants/{tenantId}/settings is deprecated.", DeprecationWarning)
 
         _param = self._get_tenant_settings_serialize(
             tenant_id=tenant_id,
@@ -148,7 +149,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantApiTenantV1GetAppSettingsResponse]:
-        """Retrieves a list of the Tenant's settings.
+        """(Deprecated) Retrieves a list of the Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -182,6 +183,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /tenants/{tenantId}/settings is deprecated.", DeprecationWarning)
 
         _param = self._get_tenant_settings_serialize(
             tenant_id=tenant_id,
@@ -234,7 +236,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves a list of the Tenant's settings.
+        """(Deprecated) Retrieves a list of the Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -268,6 +270,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /tenants/{tenantId}/settings is deprecated.", DeprecationWarning)
 
         _param = self._get_tenant_settings_serialize(
             tenant_id=tenant_id,
@@ -397,7 +400,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantApiTenantV1TenantAppSettings:
-        """Retrieves a Tenant's settings by code.
+        """(Deprecated) Retrieves a Tenant's settings by code.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -425,6 +428,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /tenants/{tenantId}/settings/{code} is deprecated.", DeprecationWarning)
 
         _param = self._get_tenant_settings_by_code_serialize(
             tenant_id=tenant_id,
@@ -471,7 +475,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantApiTenantV1TenantAppSettings]:
-        """Retrieves a Tenant's settings by code.
+        """(Deprecated) Retrieves a Tenant's settings by code.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -499,6 +503,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /tenants/{tenantId}/settings/{code} is deprecated.", DeprecationWarning)
 
         _param = self._get_tenant_settings_by_code_serialize(
             tenant_id=tenant_id,
@@ -545,7 +550,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves a Tenant's settings by code.
+        """(Deprecated) Retrieves a Tenant's settings by code.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -573,6 +578,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /tenants/{tenantId}/settings/{code} is deprecated.", DeprecationWarning)
 
         _param = self._get_tenant_settings_by_code_serialize(
             tenant_id=tenant_id,
@@ -683,7 +689,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantApiTenantV1SetAppSettingsResponse:
-        """Creates/updates a Tenant's settings.
+        """(Deprecated) Creates/updates a Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -713,6 +719,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /tenants/{tenantId}/settings/{code} is deprecated.", DeprecationWarning)
 
         _param = self._set_tenant_settings_serialize(
             tenant_id=tenant_id,
@@ -762,7 +769,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantApiTenantV1SetAppSettingsResponse]:
-        """Creates/updates a Tenant's settings.
+        """(Deprecated) Creates/updates a Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -792,6 +799,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /tenants/{tenantId}/settings/{code} is deprecated.", DeprecationWarning)
 
         _param = self._set_tenant_settings_serialize(
             tenant_id=tenant_id,
@@ -841,7 +849,7 @@ class SettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates/updates a Tenant's settings.
+        """(Deprecated) Creates/updates a Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param tenant_id:  (required)
@@ -871,6 +879,7 @@ class SettingsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /tenants/{tenantId}/settings/{code} is deprecated.", DeprecationWarning)
 
         _param = self._set_tenant_settings_serialize(
             tenant_id=tenant_id,

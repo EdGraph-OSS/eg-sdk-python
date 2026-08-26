@@ -47,7 +47,8 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
     platform_role: Optional[StrictStr] = Field(default=None, alias="platformRole")
     tenant_status: Optional[StrictStr] = Field(default=None, alias="tenantStatus")
     tenant_admin: Optional[StrictBool] = Field(default=None, alias="tenantAdmin")
-    __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenantCount", "createdDateTime", "lastModifiedDateTime", "extensions", "logins", "source", "lastLoginDateTime", "mfaCompleted", "platformRole", "tenantStatus", "tenantAdmin"]
+    status: Optional[StrictStr] = Field(default=None, description="The user's status across all their tenants: Active if any membership is active, Inactive if every  membership is inactive, Unknown if they have no memberships. Unlike tenantStatus this does not  depend on a tenantId being supplied on the request.")
+    __properties: ClassVar[List[str]] = ["userId", "userName", "email", "firstName", "lastName", "phoneNumber", "lockoutEnabled", "tenantCount", "createdDateTime", "lastModifiedDateTime", "extensions", "logins", "source", "lastLoginDateTime", "mfaCompleted", "platformRole", "tenantStatus", "tenantAdmin", "status"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -186,6 +187,11 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
         if self.tenant_admin is None and "tenant_admin" in self.model_fields_set:
             _dict['tenantAdmin'] = None
 
+        # set to None if status (nullable) is None
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
         return _dict
 
     @classmethod
@@ -215,7 +221,8 @@ class IdentityApiUserV2UserProfileResponse(BaseModel):
             "mfaCompleted": obj.get("mfaCompleted"),
             "platformRole": obj.get("platformRole"),
             "tenantStatus": obj.get("tenantStatus"),
-            "tenantAdmin": obj.get("tenantAdmin")
+            "tenantAdmin": obj.get("tenantAdmin"),
+            "status": obj.get("status")
         })
         return _obj
 

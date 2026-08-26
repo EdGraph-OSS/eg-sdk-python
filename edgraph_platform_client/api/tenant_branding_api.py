@@ -46,6 +46,8 @@ class TenantBrandingApi:
         background_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         brand_name: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
+        remove_background: Optional[StrictBool] = None,
+        remove_logo: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -72,6 +74,10 @@ class TenantBrandingApi:
         :type brand_name: str
         :param enabled:
         :type enabled: bool
+        :param remove_background:
+        :type remove_background: bool
+        :param remove_logo:
+        :type remove_logo: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -100,6 +106,8 @@ class TenantBrandingApi:
             background_file=background_file,
             brand_name=brand_name,
             enabled=enabled,
+            remove_background=remove_background,
+            remove_logo=remove_logo,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -132,6 +140,8 @@ class TenantBrandingApi:
         background_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         brand_name: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
+        remove_background: Optional[StrictBool] = None,
+        remove_logo: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -158,6 +168,10 @@ class TenantBrandingApi:
         :type brand_name: str
         :param enabled:
         :type enabled: bool
+        :param remove_background:
+        :type remove_background: bool
+        :param remove_logo:
+        :type remove_logo: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -186,6 +200,8 @@ class TenantBrandingApi:
             background_file=background_file,
             brand_name=brand_name,
             enabled=enabled,
+            remove_background=remove_background,
+            remove_logo=remove_logo,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -218,6 +234,8 @@ class TenantBrandingApi:
         background_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         brand_name: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
+        remove_background: Optional[StrictBool] = None,
+        remove_logo: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -244,6 +262,10 @@ class TenantBrandingApi:
         :type brand_name: str
         :param enabled:
         :type enabled: bool
+        :param remove_background:
+        :type remove_background: bool
+        :param remove_logo:
+        :type remove_logo: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -272,6 +294,8 @@ class TenantBrandingApi:
             background_file=background_file,
             brand_name=brand_name,
             enabled=enabled,
+            remove_background=remove_background,
+            remove_logo=remove_logo,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -299,6 +323,8 @@ class TenantBrandingApi:
         background_file,
         brand_name,
         enabled,
+        remove_background,
+        remove_logo,
         _request_auth,
         _content_type,
         _headers,
@@ -333,6 +359,10 @@ class TenantBrandingApi:
             _form_params.append(('BrandName', brand_name))
         if enabled is not None:
             _form_params.append(('Enabled', enabled))
+        if remove_background is not None:
+            _form_params.append(('RemoveBackground', remove_background))
+        if remove_logo is not None:
+            _form_params.append(('RemoveLogo', remove_logo))
         # process the body parameter
 
 

@@ -12,6 +12,8 @@ from edgraph_platform_client.api.cache_api import CacheApi
 from edgraph_platform_client.api.capacities_api import CapacitiesApi
 from edgraph_platform_client.api.categories_api import CategoriesApi
 from edgraph_platform_client.api.change_logs_api import ChangeLogsApi
+from edgraph_platform_client.api.client_branding_api import ClientBrandingApi
+from edgraph_platform_client.api.client_settings_api import ClientSettingsApi
 from edgraph_platform_client.api.clients_secrets_api import ClientsSecretsApi
 from edgraph_platform_client.api.collections_api import CollectionsApi
 from edgraph_platform_client.api.configurations_api import ConfigurationsApi
@@ -22,6 +24,10 @@ from edgraph_platform_client.api.connections_ed_fi_api import ConnectionsEdFiApi
 from edgraph_platform_client.api.domains_api import DomainsApi
 from edgraph_platform_client.api.ed_fi_instances_api import EdFiInstancesApi
 from edgraph_platform_client.api.ed_fi_sync_api import EdFiSyncApi
+from edgraph_platform_client.api.enrollment_admin_applications_api import EnrollmentAdminApplicationsApi
+from edgraph_platform_client.api.enrollment_admin_students_api import EnrollmentAdminStudentsApi
+from edgraph_platform_client.api.enrollment_admin_contacts_api import EnrollmentAdminContactsApi
+from edgraph_platform_client.api.enrollment_admin_schools_api import EnrollmentAdminSchoolsApi
 from edgraph_platform_client.api.environments_api import EnvironmentsApi
 from edgraph_platform_client.api.environments_connections_api import EnvironmentsConnectionsApi
 from edgraph_platform_client.api.environments_connections_by_type_api import EnvironmentsConnectionsByTypeApi
@@ -64,6 +70,7 @@ from edgraph_platform_client.api.logs_api import LogsApi
 from edgraph_platform_client.api.my_extensions_api import MyExtensionsApi
 from edgraph_platform_client.api.my_preferences_api import MyPreferencesApi
 from edgraph_platform_client.api.my_profile_api import MyProfileApi
+from edgraph_platform_client.api.my_settings_api import MySettingsApi
 from edgraph_platform_client.api.my_tenants_api import MyTenantsApi
 from edgraph_platform_client.api.observation_settings_api import ObservationSettingsApi
 from edgraph_platform_client.api.observations_api import ObservationsApi
@@ -85,6 +92,7 @@ from edgraph_platform_client.api.state_reporting_steps_api import StateReporting
 from edgraph_platform_client.api.submissions_api import SubmissionsApi
 from edgraph_platform_client.api.subscriptions_api import SubscriptionsApi
 from edgraph_platform_client.api.tags_api import TagsApi
+from edgraph_platform_client.api.tenant_settings_api import TenantSettingsApi
 from edgraph_platform_client.api.tenant_branding_api import TenantBrandingApi
 from edgraph_platform_client.api.tenant_instances_api import TenantInstancesApi
 from edgraph_platform_client.api.tenant_integrations_api import TenantIntegrationsApi

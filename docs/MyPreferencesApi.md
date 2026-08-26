@@ -4,15 +4,15 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_user_preferences**](MyPreferencesApi.md#get_user_preferences) | **GET** /me/preferences | Retrieves the user&#39;s preferences.
-[**preference**](MyPreferencesApi.md#preference) | **GET** /me/preferences/{code} | Retrieves a user&#39;s preference by code.
-[**update_user_preference_async**](MyPreferencesApi.md#update_user_preference_async) | **POST** /me/preferences | Creates or update a user&#39;s preference.
+[**get_user_preferences**](MyPreferencesApi.md#get_user_preferences) | **GET** /me/preferences | Retrieves the user&#39;s preferences.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
+[**preference**](MyPreferencesApi.md#preference) | **GET** /me/preferences/{code} | Retrieves a user&#39;s preference by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
+[**update_user_preference_async**](MyPreferencesApi.md#update_user_preference_async) | **POST** /me/preferences | Creates or update a user&#39;s preference.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 # **get_user_preferences**
 > IdentityApiUserV1GetUserPreferencesResponse get_user_preferences(page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
 
-Retrieves the user's preferences.
+Retrieves the user's preferences.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -47,7 +47,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     filter = 'filter_example' # str |  (optional)
 
     try:
-        # Retrieves the user's preferences.
+        # Retrieves the user's preferences.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.get_user_preferences(page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
         print("The response of MyPreferencesApi->get_user_preferences:\n")
         pprint(api_response)
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 # **preference**
 > EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse preference(code)
 
-Retrieves a user's preference by code.
+Retrieves a user's preference by code.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -127,7 +127,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     code = 'code_example' # str | 
 
     try:
-        # Retrieves a user's preference by code.
+        # Retrieves a user's preference by code.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.preference(code)
         print("The response of MyPreferencesApi->preference:\n")
         pprint(api_response)
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 # **update_user_preference_async**
 > IdentityApiUserV1UserPreferenceUpdatedResponse update_user_preference_async(ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request)
 
-Creates or update a user's preference.
+Creates or update a user's preference.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -205,7 +205,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request = edgraph_platform_client.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest() # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest |  (optional)
 
     try:
-        # Creates or update a user's preference.
+        # Creates or update a user's preference.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.update_user_preference_async(ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_update_user_preference_request)
         print("The response of MyPreferencesApi->update_user_preference_async:\n")
         pprint(api_response)

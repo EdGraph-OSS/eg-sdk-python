@@ -4,14 +4,14 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**remove_user_extension**](MyExtensionsApi.md#remove_user_extension) | **DELETE** /me/extensions/{code} | Removes a user&#39;s profile extension.
-[**set_user_extension**](MyExtensionsApi.md#set_user_extension) | **POST** /me/extensions | Creates or update a user&#39;s profile extension.
+[**remove_user_extension**](MyExtensionsApi.md#remove_user_extension) | **DELETE** /me/extensions/{code} | Removes a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
+[**set_user_extension**](MyExtensionsApi.md#set_user_extension) | **POST** /me/extensions | Creates or update a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 # **remove_user_extension**
 > IdentityApiUserV1UserExtensionRemovedResponse remove_user_extension(code)
 
-Removes a user's profile extension.
+Removes a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -43,7 +43,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     code = 'code_example' # str | 
 
     try:
-        # Removes a user's profile extension.
+        # Removes a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.remove_user_extension(code)
         print("The response of MyExtensionsApi->remove_user_extension:\n")
         pprint(api_response)
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 # **set_user_extension**
 > IdentityApiUserV1UserExtensionSetResponse set_user_extension(identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request)
 
-Creates or update a user's profile extension.
+Creates or update a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 ### Example
 
@@ -121,7 +121,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     identity_api_user_v1_set_user_extension_request = edgraph_platform_client.IdentityApiUserV1SetUserExtensionRequest() # IdentityApiUserV1SetUserExtensionRequest |  (optional)
 
     try:
-        # Creates or update a user's profile extension.
+        # Creates or update a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         api_response = await api_instance.set_user_extension(identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request)
         print("The response of MyExtensionsApi->set_user_extension:\n")
         pprint(api_response)

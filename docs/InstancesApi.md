@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**get_instance_endpoints**](InstancesApi.md#get_instance_endpoints) | **GET** /tenants/{tenantId}/oneroster/instances/{instanceId}/endpoints | Retrieves the One Roster endpoint URLs of an Instance.
 [**get_instances_async**](InstancesApi.md#get_instances_async) | **GET** /tenants/{tenantId}/edfiadmin/instances | Retrieves a list of Instances.
 [**get_paged_instances**](InstancesApi.md#get_paged_instances) | **GET** /tenants/{tenantId}/oneroster/instances | Retrieves a list of Instances.
+[**get_tenant_instance_by_id_v2**](InstancesApi.md#get_tenant_instance_by_id_v2) | **GET** /v2/tenants/{tenantId}/instances/{instanceId} | Get Instance by Id
 [**get_tenant_instances_v2**](InstancesApi.md#get_tenant_instances_v2) | **GET** /v2/tenants/{tenantId}/instances | Get list of all instances for a tenant - V2
 [**is_instance_custom_id_available**](InstancesApi.md#is_instance_custom_id_available) | **GET** /tenants/{tenantId}/oneroster/instances/isinstancecustomidavailable/{customId} | Validate if instance is available
 [**load_api_metadata**](InstancesApi.md#load_api_metadata) | **POST** /tenants/{tenantId}/edfiadmin/api-metadata | Loads connection metadata.
@@ -1570,6 +1571,85 @@ Name | Type | Description  | Notes
 **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 **200** | The requested resource was successfully retrieved. |  -  |
 **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_tenant_instance_by_id_v2**
+> EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse get_tenant_instance_by_id_v2(tenant_id, instance_id)
+
+Get Instance by Id
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_instances_instance_response import EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.InstancesApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    instance_id = 'instance_id_example' # str | 
+
+    try:
+        # Get Instance by Id
+        api_response = await api_instance.get_tenant_instance_by_id_v2(tenant_id, instance_id)
+        print("The response of InstancesApi->get_tenant_instance_by_id_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstancesApi->get_tenant_instance_by_id_v2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **instance_id** | **str**|  | 
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse**](EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

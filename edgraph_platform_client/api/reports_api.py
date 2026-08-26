@@ -24,6 +24,9 @@ from edgraph_platform_client.models.analytics_api_reports_v1_report_paginated_it
 from edgraph_platform_client.models.analytics_api_reports_v1_report_response import AnalyticsApiReportsV1ReportResponse
 from edgraph_platform_client.models.analytics_api_reports_v1_sync_latest_version_request import AnalyticsApiReportsV1SyncLatestVersionRequest
 from edgraph_platform_client.models.analytics_api_reports_v1_sync_workspaces_request import AnalyticsApiReportsV1SyncWorkspacesRequest
+from edgraph_platform_client.models.ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request import EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest
+from edgraph_platform_client.models.ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_responses_report_access_response_dto import EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto
+from edgraph_platform_client.models.identity_api_user_v1_user_list_response_paginated_items_view_model import IdentityApiUserV1UserListResponsePaginatedItemsViewModel
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
 from edgraph_platform_client.api_response import ApiResponse
@@ -786,8 +789,9 @@ class ReportsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AnalyticsApiReportsV1DownloadReportResponse:
-        """Retrieves the PBIX for any report in the list in order to download
+        """Retrieves the PBIX for any report in the list in order to download.
 
+        Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report's audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
 
         :param tenant_id: (required)
         :type tenant_id: str
@@ -864,8 +868,9 @@ class ReportsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AnalyticsApiReportsV1DownloadReportResponse]:
-        """Retrieves the PBIX for any report in the list in order to download
+        """Retrieves the PBIX for any report in the list in order to download.
 
+        Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report's audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
 
         :param tenant_id: (required)
         :type tenant_id: str
@@ -942,8 +947,9 @@ class ReportsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves the PBIX for any report in the list in order to download
+        """Retrieves the PBIX for any report in the list in order to download.
 
+        Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report's audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
 
         :param tenant_id: (required)
         :type tenant_id: str
@@ -1390,6 +1396,632 @@ class ReportsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/tenants/{tenantId}/analytics/reports',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_analytics_tenant_users_async(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> IdentityApiUserV1UserListResponsePaginatedItemsViewModel:
+        """Searchable, paginated list of tenant users for the Manage Access \"specific users\" picker.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_analytics_tenant_users_async_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "IdentityApiUserV1UserListResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_analytics_tenant_users_async_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[IdentityApiUserV1UserListResponsePaginatedItemsViewModel]:
+        """Searchable, paginated list of tenant users for the Manage Access \"specific users\" picker.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_analytics_tenant_users_async_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "IdentityApiUserV1UserListResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_analytics_tenant_users_async_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Searchable, paginated list of tenant users for the Manage Access \"specific users\" picker.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_analytics_tenant_users_async_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "IdentityApiUserV1UserListResponsePaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_analytics_tenant_users_async_serialize(
+        self,
+        tenant_id,
+        page_size,
+        page_index,
+        order_by,
+        filter,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if order_by is not None:
+            
+            _query_params.append(('orderBy', order_by))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/analytics/users',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_report_access_async(
+        self,
+        tenant_id: StrictStr,
+        report_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto:
+        """Retrieves the audience-targeting (Manage Access) configuration for a report.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param report_id:  (required)
+        :type report_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_report_access_async_serialize(
+            tenant_id=tenant_id,
+            report_id=report_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto",
+            '404': "MicrosoftAspNetCoreMvcProblemDetails",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_report_access_async_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        report_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto]:
+        """Retrieves the audience-targeting (Manage Access) configuration for a report.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param report_id:  (required)
+        :type report_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_report_access_async_serialize(
+            tenant_id=tenant_id,
+            report_id=report_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto",
+            '404': "MicrosoftAspNetCoreMvcProblemDetails",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_report_access_async_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        report_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieves the audience-targeting (Manage Access) configuration for a report.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param report_id:  (required)
+        :type report_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_report_access_async_serialize(
+            tenant_id=tenant_id,
+            report_id=report_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto",
+            '404': "MicrosoftAspNetCoreMvcProblemDetails",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_report_access_async_serialize(
+        self,
+        tenant_id,
+        report_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if report_id is not None:
+            _path_params['reportId'] = report_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/analytics/reports/{reportId}/access',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2286,6 +2918,325 @@ class ReportsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/tenants/{tenantId}/analytics/reports/sync',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def update_report_access_async(
+        self,
+        tenant_id: StrictStr,
+        report_id: StrictStr,
+        ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: Optional[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AnalyticsApiReportsV1ReportIdResponse:
+        """Updates the audience-targeting (Manage Access) configuration for a report.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param report_id:  (required)
+        :type report_id: str
+        :param ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: 
+        :type ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_report_access_async_serialize(
+            tenant_id=tenant_id,
+            report_id=report_id,
+            ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request=ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "AnalyticsApiReportsV1ReportIdResponse",
+            '404': "MicrosoftAspNetCoreMvcProblemDetails",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def update_report_access_async_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        report_id: StrictStr,
+        ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: Optional[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[AnalyticsApiReportsV1ReportIdResponse]:
+        """Updates the audience-targeting (Manage Access) configuration for a report.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param report_id:  (required)
+        :type report_id: str
+        :param ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: 
+        :type ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_report_access_async_serialize(
+            tenant_id=tenant_id,
+            report_id=report_id,
+            ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request=ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "AnalyticsApiReportsV1ReportIdResponse",
+            '404': "MicrosoftAspNetCoreMvcProblemDetails",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def update_report_access_async_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        report_id: StrictStr,
+        ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: Optional[EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Updates the audience-targeting (Manage Access) configuration for a report.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param report_id:  (required)
+        :type report_id: str
+        :param ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: 
+        :type ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request: EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_report_access_async_serialize(
+            tenant_id=tenant_id,
+            report_id=report_id,
+            ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request=ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "MicrosoftAspNetCoreMvcProblemDetails",
+            '500': None,
+            '200': "AnalyticsApiReportsV1ReportIdResponse",
+            '404': "MicrosoftAspNetCoreMvcProblemDetails",
+            '400': "MicrosoftAspNetCoreMvcProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_report_access_async_serialize(
+        self,
+        tenant_id,
+        report_id,
+        ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if report_id is not None:
+            _path_params['reportId'] = report_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request is not None:
+            _body_params = ed_graph_platform_http_aggregators_tenant_api_controllers_v1_view_models_requests_report_access_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/analytics/reports/{reportId}/access',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

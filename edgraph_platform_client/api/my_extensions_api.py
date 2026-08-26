@@ -56,7 +56,7 @@ class MyExtensionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityApiUserV1UserExtensionRemovedResponse:
-        """Removes a user's profile extension.
+        """(Deprecated) Removes a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param code:  (required)
@@ -82,6 +82,7 @@ class MyExtensionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /me/extensions/{code} is deprecated.", DeprecationWarning)
 
         _param = self._remove_user_extension_serialize(
             code=code,
@@ -126,7 +127,7 @@ class MyExtensionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityApiUserV1UserExtensionRemovedResponse]:
-        """Removes a user's profile extension.
+        """(Deprecated) Removes a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param code:  (required)
@@ -152,6 +153,7 @@ class MyExtensionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /me/extensions/{code} is deprecated.", DeprecationWarning)
 
         _param = self._remove_user_extension_serialize(
             code=code,
@@ -196,7 +198,7 @@ class MyExtensionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Removes a user's profile extension.
+        """(Deprecated) Removes a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param code:  (required)
@@ -222,6 +224,7 @@ class MyExtensionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /me/extensions/{code} is deprecated.", DeprecationWarning)
 
         _param = self._remove_user_extension_serialize(
             code=code,
@@ -326,7 +329,7 @@ class MyExtensionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityApiUserV1UserExtensionSetResponse:
-        """Creates or update a user's profile extension.
+        """(Deprecated) Creates or update a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param identity_api_user_v1_set_user_extension_request: 
@@ -352,6 +355,7 @@ class MyExtensionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /me/extensions is deprecated.", DeprecationWarning)
 
         _param = self._set_user_extension_serialize(
             identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request,
@@ -396,7 +400,7 @@ class MyExtensionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityApiUserV1UserExtensionSetResponse]:
-        """Creates or update a user's profile extension.
+        """(Deprecated) Creates or update a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param identity_api_user_v1_set_user_extension_request: 
@@ -422,6 +426,7 @@ class MyExtensionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /me/extensions is deprecated.", DeprecationWarning)
 
         _param = self._set_user_extension_serialize(
             identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request,
@@ -466,7 +471,7 @@ class MyExtensionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates or update a user's profile extension.
+        """(Deprecated) Creates or update a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
         :param identity_api_user_v1_set_user_extension_request: 
@@ -492,6 +497,7 @@ class MyExtensionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /me/extensions is deprecated.", DeprecationWarning)
 
         _param = self._set_user_extension_serialize(
             identity_api_user_v1_set_user_extension_request=identity_api_user_v1_set_user_extension_request,
