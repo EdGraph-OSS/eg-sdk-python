@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
 **student_id** | **str** |  | [optional] 
 **first_name** | **str** |  | [optional] 
 **middle_name** | **str** |  | [optional] 

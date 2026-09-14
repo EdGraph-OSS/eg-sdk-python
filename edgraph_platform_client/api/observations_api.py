@@ -5488,6 +5488,7 @@ class ObservationsApi:
         status: Optional[StrictStr] = None,
         var_from: Optional[StrictStr] = None,
         to: Optional[StrictStr] = None,
+        observer_id: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5526,6 +5527,8 @@ class ObservationsApi:
         :type var_from: str
         :param to: 
         :type to: str
+        :param observer_id: 
+        :type observer_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5560,6 +5563,7 @@ class ObservationsApi:
             status=status,
             var_from=var_from,
             to=to,
+            observer_id=observer_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5598,6 +5602,7 @@ class ObservationsApi:
         status: Optional[StrictStr] = None,
         var_from: Optional[StrictStr] = None,
         to: Optional[StrictStr] = None,
+        observer_id: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5636,6 +5641,8 @@ class ObservationsApi:
         :type var_from: str
         :param to: 
         :type to: str
+        :param observer_id: 
+        :type observer_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5670,6 +5677,7 @@ class ObservationsApi:
             status=status,
             var_from=var_from,
             to=to,
+            observer_id=observer_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5708,6 +5716,7 @@ class ObservationsApi:
         status: Optional[StrictStr] = None,
         var_from: Optional[StrictStr] = None,
         to: Optional[StrictStr] = None,
+        observer_id: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5746,6 +5755,8 @@ class ObservationsApi:
         :type var_from: str
         :param to: 
         :type to: str
+        :param observer_id: 
+        :type observer_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5780,6 +5791,7 @@ class ObservationsApi:
             status=status,
             var_from=var_from,
             to=to,
+            observer_id=observer_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5813,6 +5825,7 @@ class ObservationsApi:
         status,
         var_from,
         to,
+        observer_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5876,6 +5889,10 @@ class ObservationsApi:
         if to is not None:
             
             _query_params.append(('to', to))
+            
+        if observer_id is not None:
+            
+            _query_params.append(('observerId', observer_id))
             
         # process the header parameters
         # process the form parameters

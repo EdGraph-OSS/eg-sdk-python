@@ -17,11 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from edgraph_platform_client.models.enrollment_api_enrollment_application_responses_v1_application_profile_message import EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from edgraph_platform_client.models.enrollment_api_enrollment_application_responses_v1_application_pathway_message import EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage
 from edgraph_platform_client.models.enrollment_api_enrollment_application_responses_v1_application_response_contact_message import EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage
-from edgraph_platform_client.models.enrollment_api_enrollment_application_responses_v1_application_response_step_message import EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage
+from edgraph_platform_client.models.enrollment_api_enrollment_application_responses_v1_application_response_screen_message import EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -32,13 +32,13 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
     """ # noqa: E501
     id: Optional[StrictStr] = None
     tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
-    application_profile: Optional[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage] = Field(default=None, alias="applicationProfile")
-    current_step_code: Optional[StrictStr] = Field(default=None, alias="currentStepCode")
-    completed_progress: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="completedProgress")
+    application_pathway: Optional[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage] = Field(default=None, alias="applicationPathway")
+    current_screen_code: Optional[StrictStr] = Field(default=None, alias="currentScreenCode")
+    progress: Optional[StrictStr] = Field(default=None, description="Decimal progress (0-100, 2dp) carried as an invariant-culture string,  mirroring the legacy enrollmentresults.proto completedProgress convention.")
     student_id: Optional[StrictStr] = Field(default=None, alias="studentId")
     language_code: Optional[StrictStr] = Field(default=None, alias="languageCode")
     contacts: Optional[List[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage]] = None
-    steps: Optional[List[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage]] = None
+    screens: Optional[List[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage]] = None
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
     created_date_time: Optional[StrictStr] = Field(default=None, alias="createdDateTime")
     last_modified_by: Optional[StrictStr] = Field(default=None, alias="lastModifiedBy")
@@ -46,7 +46,13 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
     deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
     deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "applicationProfile", "currentStepCode", "completedProgress", "studentId", "languageCode", "contacts", "steps", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted"]
+    status: Optional[StrictStr] = None
+    student_first_name: Optional[StrictStr] = Field(default=None, alias="studentFirstName")
+    student_last_name: Optional[StrictStr] = Field(default=None, alias="studentLastName")
+    student_local_id: Optional[StrictStr] = Field(default=None, alias="studentLocalId")
+    next_school_code: Optional[StrictStr] = Field(default=None, alias="nextSchoolCode")
+    next_school_name: Optional[StrictStr] = Field(default=None, alias="nextSchoolName")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "applicationPathway", "currentScreenCode", "progress", "studentId", "languageCode", "contacts", "screens", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "status", "studentFirstName", "studentLastName", "studentLocalId", "nextSchoolCode", "nextSchoolName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,7 +89,7 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
         """
         excluded_fields: Set[str] = set([
             "contacts",
-            "steps",
+            "screens",
         ])
 
         _dict = self.model_dump(
@@ -91,9 +97,9 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of application_profile
-        if self.application_profile:
-            _dict['applicationProfile'] = self.application_profile.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of application_pathway
+        if self.application_pathway:
+            _dict['applicationPathway'] = self.application_pathway.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
         _items = []
         if self.contacts:
@@ -101,13 +107,13 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
                 if _item_contacts:
                     _items.append(_item_contacts.to_dict())
             _dict['contacts'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in steps (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in screens (list)
         _items = []
-        if self.steps:
-            for _item_steps in self.steps:
-                if _item_steps:
-                    _items.append(_item_steps.to_dict())
-            _dict['steps'] = _items
+        if self.screens:
+            for _item_screens in self.screens:
+                if _item_screens:
+                    _items.append(_item_screens.to_dict())
+            _dict['screens'] = _items
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -118,10 +124,15 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
-        # set to None if current_step_code (nullable) is None
+        # set to None if current_screen_code (nullable) is None
         # and model_fields_set contains the field
-        if self.current_step_code is None and "current_step_code" in self.model_fields_set:
-            _dict['currentStepCode'] = None
+        if self.current_screen_code is None and "current_screen_code" in self.model_fields_set:
+            _dict['currentScreenCode'] = None
+
+        # set to None if progress (nullable) is None
+        # and model_fields_set contains the field
+        if self.progress is None and "progress" in self.model_fields_set:
+            _dict['progress'] = None
 
         # set to None if student_id (nullable) is None
         # and model_fields_set contains the field
@@ -138,10 +149,10 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
         if self.contacts is None and "contacts" in self.model_fields_set:
             _dict['contacts'] = None
 
-        # set to None if steps (nullable) is None
+        # set to None if screens (nullable) is None
         # and model_fields_set contains the field
-        if self.steps is None and "steps" in self.model_fields_set:
-            _dict['steps'] = None
+        if self.screens is None and "screens" in self.model_fields_set:
+            _dict['screens'] = None
 
         # set to None if created_by (nullable) is None
         # and model_fields_set contains the field
@@ -178,6 +189,36 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
         if self.is_deleted is None and "is_deleted" in self.model_fields_set:
             _dict['isDeleted'] = None
 
+        # set to None if status (nullable) is None
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
+        # set to None if student_first_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.student_first_name is None and "student_first_name" in self.model_fields_set:
+            _dict['studentFirstName'] = None
+
+        # set to None if student_last_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.student_last_name is None and "student_last_name" in self.model_fields_set:
+            _dict['studentLastName'] = None
+
+        # set to None if student_local_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.student_local_id is None and "student_local_id" in self.model_fields_set:
+            _dict['studentLocalId'] = None
+
+        # set to None if next_school_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.next_school_code is None and "next_school_code" in self.model_fields_set:
+            _dict['nextSchoolCode'] = None
+
+        # set to None if next_school_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.next_school_name is None and "next_school_name" in self.model_fields_set:
+            _dict['nextSchoolName'] = None
+
         return _dict
 
     @classmethod
@@ -192,20 +233,26 @@ class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(B
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "tenantId": obj.get("tenantId"),
-            "applicationProfile": EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.from_dict(obj["applicationProfile"]) if obj.get("applicationProfile") is not None else None,
-            "currentStepCode": obj.get("currentStepCode"),
-            "completedProgress": obj.get("completedProgress"),
+            "applicationPathway": EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.from_dict(obj["applicationPathway"]) if obj.get("applicationPathway") is not None else None,
+            "currentScreenCode": obj.get("currentScreenCode"),
+            "progress": obj.get("progress"),
             "studentId": obj.get("studentId"),
             "languageCode": obj.get("languageCode"),
             "contacts": [EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage.from_dict(_item) for _item in obj["contacts"]] if obj.get("contacts") is not None else None,
-            "steps": [EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.from_dict(_item) for _item in obj["steps"]] if obj.get("steps") is not None else None,
+            "screens": [EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.from_dict(_item) for _item in obj["screens"]] if obj.get("screens") is not None else None,
             "createdBy": obj.get("createdBy"),
             "createdDateTime": obj.get("createdDateTime"),
             "lastModifiedBy": obj.get("lastModifiedBy"),
             "lastModifiedDateTime": obj.get("lastModifiedDateTime"),
             "deletedBy": obj.get("deletedBy"),
             "deletedDateTime": obj.get("deletedDateTime"),
-            "isDeleted": obj.get("isDeleted")
+            "isDeleted": obj.get("isDeleted"),
+            "status": obj.get("status"),
+            "studentFirstName": obj.get("studentFirstName"),
+            "studentLastName": obj.get("studentLastName"),
+            "studentLocalId": obj.get("studentLocalId"),
+            "nextSchoolCode": obj.get("nextSchoolCode"),
+            "nextSchoolName": obj.get("nextSchoolName")
         })
         return _obj
 

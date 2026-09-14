@@ -11,8 +11,10 @@ Method | HTTP request | Description
 [**clone_instance_async**](InstancesApi.md#clone_instance_async) | **POST** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/clone | Clones an instance.
 [**create_instance**](InstancesApi.md#create_instance) | **POST** /tenants/{tenantId}/oneroster/instances | Creates a new Instance.
 [**create_instance_async**](InstancesApi.md#create_instance_async) | **POST** /tenants/{tenantId}/edfiadmin/instances | Creates a new Instance.
+[**create_instance_v2**](InstancesApi.md#create_instance_v2) | **POST** /v2/tenants/{tenantId}/instances | Creates a new instance.
 [**delete_instance**](InstancesApi.md#delete_instance) | **DELETE** /tenants/{tenantId}/oneroster/instances/{instanceId} | Deletes an Instance.
 [**delete_instance_async**](InstancesApi.md#delete_instance_async) | **DELETE** /tenants/{tenantId}/edfiadmin/instances/{instanceId} | Deletes an Instance.
+[**delete_instance_v2**](InstancesApi.md#delete_instance_v2) | **DELETE** /v2/tenants/{tenantId}/instances/{instanceId} | Deletes an instance.
 [**delete_school_year_async**](InstancesApi.md#delete_school_year_async) | **DELETE** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year} | Removes an ODS database from an Instance.
 [**get_ed_fi_admin_instance_endpoints**](InstancesApi.md#get_ed_fi_admin_instance_endpoints) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/endpoints | Retrieves the Ed-Fi API endpoint URLs of an Instance.
 [**get_ed_fi_admin_instance_year_endpoints**](InstancesApi.md#get_ed_fi_admin_instance_year_endpoints) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/endpoints | Retrieves the Ed-Fi API endpoint URLs of an Instance.
@@ -39,6 +41,7 @@ Method | HTTP request | Description
 [**truncate_instance**](InstancesApi.md#truncate_instance) | **POST** /tenants/{tenantId}/oneroster/instances/{instanceId}/truncate | Truncates the Instance&#39;s database
 [**update_instance**](InstancesApi.md#update_instance) | **PUT** /tenants/{tenantId}/oneroster/instances/{instanceId} | Updates an Instance.
 [**update_instance_async**](InstancesApi.md#update_instance_async) | **PUT** /tenants/{tenantId}/edfiadmin/instances/{instanceId} | Updates an Instance.
+[**update_instance_v2**](InstancesApi.md#update_instance_v2) | **PUT** /v2/tenants/{tenantId}/instances/{instanceId} | Updates an existing instance.
 [**validate_custom_id_available**](InstancesApi.md#validate_custom_id_available) | **GET** /tenants/{tenantId}/edfiadmin/instances/validatecustomidavailable/{customId} | Validate if instance is available
 
 
@@ -605,6 +608,85 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_instance_v2**
+> EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse create_instance_v2(tenant_id, body=body)
+
+Creates a new instance.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_instances_instance_created_response import EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.InstancesApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    body = None # object |  (optional)
+
+    try:
+        # Creates a new instance.
+        api_response = await api_instance.create_instance_v2(tenant_id, body=body)
+        print("The response of InstancesApi->create_instance_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstancesApi->create_instance_v2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **body** | **object**|  | [optional] 
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse**](EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_instance**
 > delete_instance(tenant_id, instance_id)
 
@@ -721,6 +803,83 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
         await api_instance.delete_instance_async(tenant_id, instance_id)
     except Exception as e:
         print("Exception when calling InstancesApi->delete_instance_async: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **instance_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**204** | The resource was successfully deleted. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+**404** | The resource could not be found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_instance_v2**
+> delete_instance_v2(tenant_id, instance_id)
+
+Deletes an instance.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.InstancesApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    instance_id = 'instance_id_example' # str | 
+
+    try:
+        # Deletes an instance.
+        await api_instance.delete_instance_v2(tenant_id, instance_id)
+    except Exception as e:
+        print("Exception when calling InstancesApi->delete_instance_v2: %s\n" % e)
 ```
 
 
@@ -2863,6 +3022,87 @@ void (empty response body)
 **200** | The requested resource was successfully retrieved. |  -  |
 **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_instance_v2**
+> EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse update_instance_v2(tenant_id, instance_id, body=body)
+
+Updates an existing instance.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import edgraph_platform_client
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_instances_instance_updated_response import EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse
+from edgraph_platform_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.dev.edgraph.com/tenant
+# See configuration.py for a list of all supported configuration parameters.
+configuration = edgraph_platform_client.Configuration(
+    host = "https://api.dev.edgraph.com/tenant"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+async with edgraph_platform_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = edgraph_platform_client.InstancesApi(api_client)
+    tenant_id = 'tenant_id_example' # str | 
+    instance_id = 'instance_id_example' # str | 
+    body = None # object |  (optional)
+
+    try:
+        # Updates an existing instance.
+        api_response = await api_instance.update_instance_v2(tenant_id, instance_id, body=body)
+        print("The response of InstancesApi->update_instance_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstancesApi->update_instance_v2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**|  | 
+ **instance_id** | **str**|  | 
+ **body** | **object**|  | [optional] 
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse**](EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+**403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+**500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+**200** | The requested resource was successfully retrieved. |  -  |
+**400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

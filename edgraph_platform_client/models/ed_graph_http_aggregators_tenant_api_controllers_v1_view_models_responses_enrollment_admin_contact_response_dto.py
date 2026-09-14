@@ -42,14 +42,21 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     student_count: Optional[StrictInt] = Field(default=None, alias="studentCount")
     is_phone_override: Optional[StrictBool] = Field(default=None, alias="isPhoneOverride")
     is_email_override: Optional[StrictBool] = Field(default=None, alias="isEmailOverride")
+    sis_email: Optional[StrictStr] = Field(default=None, alias="sisEmail")
+    sis_phone: Optional[StrictStr] = Field(default=None, alias="sisPhone")
+    email_overridden_by: Optional[StrictStr] = Field(default=None, alias="emailOverriddenBy")
+    email_overridden_at: Optional[datetime] = Field(default=None, alias="emailOverriddenAt")
+    phone_overridden_by: Optional[StrictStr] = Field(default=None, alias="phoneOverriddenBy")
+    phone_overridden_at: Optional[datetime] = Field(default=None, alias="phoneOverriddenAt")
     sign_in_status: Optional[StrictStr] = Field(default=None, alias="signInStatus")
+    is_locked: Optional[StrictBool] = Field(default=None, alias="isLocked")
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
     created_date_time: Optional[datetime] = Field(default=None, alias="createdDateTime")
     last_modified_by: Optional[StrictStr] = Field(default=None, alias="lastModifiedBy")
     last_modified_date_time: Optional[datetime] = Field(default=None, alias="lastModifiedDateTime")
     last_updated_date_time: Optional[datetime] = Field(default=None, alias="lastUpdatedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "contactId", "firstName", "lastName", "email", "phone", "students", "relationship", "studentCount", "isPhoneOverride", "isEmailOverride", "signInStatus", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "lastUpdatedDateTime", "isDeleted"]
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "contactId", "firstName", "lastName", "email", "phone", "students", "relationship", "studentCount", "isPhoneOverride", "isEmailOverride", "sisEmail", "sisPhone", "emailOverriddenBy", "emailOverriddenAt", "phoneOverriddenBy", "phoneOverriddenAt", "signInStatus", "isLocked", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "lastUpdatedDateTime", "isDeleted"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -152,6 +159,36 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.is_email_override is None and "is_email_override" in self.model_fields_set:
             _dict['isEmailOverride'] = None
 
+        # set to None if sis_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.sis_email is None and "sis_email" in self.model_fields_set:
+            _dict['sisEmail'] = None
+
+        # set to None if sis_phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.sis_phone is None and "sis_phone" in self.model_fields_set:
+            _dict['sisPhone'] = None
+
+        # set to None if email_overridden_by (nullable) is None
+        # and model_fields_set contains the field
+        if self.email_overridden_by is None and "email_overridden_by" in self.model_fields_set:
+            _dict['emailOverriddenBy'] = None
+
+        # set to None if email_overridden_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.email_overridden_at is None and "email_overridden_at" in self.model_fields_set:
+            _dict['emailOverriddenAt'] = None
+
+        # set to None if phone_overridden_by (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone_overridden_by is None and "phone_overridden_by" in self.model_fields_set:
+            _dict['phoneOverriddenBy'] = None
+
+        # set to None if phone_overridden_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone_overridden_at is None and "phone_overridden_at" in self.model_fields_set:
+            _dict['phoneOverriddenAt'] = None
+
         # set to None if sign_in_status (nullable) is None
         # and model_fields_set contains the field
         if self.sign_in_status is None and "sign_in_status" in self.model_fields_set:
@@ -206,7 +243,14 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "studentCount": obj.get("studentCount"),
             "isPhoneOverride": obj.get("isPhoneOverride"),
             "isEmailOverride": obj.get("isEmailOverride"),
+            "sisEmail": obj.get("sisEmail"),
+            "sisPhone": obj.get("sisPhone"),
+            "emailOverriddenBy": obj.get("emailOverriddenBy"),
+            "emailOverriddenAt": obj.get("emailOverriddenAt"),
+            "phoneOverriddenBy": obj.get("phoneOverriddenBy"),
+            "phoneOverriddenAt": obj.get("phoneOverriddenAt"),
             "signInStatus": obj.get("signInStatus"),
+            "isLocked": obj.get("isLocked"),
             "createdBy": obj.get("createdBy"),
             "createdDateTime": obj.get("createdDateTime"),
             "lastModifiedBy": obj.get("lastModifiedBy"),

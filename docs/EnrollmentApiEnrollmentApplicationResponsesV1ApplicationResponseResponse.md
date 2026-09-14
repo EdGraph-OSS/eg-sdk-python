@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **tenant_id** | **str** |  | [optional] 
-**application_profile** | [**EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage**](EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.md) |  | [optional] 
-**current_step_code** | **str** |  | [optional] 
-**completed_progress** | **float** |  | [optional] 
+**application_pathway** | [**EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage**](EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.md) |  | [optional] 
+**current_screen_code** | **str** |  | [optional] 
+**progress** | **str** | Decimal progress (0-100, 2dp) carried as an invariant-culture string,  mirroring the legacy enrollmentresults.proto completedProgress convention. | [optional] 
 **student_id** | **str** |  | [optional] 
 **language_code** | **str** |  | [optional] 
 **contacts** | [**List[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage]**](EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage.md) |  | [optional] [readonly] 
-**steps** | [**List[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage]**](EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.md) |  | [optional] [readonly] 
+**screens** | [**List[EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage]**](EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.md) |  | [optional] [readonly] 
 **created_by** | **str** |  | [optional] 
 **created_date_time** | **str** |  | [optional] 
 **last_modified_by** | **str** |  | [optional] 
@@ -21,6 +21,12 @@ Name | Type | Description | Notes
 **deleted_by** | **str** |  | [optional] 
 **deleted_date_time** | **str** |  | [optional] 
 **is_deleted** | **bool** |  | [optional] 
+**status** | **str** |  | [optional] 
+**student_first_name** | **str** |  | [optional] 
+**student_last_name** | **str** |  | [optional] 
+**student_local_id** | **str** |  | [optional] 
+**next_school_code** | **str** |  | [optional] 
+**next_school_name** | **str** |  | [optional] 
 
 ## Example
 

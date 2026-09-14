@@ -1439,7 +1439,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_paginated_observations**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel get_paginated_observations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_name=evaluee_name, evaluee_id=evaluee_id, form_id=form_id, status=status, var_from=var_from, to=to)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel get_paginated_observations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_name=evaluee_name, evaluee_id=evaluee_id, form_id=form_id, status=status, var_from=var_from, to=to, observer_id=observer_id)
 
 Get Paginated Observations for a given tenant
 
@@ -1481,10 +1481,11 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     status = '' # str |  (optional) (default to '')
     var_from = '' # str |  (optional) (default to '')
     to = '' # str |  (optional) (default to '')
+    observer_id = '' # str |  (optional) (default to '')
 
     try:
         # Get Paginated Observations for a given tenant
-        api_response = await api_instance.get_paginated_observations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_name=evaluee_name, evaluee_id=evaluee_id, form_id=form_id, status=status, var_from=var_from, to=to)
+        api_response = await api_instance.get_paginated_observations(tenant_id, page_size=page_size, page_index=page_index, order_by=order_by, campus=campus, evaluee_name=evaluee_name, evaluee_id=evaluee_id, form_id=form_id, status=status, var_from=var_from, to=to, observer_id=observer_id)
         print("The response of ObservationsApi->get_paginated_observations:\n")
         pprint(api_response)
     except Exception as e:
@@ -1509,6 +1510,7 @@ Name | Type | Description  | Notes
  **status** | **str**|  | [optional] [default to &#39;&#39;]
  **var_from** | **str**|  | [optional] [default to &#39;&#39;]
  **to** | **str**|  | [optional] [default to &#39;&#39;]
+ **observer_id** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 

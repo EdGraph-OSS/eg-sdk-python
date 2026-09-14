@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -27,11 +28,12 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     """
     EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto
     """ # noqa: E501
+    id: Optional[UUID] = None
     student_id: Optional[StrictStr] = Field(default=None, alias="studentId")
     first_name: Optional[StrictStr] = Field(default=None, alias="firstName")
     middle_name: Optional[StrictStr] = Field(default=None, alias="middleName")
     last_name: Optional[StrictStr] = Field(default=None, alias="lastName")
-    __properties: ClassVar[List[str]] = ["studentId", "firstName", "middleName", "lastName"]
+    __properties: ClassVar[List[str]] = ["id", "studentId", "firstName", "middleName", "lastName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -72,6 +74,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         # set to None if student_id (nullable) is None
         # and model_fields_set contains the field
         if self.student_id is None and "student_id" in self.model_fields_set:
@@ -104,6 +111,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "studentId": obj.get("studentId"),
             "firstName": obj.get("firstName"),
             "middleName": obj.get("middleName"),
