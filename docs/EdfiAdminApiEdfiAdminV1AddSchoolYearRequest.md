@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **year** | **int** |  | [optional] 
 **selected_tier_id** | **str** |  | [optional] 
 **ods_backup_code** | **str** |  | [optional] 
+**application_ids** | **List[int]** |  | [optional] [readonly] 
 
 ## Example
 

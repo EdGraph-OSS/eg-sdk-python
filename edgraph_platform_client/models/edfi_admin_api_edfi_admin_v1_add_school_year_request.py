@@ -32,7 +32,8 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(BaseModel):
     year: Optional[StrictInt] = None
     selected_tier_id: Optional[StrictStr] = Field(default=None, alias="selectedTierId")
     ods_backup_code: Optional[StrictStr] = Field(default=None, alias="odsBackupCode")
-    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "year", "selectedTierId", "odsBackupCode"]
+    application_ids: Optional[List[StrictInt]] = Field(default=None, alias="applicationIds")
+    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "year", "selectedTierId", "odsBackupCode", "applicationIds"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -64,8 +65,10 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "application_ids",
         ])
 
         _dict = self.model_dump(
@@ -93,6 +96,11 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(BaseModel):
         if self.ods_backup_code is None and "ods_backup_code" in self.model_fields_set:
             _dict['odsBackupCode'] = None
 
+        # set to None if application_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.application_ids is None and "application_ids" in self.model_fields_set:
+            _dict['applicationIds'] = None
+
         return _dict
 
     @classmethod
@@ -109,7 +117,8 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(BaseModel):
             "instanceId": obj.get("instanceId"),
             "year": obj.get("year"),
             "selectedTierId": obj.get("selectedTierId"),
-            "odsBackupCode": obj.get("odsBackupCode")
+            "odsBackupCode": obj.get("odsBackupCode"),
+            "applicationIds": obj.get("applicationIds")
         })
         return _obj
 

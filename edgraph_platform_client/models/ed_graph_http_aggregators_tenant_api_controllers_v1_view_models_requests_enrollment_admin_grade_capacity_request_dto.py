@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,12 +25,15 @@ from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminGradeCapacityRequestDto(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminGradeCapacityRequestDto
+    One grade's seats. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.GradeCapacityRequestDto.SeatsAvailable, EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.GradeCapacityRequestDto.LotteryEligible and  EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.GradeCapacityRequestDto.SchoolYear are what the lottery reads; the Salesforce sync normally supplies  them, and an admin edit may leave them null to keep whatever the row already has unset.
     """ # noqa: E501
     grade: Optional[StrictStr] = None
     capacity: Optional[StrictInt] = None
     enrolled: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["grade", "capacity", "enrolled"]
+    seats_available: Optional[StrictInt] = Field(default=None, alias="seatsAvailable")
+    lottery_eligible: Optional[StrictBool] = Field(default=None, alias="lotteryEligible")
+    school_year: Optional[StrictStr] = Field(default=None, alias="schoolYear")
+    __properties: ClassVar[List[str]] = ["grade", "capacity", "enrolled", "seatsAvailable", "lotteryEligible", "schoolYear"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +89,21 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
         if self.enrolled is None and "enrolled" in self.model_fields_set:
             _dict['enrolled'] = None
 
+        # set to None if seats_available (nullable) is None
+        # and model_fields_set contains the field
+        if self.seats_available is None and "seats_available" in self.model_fields_set:
+            _dict['seatsAvailable'] = None
+
+        # set to None if lottery_eligible (nullable) is None
+        # and model_fields_set contains the field
+        if self.lottery_eligible is None and "lottery_eligible" in self.model_fields_set:
+            _dict['lotteryEligible'] = None
+
+        # set to None if school_year (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_year is None and "school_year" in self.model_fields_set:
+            _dict['schoolYear'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +118,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
         _obj = cls.model_validate({
             "grade": obj.get("grade"),
             "capacity": obj.get("capacity"),
-            "enrolled": obj.get("enrolled")
+            "enrolled": obj.get("enrolled"),
+            "seatsAvailable": obj.get("seatsAvailable"),
+            "lotteryEligible": obj.get("lotteryEligible"),
+            "schoolYear": obj.get("schoolYear")
         })
         return _obj
 

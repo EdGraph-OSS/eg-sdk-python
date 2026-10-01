@@ -16,11 +16,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictInt, StrictStr
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Annotated
 from uuid import UUID
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_contact_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_email_override_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_mutation_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactMutationResultDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_override_history_entry_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel
@@ -29,6 +31,11 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_control
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_response_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_response_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDtoPaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_sign_in_unlocked_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactSignInUnlockedResultDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_student_associated_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_student_detail_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_student_removed_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_contact_verified_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto
+from edgraph_platform_client.models.enrollment_api_enrollment_registrations_v1_registration_response import EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
 from edgraph_platform_client.api_response import ApiResponse
@@ -49,6 +56,328 @@ class EnrollmentAdminContactsApi:
 
 
     @validate_call
+    async def add_enrollment_contact_student(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto:
+        """Links a student to a contact.
+
+        Send `studentId` (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or `id` (an existing student's own internal id, as returned by  this same route's GET) to link that exact student directly - `id` wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  `.../students/{studentId}`.
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._add_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def add_enrollment_contact_student_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto]:
+        """Links a student to a contact.
+
+        Send `studentId` (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or `id` (an existing student's own internal id, as returned by  this same route's GET) to link that exact student directly - `id` wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  `.../students/{studentId}`.
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._add_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def add_enrollment_contact_student_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Links a student to a contact.
+
+        Send `studentId` (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or `id` (an existing student's own internal id, as returned by  this same route's GET) to link that exact student directly - `id` wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  `.../students/{studentId}`.
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._add_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _add_enrollment_contact_student_serialize(
+        self,
+        tenant_id,
+        id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_add_contact_student_request_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def create_enrollment_contact(
         self,
         tenant_id: StrictStr,
@@ -66,9 +395,9 @@ class EnrollmentAdminContactsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactMutationResultDto:
-        """Creates an Enrollment Contact.
+        """Creates or updates an Enrollment Contact by its source-system `contactId`.
 
-        `email` and `phone` here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              `email-override` and `phone-override` routes.
+        <br>              Upsert semantics: unique per `contactId`. A first call creates the contact; a later call              for the same `contactId` overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the `overrides/emails` and `overrides/phones` routes for that.                <br>    `email` and `phone` here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              `overrides/emails` and `overrides/phones` routes.              
 
         :param tenant_id:  (required)
         :type tenant_id: str
@@ -141,9 +470,9 @@ class EnrollmentAdminContactsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactMutationResultDto]:
-        """Creates an Enrollment Contact.
+        """Creates or updates an Enrollment Contact by its source-system `contactId`.
 
-        `email` and `phone` here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              `email-override` and `phone-override` routes.
+        <br>              Upsert semantics: unique per `contactId`. A first call creates the contact; a later call              for the same `contactId` overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the `overrides/emails` and `overrides/phones` routes for that.                <br>    `email` and `phone` here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              `overrides/emails` and `overrides/phones` routes.              
 
         :param tenant_id:  (required)
         :type tenant_id: str
@@ -216,9 +545,9 @@ class EnrollmentAdminContactsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates an Enrollment Contact.
+        """Creates or updates an Enrollment Contact by its source-system `contactId`.
 
-        `email` and `phone` here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              `email-override` and `phone-override` routes.
+        <br>              Upsert semantics: unique per `contactId`. A first call creates the contact; a later call              for the same `contactId` overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the `overrides/emails` and `overrides/phones` routes for that.                <br>    `email` and `phone` here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              `overrides/emails` and `overrides/phones` routes.              
 
         :param tenant_id:  (required)
         :type tenant_id: str
@@ -638,6 +967,345 @@ class EnrollmentAdminContactsApi:
 
 
     @validate_call
+    async def get_enrollment_contact_changelogs(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        student_id: Annotated[Optional[StrictStr], Field(description="Narrows to changes affecting one linked student.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel:
+        """Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first.
+
+        <br>              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                <br>    `EventType` on `GetAllChangesRequest` is a single optional string, so it cannot              express \"any of these event types\" on its own. The filter is built through `Filter`              instead - a raw Elasticsearch `query_string` - while `EntityType` and              `EntityId` stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as `filter` clauses and `Filter` as a              `must` clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact's own entity scope.                <br>              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param student_id: Narrows to changes affecting one linked student.
+        :type student_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_changelogs_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            page_size=page_size,
+            page_index=page_index,
+            student_id=student_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_enrollment_contact_changelogs_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        student_id: Annotated[Optional[StrictStr], Field(description="Narrows to changes affecting one linked student.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel]:
+        """Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first.
+
+        <br>              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                <br>    `EventType` on `GetAllChangesRequest` is a single optional string, so it cannot              express \"any of these event types\" on its own. The filter is built through `Filter`              instead - a raw Elasticsearch `query_string` - while `EntityType` and              `EntityId` stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as `filter` clauses and `Filter` as a              `must` clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact's own entity scope.                <br>              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param student_id: Narrows to changes affecting one linked student.
+        :type student_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_changelogs_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            page_size=page_size,
+            page_index=page_index,
+            student_id=student_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_enrollment_contact_changelogs_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        student_id: Annotated[Optional[StrictStr], Field(description="Narrows to changes affecting one linked student.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first.
+
+        <br>              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                <br>    `EventType` on `GetAllChangesRequest` is a single optional string, so it cannot              express \"any of these event types\" on its own. The filter is built through `Filter`              instead - a raw Elasticsearch `query_string` - while `EntityType` and              `EntityId` stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as `filter` clauses and `Filter` as a              `must` clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact's own entity scope.                <br>              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param student_id: Narrows to changes affecting one linked student.
+        :type student_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_changelogs_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            page_size=page_size,
+            page_index=page_index,
+            student_id=student_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_enrollment_contact_changelogs_serialize(
+        self,
+        tenant_id,
+        id,
+        page_size,
+        page_index,
+        student_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if student_id is not None:
+            
+            _query_params.append(('studentId', student_id))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/changelogs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_enrollment_contact_overrides(
         self,
         tenant_id: StrictStr,
@@ -977,6 +1645,573 @@ class EnrollmentAdminContactsApi:
 
 
     @validate_call
+    async def get_enrollment_contact_registrations(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse]:
+        """Gets a contact's Registrations.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_registrations_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "List[EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse]",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_enrollment_contact_registrations_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse]]:
+        """Gets a contact's Registrations.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_registrations_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "List[EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse]",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_enrollment_contact_registrations_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets a contact's Registrations.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_registrations_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "List[EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse]",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_enrollment_contact_registrations_serialize(
+        self,
+        tenant_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/registrations',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_enrollment_contact_students(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto]:
+        """Gets a contact's linked students, with each link's association attributes.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_students_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto]",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_enrollment_contact_students_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto]]:
+        """Gets a contact's linked students, with each link's association attributes.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_students_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto]",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_enrollment_contact_students_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets a contact's linked students, with each link's association attributes.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_enrollment_contact_students_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto]",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_enrollment_contact_students_serialize(
+        self,
+        tenant_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_enrollment_contacts(
         self,
         tenant_id: StrictStr,
@@ -985,7 +2220,7 @@ class EnrollmentAdminContactsApi:
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         search: Annotated[Optional[StrictStr], Field(description="Free-text match on contact name, email, or phone.")] = None,
-        school_code: Annotated[Optional[StrictStr], Field(description="Narrows to contacts with at least one linked student at this school.")] = None,
+        next_school_state_short_code: Annotated[Optional[StrictStr], Field(description="Narrows to contacts with at least one linked student whose next school has this state short code.")] = None,
         locked: Annotated[Optional[StrictBool], Field(description="Narrows to contacts by sign-in lock status. Unset returns every contact.")] = None,
         _request_timeout: Union[
             None,
@@ -1015,8 +2250,8 @@ class EnrollmentAdminContactsApi:
         :type filter: str
         :param search: Free-text match on contact name, email, or phone.
         :type search: str
-        :param school_code: Narrows to contacts with at least one linked student at this school.
-        :type school_code: str
+        :param next_school_state_short_code: Narrows to contacts with at least one linked student whose next school has this state short code.
+        :type next_school_state_short_code: str
         :param locked: Narrows to contacts by sign-in lock status. Unset returns every contact.
         :type locked: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1048,7 +2283,7 @@ class EnrollmentAdminContactsApi:
             order_by=order_by,
             filter=filter,
             search=search,
-            school_code=school_code,
+            next_school_state_short_code=next_school_state_short_code,
             locked=locked,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1083,7 +2318,7 @@ class EnrollmentAdminContactsApi:
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         search: Annotated[Optional[StrictStr], Field(description="Free-text match on contact name, email, or phone.")] = None,
-        school_code: Annotated[Optional[StrictStr], Field(description="Narrows to contacts with at least one linked student at this school.")] = None,
+        next_school_state_short_code: Annotated[Optional[StrictStr], Field(description="Narrows to contacts with at least one linked student whose next school has this state short code.")] = None,
         locked: Annotated[Optional[StrictBool], Field(description="Narrows to contacts by sign-in lock status. Unset returns every contact.")] = None,
         _request_timeout: Union[
             None,
@@ -1113,8 +2348,8 @@ class EnrollmentAdminContactsApi:
         :type filter: str
         :param search: Free-text match on contact name, email, or phone.
         :type search: str
-        :param school_code: Narrows to contacts with at least one linked student at this school.
-        :type school_code: str
+        :param next_school_state_short_code: Narrows to contacts with at least one linked student whose next school has this state short code.
+        :type next_school_state_short_code: str
         :param locked: Narrows to contacts by sign-in lock status. Unset returns every contact.
         :type locked: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1146,7 +2381,7 @@ class EnrollmentAdminContactsApi:
             order_by=order_by,
             filter=filter,
             search=search,
-            school_code=school_code,
+            next_school_state_short_code=next_school_state_short_code,
             locked=locked,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1181,7 +2416,7 @@ class EnrollmentAdminContactsApi:
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         search: Annotated[Optional[StrictStr], Field(description="Free-text match on contact name, email, or phone.")] = None,
-        school_code: Annotated[Optional[StrictStr], Field(description="Narrows to contacts with at least one linked student at this school.")] = None,
+        next_school_state_short_code: Annotated[Optional[StrictStr], Field(description="Narrows to contacts with at least one linked student whose next school has this state short code.")] = None,
         locked: Annotated[Optional[StrictBool], Field(description="Narrows to contacts by sign-in lock status. Unset returns every contact.")] = None,
         _request_timeout: Union[
             None,
@@ -1211,8 +2446,8 @@ class EnrollmentAdminContactsApi:
         :type filter: str
         :param search: Free-text match on contact name, email, or phone.
         :type search: str
-        :param school_code: Narrows to contacts with at least one linked student at this school.
-        :type school_code: str
+        :param next_school_state_short_code: Narrows to contacts with at least one linked student whose next school has this state short code.
+        :type next_school_state_short_code: str
         :param locked: Narrows to contacts by sign-in lock status. Unset returns every contact.
         :type locked: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -1244,7 +2479,7 @@ class EnrollmentAdminContactsApi:
             order_by=order_by,
             filter=filter,
             search=search,
-            school_code=school_code,
+            next_school_state_short_code=next_school_state_short_code,
             locked=locked,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1274,7 +2509,7 @@ class EnrollmentAdminContactsApi:
         order_by,
         filter,
         search,
-        school_code,
+        next_school_state_short_code,
         locked,
         _request_auth,
         _content_type,
@@ -1320,9 +2555,9 @@ class EnrollmentAdminContactsApi:
             
             _query_params.append(('search', search))
             
-        if school_code is not None:
+        if next_school_state_short_code is not None:
             
-            _query_params.append(('schoolCode', school_code))
+            _query_params.append(('nextSchoolStateShortCode', next_school_state_short_code))
             
         if locked is not None:
             
@@ -1674,7 +2909,7 @@ class EnrollmentAdminContactsApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1999,7 +3234,7 @@ class EnrollmentAdminContactsApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2020,7 +3255,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id: StrictStr,
         id: UUID,
-        student_id: Annotated[Optional[StrictStr], Field(description="The student whose screen the removal was made from.")] = None,
+        student_local_code: Annotated[Optional[StrictStr], Field(description="The local code of the student whose screen the removal was made from.")] = None,
         expected_version: Annotated[Optional[StrictStr], Field(description="The `lastUpdatedDateTime` this edit started from.")] = None,
         _request_timeout: Union[
             None,
@@ -2043,8 +3278,8 @@ class EnrollmentAdminContactsApi:
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param student_id: The student whose screen the removal was made from.
-        :type student_id: str
+        :param student_local_code: The local code of the student whose screen the removal was made from.
+        :type student_local_code: str
         :param expected_version: The `lastUpdatedDateTime` this edit started from.
         :type expected_version: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2072,7 +3307,7 @@ class EnrollmentAdminContactsApi:
         _param = self._remove_enrollment_contact_email_override_serialize(
             tenant_id=tenant_id,
             id=id,
-            student_id=student_id,
+            student_local_code=student_local_code,
             expected_version=expected_version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2104,7 +3339,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id: StrictStr,
         id: UUID,
-        student_id: Annotated[Optional[StrictStr], Field(description="The student whose screen the removal was made from.")] = None,
+        student_local_code: Annotated[Optional[StrictStr], Field(description="The local code of the student whose screen the removal was made from.")] = None,
         expected_version: Annotated[Optional[StrictStr], Field(description="The `lastUpdatedDateTime` this edit started from.")] = None,
         _request_timeout: Union[
             None,
@@ -2127,8 +3362,8 @@ class EnrollmentAdminContactsApi:
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param student_id: The student whose screen the removal was made from.
-        :type student_id: str
+        :param student_local_code: The local code of the student whose screen the removal was made from.
+        :type student_local_code: str
         :param expected_version: The `lastUpdatedDateTime` this edit started from.
         :type expected_version: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2156,7 +3391,7 @@ class EnrollmentAdminContactsApi:
         _param = self._remove_enrollment_contact_email_override_serialize(
             tenant_id=tenant_id,
             id=id,
-            student_id=student_id,
+            student_local_code=student_local_code,
             expected_version=expected_version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2188,7 +3423,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id: StrictStr,
         id: UUID,
-        student_id: Annotated[Optional[StrictStr], Field(description="The student whose screen the removal was made from.")] = None,
+        student_local_code: Annotated[Optional[StrictStr], Field(description="The local code of the student whose screen the removal was made from.")] = None,
         expected_version: Annotated[Optional[StrictStr], Field(description="The `lastUpdatedDateTime` this edit started from.")] = None,
         _request_timeout: Union[
             None,
@@ -2211,8 +3446,8 @@ class EnrollmentAdminContactsApi:
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param student_id: The student whose screen the removal was made from.
-        :type student_id: str
+        :param student_local_code: The local code of the student whose screen the removal was made from.
+        :type student_local_code: str
         :param expected_version: The `lastUpdatedDateTime` this edit started from.
         :type expected_version: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2240,7 +3475,7 @@ class EnrollmentAdminContactsApi:
         _param = self._remove_enrollment_contact_email_override_serialize(
             tenant_id=tenant_id,
             id=id,
-            student_id=student_id,
+            student_local_code=student_local_code,
             expected_version=expected_version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2267,7 +3502,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id,
         id,
-        student_id,
+        student_local_code,
         expected_version,
         _request_auth,
         _content_type,
@@ -2295,9 +3530,9 @@ class EnrollmentAdminContactsApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
-        if student_id is not None:
+        if student_local_code is not None:
             
-            _query_params.append(('studentId', student_id))
+            _query_params.append(('studentLocalCode', student_local_code))
             
         if expected_version is not None:
             
@@ -2324,7 +3559,7 @@ class EnrollmentAdminContactsApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2345,7 +3580,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id: StrictStr,
         id: UUID,
-        student_id: Annotated[Optional[StrictStr], Field(description="The student whose screen the removal was made from.")] = None,
+        student_local_code: Annotated[Optional[StrictStr], Field(description="The local code of the student whose screen the removal was made from.")] = None,
         expected_version: Annotated[Optional[StrictStr], Field(description="The `lastUpdatedDateTime` this edit started from.")] = None,
         _request_timeout: Union[
             None,
@@ -2368,8 +3603,8 @@ class EnrollmentAdminContactsApi:
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param student_id: The student whose screen the removal was made from.
-        :type student_id: str
+        :param student_local_code: The local code of the student whose screen the removal was made from.
+        :type student_local_code: str
         :param expected_version: The `lastUpdatedDateTime` this edit started from.
         :type expected_version: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2397,7 +3632,7 @@ class EnrollmentAdminContactsApi:
         _param = self._remove_enrollment_contact_phone_override_serialize(
             tenant_id=tenant_id,
             id=id,
-            student_id=student_id,
+            student_local_code=student_local_code,
             expected_version=expected_version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2429,7 +3664,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id: StrictStr,
         id: UUID,
-        student_id: Annotated[Optional[StrictStr], Field(description="The student whose screen the removal was made from.")] = None,
+        student_local_code: Annotated[Optional[StrictStr], Field(description="The local code of the student whose screen the removal was made from.")] = None,
         expected_version: Annotated[Optional[StrictStr], Field(description="The `lastUpdatedDateTime` this edit started from.")] = None,
         _request_timeout: Union[
             None,
@@ -2452,8 +3687,8 @@ class EnrollmentAdminContactsApi:
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param student_id: The student whose screen the removal was made from.
-        :type student_id: str
+        :param student_local_code: The local code of the student whose screen the removal was made from.
+        :type student_local_code: str
         :param expected_version: The `lastUpdatedDateTime` this edit started from.
         :type expected_version: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2481,7 +3716,7 @@ class EnrollmentAdminContactsApi:
         _param = self._remove_enrollment_contact_phone_override_serialize(
             tenant_id=tenant_id,
             id=id,
-            student_id=student_id,
+            student_local_code=student_local_code,
             expected_version=expected_version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2513,7 +3748,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id: StrictStr,
         id: UUID,
-        student_id: Annotated[Optional[StrictStr], Field(description="The student whose screen the removal was made from.")] = None,
+        student_local_code: Annotated[Optional[StrictStr], Field(description="The local code of the student whose screen the removal was made from.")] = None,
         expected_version: Annotated[Optional[StrictStr], Field(description="The `lastUpdatedDateTime` this edit started from.")] = None,
         _request_timeout: Union[
             None,
@@ -2536,8 +3771,8 @@ class EnrollmentAdminContactsApi:
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param student_id: The student whose screen the removal was made from.
-        :type student_id: str
+        :param student_local_code: The local code of the student whose screen the removal was made from.
+        :type student_local_code: str
         :param expected_version: The `lastUpdatedDateTime` this edit started from.
         :type expected_version: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2565,7 +3800,7 @@ class EnrollmentAdminContactsApi:
         _param = self._remove_enrollment_contact_phone_override_serialize(
             tenant_id=tenant_id,
             id=id,
-            student_id=student_id,
+            student_local_code=student_local_code,
             expected_version=expected_version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2592,7 +3827,7 @@ class EnrollmentAdminContactsApi:
         self,
         tenant_id,
         id,
-        student_id,
+        student_local_code,
         expected_version,
         _request_auth,
         _content_type,
@@ -2620,9 +3855,9 @@ class EnrollmentAdminContactsApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
-        if student_id is not None:
+        if student_local_code is not None:
             
-            _query_params.append(('studentId', student_id))
+            _query_params.append(('studentLocalCode', student_local_code))
             
         if expected_version is not None:
             
@@ -2649,7 +3884,307 @@ class EnrollmentAdminContactsApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def remove_enrollment_contact_student(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        student_id: Annotated[str, Field(strict=True, max_length=100)],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto:
+        """Removes a student's link to a contact.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param student_id:  (required)
+        :type student_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            student_id=student_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def remove_enrollment_contact_student_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        student_id: Annotated[str, Field(strict=True, max_length=100)],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto]:
+        """Removes a student's link to a contact.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param student_id:  (required)
+        :type student_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            student_id=student_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def remove_enrollment_contact_student_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        student_id: Annotated[str, Field(strict=True, max_length=100)],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Removes a student's link to a contact.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param student_id:  (required)
+        :type student_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            student_id=student_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _remove_enrollment_contact_student_serialize(
+        self,
+        tenant_id,
+        id,
+        student_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        if student_id is not None:
+            _path_params['studentId'] = student_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2972,9 +4507,9 @@ class EnrollmentAdminContactsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactMutationResultDto:
-        """Updates an Enrollment Contact name and its linked students.
+        """Updates an Enrollment Contact's name.
 
-        <br>              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                <br>              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying `email` or              `phone` is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying `email` or  `phone` is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  `/contacts/{id}/students` sub-resource, not through this call.
 
         :param tenant_id:  (required)
         :type tenant_id: str
@@ -3052,9 +4587,9 @@ class EnrollmentAdminContactsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactMutationResultDto]:
-        """Updates an Enrollment Contact name and its linked students.
+        """Updates an Enrollment Contact's name.
 
-        <br>              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                <br>              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying `email` or              `phone` is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying `email` or  `phone` is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  `/contacts/{id}/students` sub-resource, not through this call.
 
         :param tenant_id:  (required)
         :type tenant_id: str
@@ -3132,9 +4667,9 @@ class EnrollmentAdminContactsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates an Enrollment Contact name and its linked students.
+        """Updates an Enrollment Contact's name.
 
-        <br>              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                <br>              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying `email` or              `phone` is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying `email` or  `phone` is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  `/contacts/{id}/students` sub-resource, not through this call.
 
         :param tenant_id:  (required)
         :type tenant_id: str
@@ -3260,6 +4795,625 @@ class EnrollmentAdminContactsApi:
         return self.api_client.param_serialize(
             method='PUT',
             resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def update_enrollment_contact_student(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        student_id: Annotated[str, Field(strict=True, max_length=100)],
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto:
+        """Updates a contact-student association's attributes.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param student_id:  (required)
+        :type student_id: str
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            student_id=student_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def update_enrollment_contact_student_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        student_id: Annotated[str, Field(strict=True, max_length=100)],
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto]:
+        """Updates a contact-student association's attributes.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param student_id:  (required)
+        :type student_id: str
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            student_id=student_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def update_enrollment_contact_student_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        student_id: Annotated[str, Field(strict=True, max_length=100)],
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Updates a contact-student association's attributes.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param student_id:  (required)
+        :type student_id: str
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_enrollment_contact_student_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            student_id=student_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_enrollment_contact_student_serialize(
+        self,
+        tenant_id,
+        id,
+        student_id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        if student_id is not None:
+            _path_params['studentId'] = student_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_contact_student_request_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def verify_enrollment_contact(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto:
+        """Verifies a contact.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._verify_enrollment_contact_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def verify_enrollment_contact_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto]:
+        """Verifies a contact.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._verify_enrollment_contact_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def verify_enrollment_contact_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Verifies a contact.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._verify_enrollment_contact_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _verify_enrollment_contact_serialize(
+        self,
+        tenant_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/contacts/{id}/verify',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

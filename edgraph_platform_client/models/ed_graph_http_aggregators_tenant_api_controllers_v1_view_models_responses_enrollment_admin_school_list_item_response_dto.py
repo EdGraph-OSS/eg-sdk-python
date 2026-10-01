@@ -31,11 +31,15 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     """ # noqa: E501
     id: Optional[UUID] = None
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
-    code: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    district: Optional[StrictStr] = None
-    campus_id: Optional[StrictStr] = Field(default=None, alias="campusId")
-    tea_id_number: Optional[StrictStr] = Field(default=None, alias="teaIdNumber")
+    external_data_source_school_id: Optional[StrictStr] = Field(default=None, alias="externalDataSourceSchoolId")
+    school_state_short_code: Optional[StrictStr] = Field(default=None, alias="schoolStateShortCode")
+    school_name: Optional[StrictStr] = Field(default=None, alias="schoolName")
+    district_state_short_code: Optional[StrictStr] = Field(default=None, alias="districtStateShortCode")
+    school_state_long_code: Optional[StrictStr] = Field(default=None, alias="schoolStateLongCode")
+    school_local_code: Optional[StrictStr] = Field(default=None, alias="schoolLocalCode")
+    district_local_code: Optional[StrictStr] = Field(default=None, alias="districtLocalCode")
+    district_state_code: Optional[StrictStr] = Field(default=None, alias="districtStateCode")
+    district_name: Optional[StrictStr] = Field(default=None, alias="districtName")
     grades_served: Optional[List[StrictStr]] = Field(default=None, alias="gradesServed")
     address: Optional[StrictStr] = None
     lat: Optional[Union[StrictFloat, StrictInt]] = None
@@ -47,8 +51,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     created_date_time: Optional[datetime] = Field(default=None, alias="createdDateTime")
     last_modified_by: Optional[StrictStr] = Field(default=None, alias="lastModifiedBy")
     last_modified_date_time: Optional[datetime] = Field(default=None, alias="lastModifiedDateTime")
-    last_updated_date_time: Optional[datetime] = Field(default=None, alias="lastUpdatedDateTime")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "code", "name", "district", "campusId", "teaIdNumber", "gradesServed", "address", "lat", "lon", "phone", "isEnabled", "programCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "lastUpdatedDateTime"]
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "externalDataSourceSchoolId", "schoolStateShortCode", "schoolName", "districtStateShortCode", "schoolStateLongCode", "schoolLocalCode", "districtLocalCode", "districtStateCode", "districtName", "gradesServed", "address", "lat", "lon", "phone", "isEnabled", "programCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -99,30 +102,50 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
-        # set to None if code (nullable) is None
+        # set to None if external_data_source_school_id (nullable) is None
         # and model_fields_set contains the field
-        if self.code is None and "code" in self.model_fields_set:
-            _dict['code'] = None
+        if self.external_data_source_school_id is None and "external_data_source_school_id" in self.model_fields_set:
+            _dict['externalDataSourceSchoolId'] = None
 
-        # set to None if name (nullable) is None
+        # set to None if school_state_short_code (nullable) is None
         # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
+        if self.school_state_short_code is None and "school_state_short_code" in self.model_fields_set:
+            _dict['schoolStateShortCode'] = None
 
-        # set to None if district (nullable) is None
+        # set to None if school_name (nullable) is None
         # and model_fields_set contains the field
-        if self.district is None and "district" in self.model_fields_set:
-            _dict['district'] = None
+        if self.school_name is None and "school_name" in self.model_fields_set:
+            _dict['schoolName'] = None
 
-        # set to None if campus_id (nullable) is None
+        # set to None if district_state_short_code (nullable) is None
         # and model_fields_set contains the field
-        if self.campus_id is None and "campus_id" in self.model_fields_set:
-            _dict['campusId'] = None
+        if self.district_state_short_code is None and "district_state_short_code" in self.model_fields_set:
+            _dict['districtStateShortCode'] = None
 
-        # set to None if tea_id_number (nullable) is None
+        # set to None if school_state_long_code (nullable) is None
         # and model_fields_set contains the field
-        if self.tea_id_number is None and "tea_id_number" in self.model_fields_set:
-            _dict['teaIdNumber'] = None
+        if self.school_state_long_code is None and "school_state_long_code" in self.model_fields_set:
+            _dict['schoolStateLongCode'] = None
+
+        # set to None if school_local_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_local_code is None and "school_local_code" in self.model_fields_set:
+            _dict['schoolLocalCode'] = None
+
+        # set to None if district_local_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.district_local_code is None and "district_local_code" in self.model_fields_set:
+            _dict['districtLocalCode'] = None
+
+        # set to None if district_state_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.district_state_code is None and "district_state_code" in self.model_fields_set:
+            _dict['districtStateCode'] = None
+
+        # set to None if district_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.district_name is None and "district_name" in self.model_fields_set:
+            _dict['districtName'] = None
 
         # set to None if grades_served (nullable) is None
         # and model_fields_set contains the field
@@ -169,11 +192,6 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.last_modified_date_time is None and "last_modified_date_time" in self.model_fields_set:
             _dict['lastModifiedDateTime'] = None
 
-        # set to None if last_updated_date_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_updated_date_time is None and "last_updated_date_time" in self.model_fields_set:
-            _dict['lastUpdatedDateTime'] = None
-
         return _dict
 
     @classmethod
@@ -188,11 +206,15 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "tenantId": obj.get("tenantId"),
-            "code": obj.get("code"),
-            "name": obj.get("name"),
-            "district": obj.get("district"),
-            "campusId": obj.get("campusId"),
-            "teaIdNumber": obj.get("teaIdNumber"),
+            "externalDataSourceSchoolId": obj.get("externalDataSourceSchoolId"),
+            "schoolStateShortCode": obj.get("schoolStateShortCode"),
+            "schoolName": obj.get("schoolName"),
+            "districtStateShortCode": obj.get("districtStateShortCode"),
+            "schoolStateLongCode": obj.get("schoolStateLongCode"),
+            "schoolLocalCode": obj.get("schoolLocalCode"),
+            "districtLocalCode": obj.get("districtLocalCode"),
+            "districtStateCode": obj.get("districtStateCode"),
+            "districtName": obj.get("districtName"),
             "gradesServed": obj.get("gradesServed"),
             "address": obj.get("address"),
             "lat": obj.get("lat"),
@@ -203,8 +225,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "createdBy": obj.get("createdBy"),
             "createdDateTime": obj.get("createdDateTime"),
             "lastModifiedBy": obj.get("lastModifiedBy"),
-            "lastModifiedDateTime": obj.get("lastModifiedDateTime"),
-            "lastUpdatedDateTime": obj.get("lastUpdatedDateTime")
+            "lastModifiedDateTime": obj.get("lastModifiedDateTime")
         })
         return _obj
 

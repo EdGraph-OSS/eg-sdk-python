@@ -1,15 +1,18 @@
 # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto
 
+One student linked to a contact. `_id` is the link entry's own id, NOT the student: read  `studentId` for the student record id and `studentLocalCode` for the SIS code.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
-**student_id** | **str** |  | [optional] 
-**first_name** | **str** |  | [optional] 
-**middle_name** | **str** |  | [optional] 
-**last_name** | **str** |  | [optional] 
+**student_id** | **UUID** |  | [optional] 
+**student_local_code** | **str** |  | [optional] 
+**student_state_code** | **str** |  | [optional] 
+**student_first_name** | **str** |  | [optional] 
+**student_middle_name** | **str** |  | [optional] 
+**student_last_name** | **str** |  | [optional] 
 
 ## Example
 

@@ -20,7 +20,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from uuid import UUID
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_contact_student_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,13 +29,12 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
     The body of a contact creation.
     """ # noqa: E501
     tenant_id: Optional[UUID] = Field(default=None, description="Must match the tenant in the route.", alias="tenantId")
-    contact_id: Optional[StrictStr] = Field(default=None, description="The contact's identifier in the source system. Distinct from the record id, which the service  assigns and returns in the response.", alias="contactId")
+    external_data_source_contact_id: Optional[StrictStr] = Field(default=None, description="The contact's identifier in the source system (SIS). Distinct from the record id, which the  service assigns and returns in the response.", alias="externalDataSourceContactId")
     first_name: Optional[StrictStr] = Field(default=None, description="Required. Never overridable - only email and phone are.", alias="firstName")
     last_name: Optional[StrictStr] = Field(default=None, description="Required. Never overridable - only email and phone are.", alias="lastName")
-    email: Optional[StrictStr] = Field(default=None, description="The SIS-sourced email. Correcting it later is an override and goes through the  `email-override` route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.")
+    email: Optional[StrictStr] = Field(default=None, description="The SIS-sourced email. Correcting it later is an override and goes through the  `overrides/emails` route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.")
     phone: Optional[StrictStr] = Field(default=None, description="The SIS-sourced phone, on the same terms as Email.")
-    students: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto]] = Field(default=None, description="The students to link the contact to. Optional; omit or send an empty list for a contact with no  links yet.")
-    __properties: ClassVar[List[str]] = ["tenantId", "contactId", "firstName", "lastName", "email", "phone", "students"]
+    __properties: ClassVar[List[str]] = ["tenantId", "externalDataSourceContactId", "firstName", "lastName", "email", "phone"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,17 +75,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in students (list)
-        _items = []
-        if self.students:
-            for _item_students in self.students:
-                if _item_students:
-                    _items.append(_item_students.to_dict())
-            _dict['students'] = _items
-        # set to None if contact_id (nullable) is None
+        # set to None if external_data_source_contact_id (nullable) is None
         # and model_fields_set contains the field
-        if self.contact_id is None and "contact_id" in self.model_fields_set:
-            _dict['contactId'] = None
+        if self.external_data_source_contact_id is None and "external_data_source_contact_id" in self.model_fields_set:
+            _dict['externalDataSourceContactId'] = None
 
         # set to None if first_name (nullable) is None
         # and model_fields_set contains the field
@@ -109,11 +100,6 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
         if self.phone is None and "phone" in self.model_fields_set:
             _dict['phone'] = None
 
-        # set to None if students (nullable) is None
-        # and model_fields_set contains the field
-        if self.students is None and "students" in self.model_fields_set:
-            _dict['students'] = None
-
         return _dict
 
     @classmethod
@@ -127,12 +113,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
 
         _obj = cls.model_validate({
             "tenantId": obj.get("tenantId"),
-            "contactId": obj.get("contactId"),
+            "externalDataSourceContactId": obj.get("externalDataSourceContactId"),
             "firstName": obj.get("firstName"),
             "lastName": obj.get("lastName"),
             "email": obj.get("email"),
-            "phone": obj.get("phone"),
-            "students": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto.from_dict(_item) for _item in obj["students"]] if obj.get("students") is not None else None
+            "phone": obj.get("phone")
         })
         return _obj
 

@@ -18,11 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from uuid import UUID
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_requirement_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_school_association_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_grade_capacity_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_program_type_ref_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_requirement_ref_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_school_ref_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -33,22 +35,24 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     """ # noqa: E501
     id: Optional[UUID] = None
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
-    code: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    scope: Optional[StrictStr] = None
-    offered_at_school_count: Optional[StrictInt] = Field(default=None, alias="offeredAtSchoolCount")
-    program_type: Optional[StrictStr] = Field(default=None, alias="programType")
+    program_code: Optional[StrictStr] = Field(default=None, alias="programCode")
+    program_name: Optional[StrictStr] = Field(default=None, alias="programName")
     eligibility_criteria: Optional[StrictStr] = Field(default=None, alias="eligibilityCriteria")
-    internal_display_name: Optional[StrictStr] = Field(default=None, alias="internalDisplayName")
+    program_type: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto] = Field(default=None, alias="programType")
+    requirements: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto]] = None
+    school: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto] = None
     grades: Optional[List[StrictStr]] = None
-    schools: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto]] = None
-    requirements: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto]] = None
+    capacity_by_grade: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto]] = Field(default=None, alias="capacityByGrade")
+    seat_status: Optional[StrictStr] = Field(default=None, alias="seatStatus")
+    zone: Optional[StrictStr] = None
+    latitude: Optional[Union[StrictFloat, StrictInt]] = None
+    longitude: Optional[Union[StrictFloat, StrictInt]] = None
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
     created_date_time: Optional[datetime] = Field(default=None, alias="createdDateTime")
     last_modified_by: Optional[StrictStr] = Field(default=None, alias="lastModifiedBy")
     last_modified_date_time: Optional[datetime] = Field(default=None, alias="lastModifiedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "code", "name", "scope", "offeredAtSchoolCount", "programType", "eligibilityCriteria", "internalDisplayName", "grades", "schools", "requirements", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "isDeleted"]
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "programCode", "programName", "eligibilityCriteria", "programType", "requirements", "school", "grades", "capacityByGrade", "seatStatus", "zone", "latitude", "longitude", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "isDeleted"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,13 +93,9 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in schools (list)
-        _items = []
-        if self.schools:
-            for _item_schools in self.schools:
-                if _item_schools:
-                    _items.append(_item_schools.to_dict())
-            _dict['schools'] = _items
+        # override the default output from pydantic by calling `to_dict()` of program_type
+        if self.program_type:
+            _dict['programType'] = self.program_type.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in requirements (list)
         _items = []
         if self.requirements:
@@ -103,6 +103,16 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
                 if _item_requirements:
                     _items.append(_item_requirements.to_dict())
             _dict['requirements'] = _items
+        # override the default output from pydantic by calling `to_dict()` of school
+        if self.school:
+            _dict['school'] = self.school.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in capacity_by_grade (list)
+        _items = []
+        if self.capacity_by_grade:
+            for _item_capacity_by_grade in self.capacity_by_grade:
+                if _item_capacity_by_grade:
+                    _items.append(_item_capacity_by_grade.to_dict())
+            _dict['capacityByGrade'] = _items
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -113,50 +123,55 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
-        # set to None if code (nullable) is None
+        # set to None if program_code (nullable) is None
         # and model_fields_set contains the field
-        if self.code is None and "code" in self.model_fields_set:
-            _dict['code'] = None
+        if self.program_code is None and "program_code" in self.model_fields_set:
+            _dict['programCode'] = None
 
-        # set to None if name (nullable) is None
+        # set to None if program_name (nullable) is None
         # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if scope (nullable) is None
-        # and model_fields_set contains the field
-        if self.scope is None and "scope" in self.model_fields_set:
-            _dict['scope'] = None
-
-        # set to None if program_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.program_type is None and "program_type" in self.model_fields_set:
-            _dict['programType'] = None
+        if self.program_name is None and "program_name" in self.model_fields_set:
+            _dict['programName'] = None
 
         # set to None if eligibility_criteria (nullable) is None
         # and model_fields_set contains the field
         if self.eligibility_criteria is None and "eligibility_criteria" in self.model_fields_set:
             _dict['eligibilityCriteria'] = None
 
-        # set to None if internal_display_name (nullable) is None
+        # set to None if requirements (nullable) is None
         # and model_fields_set contains the field
-        if self.internal_display_name is None and "internal_display_name" in self.model_fields_set:
-            _dict['internalDisplayName'] = None
+        if self.requirements is None and "requirements" in self.model_fields_set:
+            _dict['requirements'] = None
 
         # set to None if grades (nullable) is None
         # and model_fields_set contains the field
         if self.grades is None and "grades" in self.model_fields_set:
             _dict['grades'] = None
 
-        # set to None if schools (nullable) is None
+        # set to None if capacity_by_grade (nullable) is None
         # and model_fields_set contains the field
-        if self.schools is None and "schools" in self.model_fields_set:
-            _dict['schools'] = None
+        if self.capacity_by_grade is None and "capacity_by_grade" in self.model_fields_set:
+            _dict['capacityByGrade'] = None
 
-        # set to None if requirements (nullable) is None
+        # set to None if seat_status (nullable) is None
         # and model_fields_set contains the field
-        if self.requirements is None and "requirements" in self.model_fields_set:
-            _dict['requirements'] = None
+        if self.seat_status is None and "seat_status" in self.model_fields_set:
+            _dict['seatStatus'] = None
+
+        # set to None if zone (nullable) is None
+        # and model_fields_set contains the field
+        if self.zone is None and "zone" in self.model_fields_set:
+            _dict['zone'] = None
+
+        # set to None if latitude (nullable) is None
+        # and model_fields_set contains the field
+        if self.latitude is None and "latitude" in self.model_fields_set:
+            _dict['latitude'] = None
+
+        # set to None if longitude (nullable) is None
+        # and model_fields_set contains the field
+        if self.longitude is None and "longitude" in self.model_fields_set:
+            _dict['longitude'] = None
 
         # set to None if created_by (nullable) is None
         # and model_fields_set contains the field
@@ -192,16 +207,18 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "tenantId": obj.get("tenantId"),
-            "code": obj.get("code"),
-            "name": obj.get("name"),
-            "scope": obj.get("scope"),
-            "offeredAtSchoolCount": obj.get("offeredAtSchoolCount"),
-            "programType": obj.get("programType"),
+            "programCode": obj.get("programCode"),
+            "programName": obj.get("programName"),
             "eligibilityCriteria": obj.get("eligibilityCriteria"),
-            "internalDisplayName": obj.get("internalDisplayName"),
+            "programType": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto.from_dict(obj["programType"]) if obj.get("programType") is not None else None,
+            "requirements": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto.from_dict(_item) for _item in obj["requirements"]] if obj.get("requirements") is not None else None,
+            "school": EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto.from_dict(obj["school"]) if obj.get("school") is not None else None,
             "grades": obj.get("grades"),
-            "schools": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto.from_dict(_item) for _item in obj["schools"]] if obj.get("schools") is not None else None,
-            "requirements": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto.from_dict(_item) for _item in obj["requirements"]] if obj.get("requirements") is not None else None,
+            "capacityByGrade": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.from_dict(_item) for _item in obj["capacityByGrade"]] if obj.get("capacityByGrade") is not None else None,
+            "seatStatus": obj.get("seatStatus"),
+            "zone": obj.get("zone"),
+            "latitude": obj.get("latitude"),
+            "longitude": obj.get("longitude"),
             "createdBy": obj.get("createdBy"),
             "createdDateTime": obj.get("createdDateTime"),
             "lastModifiedBy": obj.get("lastModifiedBy"),

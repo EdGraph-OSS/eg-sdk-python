@@ -37,7 +37,8 @@ class EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(BaseModel):
     etag: Optional[StrictStr] = None
     instance_id: Optional[StrictStr] = Field(default=None, alias="instanceId")
     year: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["id", "mappedNamespace", "mappedValue", "namespace", "value", "modelEntities", "etag", "instanceId", "year"]
+    tenant_id: Optional[StrictStr] = Field(default=None, alias="tenantId")
+    __properties: ClassVar[List[str]] = ["id", "mappedNamespace", "mappedValue", "namespace", "value", "modelEntities", "etag", "instanceId", "year", "tenantId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -127,6 +128,11 @@ class EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(BaseModel):
         if self.instance_id is None and "instance_id" in self.model_fields_set:
             _dict['instanceId'] = None
 
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenantId'] = None
+
         return _dict
 
     @classmethod
@@ -147,7 +153,8 @@ class EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(BaseModel):
             "modelEntities": [EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity.from_dict(_item) for _item in obj["modelEntities"]] if obj.get("modelEntities") is not None else None,
             "etag": obj.get("etag"),
             "instanceId": obj.get("instanceId"),
-            "year": obj.get("year")
+            "year": obj.get("year"),
+            "tenantId": obj.get("tenantId")
         })
         return _obj
 

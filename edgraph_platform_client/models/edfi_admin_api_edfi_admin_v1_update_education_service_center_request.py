@@ -33,7 +33,8 @@ class EdfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest(BaseModel):
     education_service_center_id: Optional[StrictInt] = Field(default=None, alias="educationServiceCenterId")
     name_of_institution: Optional[StrictStr] = Field(default=None, alias="nameOfInstitution")
     education_organization_category_descriptors: Optional[List[StrictStr]] = Field(default=None, alias="educationOrganizationCategoryDescriptors")
-    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "id", "educationServiceCenterId", "nameOfInstitution", "educationOrganizationCategoryDescriptors"]
+    year: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "id", "educationServiceCenterId", "nameOfInstitution", "educationOrganizationCategoryDescriptors", "year"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -118,7 +119,8 @@ class EdfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest(BaseModel):
             "id": obj.get("id"),
             "educationServiceCenterId": obj.get("educationServiceCenterId"),
             "nameOfInstitution": obj.get("nameOfInstitution"),
-            "educationOrganizationCategoryDescriptors": obj.get("educationOrganizationCategoryDescriptors")
+            "educationOrganizationCategoryDescriptors": obj.get("educationOrganizationCategoryDescriptors"),
+            "year": obj.get("year")
         })
         return _obj
 

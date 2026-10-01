@@ -32,7 +32,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     """ # noqa: E501
     id: Optional[UUID] = None
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
-    contact_id: Optional[StrictStr] = Field(default=None, alias="contactId")
+    external_data_source_contact_id: Optional[StrictStr] = Field(default=None, alias="externalDataSourceContactId")
     first_name: Optional[StrictStr] = Field(default=None, alias="firstName")
     last_name: Optional[StrictStr] = Field(default=None, alias="lastName")
     email: Optional[StrictStr] = None
@@ -40,14 +40,15 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     students: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto]] = None
     relationship: Optional[StrictStr] = None
     student_count: Optional[StrictInt] = Field(default=None, alias="studentCount")
+    student_local_codes: Optional[List[StrictStr]] = Field(default=None, alias="studentLocalCodes")
     is_phone_override: Optional[StrictBool] = Field(default=None, alias="isPhoneOverride")
     is_email_override: Optional[StrictBool] = Field(default=None, alias="isEmailOverride")
     sis_email: Optional[StrictStr] = Field(default=None, alias="sisEmail")
     sis_phone: Optional[StrictStr] = Field(default=None, alias="sisPhone")
-    email_overridden_by: Optional[StrictStr] = Field(default=None, alias="emailOverriddenBy")
-    email_overridden_at: Optional[datetime] = Field(default=None, alias="emailOverriddenAt")
-    phone_overridden_by: Optional[StrictStr] = Field(default=None, alias="phoneOverriddenBy")
-    phone_overridden_at: Optional[datetime] = Field(default=None, alias="phoneOverriddenAt")
+    email_last_overridden_by: Optional[StrictStr] = Field(default=None, alias="emailLastOverriddenBy")
+    email_last_overridden_date_time: Optional[datetime] = Field(default=None, alias="emailLastOverriddenDateTime")
+    phone_last_overridden_by: Optional[StrictStr] = Field(default=None, alias="phoneLastOverriddenBy")
+    phone_last_overridden_date_time: Optional[datetime] = Field(default=None, alias="phoneLastOverriddenDateTime")
     sign_in_status: Optional[StrictStr] = Field(default=None, alias="signInStatus")
     is_locked: Optional[StrictBool] = Field(default=None, alias="isLocked")
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
@@ -55,8 +56,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     last_modified_by: Optional[StrictStr] = Field(default=None, alias="lastModifiedBy")
     last_modified_date_time: Optional[datetime] = Field(default=None, alias="lastModifiedDateTime")
     last_updated_date_time: Optional[datetime] = Field(default=None, alias="lastUpdatedDateTime")
+    deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
+    deleted_date_time: Optional[datetime] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "contactId", "firstName", "lastName", "email", "phone", "students", "relationship", "studentCount", "isPhoneOverride", "isEmailOverride", "sisEmail", "sisPhone", "emailOverriddenBy", "emailOverriddenAt", "phoneOverriddenBy", "phoneOverriddenAt", "signInStatus", "isLocked", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "lastUpdatedDateTime", "isDeleted"]
+    verification_status: Optional[StrictStr] = Field(default=None, alias="verificationStatus")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "externalDataSourceContactId", "firstName", "lastName", "email", "phone", "students", "relationship", "studentCount", "studentLocalCodes", "isPhoneOverride", "isEmailOverride", "sisEmail", "sisPhone", "emailLastOverriddenBy", "emailLastOverriddenDateTime", "phoneLastOverriddenBy", "phoneLastOverriddenDateTime", "signInStatus", "isLocked", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "lastUpdatedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "verificationStatus"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -114,10 +118,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
-        # set to None if contact_id (nullable) is None
+        # set to None if external_data_source_contact_id (nullable) is None
         # and model_fields_set contains the field
-        if self.contact_id is None and "contact_id" in self.model_fields_set:
-            _dict['contactId'] = None
+        if self.external_data_source_contact_id is None and "external_data_source_contact_id" in self.model_fields_set:
+            _dict['externalDataSourceContactId'] = None
 
         # set to None if first_name (nullable) is None
         # and model_fields_set contains the field
@@ -149,6 +153,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.relationship is None and "relationship" in self.model_fields_set:
             _dict['relationship'] = None
 
+        # set to None if student_local_codes (nullable) is None
+        # and model_fields_set contains the field
+        if self.student_local_codes is None and "student_local_codes" in self.model_fields_set:
+            _dict['studentLocalCodes'] = None
+
         # set to None if is_phone_override (nullable) is None
         # and model_fields_set contains the field
         if self.is_phone_override is None and "is_phone_override" in self.model_fields_set:
@@ -169,25 +178,25 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.sis_phone is None and "sis_phone" in self.model_fields_set:
             _dict['sisPhone'] = None
 
-        # set to None if email_overridden_by (nullable) is None
+        # set to None if email_last_overridden_by (nullable) is None
         # and model_fields_set contains the field
-        if self.email_overridden_by is None and "email_overridden_by" in self.model_fields_set:
-            _dict['emailOverriddenBy'] = None
+        if self.email_last_overridden_by is None and "email_last_overridden_by" in self.model_fields_set:
+            _dict['emailLastOverriddenBy'] = None
 
-        # set to None if email_overridden_at (nullable) is None
+        # set to None if email_last_overridden_date_time (nullable) is None
         # and model_fields_set contains the field
-        if self.email_overridden_at is None and "email_overridden_at" in self.model_fields_set:
-            _dict['emailOverriddenAt'] = None
+        if self.email_last_overridden_date_time is None and "email_last_overridden_date_time" in self.model_fields_set:
+            _dict['emailLastOverriddenDateTime'] = None
 
-        # set to None if phone_overridden_by (nullable) is None
+        # set to None if phone_last_overridden_by (nullable) is None
         # and model_fields_set contains the field
-        if self.phone_overridden_by is None and "phone_overridden_by" in self.model_fields_set:
-            _dict['phoneOverriddenBy'] = None
+        if self.phone_last_overridden_by is None and "phone_last_overridden_by" in self.model_fields_set:
+            _dict['phoneLastOverriddenBy'] = None
 
-        # set to None if phone_overridden_at (nullable) is None
+        # set to None if phone_last_overridden_date_time (nullable) is None
         # and model_fields_set contains the field
-        if self.phone_overridden_at is None and "phone_overridden_at" in self.model_fields_set:
-            _dict['phoneOverriddenAt'] = None
+        if self.phone_last_overridden_date_time is None and "phone_last_overridden_date_time" in self.model_fields_set:
+            _dict['phoneLastOverriddenDateTime'] = None
 
         # set to None if sign_in_status (nullable) is None
         # and model_fields_set contains the field
@@ -219,6 +228,21 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.last_updated_date_time is None and "last_updated_date_time" in self.model_fields_set:
             _dict['lastUpdatedDateTime'] = None
 
+        # set to None if deleted_by (nullable) is None
+        # and model_fields_set contains the field
+        if self.deleted_by is None and "deleted_by" in self.model_fields_set:
+            _dict['deletedBy'] = None
+
+        # set to None if deleted_date_time (nullable) is None
+        # and model_fields_set contains the field
+        if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
+            _dict['deletedDateTime'] = None
+
+        # set to None if verification_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.verification_status is None and "verification_status" in self.model_fields_set:
+            _dict['verificationStatus'] = None
+
         return _dict
 
     @classmethod
@@ -233,7 +257,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "tenantId": obj.get("tenantId"),
-            "contactId": obj.get("contactId"),
+            "externalDataSourceContactId": obj.get("externalDataSourceContactId"),
             "firstName": obj.get("firstName"),
             "lastName": obj.get("lastName"),
             "email": obj.get("email"),
@@ -241,14 +265,15 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "students": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.from_dict(_item) for _item in obj["students"]] if obj.get("students") is not None else None,
             "relationship": obj.get("relationship"),
             "studentCount": obj.get("studentCount"),
+            "studentLocalCodes": obj.get("studentLocalCodes"),
             "isPhoneOverride": obj.get("isPhoneOverride"),
             "isEmailOverride": obj.get("isEmailOverride"),
             "sisEmail": obj.get("sisEmail"),
             "sisPhone": obj.get("sisPhone"),
-            "emailOverriddenBy": obj.get("emailOverriddenBy"),
-            "emailOverriddenAt": obj.get("emailOverriddenAt"),
-            "phoneOverriddenBy": obj.get("phoneOverriddenBy"),
-            "phoneOverriddenAt": obj.get("phoneOverriddenAt"),
+            "emailLastOverriddenBy": obj.get("emailLastOverriddenBy"),
+            "emailLastOverriddenDateTime": obj.get("emailLastOverriddenDateTime"),
+            "phoneLastOverriddenBy": obj.get("phoneLastOverriddenBy"),
+            "phoneLastOverriddenDateTime": obj.get("phoneLastOverriddenDateTime"),
             "signInStatus": obj.get("signInStatus"),
             "isLocked": obj.get("isLocked"),
             "createdBy": obj.get("createdBy"),
@@ -256,7 +281,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "lastModifiedBy": obj.get("lastModifiedBy"),
             "lastModifiedDateTime": obj.get("lastModifiedDateTime"),
             "lastUpdatedDateTime": obj.get("lastUpdatedDateTime"),
-            "isDeleted": obj.get("isDeleted")
+            "deletedBy": obj.get("deletedBy"),
+            "deletedDateTime": obj.get("deletedDateTime"),
+            "isDeleted": obj.get("isDeleted"),
+            "verificationStatus": obj.get("verificationStatus")
         })
         return _obj
 

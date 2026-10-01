@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **vendor** | [**EdfiAdminApiEdfiAdminV1Vendor**](EdfiAdminApiEdfiAdminV1Vendor.md) |  | [optional] 
 **education_organizations** | [**List[EdfiAdminApiEdfiAdminV1EducationOrganization]**](EdfiAdminApiEdfiAdminV1EducationOrganization.md) | TODO Is adding Vendor object which also has application object correct ? | [optional] [readonly] 
 **operational_context_uri** | **str** |  | [optional] 
+**years** | **List[int]** |  | [optional] [readonly] 
 
 ## Example
 

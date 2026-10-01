@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **education_service_center_id** | **int** |  | [optional] 
 **name_of_institution** | **str** |  | [optional] 
 **education_organization_category_descriptors** | **List[str]** |  | [optional] [readonly] 
+**year** | **int** |  | [optional] 
 
 ## Example
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **vendor_name** | **str** |  | [optional] 
 **ed_orgs_count** | **int** |  | [optional] 
 **operational_context_uri** | **str** |  | [optional] 
+**years** | **List[int]** |  | [optional] [readonly] 
 
 ## Example
 

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +31,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     capacity: Optional[StrictInt] = None
     enrolled: Optional[StrictInt] = None
     seat_status: Optional[StrictStr] = Field(default=None, alias="seatStatus")
-    __properties: ClassVar[List[str]] = ["grade", "capacity", "enrolled", "seatStatus"]
+    seats_available: Optional[StrictInt] = Field(default=None, alias="seatsAvailable")
+    lottery_eligible: Optional[StrictBool] = Field(default=None, alias="lotteryEligible")
+    school_year: Optional[StrictStr] = Field(default=None, alias="schoolYear")
+    __properties: ClassVar[List[str]] = ["grade", "capacity", "enrolled", "seatStatus", "seatsAvailable", "lotteryEligible", "schoolYear"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -92,6 +95,21 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.seat_status is None and "seat_status" in self.model_fields_set:
             _dict['seatStatus'] = None
 
+        # set to None if seats_available (nullable) is None
+        # and model_fields_set contains the field
+        if self.seats_available is None and "seats_available" in self.model_fields_set:
+            _dict['seatsAvailable'] = None
+
+        # set to None if lottery_eligible (nullable) is None
+        # and model_fields_set contains the field
+        if self.lottery_eligible is None and "lottery_eligible" in self.model_fields_set:
+            _dict['lotteryEligible'] = None
+
+        # set to None if school_year (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_year is None and "school_year" in self.model_fields_set:
+            _dict['schoolYear'] = None
+
         return _dict
 
     @classmethod
@@ -107,7 +125,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "grade": obj.get("grade"),
             "capacity": obj.get("capacity"),
             "enrolled": obj.get("enrolled"),
-            "seatStatus": obj.get("seatStatus")
+            "seatStatus": obj.get("seatStatus"),
+            "seatsAvailable": obj.get("seatsAvailable"),
+            "lotteryEligible": obj.get("lotteryEligible"),
+            "schoolYear": obj.get("schoolYear")
         })
         return _obj
 

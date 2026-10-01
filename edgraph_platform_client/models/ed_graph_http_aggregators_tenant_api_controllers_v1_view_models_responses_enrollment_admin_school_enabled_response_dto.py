@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from uuid import UUID
 from typing import Optional, Set
@@ -29,9 +29,9 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto
     """ # noqa: E501
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
-    code: Optional[StrictStr] = None
+    id: Optional[UUID] = None
     is_enabled: Optional[StrictBool] = Field(default=None, alias="isEnabled")
-    __properties: ClassVar[List[str]] = ["tenantId", "code", "isEnabled"]
+    __properties: ClassVar[List[str]] = ["tenantId", "id", "isEnabled"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,10 +77,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenantId'] = None
 
-        # set to None if code (nullable) is None
+        # set to None if id (nullable) is None
         # and model_fields_set contains the field
-        if self.code is None and "code" in self.model_fields_set:
-            _dict['code'] = None
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
 
         return _dict
 
@@ -95,7 +95,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
 
         _obj = cls.model_validate({
             "tenantId": obj.get("tenantId"),
-            "code": obj.get("code"),
+            "id": obj.get("id"),
             "isEnabled": obj.get("isEnabled")
         })
         return _obj

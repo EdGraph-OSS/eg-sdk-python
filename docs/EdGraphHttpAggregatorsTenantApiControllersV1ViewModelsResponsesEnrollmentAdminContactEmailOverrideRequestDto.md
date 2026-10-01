@@ -7,7 +7,7 @@ The body of an override write.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** | The corrected detail. The DELETE route removes an override instead; this is never blank. | [optional] 
-**student_id** | **str** | The student whose screen the edit was made from. Recorded on the history entry so it can be  filtered per student. It does NOT scope the override — every student linked to the contact shares  one corrected value. | [optional] 
+**student_local_code** | **str** |  | [optional] 
 **expected_version** | **str** | The &#x60;lastUpdatedDateTime&#x60; the client read, round-tripped back. When it no longer matches the  write is refused with 412 rather than winning because it arrived second. Omit to skip the check. | [optional] 
 
 ## Example

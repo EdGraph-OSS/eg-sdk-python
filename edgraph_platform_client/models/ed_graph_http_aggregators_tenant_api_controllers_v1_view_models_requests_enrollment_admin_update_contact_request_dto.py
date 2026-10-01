@@ -20,7 +20,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from uuid import UUID
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_contact_student_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -33,10 +32,9 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
     first_name: Optional[StrictStr] = Field(default=None, alias="firstName")
     last_name: Optional[StrictStr] = Field(default=None, alias="lastName")
-    students: Optional[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto]] = None
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "firstName", "lastName", "students", "email", "phone"]
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "firstName", "lastName", "email", "phone"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,13 +75,6 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in students (list)
-        _items = []
-        if self.students:
-            for _item_students in self.students:
-                if _item_students:
-                    _items.append(_item_students.to_dict())
-            _dict['students'] = _items
         # set to None if first_name (nullable) is None
         # and model_fields_set contains the field
         if self.first_name is None and "first_name" in self.model_fields_set:
@@ -93,11 +84,6 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
         # and model_fields_set contains the field
         if self.last_name is None and "last_name" in self.model_fields_set:
             _dict['lastName'] = None
-
-        # set to None if students (nullable) is None
-        # and model_fields_set contains the field
-        if self.students is None and "students" in self.model_fields_set:
-            _dict['students'] = None
 
         # set to None if email (nullable) is None
         # and model_fields_set contains the field
@@ -125,7 +111,6 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAd
             "tenantId": obj.get("tenantId"),
             "firstName": obj.get("firstName"),
             "lastName": obj.get("lastName"),
-            "students": [EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto.from_dict(_item) for _item in obj["students"]] if obj.get("students") is not None else None,
             "email": obj.get("email"),
             "phone": obj.get("phone")
         })

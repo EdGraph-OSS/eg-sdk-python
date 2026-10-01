@@ -1,5 +1,6 @@
 # EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminGradeCapacityRequestDto
 
+One grade's seats. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.GradeCapacityRequestDto.SeatsAvailable, EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.GradeCapacityRequestDto.LotteryEligible and  EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.GradeCapacityRequestDto.SchoolYear are what the lottery reads; the Salesforce sync normally supplies  them, and an admin edit may leave them null to keep whatever the row already has unset.
 
 ## Properties
 
@@ -8,6 +9,9 @@ Name | Type | Description | Notes
 **grade** | **str** |  | [optional] 
 **capacity** | **int** |  | [optional] 
 **enrolled** | **int** |  | [optional] 
+**seats_available** | **int** |  | [optional] 
+**lottery_eligible** | **bool** |  | [optional] 
+**school_year** | **str** |  | [optional] 
 
 ## Example
 

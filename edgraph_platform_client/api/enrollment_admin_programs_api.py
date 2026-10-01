@@ -16,13 +16,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Annotated
 from uuid import UUID
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_program_application_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_program_detail_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_program_list_item_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramListItemDtoPaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_program_mutation_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto
@@ -46,10 +45,10 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def create_program_catalog_entry(
+    async def create_program(
         self,
         tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto] = None,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,13 +62,13 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto:
-        """Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school.
+        """Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row.
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,9 +91,9 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_program_catalog_entry_serialize(
+        _param = self._create_program_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,10 +119,10 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def create_program_catalog_entry_with_http_info(
+    async def create_program_with_http_info(
         self,
         tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto] = None,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,13 +136,13 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto]:
-        """Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school.
+        """Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row.
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,9 +165,9 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_program_catalog_entry_serialize(
+        _param = self._create_program_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -194,10 +193,10 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def create_program_catalog_entry_without_preload_content(
+    async def create_program_without_preload_content(
         self,
         tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto] = None,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -211,13 +210,13 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school.
+        """Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row.
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -240,9 +239,9 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_program_catalog_entry_serialize(
+        _param = self._create_program_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -263,10 +262,10 @@ class EnrollmentAdminProgramsApi:
         return response_data.response
 
 
-    def _create_program_catalog_entry_serialize(
+    def _create_program_serialize(
         self,
         tenant_id,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -294,8 +293,8 @@ class EnrollmentAdminProgramsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_catalog_entry_request_dto
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_program_request_dto
 
 
         # set the HTTP header `Accept`
@@ -330,7 +329,7 @@ class EnrollmentAdminProgramsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/programs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -347,308 +346,7 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def create_school_program(
-        self,
-        tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto:
-        """Creates a school program - either adding an existing district catalog entry to a school  (a \"school association\", when `programCatalogEntryId` is set) or creating a brand new  school-specific program (when it is not).
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_school_program_serialize(
-            tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def create_school_program_with_http_info(
-        self,
-        tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto]:
-        """Creates a school program - either adding an existing district catalog entry to a school  (a \"school association\", when `programCatalogEntryId` is set) or creating a brand new  school-specific program (when it is not).
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_school_program_serialize(
-            tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def create_school_program_without_preload_content(
-        self,
-        tenant_id: StrictStr,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Creates a school program - either adding an existing district catalog entry to a school  (a \"school association\", when `programCatalogEntryId` is set) or creating a brand new  school-specific program (when it is not).
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._create_school_program_serialize(
-            tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _create_school_program_serialize(
-        self,
-        tenant_id,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_school_program_request_dto
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json-patch+json', 
-                        'application/json', 
-                        'text/json', 
-                        'application/*+json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/school-programs',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def delete_program_catalog_entry(
+    async def delete_program(
         self,
         tenant_id: StrictStr,
         id: UUID,
@@ -665,7 +363,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Removes a district catalog entry.
+        """Removes a Program (soft delete).
 
 
         :param tenant_id:  (required)
@@ -694,7 +392,7 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_program_catalog_entry_serialize(
+        _param = self._delete_program_serialize(
             tenant_id=tenant_id,
             id=id,
             _request_auth=_request_auth,
@@ -722,7 +420,7 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def delete_program_catalog_entry_with_http_info(
+    async def delete_program_with_http_info(
         self,
         tenant_id: StrictStr,
         id: UUID,
@@ -739,7 +437,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Removes a district catalog entry.
+        """Removes a Program (soft delete).
 
 
         :param tenant_id:  (required)
@@ -768,7 +466,7 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_program_catalog_entry_serialize(
+        _param = self._delete_program_serialize(
             tenant_id=tenant_id,
             id=id,
             _request_auth=_request_auth,
@@ -796,7 +494,7 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def delete_program_catalog_entry_without_preload_content(
+    async def delete_program_without_preload_content(
         self,
         tenant_id: StrictStr,
         id: UUID,
@@ -813,7 +511,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Removes a district catalog entry.
+        """Removes a Program (soft delete).
 
 
         :param tenant_id:  (required)
@@ -842,7 +540,7 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_program_catalog_entry_serialize(
+        _param = self._delete_program_serialize(
             tenant_id=tenant_id,
             id=id,
             _request_auth=_request_auth,
@@ -865,7 +563,7 @@ class EnrollmentAdminProgramsApi:
         return response_data.response
 
 
-    def _delete_program_catalog_entry_serialize(
+    def _delete_program_serialize(
         self,
         tenant_id,
         id,
@@ -916,7 +614,7 @@ class EnrollmentAdminProgramsApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -933,7 +631,7 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def delete_school_program(
+    async def get_program_applications(
         self,
         tenant_id: StrictStr,
         id: UUID,
@@ -949,8 +647,8 @@ class EnrollmentAdminProgramsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Removes a school program - the API equivalent of \"remove a school association\" when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific.
+    ) -> List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto]:
+        """Gets the Registration Applications referencing a Program.
 
 
         :param tenant_id:  (required)
@@ -979,7 +677,7 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_school_program_serialize(
+        _param = self._get_program_applications_serialize(
             tenant_id=tenant_id,
             id=id,
             _request_auth=_request_auth,
@@ -992,7 +690,7 @@ class EnrollmentAdminProgramsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '204': None,
+            '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto]",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
@@ -1007,7 +705,7 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def delete_school_program_with_http_info(
+    async def get_program_applications_with_http_info(
         self,
         tenant_id: StrictStr,
         id: UUID,
@@ -1023,8 +721,8 @@ class EnrollmentAdminProgramsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Removes a school program - the API equivalent of \"remove a school association\" when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific.
+    ) -> ApiResponse[List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto]]:
+        """Gets the Registration Applications referencing a Program.
 
 
         :param tenant_id:  (required)
@@ -1053,7 +751,7 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_school_program_serialize(
+        _param = self._get_program_applications_serialize(
             tenant_id=tenant_id,
             id=id,
             _request_auth=_request_auth,
@@ -1066,7 +764,7 @@ class EnrollmentAdminProgramsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '204': None,
+            '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto]",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
@@ -1081,7 +779,7 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def delete_school_program_without_preload_content(
+    async def get_program_applications_without_preload_content(
         self,
         tenant_id: StrictStr,
         id: UUID,
@@ -1098,7 +796,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Removes a school program - the API equivalent of \"remove a school association\" when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific.
+        """Gets the Registration Applications referencing a Program.
 
 
         :param tenant_id:  (required)
@@ -1127,7 +825,7 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_school_program_serialize(
+        _param = self._get_program_applications_serialize(
             tenant_id=tenant_id,
             id=id,
             _request_auth=_request_auth,
@@ -1140,7 +838,7 @@ class EnrollmentAdminProgramsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '204': None,
+            '200': "List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto]",
             '404': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
@@ -1150,7 +848,7 @@ class EnrollmentAdminProgramsApi:
         return response_data.response
 
 
-    def _delete_school_program_serialize(
+    def _get_program_applications_serialize(
         self,
         tenant_id,
         id,
@@ -1200,8 +898,8 @@ class EnrollmentAdminProgramsApi:
         ]
 
         return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}',
+            method='GET',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/{id}/applications',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1235,7 +933,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto:
-        """Gets a Program by its record id - a district catalog entry or a school-specific program.
+        """Gets a Program by its record id.
 
 
         :param tenant_id:  (required)
@@ -1309,7 +1007,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto]:
-        """Gets a Program by its record id - a district catalog entry or a school-specific program.
+        """Gets a Program by its record id.
 
 
         :param tenant_id:  (required)
@@ -1383,7 +1081,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets a Program by its record id - a district catalog entry or a school-specific program.
+        """Gets a Program by its record id.
 
 
         :param tenant_id:  (required)
@@ -1511,9 +1209,8 @@ class EnrollmentAdminProgramsApi:
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         search: Annotated[Optional[StrictStr], Field(description="Free-text match on program name/code.")] = None,
-        scope: Annotated[Optional[StrictStr], Field(description="\"DistrictCatalog\", \"SchoolSpecific\", or omitted for all.")] = None,
-        school_code: Annotated[Optional[StrictStr], Field(description="Narrows to programs offered at this school. Not a security boundary.")] = None,
-        program_type: Optional[StrictStr] = None,
+        school_local_code: Annotated[Optional[StrictStr], Field(description="Narrows to programs offered at this school. Not a security boundary.")] = None,
+        program_type_id: Annotated[Optional[StrictStr], Field(description="Narrows to programs of this program type (its record id).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1527,7 +1224,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramListItemDtoPaginatedItemsViewModel:
-        """Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row's Scope.
+        """Searches Programs. Every row is one school's offering of a program: the school, the program  type and the requirements are embedded on it, each with its own `_id` beside the id of  the row it was copied from.
 
 
         :param tenant_id:  (required)
@@ -1542,12 +1239,10 @@ class EnrollmentAdminProgramsApi:
         :type filter: str
         :param search: Free-text match on program name/code.
         :type search: str
-        :param scope: \"DistrictCatalog\", \"SchoolSpecific\", or omitted for all.
-        :type scope: str
-        :param school_code: Narrows to programs offered at this school. Not a security boundary.
-        :type school_code: str
-        :param program_type: 
-        :type program_type: str
+        :param school_local_code: Narrows to programs offered at this school. Not a security boundary.
+        :type school_local_code: str
+        :param program_type_id: Narrows to programs of this program type (its record id).
+        :type program_type_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1577,9 +1272,8 @@ class EnrollmentAdminProgramsApi:
             order_by=order_by,
             filter=filter,
             search=search,
-            scope=scope,
-            school_code=school_code,
-            program_type=program_type,
+            school_local_code=school_local_code,
+            program_type_id=program_type_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1613,9 +1307,8 @@ class EnrollmentAdminProgramsApi:
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         search: Annotated[Optional[StrictStr], Field(description="Free-text match on program name/code.")] = None,
-        scope: Annotated[Optional[StrictStr], Field(description="\"DistrictCatalog\", \"SchoolSpecific\", or omitted for all.")] = None,
-        school_code: Annotated[Optional[StrictStr], Field(description="Narrows to programs offered at this school. Not a security boundary.")] = None,
-        program_type: Optional[StrictStr] = None,
+        school_local_code: Annotated[Optional[StrictStr], Field(description="Narrows to programs offered at this school. Not a security boundary.")] = None,
+        program_type_id: Annotated[Optional[StrictStr], Field(description="Narrows to programs of this program type (its record id).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1629,7 +1322,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramListItemDtoPaginatedItemsViewModel]:
-        """Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row's Scope.
+        """Searches Programs. Every row is one school's offering of a program: the school, the program  type and the requirements are embedded on it, each with its own `_id` beside the id of  the row it was copied from.
 
 
         :param tenant_id:  (required)
@@ -1644,12 +1337,10 @@ class EnrollmentAdminProgramsApi:
         :type filter: str
         :param search: Free-text match on program name/code.
         :type search: str
-        :param scope: \"DistrictCatalog\", \"SchoolSpecific\", or omitted for all.
-        :type scope: str
-        :param school_code: Narrows to programs offered at this school. Not a security boundary.
-        :type school_code: str
-        :param program_type: 
-        :type program_type: str
+        :param school_local_code: Narrows to programs offered at this school. Not a security boundary.
+        :type school_local_code: str
+        :param program_type_id: Narrows to programs of this program type (its record id).
+        :type program_type_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1679,9 +1370,8 @@ class EnrollmentAdminProgramsApi:
             order_by=order_by,
             filter=filter,
             search=search,
-            scope=scope,
-            school_code=school_code,
-            program_type=program_type,
+            school_local_code=school_local_code,
+            program_type_id=program_type_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1715,9 +1405,8 @@ class EnrollmentAdminProgramsApi:
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
         search: Annotated[Optional[StrictStr], Field(description="Free-text match on program name/code.")] = None,
-        scope: Annotated[Optional[StrictStr], Field(description="\"DistrictCatalog\", \"SchoolSpecific\", or omitted for all.")] = None,
-        school_code: Annotated[Optional[StrictStr], Field(description="Narrows to programs offered at this school. Not a security boundary.")] = None,
-        program_type: Optional[StrictStr] = None,
+        school_local_code: Annotated[Optional[StrictStr], Field(description="Narrows to programs offered at this school. Not a security boundary.")] = None,
+        program_type_id: Annotated[Optional[StrictStr], Field(description="Narrows to programs of this program type (its record id).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1731,7 +1420,7 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row's Scope.
+        """Searches Programs. Every row is one school's offering of a program: the school, the program  type and the requirements are embedded on it, each with its own `_id` beside the id of  the row it was copied from.
 
 
         :param tenant_id:  (required)
@@ -1746,12 +1435,10 @@ class EnrollmentAdminProgramsApi:
         :type filter: str
         :param search: Free-text match on program name/code.
         :type search: str
-        :param scope: \"DistrictCatalog\", \"SchoolSpecific\", or omitted for all.
-        :type scope: str
-        :param school_code: Narrows to programs offered at this school. Not a security boundary.
-        :type school_code: str
-        :param program_type: 
-        :type program_type: str
+        :param school_local_code: Narrows to programs offered at this school. Not a security boundary.
+        :type school_local_code: str
+        :param program_type_id: Narrows to programs of this program type (its record id).
+        :type program_type_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1781,9 +1468,8 @@ class EnrollmentAdminProgramsApi:
             order_by=order_by,
             filter=filter,
             search=search,
-            scope=scope,
-            school_code=school_code,
-            program_type=program_type,
+            school_local_code=school_local_code,
+            program_type_id=program_type_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1812,9 +1498,8 @@ class EnrollmentAdminProgramsApi:
         order_by,
         filter,
         search,
-        scope,
-        school_code,
-        program_type,
+        school_local_code,
+        program_type_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1859,17 +1544,13 @@ class EnrollmentAdminProgramsApi:
             
             _query_params.append(('search', search))
             
-        if scope is not None:
+        if school_local_code is not None:
             
-            _query_params.append(('scope', scope))
+            _query_params.append(('schoolLocalCode', school_local_code))
             
-        if school_code is not None:
+        if program_type_id is not None:
             
-            _query_params.append(('schoolCode', school_code))
-            
-        if program_type is not None:
-            
-            _query_params.append(('programType', program_type))
+            _query_params.append(('programTypeId', program_type_id))
             
         # process the header parameters
         # process the form parameters
@@ -1909,11 +1590,11 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def update_program_catalog_entry(
+    async def update_program(
         self,
         tenant_id: StrictStr,
         id: UUID,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto] = None,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1927,15 +1608,15 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto:
-        """Updates a district catalog entry's own fields.
+        """Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body.
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1958,10 +1639,10 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_program_catalog_entry_serialize(
+        _param = self._update_program_serialize(
             tenant_id=tenant_id,
             id=id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1988,11 +1669,11 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def update_program_catalog_entry_with_http_info(
+    async def update_program_with_http_info(
         self,
         tenant_id: StrictStr,
         id: UUID,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto] = None,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2006,15 +1687,15 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto]:
-        """Updates a district catalog entry's own fields.
+        """Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body.
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2037,10 +1718,10 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_program_catalog_entry_serialize(
+        _param = self._update_program_serialize(
             tenant_id=tenant_id,
             id=id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2067,11 +1748,11 @@ class EnrollmentAdminProgramsApi:
 
 
     @validate_call
-    async def update_program_catalog_entry_without_preload_content(
+    async def update_program_without_preload_content(
         self,
         tenant_id: StrictStr,
         id: UUID,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto] = None,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2085,15 +1766,15 @@ class EnrollmentAdminProgramsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates a district catalog entry's own fields.
+        """Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body.
 
 
         :param tenant_id:  (required)
         :type tenant_id: str
         :param id:  (required)
         :type id: UUID
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2116,10 +1797,10 @@ class EnrollmentAdminProgramsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_program_catalog_entry_serialize(
+        _param = self._update_program_serialize(
             tenant_id=tenant_id,
             id=id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2141,11 +1822,11 @@ class EnrollmentAdminProgramsApi:
         return response_data.response
 
 
-    def _update_program_catalog_entry_serialize(
+    def _update_program_serialize(
         self,
         tenant_id,
         id,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -2175,8 +1856,8 @@ class EnrollmentAdminProgramsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_catalog_entry_request_dto
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_program_request_dto
 
 
         # set the HTTP header `Accept`
@@ -2211,326 +1892,7 @@ class EnrollmentAdminProgramsApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def update_school_program(
-        self,
-        tenant_id: StrictStr,
-        id: UUID,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto:
-        """Updates a school program's grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param id:  (required)
-        :type id: UUID
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._update_school_program_serialize(
-            tenant_id=tenant_id,
-            id=id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-            '404': "EdGraphCommonErrorsCoreProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def update_school_program_with_http_info(
-        self,
-        tenant_id: StrictStr,
-        id: UUID,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto]:
-        """Updates a school program's grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param id:  (required)
-        :type id: UUID
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._update_school_program_serialize(
-            tenant_id=tenant_id,
-            id=id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-            '404': "EdGraphCommonErrorsCoreProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def update_school_program_without_preload_content(
-        self,
-        tenant_id: StrictStr,
-        id: UUID,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Updates a school program's grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: str
-        :param id:  (required)
-        :type id: UUID
-        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: 
-        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._update_school_program_serialize(
-            tenant_id=tenant_id,
-            id=id,
-            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-            '404': "EdGraphCommonErrorsCoreProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _update_school_program_serialize(
-        self,
-        tenant_id,
-        id,
-        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_school_program_request_dto
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json-patch+json', 
-                        'application/json', 
-                        'text/json', 
-                        'application/*+json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/programs/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

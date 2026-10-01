@@ -35,7 +35,8 @@ class EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(BaseModel):
     year: Optional[StrictInt] = None
     ods_backup_code: Optional[StrictStr] = Field(default=None, alias="odsBackupCode")
     ods_backup_description: Optional[StrictStr] = Field(default=None, alias="odsBackupDescription")
-    __properties: ClassVar[List[str]] = ["selectedTierId", "selectedTierName", "status", "jobs", "year", "odsBackupCode", "odsBackupDescription"]
+    pending_application_access_ids: Optional[List[StrictInt]] = Field(default=None, alias="pendingApplicationAccessIds")
+    __properties: ClassVar[List[str]] = ["selectedTierId", "selectedTierName", "status", "jobs", "year", "odsBackupCode", "odsBackupDescription", "pendingApplicationAccessIds"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -67,8 +68,10 @@ class EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "pending_application_access_ids",
         ])
 
         _dict = self.model_dump(
@@ -104,6 +107,11 @@ class EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(BaseModel):
         if self.ods_backup_description is None and "ods_backup_description" in self.model_fields_set:
             _dict['odsBackupDescription'] = None
 
+        # set to None if pending_application_access_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.pending_application_access_ids is None and "pending_application_access_ids" in self.model_fields_set:
+            _dict['pendingApplicationAccessIds'] = None
+
         return _dict
 
     @classmethod
@@ -122,7 +130,8 @@ class EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(BaseModel):
             "jobs": EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs.from_dict(obj["jobs"]) if obj.get("jobs") is not None else None,
             "year": obj.get("year"),
             "odsBackupCode": obj.get("odsBackupCode"),
-            "odsBackupDescription": obj.get("odsBackupDescription")
+            "odsBackupDescription": obj.get("odsBackupDescription"),
+            "pendingApplicationAccessIds": obj.get("pendingApplicationAccessIds")
         })
         return _obj
 

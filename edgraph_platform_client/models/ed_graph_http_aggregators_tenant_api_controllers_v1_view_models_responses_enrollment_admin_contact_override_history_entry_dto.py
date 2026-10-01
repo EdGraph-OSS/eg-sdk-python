@@ -38,7 +38,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     overridden_at: Optional[datetime] = Field(default=None, alias="overriddenAt")
     acting_student_id: Optional[StrictStr] = Field(default=None, description="The student whose screen the change was made from, when one was recorded.", alias="actingStudentId")
     student_ids: Optional[List[StrictStr]] = Field(default=None, alias="studentIds")
-    __properties: ClassVar[List[str]] = ["eventId", "detail", "action", "previousValue", "newValue", "sisValue", "overriddenBy", "overriddenAt", "actingStudentId", "studentIds"]
+    event_type: Optional[StrictStr] = Field(default=None, description="The change log's event type, e.g. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.OverrideEventType  or one of the created/updated/deleted event types. Lets a client distinguish entries in a combined  changelog feed - only override entries carry EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Detail/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Action and the  value fields; the others read null there.", alias="eventType")
+    __properties: ClassVar[List[str]] = ["eventId", "detail", "action", "previousValue", "newValue", "sisValue", "overriddenBy", "overriddenAt", "actingStudentId", "studentIds", "eventType"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -129,6 +130,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.student_ids is None and "student_ids" in self.model_fields_set:
             _dict['studentIds'] = None
 
+        # set to None if event_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.event_type is None and "event_type" in self.model_fields_set:
+            _dict['eventType'] = None
+
         return _dict
 
     @classmethod
@@ -150,7 +156,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "overriddenBy": obj.get("overriddenBy"),
             "overriddenAt": obj.get("overriddenAt"),
             "actingStudentId": obj.get("actingStudentId"),
-            "studentIds": obj.get("studentIds")
+            "studentIds": obj.get("studentIds"),
+            "eventType": obj.get("eventType")
         })
         return _obj
 

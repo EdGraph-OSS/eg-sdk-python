@@ -35,7 +35,8 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationListResponse(BaseModel):
     vendor_name: Optional[StrictStr] = Field(default=None, alias="vendorName")
     ed_orgs_count: Optional[StrictInt] = Field(default=None, alias="edOrgsCount")
     operational_context_uri: Optional[StrictStr] = Field(default=None, alias="operationalContextUri")
-    __properties: ClassVar[List[str]] = ["tenantId", "applicationId", "applicationName", "claimSetName", "vendorId", "vendorName", "edOrgsCount", "operationalContextUri"]
+    years: Optional[List[StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "applicationId", "applicationName", "claimSetName", "vendorId", "vendorName", "edOrgsCount", "operationalContextUri", "years"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -67,8 +68,10 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationListResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "years",
         ])
 
         _dict = self.model_dump(
@@ -101,6 +104,11 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationListResponse(BaseModel):
         if self.operational_context_uri is None and "operational_context_uri" in self.model_fields_set:
             _dict['operationalContextUri'] = None
 
+        # set to None if years (nullable) is None
+        # and model_fields_set contains the field
+        if self.years is None and "years" in self.model_fields_set:
+            _dict['years'] = None
+
         return _dict
 
     @classmethod
@@ -120,7 +128,8 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationListResponse(BaseModel):
             "vendorId": obj.get("vendorId"),
             "vendorName": obj.get("vendorName"),
             "edOrgsCount": obj.get("edOrgsCount"),
-            "operationalContextUri": obj.get("operationalContextUri")
+            "operationalContextUri": obj.get("operationalContextUri"),
+            "years": obj.get("years")
         })
         return _obj
 

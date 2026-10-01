@@ -9,6 +9,9 @@ Name | Type | Description | Notes
 **capacity** | **int** |  | [optional] 
 **enrolled** | **int** |  | [optional] 
 **seat_status** | **str** |  | [optional] 
+**seats_available** | **int** |  | [optional] 
+**lottery_eligible** | **bool** |  | [optional] 
+**school_year** | **str** |  | [optional] 
 
 ## Example
 

@@ -30,7 +30,8 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(BaseModel):
     year: Optional[StrictInt] = None
     selected_tier_id: Optional[StrictStr] = Field(default=None, alias="selectedTierId")
     ods_backup_code: Optional[StrictStr] = Field(default=None, alias="odsBackupCode")
-    __properties: ClassVar[List[str]] = ["year", "selectedTierId", "odsBackupCode"]
+    application_ids: Optional[List[StrictInt]] = Field(default=None, description="Per-year pending grants are applied only after this ODS finishes provisioning.  Keep field 4 aligned in every source and consumer copy to preserve the wire contract.", alias="applicationIds")
+    __properties: ClassVar[List[str]] = ["year", "selectedTierId", "odsBackupCode", "applicationIds"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -62,8 +63,10 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "application_ids",
         ])
 
         _dict = self.model_dump(
@@ -81,6 +84,11 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(BaseModel):
         if self.ods_backup_code is None and "ods_backup_code" in self.model_fields_set:
             _dict['odsBackupCode'] = None
 
+        # set to None if application_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.application_ids is None and "application_ids" in self.model_fields_set:
+            _dict['applicationIds'] = None
+
         return _dict
 
     @classmethod
@@ -95,7 +103,8 @@ class EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(BaseModel):
         _obj = cls.model_validate({
             "year": obj.get("year"),
             "selectedTierId": obj.get("selectedTierId"),
-            "odsBackupCode": obj.get("odsBackupCode")
+            "odsBackupCode": obj.get("odsBackupCode"),
+            "applicationIds": obj.get("applicationIds")
         })
         return _obj
 

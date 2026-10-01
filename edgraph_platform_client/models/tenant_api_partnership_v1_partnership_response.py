@@ -20,7 +20,9 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from edgraph_platform_client.models.tenant_api_partnership_v1_parternship_tenant_response import TenantApiPartnershipV1ParternshipTenantResponse
+from edgraph_platform_client.models.tenant_api_partnership_v1_partnership_scope import TenantApiPartnershipV1PartnershipScope
 from edgraph_platform_client.models.tenant_api_partnership_v1_partnership_sync_dto import TenantApiPartnershipV1PartnershipSyncDTO
+from edgraph_platform_client.models.tenant_api_partnership_v1_role_mapping_dto import TenantApiPartnershipV1RoleMappingDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -41,7 +43,10 @@ class TenantApiPartnershipV1PartnershipResponse(BaseModel):
     deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
     deleted_date_time: Optional[StrictStr] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "partnerTenant", "partnershipType", "relatedTenants", "partnershipSync", "createdDateTime", "createdBy", "lastModifiedDateTime", "lastModifiedBy", "deletedBy", "deletedDateTime", "isDeleted"]
+    role_mappings: Optional[List[TenantApiPartnershipV1RoleMappingDTO]] = Field(default=None, alias="roleMappings")
+    scope: Optional[TenantApiPartnershipV1PartnershipScope] = None
+    opted_out_tenant_ids: Optional[List[StrictStr]] = Field(default=None, alias="optedOutTenantIds")
+    __properties: ClassVar[List[str]] = ["id", "partnerTenant", "partnershipType", "relatedTenants", "partnershipSync", "createdDateTime", "createdBy", "lastModifiedDateTime", "lastModifiedBy", "deletedBy", "deletedDateTime", "isDeleted", "roleMappings", "scope", "optedOutTenantIds"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -74,9 +79,13 @@ class TenantApiPartnershipV1PartnershipResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "related_tenants",
+            "role_mappings",
+            "opted_out_tenant_ids",
         ])
 
         _dict = self.model_dump(
@@ -97,6 +106,13 @@ class TenantApiPartnershipV1PartnershipResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of partnership_sync
         if self.partnership_sync:
             _dict['partnershipSync'] = self.partnership_sync.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in role_mappings (list)
+        _items = []
+        if self.role_mappings:
+            for _item_role_mappings in self.role_mappings:
+                if _item_role_mappings:
+                    _items.append(_item_role_mappings.to_dict())
+            _dict['roleMappings'] = _items
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -147,6 +163,16 @@ class TenantApiPartnershipV1PartnershipResponse(BaseModel):
         if self.is_deleted is None and "is_deleted" in self.model_fields_set:
             _dict['isDeleted'] = None
 
+        # set to None if role_mappings (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_mappings is None and "role_mappings" in self.model_fields_set:
+            _dict['roleMappings'] = None
+
+        # set to None if opted_out_tenant_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.opted_out_tenant_ids is None and "opted_out_tenant_ids" in self.model_fields_set:
+            _dict['optedOutTenantIds'] = None
+
         return _dict
 
     @classmethod
@@ -170,7 +196,10 @@ class TenantApiPartnershipV1PartnershipResponse(BaseModel):
             "lastModifiedBy": obj.get("lastModifiedBy"),
             "deletedBy": obj.get("deletedBy"),
             "deletedDateTime": obj.get("deletedDateTime"),
-            "isDeleted": obj.get("isDeleted")
+            "isDeleted": obj.get("isDeleted"),
+            "roleMappings": [TenantApiPartnershipV1RoleMappingDTO.from_dict(_item) for _item in obj["roleMappings"]] if obj.get("roleMappings") is not None else None,
+            "scope": obj.get("scope"),
+            "optedOutTenantIds": obj.get("optedOutTenantIds")
         })
         return _obj
 

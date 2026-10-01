@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **related_instances** | [**List[EdfiAdminApiEdfiAdminV1RelatedInstance]**](EdfiAdminApiEdfiAdminV1RelatedInstance.md) |  | [optional] [readonly] 
 **enable_admin_api** | **bool** | Enable Admin API | [optional] 
 **state** | **str** |  | [optional] 
+**requires_school_year_selection** | **bool** |  | [optional] 
 
 ## Example
 

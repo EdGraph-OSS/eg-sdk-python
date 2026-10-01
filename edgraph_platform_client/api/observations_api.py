@@ -15,12 +15,14 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
-from typing import Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Any, Optional
+from typing_extensions import Annotated
 from uuid import UUID
 from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_response import AnalyticsApiReportsV1ReportPreferencesResponse
 from edgraph_platform_client.models.analytics_api_reports_v1_report_preferences_saved_response import AnalyticsApiReportsV1ReportPreferencesSavedResponse
 from edgraph_platform_client.models.analytics_api_reports_v1_report_response import AnalyticsApiReportsV1ReportResponse
+from edgraph_platform_client.models.data_sync_api_job_v1_job_execution_requested_response import DataSyncApiJobV1JobExecutionRequestedResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_evaluations_appraiser_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_forms_question_response_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_forms_v1_form_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
@@ -32,22 +34,38 @@ from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_service
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_delete_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_evaluee_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_academic_subjects_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_available_campuses_total_evaluees_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_campuses_with_evaluees_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetCampusesWithEvalueesResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_courses_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_education_organizations_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_grade_levels_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_sections_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_seoaas_total_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_sessions_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_staff_section_associations_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_submitted_observations_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_terms_count_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_draft_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_profile_response_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_submission_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observation_user_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_observations_onboarding_response import EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_update_observation_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_update_observation_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_upsert_dashboard_preferences_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_upsert_observation_draft_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_request import EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest
 from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_use_cases_commands_dashboard_access_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_user_sync_job_response import EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse
+from edgraph_platform_client.models.edfi_admin_api_edfi_admin_v1_instance import EdfiAdminApiEdfiAdminV1Instance
 from edgraph_platform_client.models.form_api_sections_v1_section_response_paginated_items_view_model import FormApiSectionsV1SectionResponsePaginatedItemsViewModel
 from edgraph_platform_client.models.identity_api_user_v1_section_response_get_paginated_items_response import IdentityApiUserV1SectionResponseGetPaginatedItemsResponse
+from edgraph_platform_client.models.microsoft_asp_net_core_mvc_no_content_result import MicrosoftAspNetCoreMvcNoContentResult
 from edgraph_platform_client.models.tenant_api_sections_v1_section_list_response_get_paginated_items_response import TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
@@ -986,6 +1004,549 @@ class ObservationsApi:
 
 
     @validate_call
+    async def execute_user_sync_job(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DataSyncApiJobV1JobExecutionRequestedResponse:
+        """Executes the User Sync job for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._execute_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '202': "DataSyncApiJobV1JobExecutionRequestedResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def execute_user_sync_job_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DataSyncApiJobV1JobExecutionRequestedResponse]:
+        """Executes the User Sync job for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._execute_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '202': "DataSyncApiJobV1JobExecutionRequestedResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def execute_user_sync_job_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Executes the User Sync job for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._execute_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '202': "DataSyncApiJobV1JobExecutionRequestedResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _execute_user_sync_job_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/tenants/{tenantId}/observations/usersync/execute',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_academic_subjects_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse:
+        """Gets the total count of academic subjects for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_academic_subjects_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_academic_subjects_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse]:
+        """Gets the total count of academic subjects for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_academic_subjects_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_academic_subjects_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of academic subjects for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_academic_subjects_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_academic_subjects_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/academicsubjectscount',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_available_campuses_total_evaluees(
         self,
         tenant_id: UUID,
@@ -1240,6 +1801,276 @@ class ObservationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/tenants/{tenantId}/observations/total-evaluees',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_courses_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse:
+        """Gets the total count of courses for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_courses_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_courses_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse]:
+        """Gets the total count of courses for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_courses_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_courses_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of courses for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_courses_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_courses_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/coursescount',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1827,6 +2658,566 @@ class ObservationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_default_ed_fi_instance(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdfiAdminApiEdfiAdminV1Instance:
+        """Gets the default Ed-Fi instance for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_default_ed_fi_instance_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdfiAdminApiEdfiAdminV1Instance",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_default_ed_fi_instance_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdfiAdminApiEdfiAdminV1Instance]:
+        """Gets the default Ed-Fi instance for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_default_ed_fi_instance_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdfiAdminApiEdfiAdminV1Instance",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_default_ed_fi_instance_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the default Ed-Fi instance for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_default_ed_fi_instance_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdfiAdminApiEdfiAdminV1Instance",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_default_ed_fi_instance_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/defaultinstance',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_education_organizations_count(
+        self,
+        tenant_id: UUID,
+        discriminator: Annotated[Optional[StrictStr], Field(description="Either \"LocalEducationAgency\" or \"School\"")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse:
+        """Gets the total count of education organizations for a given tenant, filtered by discriminator
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param discriminator: Either \"LocalEducationAgency\" or \"School\"
+        :type discriminator: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_education_organizations_count_serialize(
+            tenant_id=tenant_id,
+            discriminator=discriminator,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_education_organizations_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        discriminator: Annotated[Optional[StrictStr], Field(description="Either \"LocalEducationAgency\" or \"School\"")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse]:
+        """Gets the total count of education organizations for a given tenant, filtered by discriminator
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param discriminator: Either \"LocalEducationAgency\" or \"School\"
+        :type discriminator: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_education_organizations_count_serialize(
+            tenant_id=tenant_id,
+            discriminator=discriminator,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_education_organizations_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        discriminator: Annotated[Optional[StrictStr], Field(description="Either \"LocalEducationAgency\" or \"School\"")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of education organizations for a given tenant, filtered by discriminator
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param discriminator: Either \"LocalEducationAgency\" or \"School\"
+        :type discriminator: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_education_organizations_count_serialize(
+            tenant_id=tenant_id,
+            discriminator=discriminator,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_education_organizations_count_serialize(
+        self,
+        tenant_id,
+        discriminator,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        if discriminator is not None:
+            
+            _query_params.append(('discriminator', discriminator))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/educationorganizationscount',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2852,6 +4243,276 @@ class ObservationsApi:
 
 
     @validate_call
+    async def get_grade_levels_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse:
+        """Gets the total count of grade levels for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_grade_levels_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_grade_levels_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse]:
+        """Gets the total count of grade levels for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_grade_levels_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_grade_levels_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of grade levels for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_grade_levels_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_grade_levels_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/gradelevelscount',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_observation_by_id(
         self,
         tenant_id: UUID,
@@ -3721,6 +5382,279 @@ class ObservationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submission',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_onboarding(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse:
+        """Gets the Instructional Insights onboarding progress for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_onboarding_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_onboarding_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse]:
+        """Gets the Instructional Insights onboarding progress for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_onboarding_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_onboarding_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the Instructional Insights onboarding progress for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_onboarding_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_onboarding_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/onboarding',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5476,6 +7410,344 @@ class ObservationsApi:
 
 
     @validate_call
+    async def get_paginated_observation_users(
+        self,
+        tenant_id: UUID,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse:
+        """Get paginated users for a given tenant, including their SEOAAs and Observation Access.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_paginated_observation_users_serialize(
+            tenant_id=tenant_id,
+            page_index=page_index,
+            page_size=page_size,
+            order_by=order_by,
+            filter=filter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_paginated_observation_users_with_http_info(
+        self,
+        tenant_id: UUID,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse]:
+        """Get paginated users for a given tenant, including their SEOAAs and Observation Access.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_paginated_observation_users_serialize(
+            tenant_id=tenant_id,
+            page_index=page_index,
+            page_size=page_size,
+            order_by=order_by,
+            filter=filter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_paginated_observation_users_without_preload_content(
+        self,
+        tenant_id: UUID,
+        page_index: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get paginated users for a given tenant, including their SEOAAs and Observation Access.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param page_index: 
+        :type page_index: int
+        :param page_size: 
+        :type page_size: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_paginated_observation_users_serialize(
+            tenant_id=tenant_id,
+            page_index=page_index,
+            page_size=page_size,
+            order_by=order_by,
+            filter=filter,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_paginated_observation_users_serialize(
+        self,
+        tenant_id,
+        page_index,
+        page_size,
+        order_by,
+        filter,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if order_by is not None:
+            
+            _query_params.append(('orderBy', order_by))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/users',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_paginated_observations(
         self,
         tenant_id: UUID,
@@ -6271,6 +8543,1086 @@ class ObservationsApi:
 
 
     @validate_call
+    async def get_sections_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse:
+        """Gets the total count of sections for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_sections_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_sections_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse]:
+        """Gets the total count of sections for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_sections_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_sections_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of sections for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_sections_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_sections_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/sectionscount',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_seoaas_total(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse:
+        """Get the total number of SEOAAs across all users for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_seoaas_total_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_seoaas_total_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse]:
+        """Get the total number of SEOAAs across all users for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_seoaas_total_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_seoaas_total_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get the total number of SEOAAs across all users for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_seoaas_total_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_seoaas_total_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/seoaastotals',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_sessions_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse:
+        """Gets the total count of sessions for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_sessions_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_sessions_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse]:
+        """Gets the total count of sessions for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_sessions_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_sessions_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of sessions for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_sessions_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_sessions_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/sessionscount',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_staff_section_associations_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse:
+        """Gets the total count of staff-section associations across all users for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_staff_section_associations_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_staff_section_associations_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse]:
+        """Gets the total count of staff-section associations across all users for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_staff_section_associations_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_staff_section_associations_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of staff-section associations across all users for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_staff_section_associations_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_staff_section_associations_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/staffsectionassociationscount',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def get_submitted_observations_count(
         self,
         tenant_id: UUID,
@@ -6559,6 +9911,549 @@ class ObservationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/tenants/{tenantId}/submittedobservations',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_terms_count(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse:
+        """Gets the total count of terms for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_terms_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_terms_count_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse]:
+        """Gets the total count of terms for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_terms_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_terms_count_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the total count of terms for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_terms_count_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_terms_count_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/termscount',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_user_sync_job(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse:
+        """Gets the User Sync job for a given tenant, including its job executions
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_user_sync_job_with_http_info(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse]:
+        """Gets the User Sync job for a given tenant, including its job executions
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_user_sync_job_without_preload_content(
+        self,
+        tenant_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets the User Sync job for a given tenant, including its job executions
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_user_sync_job_serialize(
+        self,
+        tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/observations/usersync',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7546,6 +11441,629 @@ class ObservationsApi:
         return self.api_client.param_serialize(
             method='PUT',
             resource_path='/tenants/{tenantId}/observations/{observationId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def update_observations_onboarding_step(
+        self,
+        tenant_id: UUID,
+        step_number: StrictInt,
+        ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse:
+        """Updates a step of the Instructional Insights onboarding for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param step_number:  (required)
+        :type step_number: int
+        :param ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_observations_onboarding_step_serialize(
+            tenant_id=tenant_id,
+            step_number=step_number,
+            ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request=ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def update_observations_onboarding_step_with_http_info(
+        self,
+        tenant_id: UUID,
+        step_number: StrictInt,
+        ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse]:
+        """Updates a step of the Instructional Insights onboarding for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param step_number:  (required)
+        :type step_number: int
+        :param ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_observations_onboarding_step_serialize(
+            tenant_id=tenant_id,
+            step_number=step_number,
+            ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request=ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def update_observations_onboarding_step_without_preload_content(
+        self,
+        tenant_id: UUID,
+        step_number: StrictInt,
+        ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Updates a step of the Instructional Insights onboarding for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param step_number:  (required)
+        :type step_number: int
+        :param ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: 
+        :type ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request: EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_observations_onboarding_step_serialize(
+            tenant_id=tenant_id,
+            step_number=step_number,
+            ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request=ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_observations_onboarding_step_serialize(
+        self,
+        tenant_id,
+        step_number,
+        ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if step_number is not None:
+            _path_params['stepNumber'] = step_number
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_services_observations_update_observations_onboarding_step_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/observations/onboarding/{stepNumber}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def update_user_sync_job(
+        self,
+        tenant_id: UUID,
+        body: Optional[Any] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> MicrosoftAspNetCoreMvcNoContentResult:
+        """Updates the User Sync job for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param body: 
+        :type body: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': "MicrosoftAspNetCoreMvcNoContentResult",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def update_user_sync_job_with_http_info(
+        self,
+        tenant_id: UUID,
+        body: Optional[Any] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[MicrosoftAspNetCoreMvcNoContentResult]:
+        """Updates the User Sync job for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param body: 
+        :type body: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': "MicrosoftAspNetCoreMvcNoContentResult",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def update_user_sync_job_without_preload_content(
+        self,
+        tenant_id: UUID,
+        body: Optional[Any] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Updates the User Sync job for a given tenant
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: UUID
+        :param body: 
+        :type body: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_user_sync_job_serialize(
+            tenant_id=tenant_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': "MicrosoftAspNetCoreMvcNoContentResult",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_user_sync_job_serialize(
+        self,
+        tenant_id,
+        body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if body is not None:
+            _body_params = body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/observations/usersync',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

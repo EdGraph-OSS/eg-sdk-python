@@ -4,11 +4,11 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_capacity**](EnrollmentAdminCapacityApi.md#get_capacity) | **GET** /tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity | Searches Capacity for one school - one row per program x grade x school year.
+[**get_capacity**](EnrollmentAdminCapacityApi.md#get_capacity) | **GET** /tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity | Searches Capacity for one school - one row per program x grade x school year.
 
 
 # **get_capacity**
-> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminCapacityListItemDtoPaginatedItemsViewModel get_capacity(tenant_id, school_code, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter, grade=grade, search=search)
+> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminCapacityListItemDtoPaginatedItemsViewModel get_capacity(tenant_id, school_local_code, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter, grade=grade, search=search)
 
 Searches Capacity for one school - one row per program x grade x school year.
 
@@ -40,7 +40,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgraph_platform_client.EnrollmentAdminCapacityApi(api_client)
     tenant_id = 'tenant_id_example' # str | 
-    school_code = 'school_code_example' # str | Required - a seat count is meaningless without a school.
+    school_local_code = 'school_local_code_example' # str | Required - a seat count is meaningless without a school.
     page_size = 50 # int |  (optional) (default to 50)
     page_index = 0 # int |  (optional) (default to 0)
     order_by = '' # str |  (optional) (default to '')
@@ -50,7 +50,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
 
     try:
         # Searches Capacity for one school - one row per program x grade x school year.
-        api_response = await api_instance.get_capacity(tenant_id, school_code, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter, grade=grade, search=search)
+        api_response = await api_instance.get_capacity(tenant_id, school_local_code, page_size=page_size, page_index=page_index, order_by=order_by, filter=filter, grade=grade, search=search)
         print("The response of EnrollmentAdminCapacityApi->get_capacity:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,7 +65,7 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**|  | 
- **school_code** | **str**| Required - a seat count is meaningless without a school. | 
+ **school_local_code** | **str**| Required - a seat count is meaningless without a school. | 
  **page_size** | **int**|  | [optional] [default to 50]
  **page_index** | **int**|  | [optional] [default to 0]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]

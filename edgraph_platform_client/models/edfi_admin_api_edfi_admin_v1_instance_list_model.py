@@ -58,7 +58,8 @@ class EdfiAdminApiEdfiAdminV1InstanceListModel(BaseModel):
     related_instances: Optional[List[EdfiAdminApiEdfiAdminV1RelatedInstance]] = Field(default=None, alias="relatedInstances")
     enable_admin_api: Optional[StrictBool] = Field(default=None, description="Enable Admin API", alias="enableAdminApi")
     state: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "instanceName", "useCustomId", "customId", "description", "connectionName", "selectedConnectionId", "selectedConnection", "databases", "tenantId", "createdBy", "createdDateTime", "isDeleted", "lastModifiedBy", "lastModifiedDateTime", "apiAuthUrl", "apiResourcesUrls", "apiCompositesUrls", "selectedConnectionType", "isDefault", "provider", "onboarding", "applications", "relatedInstances", "enableAdminApi", "state"]
+    requires_school_year_selection: Optional[StrictBool] = Field(default=None, alias="requiresSchoolYearSelection")
+    __properties: ClassVar[List[str]] = ["id", "instanceName", "useCustomId", "customId", "description", "connectionName", "selectedConnectionId", "selectedConnection", "databases", "tenantId", "createdBy", "createdDateTime", "isDeleted", "lastModifiedBy", "lastModifiedDateTime", "apiAuthUrl", "apiResourcesUrls", "apiCompositesUrls", "selectedConnectionType", "isDefault", "provider", "onboarding", "applications", "relatedInstances", "enableAdminApi", "state", "requiresSchoolYearSelection"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -235,6 +236,11 @@ class EdfiAdminApiEdfiAdminV1InstanceListModel(BaseModel):
         if self.state is None and "state" in self.model_fields_set:
             _dict['state'] = None
 
+        # set to None if requires_school_year_selection (nullable) is None
+        # and model_fields_set contains the field
+        if self.requires_school_year_selection is None and "requires_school_year_selection" in self.model_fields_set:
+            _dict['requiresSchoolYearSelection'] = None
+
         return _dict
 
     @classmethod
@@ -272,7 +278,8 @@ class EdfiAdminApiEdfiAdminV1InstanceListModel(BaseModel):
             "applications": [EdfiAdminApiEdfiAdminV1InstanceApplicationsListResponse.from_dict(_item) for _item in obj["applications"]] if obj.get("applications") is not None else None,
             "relatedInstances": [EdfiAdminApiEdfiAdminV1RelatedInstance.from_dict(_item) for _item in obj["relatedInstances"]] if obj.get("relatedInstances") is not None else None,
             "enableAdminApi": obj.get("enableAdminApi"),
-            "state": obj.get("state")
+            "state": obj.get("state"),
+            "requiresSchoolYearSelection": obj.get("requiresSchoolYearSelection")
         })
         return _obj
 

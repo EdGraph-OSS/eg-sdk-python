@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **tenant_id** | **UUID** |  | [optional] 
 **first_name** | **str** |  | [optional] 
 **last_name** | **str** |  | [optional] 
-**students** | [**List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto]**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto.md) |  | [optional] 
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 

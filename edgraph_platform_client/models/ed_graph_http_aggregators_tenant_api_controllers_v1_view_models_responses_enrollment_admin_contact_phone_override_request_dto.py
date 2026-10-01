@@ -28,9 +28,9 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactPhoneOverrideRequestDto
     """ # noqa: E501
     value: Optional[StrictStr] = None
-    student_id: Optional[StrictStr] = Field(default=None, alias="studentId")
+    student_local_code: Optional[StrictStr] = Field(default=None, alias="studentLocalCode")
     expected_version: Optional[StrictStr] = Field(default=None, alias="expectedVersion")
-    __properties: ClassVar[List[str]] = ["value", "studentId", "expectedVersion"]
+    __properties: ClassVar[List[str]] = ["value", "studentLocalCode", "expectedVersion"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -76,10 +76,10 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.value is None and "value" in self.model_fields_set:
             _dict['value'] = None
 
-        # set to None if student_id (nullable) is None
+        # set to None if student_local_code (nullable) is None
         # and model_fields_set contains the field
-        if self.student_id is None and "student_id" in self.model_fields_set:
-            _dict['studentId'] = None
+        if self.student_local_code is None and "student_local_code" in self.model_fields_set:
+            _dict['studentLocalCode'] = None
 
         # set to None if expected_version (nullable) is None
         # and model_fields_set contains the field
@@ -99,7 +99,7 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
 
         _obj = cls.model_validate({
             "value": obj.get("value"),
-            "studentId": obj.get("studentId"),
+            "studentLocalCode": obj.get("studentLocalCode"),
             "expectedVersion": obj.get("expectedVersion")
         })
         return _obj

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** |  | [optional] 
-**student_id** | **str** |  | [optional] 
+**student_local_code** | **str** |  | [optional] 
 **expected_version** | **str** |  | [optional] 
 
 ## Example

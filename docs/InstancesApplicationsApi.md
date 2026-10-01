@@ -694,7 +694,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_application_by_id_async**
-> EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse get_application_by_id_async(tenant_id, instance_id, application_id, year=year, load_education_organizations=load_education_organizations)
+> EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse get_application_by_id_async(tenant_id, instance_id, application_id, load_education_organizations=load_education_organizations)
 
 Retrieves an Application by ID.
 
@@ -728,12 +728,11 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     tenant_id = 'tenant_id_example' # str | 
     instance_id = 'instance_id_example' # str | 
     application_id = 56 # int | 
-    year = 56 # int |  (optional)
     load_education_organizations = True # bool |  (optional)
 
     try:
         # Retrieves an Application by ID.
-        api_response = await api_instance.get_application_by_id_async(tenant_id, instance_id, application_id, year=year, load_education_organizations=load_education_organizations)
+        api_response = await api_instance.get_application_by_id_async(tenant_id, instance_id, application_id, load_education_organizations=load_education_organizations)
         print("The response of InstancesApplicationsApi->get_application_by_id_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -750,7 +749,6 @@ Name | Type | Description  | Notes
  **tenant_id** | **str**|  | 
  **instance_id** | **str**|  | 
  **application_id** | **int**|  | 
- **year** | **int**|  | [optional] 
  **load_education_organizations** | **bool**|  | [optional] 
 
 ### Return type

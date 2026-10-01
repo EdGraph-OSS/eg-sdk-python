@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **vendor_id** | **int** |  | [optional] 
 **education_organizations** | [**List[EdfiAdminApiEdfiAdminV1EducationOrganization]**](EdfiAdminApiEdfiAdminV1EducationOrganization.md) |  | [optional] [readonly] 
 **operational_context_uri** | **str** |  | [optional] 
+**years** | **List[int]** |  | [optional] [readonly] 
 
 ## Example
 

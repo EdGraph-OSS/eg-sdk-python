@@ -26,7 +26,7 @@ from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto(BaseModel):
     """
-    What a program catalog entry or school program create/update/delete reports back - just the  identity, not the row. Compare ContactMutationResultDto: a client that needs the saved state  re-reads the program.
+    What a program create/update/delete reports back - just the identity, not the row. Compare  ContactMutationResultDto: a client that needs the saved state re-reads the program.
     """ # noqa: E501
     id: Optional[UUID] = None
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_id** | **UUID** |  | [optional] 
-**code** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **is_enabled** | **bool** |  | [optional] 
 
 ## Example

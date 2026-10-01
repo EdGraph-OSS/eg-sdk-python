@@ -26,14 +26,16 @@ from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto
+    One student linked to a contact. `_id` is the link entry's own id, NOT the student: read  `studentId` for the student record id and `studentLocalCode` for the SIS code.
     """ # noqa: E501
     id: Optional[UUID] = None
-    student_id: Optional[StrictStr] = Field(default=None, alias="studentId")
-    first_name: Optional[StrictStr] = Field(default=None, alias="firstName")
-    middle_name: Optional[StrictStr] = Field(default=None, alias="middleName")
-    last_name: Optional[StrictStr] = Field(default=None, alias="lastName")
-    __properties: ClassVar[List[str]] = ["id", "studentId", "firstName", "middleName", "lastName"]
+    student_id: Optional[UUID] = Field(default=None, alias="studentId")
+    student_local_code: Optional[StrictStr] = Field(default=None, alias="studentLocalCode")
+    student_state_code: Optional[StrictStr] = Field(default=None, alias="studentStateCode")
+    student_first_name: Optional[StrictStr] = Field(default=None, alias="studentFirstName")
+    student_middle_name: Optional[StrictStr] = Field(default=None, alias="studentMiddleName")
+    student_last_name: Optional[StrictStr] = Field(default=None, alias="studentLastName")
+    __properties: ClassVar[List[str]] = ["id", "studentId", "studentLocalCode", "studentStateCode", "studentFirstName", "studentMiddleName", "studentLastName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,20 +86,30 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.student_id is None and "student_id" in self.model_fields_set:
             _dict['studentId'] = None
 
-        # set to None if first_name (nullable) is None
+        # set to None if student_local_code (nullable) is None
         # and model_fields_set contains the field
-        if self.first_name is None and "first_name" in self.model_fields_set:
-            _dict['firstName'] = None
+        if self.student_local_code is None and "student_local_code" in self.model_fields_set:
+            _dict['studentLocalCode'] = None
 
-        # set to None if middle_name (nullable) is None
+        # set to None if student_state_code (nullable) is None
         # and model_fields_set contains the field
-        if self.middle_name is None and "middle_name" in self.model_fields_set:
-            _dict['middleName'] = None
+        if self.student_state_code is None and "student_state_code" in self.model_fields_set:
+            _dict['studentStateCode'] = None
 
-        # set to None if last_name (nullable) is None
+        # set to None if student_first_name (nullable) is None
         # and model_fields_set contains the field
-        if self.last_name is None and "last_name" in self.model_fields_set:
-            _dict['lastName'] = None
+        if self.student_first_name is None and "student_first_name" in self.model_fields_set:
+            _dict['studentFirstName'] = None
+
+        # set to None if student_middle_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.student_middle_name is None and "student_middle_name" in self.model_fields_set:
+            _dict['studentMiddleName'] = None
+
+        # set to None if student_last_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.student_last_name is None and "student_last_name" in self.model_fields_set:
+            _dict['studentLastName'] = None
 
         return _dict
 
@@ -113,9 +125,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "studentId": obj.get("studentId"),
-            "firstName": obj.get("firstName"),
-            "middleName": obj.get("middleName"),
-            "lastName": obj.get("lastName")
+            "studentLocalCode": obj.get("studentLocalCode"),
+            "studentStateCode": obj.get("studentStateCode"),
+            "studentFirstName": obj.get("studentFirstName"),
+            "studentMiddleName": obj.get("studentMiddleName"),
+            "studentLastName": obj.get("studentLastName")
         })
         return _obj
 

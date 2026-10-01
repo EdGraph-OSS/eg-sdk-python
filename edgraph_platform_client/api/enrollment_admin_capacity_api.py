@@ -42,7 +42,7 @@ class EnrollmentAdminCapacityApi:
     async def get_capacity(
         self,
         tenant_id: StrictStr,
-        school_code: Annotated[StrictStr, Field(description="Required - a seat count is meaningless without a school.")],
+        school_local_code: Annotated[StrictStr, Field(description="Required - a seat count is meaningless without a school.")],
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -67,8 +67,8 @@ class EnrollmentAdminCapacityApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param school_code: Required - a seat count is meaningless without a school. (required)
-        :type school_code: str
+        :param school_local_code: Required - a seat count is meaningless without a school. (required)
+        :type school_local_code: str
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -105,7 +105,7 @@ class EnrollmentAdminCapacityApi:
 
         _param = self._get_capacity_serialize(
             tenant_id=tenant_id,
-            school_code=school_code,
+            school_local_code=school_local_code,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
@@ -140,7 +140,7 @@ class EnrollmentAdminCapacityApi:
     async def get_capacity_with_http_info(
         self,
         tenant_id: StrictStr,
-        school_code: Annotated[StrictStr, Field(description="Required - a seat count is meaningless without a school.")],
+        school_local_code: Annotated[StrictStr, Field(description="Required - a seat count is meaningless without a school.")],
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -165,8 +165,8 @@ class EnrollmentAdminCapacityApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param school_code: Required - a seat count is meaningless without a school. (required)
-        :type school_code: str
+        :param school_local_code: Required - a seat count is meaningless without a school. (required)
+        :type school_local_code: str
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -203,7 +203,7 @@ class EnrollmentAdminCapacityApi:
 
         _param = self._get_capacity_serialize(
             tenant_id=tenant_id,
-            school_code=school_code,
+            school_local_code=school_local_code,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
@@ -238,7 +238,7 @@ class EnrollmentAdminCapacityApi:
     async def get_capacity_without_preload_content(
         self,
         tenant_id: StrictStr,
-        school_code: Annotated[StrictStr, Field(description="Required - a seat count is meaningless without a school.")],
+        school_local_code: Annotated[StrictStr, Field(description="Required - a seat count is meaningless without a school.")],
         page_size: Optional[StrictInt] = None,
         page_index: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
@@ -263,8 +263,8 @@ class EnrollmentAdminCapacityApi:
 
         :param tenant_id:  (required)
         :type tenant_id: str
-        :param school_code: Required - a seat count is meaningless without a school. (required)
-        :type school_code: str
+        :param school_local_code: Required - a seat count is meaningless without a school. (required)
+        :type school_local_code: str
         :param page_size: 
         :type page_size: int
         :param page_index: 
@@ -301,7 +301,7 @@ class EnrollmentAdminCapacityApi:
 
         _param = self._get_capacity_serialize(
             tenant_id=tenant_id,
-            school_code=school_code,
+            school_local_code=school_local_code,
             page_size=page_size,
             page_index=page_index,
             order_by=order_by,
@@ -331,7 +331,7 @@ class EnrollmentAdminCapacityApi:
     def _get_capacity_serialize(
         self,
         tenant_id,
-        school_code,
+        school_local_code,
         page_size,
         page_index,
         order_by,
@@ -361,8 +361,8 @@ class EnrollmentAdminCapacityApi:
         # process the path parameters
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
-        if school_code is not None:
-            _path_params['schoolCode'] = school_code
+        if school_local_code is not None:
+            _path_params['schoolLocalCode'] = school_local_code
         # process the query parameters
         if page_size is not None:
             
@@ -409,7 +409,7 @@ class EnrollmentAdminCapacityApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

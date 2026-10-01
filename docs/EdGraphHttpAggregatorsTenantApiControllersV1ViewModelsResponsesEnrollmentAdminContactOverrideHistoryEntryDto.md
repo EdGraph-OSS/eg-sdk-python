@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **overridden_at** | **datetime** |  | [optional] 
 **acting_student_id** | **str** | The student whose screen the change was made from, when one was recorded. | [optional] 
 **student_ids** | **List[str]** |  | [optional] 
+**event_type** | **str** | The change log&#39;s event type, e.g. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.OverrideEventType  or one of the created/updated/deleted event types. Lets a client distinguish entries in a combined  changelog feed - only override entries carry EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Detail/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Action and the  value fields; the others read null there. | [optional] 
 
 ## Example
 

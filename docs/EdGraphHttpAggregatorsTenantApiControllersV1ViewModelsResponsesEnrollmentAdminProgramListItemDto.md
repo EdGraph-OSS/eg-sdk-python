@@ -6,16 +6,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
-**code** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**scope** | **str** |  | [optional] 
-**school_count** | **int** |  | [optional] 
-**school_name** | **str** |  | [optional] 
-**program_type** | **str** |  | [optional] 
+**program_code** | **str** |  | [optional] 
+**program_name** | **str** |  | [optional] 
+**program_type** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto.md) |  | [optional] 
+**school** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto.md) |  | [optional] 
 **grades** | **List[str]** |  | [optional] 
-**grades_vary_by_school** | **bool** |  | [optional] 
 **seat_status** | **str** |  | [optional] 
-**seat_status_varies_by_school** | **bool** |  | [optional] 
+**eligibility_criteria** | **str** |  | [optional] 
+**latitude** | **float** |  | [optional] 
+**longitude** | **float** |  | [optional] 
+**requirements** | [**List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto]**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto.md) |  | [optional] 
 
 ## Example
 

@@ -2696,7 +2696,6 @@ class InstancesApplicationsApi:
         tenant_id: StrictStr,
         instance_id: StrictStr,
         application_id: StrictInt,
-        year: Optional[StrictInt] = None,
         load_education_organizations: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -2720,8 +2719,6 @@ class InstancesApplicationsApi:
         :type instance_id: str
         :param application_id:  (required)
         :type application_id: int
-        :param year: 
-        :type year: int
         :param load_education_organizations: 
         :type load_education_organizations: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -2750,7 +2747,6 @@ class InstancesApplicationsApi:
             tenant_id=tenant_id,
             instance_id=instance_id,
             application_id=application_id,
-            year=year,
             load_education_organizations=load_education_organizations,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2783,7 +2779,6 @@ class InstancesApplicationsApi:
         tenant_id: StrictStr,
         instance_id: StrictStr,
         application_id: StrictInt,
-        year: Optional[StrictInt] = None,
         load_education_organizations: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -2807,8 +2802,6 @@ class InstancesApplicationsApi:
         :type instance_id: str
         :param application_id:  (required)
         :type application_id: int
-        :param year: 
-        :type year: int
         :param load_education_organizations: 
         :type load_education_organizations: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -2837,7 +2830,6 @@ class InstancesApplicationsApi:
             tenant_id=tenant_id,
             instance_id=instance_id,
             application_id=application_id,
-            year=year,
             load_education_organizations=load_education_organizations,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2870,7 +2862,6 @@ class InstancesApplicationsApi:
         tenant_id: StrictStr,
         instance_id: StrictStr,
         application_id: StrictInt,
-        year: Optional[StrictInt] = None,
         load_education_organizations: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -2894,8 +2885,6 @@ class InstancesApplicationsApi:
         :type instance_id: str
         :param application_id:  (required)
         :type application_id: int
-        :param year: 
-        :type year: int
         :param load_education_organizations: 
         :type load_education_organizations: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -2924,7 +2913,6 @@ class InstancesApplicationsApi:
             tenant_id=tenant_id,
             instance_id=instance_id,
             application_id=application_id,
-            year=year,
             load_education_organizations=load_education_organizations,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2952,7 +2940,6 @@ class InstancesApplicationsApi:
         tenant_id,
         instance_id,
         application_id,
-        year,
         load_education_organizations,
         _request_auth,
         _content_type,
@@ -2982,10 +2969,6 @@ class InstancesApplicationsApi:
         if application_id is not None:
             _path_params['applicationId'] = application_id
         # process the query parameters
-        if year is not None:
-            
-            _query_params.append(('year', year))
-            
         if load_education_organizations is not None:
             
             _query_params.append(('loadEducationOrganizations', load_education_organizations))

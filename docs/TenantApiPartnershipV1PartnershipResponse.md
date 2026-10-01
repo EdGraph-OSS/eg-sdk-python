@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **deleted_by** | **str** |  | [optional] 
 **deleted_date_time** | **str** |  | [optional] 
 **is_deleted** | **bool** |  | [optional] 
+**role_mappings** | [**List[TenantApiPartnershipV1RoleMappingDTO]**](TenantApiPartnershipV1RoleMappingDTO.md) |  | [optional] [readonly] 
+**scope** | [**TenantApiPartnershipV1PartnershipScope**](TenantApiPartnershipV1PartnershipScope.md) |  | [optional] 
+**opted_out_tenant_ids** | **List[str]** |  | [optional] [readonly] 
 
 ## Example
 

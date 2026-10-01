@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **year** | **int** |  | [optional] 
 **selected_tier_id** | **str** |  | [optional] 
 **ods_backup_code** | **str** |  | [optional] 
+**application_ids** | **List[int]** | Per-year pending grants are applied only after this ODS finishes provisioning.  Keep field 4 aligned in every source and consumer copy to preserve the wire contract. | [optional] [readonly] 
 
 ## Example
 

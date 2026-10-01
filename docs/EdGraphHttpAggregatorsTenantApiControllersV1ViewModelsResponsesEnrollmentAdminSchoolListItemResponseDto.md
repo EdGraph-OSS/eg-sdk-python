@@ -7,11 +7,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **tenant_id** | **UUID** |  | [optional] 
-**code** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**district** | **str** |  | [optional] 
-**campus_id** | **str** |  | [optional] 
-**tea_id_number** | **str** |  | [optional] 
+**external_data_source_school_id** | **str** |  | [optional] 
+**school_state_short_code** | **str** |  | [optional] 
+**school_name** | **str** |  | [optional] 
+**district_state_short_code** | **str** |  | [optional] 
+**school_state_long_code** | **str** |  | [optional] 
+**school_local_code** | **str** |  | [optional] 
+**district_local_code** | **str** |  | [optional] 
+**district_state_code** | **str** |  | [optional] 
+**district_name** | **str** |  | [optional] 
 **grades_served** | **List[str]** |  | [optional] 
 **address** | **str** |  | [optional] 
 **lat** | **float** |  | [optional] 
@@ -23,7 +27,6 @@ Name | Type | Description | Notes
 **created_date_time** | **datetime** |  | [optional] 
 **last_modified_by** | **str** |  | [optional] 
 **last_modified_date_time** | **datetime** |  | [optional] 
-**last_updated_date_time** | **datetime** |  | [optional] 
 
 ## Example
 

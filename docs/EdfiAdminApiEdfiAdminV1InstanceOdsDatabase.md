@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **year** | **int** |  | [optional] 
 **ods_backup_code** | **str** |  | [optional] 
 **ods_backup_description** | **str** |  | [optional] 
+**pending_application_access_ids** | **List[int]** |  | [optional] [readonly] 
 
 ## Example
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **etag** | **str** |  | [optional] 
 **instance_id** | **str** |  | [optional] 
 **year** | **int** |  | [optional] 
+**tenant_id** | **str** |  | [optional] 
 
 ## Example
 

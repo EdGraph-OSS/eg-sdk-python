@@ -38,7 +38,8 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse(BaseModel):
     vendor: Optional[EdfiAdminApiEdfiAdminV1Vendor] = None
     education_organizations: Optional[List[EdfiAdminApiEdfiAdminV1EducationOrganization]] = Field(default=None, description="TODO Is adding Vendor object which also has application object correct ?", alias="educationOrganizations")
     operational_context_uri: Optional[StrictStr] = Field(default=None, alias="operationalContextUri")
-    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "applicationId", "applicationName", "claimSetName", "vendorId", "vendor", "educationOrganizations", "operationalContextUri"]
+    years: Optional[List[StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["tenantId", "instanceId", "applicationId", "applicationName", "claimSetName", "vendorId", "vendor", "educationOrganizations", "operationalContextUri", "years"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -71,9 +72,11 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "education_organizations",
+            "years",
         ])
 
         _dict = self.model_dump(
@@ -121,6 +124,11 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse(BaseModel):
         if self.operational_context_uri is None and "operational_context_uri" in self.model_fields_set:
             _dict['operationalContextUri'] = None
 
+        # set to None if years (nullable) is None
+        # and model_fields_set contains the field
+        if self.years is None and "years" in self.model_fields_set:
+            _dict['years'] = None
+
         return _dict
 
     @classmethod
@@ -141,7 +149,8 @@ class EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse(BaseModel):
             "vendorId": obj.get("vendorId"),
             "vendor": EdfiAdminApiEdfiAdminV1Vendor.from_dict(obj["vendor"]) if obj.get("vendor") is not None else None,
             "educationOrganizations": [EdfiAdminApiEdfiAdminV1EducationOrganization.from_dict(_item) for _item in obj["educationOrganizations"]] if obj.get("educationOrganizations") is not None else None,
-            "operationalContextUri": obj.get("operationalContextUri")
+            "operationalContextUri": obj.get("operationalContextUri"),
+            "years": obj.get("years")
         })
         return _obj
 
