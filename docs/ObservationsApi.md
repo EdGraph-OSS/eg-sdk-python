@@ -2000,7 +2000,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_paginated_observation_users**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse get_paginated_observation_users(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse get_paginated_observation_users(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter, first_name=first_name, last_name=last_name, email=email, organization=organization, education_organization_role=education_organization_role, persona=persona)
 
 Get paginated users for a given tenant, including their SEOAAs and Observation Access.
 
@@ -2036,10 +2036,16 @@ async with edgraph_platform_client.ApiClient(configuration) as api_client:
     page_size = 10 # int |  (optional) (default to 10)
     order_by = '' # str |  (optional) (default to '')
     filter = '' # str |  (optional) (default to '')
+    first_name = '' # str |  (optional) (default to '')
+    last_name = '' # str |  (optional) (default to '')
+    email = '' # str |  (optional) (default to '')
+    organization = '' # str |  (optional) (default to '')
+    education_organization_role = '' # str |  (optional) (default to '')
+    persona = '' # str |  (optional) (default to '')
 
     try:
         # Get paginated users for a given tenant, including their SEOAAs and Observation Access.
-        api_response = await api_instance.get_paginated_observation_users(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter)
+        api_response = await api_instance.get_paginated_observation_users(tenant_id, page_index=page_index, page_size=page_size, order_by=order_by, filter=filter, first_name=first_name, last_name=last_name, email=email, organization=organization, education_organization_role=education_organization_role, persona=persona)
         print("The response of ObservationsApi->get_paginated_observation_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -2058,6 +2064,12 @@ Name | Type | Description  | Notes
  **page_size** | **int**|  | [optional] [default to 10]
  **order_by** | **str**|  | [optional] [default to &#39;&#39;]
  **filter** | **str**|  | [optional] [default to &#39;&#39;]
+ **first_name** | **str**|  | [optional] [default to &#39;&#39;]
+ **last_name** | **str**|  | [optional] [default to &#39;&#39;]
+ **email** | **str**|  | [optional] [default to &#39;&#39;]
+ **organization** | **str**|  | [optional] [default to &#39;&#39;]
+ **education_organization_role** | **str**|  | [optional] [default to &#39;&#39;]
+ **persona** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 

@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **lat** | **float** |  | [optional] 
 **lon** | **float** |  | [optional] 
 **phone** | **str** |  | [optional] 
+**address_state_abbreviation** | **str** | Two-letter US state code, e.g. &#x60;TX&#x60;. Required when AddressState is sent. | [optional] 
+**address_state** | **str** | Full name of the state in AddressStateAbbreviation, e.g. &#x60;Texas&#x60;. | [optional] 
 
 ## Example
 

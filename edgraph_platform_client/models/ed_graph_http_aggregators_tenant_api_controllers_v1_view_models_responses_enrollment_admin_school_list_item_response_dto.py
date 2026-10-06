@@ -45,13 +45,15 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     lat: Optional[Union[StrictFloat, StrictInt]] = None
     lon: Optional[Union[StrictFloat, StrictInt]] = None
     phone: Optional[StrictStr] = None
+    address_state_abbreviation: Optional[StrictStr] = Field(default=None, alias="addressStateAbbreviation")
+    address_state: Optional[StrictStr] = Field(default=None, alias="addressState")
     is_enabled: Optional[StrictBool] = Field(default=None, alias="isEnabled")
     program_count: Optional[StrictInt] = Field(default=None, alias="programCount")
     created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
     created_date_time: Optional[datetime] = Field(default=None, alias="createdDateTime")
     last_modified_by: Optional[StrictStr] = Field(default=None, alias="lastModifiedBy")
     last_modified_date_time: Optional[datetime] = Field(default=None, alias="lastModifiedDateTime")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "externalDataSourceSchoolId", "schoolStateShortCode", "schoolName", "districtStateShortCode", "schoolStateLongCode", "schoolLocalCode", "districtLocalCode", "districtStateCode", "districtName", "gradesServed", "address", "lat", "lon", "phone", "isEnabled", "programCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime"]
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "externalDataSourceSchoolId", "schoolStateShortCode", "schoolName", "districtStateShortCode", "schoolStateLongCode", "schoolLocalCode", "districtLocalCode", "districtStateCode", "districtName", "gradesServed", "address", "lat", "lon", "phone", "addressStateAbbreviation", "addressState", "isEnabled", "programCount", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -172,6 +174,16 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.phone is None and "phone" in self.model_fields_set:
             _dict['phone'] = None
 
+        # set to None if address_state_abbreviation (nullable) is None
+        # and model_fields_set contains the field
+        if self.address_state_abbreviation is None and "address_state_abbreviation" in self.model_fields_set:
+            _dict['addressStateAbbreviation'] = None
+
+        # set to None if address_state (nullable) is None
+        # and model_fields_set contains the field
+        if self.address_state is None and "address_state" in self.model_fields_set:
+            _dict['addressState'] = None
+
         # set to None if created_by (nullable) is None
         # and model_fields_set contains the field
         if self.created_by is None and "created_by" in self.model_fields_set:
@@ -220,6 +232,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "lat": obj.get("lat"),
             "lon": obj.get("lon"),
             "phone": obj.get("phone"),
+            "addressStateAbbreviation": obj.get("addressStateAbbreviation"),
+            "addressState": obj.get("addressState"),
             "isEnabled": obj.get("isEnabled"),
             "programCount": obj.get("programCount"),
             "createdBy": obj.get("createdBy"),

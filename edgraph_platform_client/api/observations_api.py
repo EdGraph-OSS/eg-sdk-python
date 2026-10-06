@@ -7417,6 +7417,12 @@ class ObservationsApi:
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
+        first_name: Optional[StrictStr] = None,
+        last_name: Optional[StrictStr] = None,
+        email: Optional[StrictStr] = None,
+        organization: Optional[StrictStr] = None,
+        education_organization_role: Optional[StrictStr] = None,
+        persona: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7443,6 +7449,18 @@ class ObservationsApi:
         :type order_by: str
         :param filter: 
         :type filter: str
+        :param first_name: 
+        :type first_name: str
+        :param last_name: 
+        :type last_name: str
+        :param email: 
+        :type email: str
+        :param organization: 
+        :type organization: str
+        :param education_organization_role: 
+        :type education_organization_role: str
+        :param persona: 
+        :type persona: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7471,6 +7489,12 @@ class ObservationsApi:
             page_size=page_size,
             order_by=order_by,
             filter=filter,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            organization=organization,
+            education_organization_role=education_organization_role,
+            persona=persona,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7503,6 +7527,12 @@ class ObservationsApi:
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
+        first_name: Optional[StrictStr] = None,
+        last_name: Optional[StrictStr] = None,
+        email: Optional[StrictStr] = None,
+        organization: Optional[StrictStr] = None,
+        education_organization_role: Optional[StrictStr] = None,
+        persona: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7529,6 +7559,18 @@ class ObservationsApi:
         :type order_by: str
         :param filter: 
         :type filter: str
+        :param first_name: 
+        :type first_name: str
+        :param last_name: 
+        :type last_name: str
+        :param email: 
+        :type email: str
+        :param organization: 
+        :type organization: str
+        :param education_organization_role: 
+        :type education_organization_role: str
+        :param persona: 
+        :type persona: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7557,6 +7599,12 @@ class ObservationsApi:
             page_size=page_size,
             order_by=order_by,
             filter=filter,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            organization=organization,
+            education_organization_role=education_organization_role,
+            persona=persona,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7589,6 +7637,12 @@ class ObservationsApi:
         page_size: Optional[StrictInt] = None,
         order_by: Optional[StrictStr] = None,
         filter: Optional[StrictStr] = None,
+        first_name: Optional[StrictStr] = None,
+        last_name: Optional[StrictStr] = None,
+        email: Optional[StrictStr] = None,
+        organization: Optional[StrictStr] = None,
+        education_organization_role: Optional[StrictStr] = None,
+        persona: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7615,6 +7669,18 @@ class ObservationsApi:
         :type order_by: str
         :param filter: 
         :type filter: str
+        :param first_name: 
+        :type first_name: str
+        :param last_name: 
+        :type last_name: str
+        :param email: 
+        :type email: str
+        :param organization: 
+        :type organization: str
+        :param education_organization_role: 
+        :type education_organization_role: str
+        :param persona: 
+        :type persona: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7643,6 +7709,12 @@ class ObservationsApi:
             page_size=page_size,
             order_by=order_by,
             filter=filter,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            organization=organization,
+            education_organization_role=education_organization_role,
+            persona=persona,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7670,6 +7742,12 @@ class ObservationsApi:
         page_size,
         order_by,
         filter,
+        first_name,
+        last_name,
+        email,
+        organization,
+        education_organization_role,
+        persona,
         _request_auth,
         _content_type,
         _headers,
@@ -7709,6 +7787,30 @@ class ObservationsApi:
         if filter is not None:
             
             _query_params.append(('filter', filter))
+            
+        if first_name is not None:
+            
+            _query_params.append(('firstName', first_name))
+            
+        if last_name is not None:
+            
+            _query_params.append(('lastName', last_name))
+            
+        if email is not None:
+            
+            _query_params.append(('email', email))
+            
+        if organization is not None:
+            
+            _query_params.append(('organization', organization))
+            
+        if education_organization_role is not None:
+            
+            _query_params.append(('educationOrganizationRole', education_organization_role))
+            
+        if persona is not None:
+            
+            _query_params.append(('persona', persona))
             
         # process the header parameters
         # process the form parameters

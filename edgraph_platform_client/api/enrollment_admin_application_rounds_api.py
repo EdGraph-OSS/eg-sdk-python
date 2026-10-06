@@ -15,28 +15,25 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
-from typing import Any, Dict, Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Optional
+from typing_extensions import Annotated
 from uuid import UUID
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_forms_v1_form_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request import EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_response import EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_application_settings_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_get_staff_classification_settings_response import EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_persona_response_get_paginated_items_response import EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request import EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_response import EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request import EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
-from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_response import EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse
-from edgraph_platform_client.models.identity_api_staff_classification_v1_get_staff_classifications_response import IdentityApiStaffClassificationV1GetStaffClassificationsResponse
-from edgraph_platform_client.models.tenant_api_tenant_v1_organization_get_paginated_items_response import TenantApiTenantV1OrganizationGetPaginatedItemsResponse
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_mutation_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto_paginated_items_view_model import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDtoPaginatedItemsViewModel
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_window_mutation_result_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto
 
 from edgraph_platform_client.api_client import ApiClient, RequestSerialized
 from edgraph_platform_client.api_response import ApiResponse
 from edgraph_platform_client.rest import RESTResponseType
 
 
-class ObservationSettingsApi:
+class EnrollmentAdminApplicationRoundsApi:
     """NOTE: This class is auto generated by OpenAPI Generator
     Ref: https://openapi-generator.tech
 
@@ -50,10 +47,11 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def add_available_persona(
+    async def add_application_round_window(
         self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest] = None,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,14 +64,16 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse:
-        """Adds a persona for a given Tenant
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto:
+        """Adds a window to the round. Windows may overlap, within the round and across rounds. A  dependency must name a window of a live round in the tenant.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -96,9 +96,10 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_available_persona_serialize(
+        _param = self._add_application_round_window_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request=ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,8 +110,10 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -124,10 +127,11 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def add_available_persona_with_http_info(
+    async def add_application_round_window_with_http_info(
         self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest] = None,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,14 +144,16 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse]:
-        """Adds a persona for a given Tenant
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto]:
+        """Adds a window to the round. Windows may overlap, within the round and across rounds. A  dependency must name a window of a live round in the tenant.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,9 +176,10 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_available_persona_serialize(
+        _param = self._add_application_round_window_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request=ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -183,8 +190,10 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -198,10 +207,11 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def add_available_persona_without_preload_content(
+    async def add_application_round_window_without_preload_content(
         self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest] = None,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -215,13 +225,15 @@ class ObservationSettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Adds a persona for a given Tenant
+        """Adds a window to the round. Windows may overlap, within the round and across rounds. A  dependency must name a window of a live round in the tenant.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request: EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -244,9 +256,10 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_available_persona_serialize(
+        _param = self._add_application_round_window_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request=ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,8 +270,10 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -267,10 +282,11 @@ class ObservationSettingsApi:
         return response_data.response
 
 
-    def _add_available_persona_serialize(
+    def _add_application_round_window_serialize(
         self,
         tenant_id,
-        ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request,
+        id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -294,12 +310,14 @@ class ObservationSettingsApi:
         # process the path parameters
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_services_observations_add_available_persona_request
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto
 
 
         # set the HTTP header `Accept`
@@ -334,7 +352,7 @@ class ObservationSettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/tenants/{tenantId}/observations/settings/personas',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}/windows',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -351,9 +369,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def get_application_settings(
+    async def create_application_round(
         self,
-        tenant_id: UUID,
+        tenant_id: StrictStr,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -366,12 +385,14 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse:
-        """Gets the application settings for the tenant
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto:
+        """Creates a round. Add its windows afterwards.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
+        :type tenant_id: str
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -394,8 +415,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_application_settings_serialize(
+        _param = self._create_application_round_serialize(
             tenant_id=tenant_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -406,8 +428,9 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -421,9 +444,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def get_application_settings_with_http_info(
+    async def create_application_round_with_http_info(
         self,
-        tenant_id: UUID,
+        tenant_id: StrictStr,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -436,12 +460,14 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse]:
-        """Gets the application settings for the tenant
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto]:
+        """Creates a round. Add its windows afterwards.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
+        :type tenant_id: str
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -464,8 +490,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_application_settings_serialize(
+        _param = self._create_application_round_serialize(
             tenant_id=tenant_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -476,8 +503,9 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -491,9 +519,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def get_application_settings_without_preload_content(
+    async def create_application_round_without_preload_content(
         self,
-        tenant_id: UUID,
+        tenant_id: StrictStr,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -507,11 +536,13 @@ class ObservationSettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the application settings for the tenant
+        """Creates a round. Add its windows afterwards.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
+        :type tenant_id: str
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateApplicationRoundRequestDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -534,8 +565,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_application_settings_serialize(
+        _param = self._create_application_round_serialize(
             tenant_id=tenant_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -546,8 +578,9 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -556,9 +589,10 @@ class ObservationSettingsApi:
         return response_data.response
 
 
-    def _get_application_settings_serialize(
+    def _create_application_round_serialize(
         self,
         tenant_id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -586,2538 +620,8 @@ class ObservationSettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/settings/application',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_observation_staff_classifications(
-        self,
-        tenant_id: UUID,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IdentityApiStaffClassificationV1GetStaffClassificationsResponse:
-        """Retrieves a list of StaffClassifications for a given tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_observation_staff_classifications_serialize(
-            tenant_id=tenant_id,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_observation_staff_classifications_with_http_info(
-        self,
-        tenant_id: UUID,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IdentityApiStaffClassificationV1GetStaffClassificationsResponse]:
-        """Retrieves a list of StaffClassifications for a given tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_observation_staff_classifications_serialize(
-            tenant_id=tenant_id,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_observation_staff_classifications_without_preload_content(
-        self,
-        tenant_id: UUID,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Retrieves a list of StaffClassifications for a given tenant.
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_observation_staff_classifications_serialize(
-            tenant_id=tenant_id,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_observation_staff_classifications_serialize(
-        self,
-        tenant_id,
-        page_index,
-        page_size,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if page_index is not None:
-            
-            _query_params.append(('pageIndex', page_index))
-            
-        if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/staffclassifications',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_paginated_forms(
-        self,
-        tenant_id: UUID,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse:
-        """Get Paginated Forms
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_forms_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_paginated_forms_with_http_info(
-        self,
-        tenant_id: UUID,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse]:
-        """Get Paginated Forms
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_forms_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_paginated_forms_without_preload_content(
-        self,
-        tenant_id: UUID,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Paginated Forms
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_forms_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_paginated_forms_serialize(
-        self,
-        tenant_id,
-        page_size,
-        page_index,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
-        if page_index is not None:
-            
-            _query_params.append(('pageIndex', page_index))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/forms',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_paginated_personas(
-        self,
-        tenant_id: UUID,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse:
-        """Gets available personas
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_personas_serialize(
-            tenant_id=tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_paginated_personas_with_http_info(
-        self,
-        tenant_id: UUID,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse]:
-        """Gets available personas
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_personas_serialize(
-            tenant_id=tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_paginated_personas_without_preload_content(
-        self,
-        tenant_id: UUID,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Gets available personas
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_personas_serialize(
-            tenant_id=tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_paginated_personas_serialize(
-        self,
-        tenant_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/settings/personas',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_paginated_staff_classifications(
-        self,
-        tenant_id: UUID,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IdentityApiStaffClassificationV1GetStaffClassificationsResponse:
-        """Get Paginated Available StaffClassifications
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_staff_classifications_serialize(
-            tenant_id=tenant_id,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_paginated_staff_classifications_with_http_info(
-        self,
-        tenant_id: UUID,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IdentityApiStaffClassificationV1GetStaffClassificationsResponse]:
-        """Get Paginated Available StaffClassifications
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_staff_classifications_serialize(
-            tenant_id=tenant_id,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_paginated_staff_classifications_without_preload_content(
-        self,
-        tenant_id: UUID,
-        page_index: Optional[StrictInt] = None,
-        page_size: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Paginated Available StaffClassifications
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_index: 
-        :type page_index: int
-        :param page_size: 
-        :type page_size: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_paginated_staff_classifications_serialize(
-            tenant_id=tenant_id,
-            page_index=page_index,
-            page_size=page_size,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "IdentityApiStaffClassificationV1GetStaffClassificationsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_paginated_staff_classifications_serialize(
-        self,
-        tenant_id,
-        page_index,
-        page_size,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if page_index is not None:
-            
-            _query_params.append(('pageIndex', page_index))
-            
-        if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/settings/available-staffclassifications',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_staff_classifications_settings(
-        self,
-        tenant_id: UUID,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse:
-        """Gets the staffClassification settings for the tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_staff_classifications_settings_serialize(
-            tenant_id=tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_staff_classifications_settings_with_http_info(
-        self,
-        tenant_id: UUID,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse]:
-        """Gets the staffClassification settings for the tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_staff_classifications_settings_serialize(
-            tenant_id=tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_staff_classifications_settings_without_preload_content(
-        self,
-        tenant_id: UUID,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Gets the staffClassification settings for the tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_staff_classifications_settings_serialize(
-            tenant_id=tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_staff_classifications_settings_serialize(
-        self,
-        tenant_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/settings/staffclassifications',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_tea_tenant_organizations(
-        self,
-        tenant_id: UUID,
-        tea_tenant_id: Optional[StrictStr] = None,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TenantApiTenantV1OrganizationGetPaginatedItemsResponse:
-        """Get TEA tenant organizations
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param tea_tenant_id: 
-        :type tea_tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_tea_tenant_organizations_serialize(
-            tenant_id=tenant_id,
-            tea_tenant_id=tea_tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_tea_tenant_organizations_with_http_info(
-        self,
-        tenant_id: UUID,
-        tea_tenant_id: Optional[StrictStr] = None,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TenantApiTenantV1OrganizationGetPaginatedItemsResponse]:
-        """Get TEA tenant organizations
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param tea_tenant_id: 
-        :type tea_tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_tea_tenant_organizations_serialize(
-            tenant_id=tenant_id,
-            tea_tenant_id=tea_tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_tea_tenant_organizations_without_preload_content(
-        self,
-        tenant_id: UUID,
-        tea_tenant_id: Optional[StrictStr] = None,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get TEA tenant organizations
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param tea_tenant_id: 
-        :type tea_tenant_id: str
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_tea_tenant_organizations_serialize(
-            tenant_id=tenant_id,
-            tea_tenant_id=tea_tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_tea_tenant_organizations_serialize(
-        self,
-        tenant_id,
-        tea_tenant_id,
-        page_size,
-        page_index,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if tea_tenant_id is not None:
-            
-            _query_params.append(('teaTenantId', tea_tenant_id))
-            
-        if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
-        if page_index is not None:
-            
-            _query_params.append(('pageIndex', page_index))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/tenantorganizations',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_tenant_organizations(
-        self,
-        tenant_id: UUID,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TenantApiTenantV1OrganizationGetPaginatedItemsResponse:
-        """Get tenant organizations
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_tenant_organizations_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_tenant_organizations_with_http_info(
-        self,
-        tenant_id: UUID,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TenantApiTenantV1OrganizationGetPaginatedItemsResponse]:
-        """Get tenant organizations
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_tenant_organizations_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_tenant_organizations_without_preload_content(
-        self,
-        tenant_id: UUID,
-        page_size: Optional[StrictInt] = None,
-        page_index: Optional[StrictInt] = None,
-        order_by: Optional[StrictStr] = None,
-        filter: Optional[StrictStr] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get tenant organizations
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param page_size: 
-        :type page_size: int
-        :param page_index: 
-        :type page_index: int
-        :param order_by: 
-        :type order_by: str
-        :param filter: 
-        :type filter: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_tenant_organizations_serialize(
-            tenant_id=tenant_id,
-            page_size=page_size,
-            page_index=page_index,
-            order_by=order_by,
-            filter=filter,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "TenantApiTenantV1OrganizationGetPaginatedItemsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_tenant_organizations_serialize(
-        self,
-        tenant_id,
-        page_size,
-        page_index,
-        order_by,
-        filter,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
-        if page_index is not None:
-            
-            _query_params.append(('pageIndex', page_index))
-            
-        if order_by is not None:
-            
-            _query_params.append(('orderBy', order_by))
-            
-        if filter is not None:
-            
-            _query_params.append(('filter', filter))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'oauth2'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/tenants/{tenantId}/observations/organizations',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def set_application_settings(
-        self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse:
-        """Sets the Application Settings of an Observation for a given Tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_application_settings_serialize(
-            tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request=ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def set_application_settings_with_http_info(
-        self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse]:
-        """Sets the Application Settings of an Observation for a given Tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_application_settings_serialize(
-            tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request=ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def set_application_settings_without_preload_content(
-        self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Sets the Application Settings of an Observation for a given Tenant
-
-
-        :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._set_application_settings_serialize(
-            tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request=ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '401': "EdGraphCommonErrorsCoreProblemDetails",
-            '403': "EdGraphCommonErrorsCoreProblemDetails",
-            '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _set_application_settings_serialize(
-        self,
-        tenant_id,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if tenant_id is not None:
-            _path_params['tenantId'] = tenant_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_services_observations_set_application_settings_request
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_create_application_round_request_dto
 
 
         # set the HTTP header `Accept`
@@ -3152,7 +656,7 @@ class ObservationSettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/tenants/{tenantId}/observations/settings/application',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3169,10 +673,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def set_role_personas_settings(
+    async def delete_application_round(
         self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest] = None,
+        tenant_id: StrictStr,
+        id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3185,14 +689,14 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse:
-        """Updates personas assigned to a role configuration of the tenants setting
+    ) -> None:
+        """Soft-deletes a round. Refused once the round has opened, and while another round's window  depends on one of its windows.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3215,9 +719,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_role_personas_settings_serialize(
+        _param = self._delete_application_round_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request=ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3228,8 +732,9 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3243,10 +748,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def set_role_personas_settings_with_http_info(
+    async def delete_application_round_with_http_info(
         self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest] = None,
+        tenant_id: StrictStr,
+        id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3259,14 +764,14 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse]:
-        """Updates personas assigned to a role configuration of the tenants setting
+    ) -> ApiResponse[None]:
+        """Soft-deletes a round. Refused once the round has opened, and while another round's window  depends on one of its windows.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3289,9 +794,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_role_personas_settings_serialize(
+        _param = self._delete_application_round_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request=ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3302,8 +807,9 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3317,10 +823,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def set_role_personas_settings_without_preload_content(
+    async def delete_application_round_without_preload_content(
         self,
-        tenant_id: UUID,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: Optional[EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest] = None,
+        tenant_id: StrictStr,
+        id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3334,13 +840,13 @@ class ObservationSettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates personas assigned to a role configuration of the tenants setting
+        """Soft-deletes a round. Refused once the round has opened, and while another round's window  depends on one of its windows.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
-        :param ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: 
-        :type ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request: EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3363,9 +869,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_role_personas_settings_serialize(
+        _param = self._delete_application_round_serialize(
             tenant_id=tenant_id,
-            ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request=ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3376,8 +882,9 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse",
-            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3386,10 +893,10 @@ class ObservationSettingsApi:
         return response_data.response
 
 
-    def _set_role_personas_settings_serialize(
+    def _delete_application_round_serialize(
         self,
         tenant_id,
-        ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -3413,12 +920,318 @@ class ObservationSettingsApi:
         # process the path parameters
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request is not None:
-            _body_params = ed_graph_http_aggregators_tenant_api_services_observations_set_role_configuration_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def duplicate_application_round(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto:
+        """Copies the round's code, label, grades and program types into another school year. Windows  are not copied - their dates belong to this round's school year.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._duplicate_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def duplicate_application_round_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto]:
+        """Copies the round's code, label, grades and program types into another school year. Windows  are not copied - their dates belong to this round's school year.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._duplicate_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def duplicate_application_round_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Copies the round's code, label, grades and program types into another school year. Windows  are not copied - their dates belong to this round's school year.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminDuplicateApplicationRoundRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._duplicate_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '201': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _duplicate_application_round_serialize(
+        self,
+        tenant_id,
+        id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_duplicate_application_round_request_dto
 
 
         # set the HTTP header `Accept`
@@ -3453,7 +1266,7 @@ class ObservationSettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/tenants/{tenantId}/observations/settings/rolepersonas',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}/duplicate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3470,9 +1283,10 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def verify_sys_admin_credentials(
+    async def get_application_round_by_id(
         self,
-        tenant_id: UUID,
+        tenant_id: StrictStr,
+        id: UUID,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3485,12 +1299,14 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
-        """Gets the staffClassification settings for the tenant
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto:
+        """Gets a round by id, with its windows and their states as of now.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3513,8 +1329,9 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._verify_sys_admin_credentials_serialize(
+        _param = self._get_application_round_by_id_serialize(
             tenant_id=tenant_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3525,7 +1342,312 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "object",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_application_round_by_id_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto]:
+        """Gets a round by id, with its windows and their states as of now.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_application_round_by_id_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_application_round_by_id_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Gets a round by id, with its windows and their states as of now.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_application_round_by_id_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_application_round_by_id_serialize(
+        self,
+        tenant_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_application_rounds(
+        self,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        school_year: Annotated[Optional[StrictStr], Field(description="Exact match, e.g. 2026-2027.")] = None,
+        code: Annotated[Optional[StrictStr], Field(description="Exact match.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDtoPaginatedItemsViewModel:
+        """Searches the tenant's application rounds. Default order is school year descending, then code;  `orderBy` accepts `schoolYear` or `code`. Each round carries its windows and  the state of each, derived at the moment of the read.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param school_year: Exact match, e.g. 2026-2027.
+        :type school_year: str
+        :param code: Exact match.
+        :type code: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_application_rounds_serialize(
+            tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
+            school_year=school_year,
+            code=code,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = await self.api_client.call_api(
@@ -3540,9 +1662,15 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def verify_sys_admin_credentials_with_http_info(
+    async def get_application_rounds_with_http_info(
         self,
-        tenant_id: UUID,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        school_year: Annotated[Optional[StrictStr], Field(description="Exact match, e.g. 2026-2027.")] = None,
+        code: Annotated[Optional[StrictStr], Field(description="Exact match.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3555,12 +1683,24 @@ class ObservationSettingsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
-        """Gets the staffClassification settings for the tenant
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDtoPaginatedItemsViewModel]:
+        """Searches the tenant's application rounds. Default order is school year descending, then code;  `orderBy` accepts `schoolYear` or `code`. Each round carries its windows and  the state of each, derived at the moment of the read.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param school_year: Exact match, e.g. 2026-2027.
+        :type school_year: str
+        :param code: Exact match.
+        :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3583,8 +1723,14 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._verify_sys_admin_credentials_serialize(
+        _param = self._get_application_rounds_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
+            school_year=school_year,
+            code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3595,7 +1741,7 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "object",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = await self.api_client.call_api(
@@ -3610,9 +1756,15 @@ class ObservationSettingsApi:
 
 
     @validate_call
-    async def verify_sys_admin_credentials_without_preload_content(
+    async def get_application_rounds_without_preload_content(
         self,
-        tenant_id: UUID,
+        tenant_id: StrictStr,
+        page_size: Optional[StrictInt] = None,
+        page_index: Optional[StrictInt] = None,
+        order_by: Optional[StrictStr] = None,
+        filter: Optional[StrictStr] = None,
+        school_year: Annotated[Optional[StrictStr], Field(description="Exact match, e.g. 2026-2027.")] = None,
+        code: Annotated[Optional[StrictStr], Field(description="Exact match.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3626,11 +1778,23 @@ class ObservationSettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the staffClassification settings for the tenant
+        """Searches the tenant's application rounds. Default order is school year descending, then code;  `orderBy` accepts `schoolYear` or `code`. Each round carries its windows and  the state of each, derived at the moment of the read.
 
 
         :param tenant_id:  (required)
-        :type tenant_id: UUID
+        :type tenant_id: str
+        :param page_size: 
+        :type page_size: int
+        :param page_index: 
+        :type page_index: int
+        :param order_by: 
+        :type order_by: str
+        :param filter: 
+        :type filter: str
+        :param school_year: Exact match, e.g. 2026-2027.
+        :type school_year: str
+        :param code: Exact match.
+        :type code: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3653,8 +1817,14 @@ class ObservationSettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._verify_sys_admin_credentials_serialize(
+        _param = self._get_application_rounds_serialize(
             tenant_id=tenant_id,
+            page_size=page_size,
+            page_index=page_index,
+            order_by=order_by,
+            filter=filter,
+            school_year=school_year,
+            code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3665,7 +1835,7 @@ class ObservationSettingsApi:
             '401': "EdGraphCommonErrorsCoreProblemDetails",
             '403': "EdGraphCommonErrorsCoreProblemDetails",
             '500': "EdGraphCommonErrorsCoreProblemDetails",
-            '200': "object",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDtoPaginatedItemsViewModel",
             '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
         }
         response_data = await self.api_client.call_api(
@@ -3675,9 +1845,15 @@ class ObservationSettingsApi:
         return response_data.response
 
 
-    def _verify_sys_admin_credentials_serialize(
+    def _get_application_rounds_serialize(
         self,
         tenant_id,
+        page_size,
+        page_index,
+        order_by,
+        filter,
+        school_year,
+        code,
         _request_auth,
         _content_type,
         _headers,
@@ -3702,6 +1878,30 @@ class ObservationSettingsApi:
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
+        if page_size is not None:
+            
+            _query_params.append(('pageSize', page_size))
+            
+        if page_index is not None:
+            
+            _query_params.append(('pageIndex', page_index))
+            
+        if order_by is not None:
+            
+            _query_params.append(('orderBy', order_by))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if school_year is not None:
+            
+            _query_params.append(('schoolYear', school_year))
+            
+        if code is not None:
+            
+            _query_params.append(('code', code))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -3723,7 +1923,1542 @@ class ObservationSettingsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/tenants/{tenantId}/observations/settings/verify-credentials',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def purge_application_round(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Hard-deletes a round. Only a round that has been deleted first.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._purge_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def purge_application_round_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Hard-deletes a round. Only a round that has been deleted first.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._purge_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def purge_application_round_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Hard-deletes a round. Only a round that has been deleted first.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._purge_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _purge_application_round_serialize(
+        self,
+        tenant_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}/purge',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def recover_application_round(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto:
+        """Brings back a soft-deleted round.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._recover_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def recover_application_round_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto]:
+        """Brings back a soft-deleted round.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._recover_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def recover_application_round_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Brings back a soft-deleted round.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._recover_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '409': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _recover_application_round_serialize(
+        self,
+        tenant_id,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}/recover',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def remove_application_round_window(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        window_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Removes one window of the round. Refused while another window depends on it, and when it is  the last window of a round that has opened.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param window_id:  (required)
+        :type window_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_application_round_window_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            window_id=window_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def remove_application_round_window_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        window_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Removes one window of the round. Refused while another window depends on it, and when it is  the last window of a round that has opened.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param window_id:  (required)
+        :type window_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_application_round_window_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            window_id=window_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def remove_application_round_window_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        window_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Removes one window of the round. Refused while another window depends on it, and when it is  the last window of a round that has opened.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param window_id:  (required)
+        :type window_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_application_round_window_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            window_id=window_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '204': None,
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _remove_application_round_window_serialize(
+        self,
+        tenant_id,
+        id,
+        window_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        if window_id is not None:
+            _path_params['windowId'] = window_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}/windows/{windowId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def update_application_round(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto:
+        """Replaces a round's label, grades and program types. Code and school year never change -  duplicate the round into another school year instead.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def update_application_round_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto]:
+        """Replaces a round's label, grades and program types. Code and school year never change -  duplicate the round into another school year instead.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def update_application_round_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Replaces a round's label, grades and program types. Code and school year never change -  duplicate the round into another school year instead.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateApplicationRoundRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_application_round_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_application_round_serialize(
+        self,
+        tenant_id,
+        id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_update_application_round_request_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def update_application_round_window(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        window_id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto:
+        """Replaces one window of the round.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param window_id:  (required)
+        :type window_id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_application_round_window_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            window_id=window_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def update_application_round_window_with_http_info(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        window_id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto]:
+        """Replaces one window of the round.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param window_id:  (required)
+        :type window_id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_application_round_window_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            window_id=window_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def update_application_round_window_without_preload_content(
+        self,
+        tenant_id: StrictStr,
+        id: UUID,
+        window_id: UUID,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: Optional[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Replaces one window of the round.
+
+
+        :param tenant_id:  (required)
+        :type tenant_id: str
+        :param id:  (required)
+        :type id: UUID
+        :param window_id:  (required)
+        :type window_id: UUID
+        :param ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: 
+        :type ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto: EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminEnrollmentWindowRequestDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_application_round_window_serialize(
+            tenant_id=tenant_id,
+            id=id,
+            window_id=window_id,
+            ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto=ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '401': "EdGraphCommonErrorsCoreProblemDetails",
+            '403': "EdGraphCommonErrorsCoreProblemDetails",
+            '500': "EdGraphCommonErrorsCoreProblemDetails",
+            '200': "EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundWindowMutationResultDto",
+            '400': "MicrosoftAspNetCoreMvcValidationProblemDetails",
+            '404': "EdGraphCommonErrorsCoreProblemDetails",
+            '412': "EdGraphCommonErrorsCoreProblemDetails",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_application_round_window_serialize(
+        self,
+        tenant_id,
+        id,
+        window_id,
+        ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tenant_id is not None:
+            _path_params['tenantId'] = tenant_id
+        if id is not None:
+            _path_params['id'] = id
+        if window_id is not None:
+            _path_params['windowId'] = window_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto is not None:
+            _body_params = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_requests_enrollment_admin_enrollment_window_request_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json', 
+                        'application/json', 
+                        'text/json', 
+                        'application/*+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tenants/{tenantId}/enrollmentadmin/applicationrounds/{id}/windows/{windowId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

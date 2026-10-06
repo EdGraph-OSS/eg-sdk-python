@@ -1,0 +1,43 @@
+# EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto
+
+An application round: a named enrollment period in a school year, identified by  (EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ApplicationRoundResponseDto.Code, EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ApplicationRoundResponseDto.SchoolYear). EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ApplicationRoundResponseDto.State and each window's state are  derived by the service at the moment of the read - NotYetOpen, Open or Closed - and never stored.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
+**tenant_id** | **UUID** |  | [optional] 
+**code** | **str** |  | [optional] 
+**school_year** | **str** |  | [optional] 
+**label** | **str** |  | [optional] 
+**grades** | **List[str]** |  | [optional] 
+**program_types** | [**List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto]**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto.md) |  | [optional] 
+**windows** | [**List[EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminEnrollmentWindowDto]**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminEnrollmentWindowDto.md) |  | [optional] 
+**state** | **str** |  | [optional] 
+**created_by** | **str** |  | [optional] 
+**created_date_time** | **datetime** |  | [optional] 
+**last_modified_by** | **str** |  | [optional] 
+**last_modified_date_time** | **datetime** |  | [optional] 
+**is_deleted** | **bool** |  | [optional] 
+
+## Example
+
+```python
+from edgraph_platform_client.models.ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto import EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto from a JSON string
+ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto_instance = EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto.from_json(json)
+# print the JSON string representation of the object
+print(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto.to_json())
+
+# convert the object into a dict
+ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto_dict = ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto_instance.to_dict()
+# create an instance of EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto from a dict
+ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto_from_dict = EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminApplicationRoundResponseDto.from_dict(ed_graph_http_aggregators_tenant_api_controllers_v1_view_models_responses_enrollment_admin_application_round_response_dto_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

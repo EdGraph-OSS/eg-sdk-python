@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **lat** | **float** |  | [optional] 
 **lon** | **float** |  | [optional] 
 **phone** | **str** |  | [optional] 
+**address_state_abbreviation** | **str** |  | [optional] 
+**address_state** | **str** |  | [optional] 
 **is_enabled** | **bool** |  | [optional] 
 **program_count** | **int** |  | [optional] 
 **created_by** | **str** |  | [optional] 

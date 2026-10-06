@@ -29,7 +29,7 @@ from pydantic_core import to_jsonable_python
 
 class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminStudentResponseDto(BaseModel):
     """
-    EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminStudentResponseDto
+    One Enrollment Student, from the list and the get-by-id route alike. `registrationId` is set only on  a list row that stands for a registration not yet linked to a student (a new student): that row's  `id` is the registration's id, which the get-by-id route cannot resolve, so a client must not open a  student profile from it. Absent on every real student.
     """ # noqa: E501
     id: Optional[UUID] = None
     tenant_id: Optional[UUID] = Field(default=None, alias="tenantId")
@@ -58,7 +58,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
     deleted_by: Optional[StrictStr] = Field(default=None, alias="deletedBy")
     deleted_date_time: Optional[datetime] = Field(default=None, alias="deletedDateTime")
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
-    __properties: ClassVar[List[str]] = ["id", "tenantId", "studentLocalCode", "studentStateCode", "externalDataSourceStudentId", "allowedPathwayIds", "firstName", "middleName", "lastName", "birthdate", "last4SSN", "nextAddress", "nextGradeLevel", "nextSchoolStateShortCode", "nextSchoolStateCode", "nextSchoolName", "nextSchoolAddress", "eligibilityCode", "eligibilityDescription", "contacts", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted"]
+    registration_id: Optional[StrictStr] = Field(default=None, alias="registrationId")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "studentLocalCode", "studentStateCode", "externalDataSourceStudentId", "allowedPathwayIds", "firstName", "middleName", "lastName", "birthdate", "last4SSN", "nextAddress", "nextGradeLevel", "nextSchoolStateShortCode", "nextSchoolStateCode", "nextSchoolName", "nextSchoolAddress", "eligibilityCode", "eligibilityDescription", "contacts", "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "deletedBy", "deletedDateTime", "isDeleted", "registrationId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -243,6 +244,11 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
         if self.deleted_date_time is None and "deleted_date_time" in self.model_fields_set:
             _dict['deletedDateTime'] = None
 
+        # set to None if registration_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.registration_id is None and "registration_id" in self.model_fields_set:
+            _dict['registrationId'] = None
+
         return _dict
 
     @classmethod
@@ -281,7 +287,8 @@ class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentA
             "lastModifiedDateTime": obj.get("lastModifiedDateTime"),
             "deletedBy": obj.get("deletedBy"),
             "deletedDateTime": obj.get("deletedDateTime"),
-            "isDeleted": obj.get("isDeleted")
+            "isDeleted": obj.get("isDeleted"),
+            "registrationId": obj.get("registrationId")
         })
         return _obj
 
